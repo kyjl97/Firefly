@@ -1,0 +1,181 @@
+---
+import Footer from "@components/Footer.astro";
+import BackToTop from "@components/control/BackToTop.astro";
+import type { MarkdownHeading } from "astro";
+import { siteConfig, profileConfig } from "@/config";
+import "lxgw-wenkai-webfont/style.css";
+
+interface Props {
+	title?: string;
+	description?: string;
+	headings?: MarkdownHeading[];
+}
+
+const { title, description, headings = [] } = Astro.props;
+
+const pageTitle = title ? `${title} - ${siteConfig.title}` : siteConfig.title;
+const pageDescription = description || siteConfig.description;
+
+// 快捷导航链接
+const quickLinks = [
+	{ name: "Home", url: "/" },
+	{ name: "Index", url: "/wiki/" },
+	{ name: "Overview", url: "/wiki/overview/" },
+	{ name: "Purpose", url: "/wiki/purpose/" },
+	{ name: "Schema", url: "/wiki/schema/" },
+	{ name: "Log", url: "/wiki/log/" },
+];
+---
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="bg-[var(--page-bg)] transition text-[12px] md:text-[16px]">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="referrer" content="no-referrer">
+	<title>{pageTitle}</title>
+	<meta name="description" content={pageDescription}>
+	<meta name="author" content={profileConfig.name}>
+	<link rel="icon" href="/brand-logo.png" sizes="32x32">
+	<!-- 霞鹜文楷字体已通过 npm 本地化 -->
+	<style>
+		:root {
+			--hue: 240;
+			--primary: #818cf8;
+			--page-bg: #09090b;
+			--card-bg: #121215;
+			--text-primary: #fafafa;
+			--text-secondary: #d4d4d8;
+			--line-divider: #27272a;
+			--btn-regular-bg: #121215;
+			--code-block-bg: #0c0c0f;
+		}
+		/* Prevent FOUC - inline critical styles */
+		body {
+			background: #09090b;
+			color: #fafafa;
+			font-family: 'LXGW WenKai', system-ui, -apple-system, sans-serif;
+			margin: 0;
+			overflow-x: hidden;
+		}
+		/* Aurora 极光光晕层 */
+		body::before {
+			content: '';
+			position: fixed;
+			inset: 0;
+			z-index: 0;
+			pointer-events: none;
+			background:
+				radial-gradient(ellipse 70vw 60vh at 80% 5%, rgba(0, 128, 255, 0.10) 0%, transparent 55%),
+				radial-gradient(ellipse 50vw 50vh at 90% 15%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
+				radial-gradient(ellipse 45vw 40vh at 15% 85%, rgba(255, 20, 147, 0.06) 0%, transparent 55%),
+				radial-gradient(ellipse 55vw 45vh at 50% 95%, rgba(0, 255, 255, 0.05) 0%, transparent 50%),
+				radial-gradient(ellipse 60vw 50vh at 40% 10%, rgba(139, 92, 246, 0.04) 0%, transparent 50%);
+		}
+		/* 微噪点纹理 — 增加质感 */
+		body::after {
+			content: '';
+			position: fixed;
+			inset: 0;
+			z-index: 0;
+			pointer-events: none;
+			opacity: 0.025;
+			background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+			background-repeat: repeat;
+			background-size: 256px 256px;
+		}
+		.card-base {
+			background: #121215;
+			border-radius: 0.75rem;
+			border: 1px solid #27272a;
+			position: relative;
+			z-index: 1;
+		}
+		.wiki-wrapper {
+			position: relative;
+			z-index: 1;
+		}
+		.wiki-nav {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			margin-bottom: 1rem;
+		}
+		.wiki-title {
+			background: linear-gradient(135deg, #818cf8, #22d3ee);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+		}
+		.wiki-nav-links {
+			display: flex;
+			align-items: center;
+			gap: 0.25rem;
+		}
+		.wiki-nav-links a {
+			padding: 0.375rem 0.75rem;
+			border-radius: 0.25rem;
+			font-size: 0.875rem;
+			color: var(--text-secondary);
+			text-decoration: none;
+			transition: all 0.2s;
+		}
+		.wiki-nav-links a:hover {
+			color: var(--primary);
+			background: var(--btn-regular-bg);
+		}
+	</style>
+</head>
+<body class="min-h-screen transition">
+	<!-- 整体居中容器 -->
+	<div class="wiki-wrapper max-w-[1280px] mx-auto px-6 py-4">
+		<!-- 顶部导航栏 -->
+		<div class="wiki-nav">
+			<!-- 左侧 Wiki 标题 -->
+			<a href="/wiki/" target="_blank" class="flex items-center gap-2 group">
+				<span class="wiki-title" style="font-size:1.25rem;font-weight:700;">Wiki</span>
+			</a>
+			<!-- 右侧快捷链接 -->
+			<div class="wiki-nav-links">
+				{quickLinks.map((link) => (
+					<a href={link.url}>
+						{link.name}
+					</a>
+				))}
+			</div>
+		</div>
+
+		<!-- 三栏布局 -->
+		<div class="flex gap-6">
+			<slot></slot>
+			<!-- 右侧大纲 -->
+			{headings && headings.length > 0 && (
+				<aside class="wiki-toc hidden xl:block w-56 shrink-0">
+					<nav class="sticky top-40 max-h-[calc(100vh-10rem)] overflow-y-auto hide-scrollbar">
+						<ul class="space-y-1.5 text-sm">
+							{headings.map((heading) => (
+								<li class:list={[heading.depth === 3 && "pl-3"]}>
+									<a
+										href={`#${heading.slug}`}
+										class="block px-2 py-1 rounded hover:bg-[var(--btn-regular-bg)] text-[var(--text-secondary)] hover:text-[var(--primary)] transition"
+									>
+										{heading.text}
+									</a>
+								</li>
+							))}
+						</ul>
+					</nav>
+				</aside>
+			)}
+		</div>
+
+		<!-- Footer -->
+		<Footer></Footer>
+	</div>
+
+	<!-- Back to Top -->
+	<BackToTop></BackToTop>
+
+	<script type="module" src="/_astro/page.G51m6u_A.js"></script>
+</body>
+</html>

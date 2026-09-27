@@ -1,0 +1,115 @@
+---
+/**
+ * 图片装饰组件
+ * 显示装饰性图片，hover时切换
+ */
+interface Props {
+	src?: string;
+	src2?: string;
+}
+
+const src1 =
+	"https://gitee.com/da-qiang-classmate/typora/raw/master/image/weix1.webp";
+const src2 =
+	"https://gitee.com/da-qiang-classmate/typora/raw/master/image/weix2.webp";
+---
+
+<div class="image-decoration-wrapper">
+    <div class="image-decoration">
+        <img src={src1} alt="装饰图片" class="image-decoration-img img-primary" />
+        <img src={src2} alt="装饰图片" class="image-decoration-img img-hover" />
+    </div>
+</div>
+
+<style>
+    .image-decoration-wrapper {
+        width: 100%;
+        padding: 0.5rem 0;
+    }
+
+    .image-decoration-header {
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        margin-bottom: 12px;
+    }
+
+    .decoration-line {
+        flex: 1;
+        height: 1px;
+        border-top: 1px dashed;
+        border-color: oklch(0.85 0.01 var(--hue));
+        opacity: 0.6;
+    }
+
+    .dark .decoration-line {
+        border-color: oklch(0.35 0.02 var(--hue));
+    }
+
+    .hacker-icon {
+        font-size: 14px;
+        font-weight: 700;
+        font-family: 'Courier New', 'Consolas', monospace;
+        letter-spacing: -1px;
+        background: linear-gradient(135deg, #0ea5e9, #8b5cf6);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .dark .hacker-icon {
+        background: linear-gradient(135deg, #38bdf8, #a78bfa);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .decoration-title {
+        font-size: 14px;
+        font-weight: 600;
+        white-space: nowrap;
+        background: linear-gradient(135deg, #0ea5e9, #8b5cf6);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .dark .decoration-title {
+        background: linear-gradient(135deg, #38bdf8, #a78bfa);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .image-decoration {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        border-radius: 12px;
+    }
+
+    .image-decoration-img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .img-hover {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    .image-decoration:hover .img-primary {
+        opacity: 0;
+        transform: scale(1.05);
+    }
+
+    .image-decoration:hover .img-hover {
+        opacity: 1;
+        transform: scale(1);
+    }
+</style>

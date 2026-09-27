@@ -1,0 +1,933 @@
+---
+import MainGridLayout from "@layouts/MainGridLayout.astro";
+import { Icon } from "astro-icon/components";
+import { siteConfig, profileConfig } from "@/config";
+import fs from "node:fs";
+import path from "node:path";
+
+const memoriaDir = path.resolve("src/content/Memoria");
+
+// 解析 Memoria 笔记
+const mdFiles = fs.readdirSync(memoriaDir).filter(f => f.endsWith(".md"));
+
+interface Note {
+  date: string;
+  weekday: string;
+  time: string;
+  content: string;
+  images: string[];
+  tags: string[];
+}
+
+const notes: Note[] = [];
+
+for (const file of mdFiles) {
+  const raw = fs.readFileSync(path.join(memoriaDir, file), "utf-8");
+  const dayBlocks = raw.split(/(?=^## \d{4}-\d{2}-\d{2})/m);
+
+  for (const block of dayBlocks) {
+    const dayMatch = block.match(/^## (\d{4}-\d{2}-\d{2})\s+(.*)/m);
+    if (!dayMatch) continue;
+    const date = dayMatch[1];
+    const weekday = dayMatch[2];
+
+    const memoBlocks = block.split(/(?=^- \d{2}:\d{2})/m);
+    for (const memo of memoBlocks) {
+      const memoMatch = memo.match(/^- (\d{2}:\d{2})\s*\n?([\s\S]*)/);
+      if (!memoMatch) continue;
+      const time = memoMatch[1];
+      let content = memoMatch[2].trim();
+      const images: string[] = [];
+      const imageRegex = /!\[\[([^\]]+)\]\]/g;
+      let match;
+      while ((match = imageRegex.exec(content)) !== null) {
+        images.push(`/memoria-attachments/${match[1]}`);
+      }
+      content = content.replace(/!\[\[[^\]]+\]\]/g, "").trim();
+      // 提取 #标签
+      const tags: string[] = [];
+      const tagRegex = /#([\w一-鿿-]+)/g;
+      let tagMatch;
+      while ((tagMatch = tagRegex.exec(content)) !== null) {
+        tags.push(tagMatch[1]);
+      }
+      content = content.replace(/#[\w一-鿿-]+/g, "").replace(/^ +/gm, "").replace(/\n{2,}/g, "\n").trim();
+      // 将 URL 转为链接，再转义其余 HTML
+      content = content.replace(/(https?:\/\/[^\s<)]+)/g, '\x00LINK\x00$1\x00/LINK\x00');
+      content = content
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+      content = content.replace(/\x00LINK\x00([^\x00]+)\x00\/LINK\x00/g,
+        '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
+      notes.push({ date, weekday, time, content, images, tags });
+    }
+  }
+}
+
+notes.sort((a, b) => `${b.date}T${b.time}`.localeCompare(`${a.date}T${a.time}`));
+
+// 按日期分组
+const grouped = new Map<string, Note[]>();
+for (const note of notes) {
+  if (!grouped.has(note.date)) grouped.set(note.date, []);
+  grouped.get(note.date)!.push(note);
+}
+
+// 收集所有标签
+const allTags = Array.from(new Set(notes.flatMap(n => n.tags)));
+
+// 生成日期列表（用于右侧导航）
+const dates = Array.from(grouped.entries())
+  .sort(([a], [b]) => b.localeCompare(a))
+  .map(([date, dayNotes]) => ({ date, weekday: dayNotes[0].weekday }));
+
+function formatDate(dateStr: string): string {
+  const d = new Date(dateStr + "T00:00:00");
+  const month = d.getMonth() + 1;
+  const day = d.getDate();
+  return `${month}月${day}日`;
+}
+---
+
+<MainGridLayout title="Notes">
+  <!-- 笔记内容（铺满主区域） -->
+  <div>
+    <!-- 顶部横幅 -->
+    <div class="card-base notes-banner px-6 py-5 mb-4">
+      <div class="banner-content">
+        <div class="banner-icon">
+          <Icon name="material-symbols:notes-rounded" class="text-[1.75rem]" />
+        </div>
+        <div>
+          <h1 class="text-lg font-bold text-black/80 dark:text-white/90">碎片笔记</h1>
+          <p class="text-xs text-black/50 dark:text-white/50 mt-0.5">记录灵感 · 积累思考</p>
+        </div>
+      </div>
+      <div class="banner-stats">
+        <div class="stat-item">
+          <span class="stat-num">{notes.length}</span>
+          <span class="stat-label">条</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">{grouped.size}</span>
+          <span class="stat-label">天</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 标签筛选栏 -->
+    <div class="card-base px-6 py-3 mb-4 tag-filter-bar">
+      <div class="tag-filter-inner">
+        <div class="tag-filter-scroll">
+          <button class="tag-pill active" data-filter="all">全部</button>
+          {allTags.map(tag => (
+            <button class="tag-pill" data-filter={tag}>#{tag}</button>
+          ))}
+        </div>
+        <!-- 日期导航按钮 -->
+        <div class="notes-date-nav">
+          <button id="date-nav-toggle" class="date-toggle-btn" aria-label="日期导航">
+            <Icon name="material-symbols:calendar-month-outline" class="text-[0.95rem]" />
+          </button>
+          <div id="date-nav-panel" class="date-nav-panel">
+            <div class="date-panel-header">日期导航</div>
+            <nav class="date-nav">
+              {dates.map(({ date, weekday }) => (
+                <a href={`#day-${date}`} class="date-link" data-date={date}>
+                  <span>{formatDate(date)} {weekday}</span>
+                </a>
+              ))}
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 笔记流 -->
+    <div class="card-base px-6 py-2 relative">
+
+      {Array.from(grouped.entries()).map(([date, dayNotes]) => (
+        <div class="day-section" id={`day-${date}`}>
+          <div class="day-divider">
+            <span class="day-badge">{formatDate(date)} {dayNotes[0].weekday}</span>
+          </div>
+
+          {dayNotes.map((note) => (
+            <div class="moment-card" data-tags={note.tags.join(",")}>
+              <div class="moment-left">
+                <div class="avatar">
+                  <img src="/brand-logo.png" alt="得救之道 Logo" />
+                </div>
+              </div>
+              <div class="moment-body">
+                <div class="moment-header">
+                  <span class="moment-name">{profileConfig.name}</span>
+                  <span class="moment-time">{note.time}</span>
+                </div>
+                {note.content && (
+                  <div class="moment-text-wrap">
+                    <div class="moment-text collapse-text" set:html={note.content} />
+                    <button class="expand-btn" aria-label="展开">展开</button>
+                  </div>
+                )}
+                {note.images.length > 0 && (
+                  <div class:list={["moment-images", {
+                    "img-grid-1": note.images.length === 1,
+                    "img-grid-2": note.images.length === 2,
+                    "img-grid-3": note.images.length === 3,
+                    "img-grid-4": note.images.length === 4,
+                    "img-grid-multi": note.images.length > 4,
+                  }]}>
+                    {note.images.map((img) => (
+                      <div class="img-wrapper">
+                        <img src={img} alt="" loading="lazy" />
+                      </div>
+                    ))}
+                  </div>
+                )}
+                {note.tags.length > 0 && (
+                  <div class="moment-tags">
+                    {note.tags.map(tag => (
+                      <span class="note-tag" data-tag={tag}>#{tag}</span>
+                    ))}
+                  </div>
+                )}
+              </div>
+              <div class="moment-actions">
+                <button class="copy-btn" title="复制" data-content={note.content}>
+                  <Icon name="material-symbols:content-copy-outline-rounded" class="text-[0.85rem]" />
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+
+    {notes.length === 0 && (
+      <div class="card-base empty-state py-12">
+        <Icon name="material-symbols:note-add" class="text-[3rem] opacity-30" />
+        <p class="text-50 mt-2">还没有笔记</p>
+      </div>
+    )}
+  </div>
+
+</MainGridLayout>
+
+<!-- 图片灯箱 -->
+<div id="note-lightbox" class="note-lightbox">
+  <img id="note-lightbox-img" src="" alt="" />
+</div>
+
+<script is:inline>
+// 标签筛选 - 事件委托（挂在 document 上，不受 swup 影响）
+document.addEventListener('click', function(e) {
+  // 图片灯箱 - 点击 .img-wrapper 内任意位置
+  var imgWrap = e.target.closest('.img-wrapper');
+  if (imgWrap) {
+    var img = imgWrap.querySelector('img');
+    if (img) {
+      var lb = document.getElementById('note-lightbox');
+      var lbImg = document.getElementById('note-lightbox-img');
+      lbImg.src = img.src;
+      lb.classList.add('open');
+      return;
+    }
+  }
+  // 点击灯箱关闭
+  var lb2 = document.getElementById('note-lightbox');
+  if (lb2 && lb2.classList.contains('open')) {
+    lb2.classList.remove('open');
+    return;
+  }
+
+  // 标签筛选
+  var pill = e.target.closest('.tag-pill');
+  if (pill) {
+    var tag = pill.getAttribute('data-filter') || 'all';
+    document.querySelectorAll('.tag-pill').forEach(function(p) {
+      p.classList.toggle('active', p.getAttribute('data-filter') === tag);
+    });
+    document.querySelectorAll('.moment-card').forEach(function(card) {
+      var cardTags = (card.getAttribute('data-tags') || '').split(',').filter(Boolean);
+      if (tag === 'all' || cardTags.indexOf(tag) !== -1) {
+        card.classList.remove('hidden-card');
+      } else {
+        card.classList.add('hidden-card');
+      }
+    });
+    document.querySelectorAll('.day-section').forEach(function(section) {
+      var visible = section.querySelectorAll('.moment-card:not(.hidden-card)');
+      section.classList.toggle('hidden-card', visible.length === 0);
+    });
+    return;
+  }
+
+  // 动态内标签点击
+  var noteTag = e.target.closest('.note-tag');
+  if (noteTag) {
+    var tag2 = noteTag.getAttribute('data-tag') || 'all';
+    document.querySelectorAll('.tag-pill').forEach(function(p) {
+      p.classList.toggle('active', p.getAttribute('data-filter') === tag2);
+    });
+    document.querySelectorAll('.moment-card').forEach(function(card) {
+      var cardTags = (card.getAttribute('data-tags') || '').split(',').filter(Boolean);
+      if (tag2 === 'all' || cardTags.indexOf(tag2) !== -1) {
+        card.classList.remove('hidden-card');
+      } else {
+        card.classList.add('hidden-card');
+      }
+    });
+    document.querySelectorAll('.day-section').forEach(function(section) {
+      var visible = section.querySelectorAll('.moment-card:not(.hidden-card)');
+      section.classList.toggle('hidden-card', visible.length === 0);
+    });
+    return;
+  }
+
+  // 展开/收起
+  var expandBtn = e.target.closest('.expand-btn');
+  if (expandBtn) {
+    var textEl = expandBtn.previousElementSibling;
+    if (textEl) {
+      textEl.classList.toggle('expanded');
+      expandBtn.textContent = textEl.classList.contains('expanded') ? '收起' : '展开';
+    }
+    return;
+  }
+
+  // 复制
+  var copyBtn = e.target.closest('.copy-btn');
+  if (copyBtn) {
+    var content = copyBtn.getAttribute('data-content');
+    if (content) {
+      navigator.clipboard.writeText(content).then(function() {
+        copyBtn.classList.add('copied');
+        setTimeout(function() { copyBtn.classList.remove('copied'); }, 1500);
+      });
+    }
+  }
+});
+
+// 检测长文本并显示展开按钮
+function initExpandButtons() {
+  document.querySelectorAll('.moment-text.collapse-text').forEach(function(el) {
+    if (el.scrollHeight > el.clientHeight + 2) {
+      el.parentElement.querySelector('.expand-btn').classList.add('show');
+    }
+  });
+}
+
+// 日期导航初始化
+function initDateNav() {
+  var toggleBtn = document.getElementById('date-nav-toggle');
+  var navPanel = document.getElementById('date-nav-panel');
+  if (!toggleBtn || !navPanel) return;
+
+  // 移除旧监听器（用克隆节点替换）
+  var newToggle = toggleBtn.cloneNode(true);
+  toggleBtn.parentNode.replaceChild(newToggle, toggleBtn);
+  toggleBtn = newToggle;
+
+  toggleBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    var isOpen = navPanel.classList.toggle('open');
+    toggleBtn.classList.toggle('active', isOpen);
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!navPanel.contains(e.target) && e.target !== toggleBtn) {
+      navPanel.classList.remove('open');
+      toggleBtn.classList.remove('active');
+    }
+  });
+
+  navPanel.querySelectorAll('.date-link').forEach(function(link) {
+    link.addEventListener('click', function() {
+      navPanel.classList.remove('open');
+      toggleBtn.classList.remove('active');
+    });
+  });
+
+  var dateLinks = document.querySelectorAll('.date-link');
+  var daySections = document.querySelectorAll('.day-section');
+
+  if (dateLinks.length && daySections.length) {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.id;
+          dateLinks.forEach(function(link) {
+            link.classList.toggle('active', link.getAttribute('data-date') === id.replace('day-', ''));
+          });
+        }
+      });
+    }, { rootMargin: '-20% 0px -60% 0px' });
+
+    daySections.forEach(function(section) { observer.observe(section); });
+
+    dateLinks.forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        var target = document.getElementById('day-' + link.getAttribute('data-date'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  }
+}
+
+// 首次加载
+function initNotesPage() {
+  requestAnimationFrame(function() {
+    initExpandButtons();
+    initDateNav();
+  });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initNotesPage);
+} else {
+  initNotesPage();
+}
+
+</script>
+
+<style>
+  /* 横幅 */
+  .notes-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 8%, var(--card-bg)), var(--card-bg)) !important;
+  }
+
+  .banner-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .banner-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: color-mix(in srgb, var(--primary) 12%, transparent);
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .banner-stats {
+    display: flex;
+    gap: 18px;
+  }
+
+  .stat-item { text-align: center; }
+  .stat-num { display: block; font-size: 1.25rem; font-weight: 700; line-height: 1; color: oklch(0.25 0.02 var(--hue)); }
+  .stat-label { font-size: 0.7rem; color: oklch(0.55 0.01 268); }
+  :global(.dark) .stat-num { color: white; }
+  :global(.dark) .stat-label { color: rgba(255,255,255,0.7); }
+
+  /* 日期分割 */
+  .day-section { margin-bottom: 4px; }
+
+  .day-divider {
+    display: flex;
+    align-items: center;
+    padding: 14px 0 8px;
+  }
+
+  .day-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--primary);
+    background: color-mix(in srgb, var(--primary) 8%, transparent);
+    padding: 4px 14px;
+    border-radius: 20px;
+  }
+
+  /* 卡片 */
+  .moment-card {
+    display: flex;
+    gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid oklch(0.92 0.005 268);
+  }
+
+  .dark .moment-card {
+    border-bottom-color: oklch(0.26 0.01 268);
+  }
+
+  .moment-card:last-child { border-bottom: none; }
+
+  .moment-left { flex-shrink: 0; }
+
+  .avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: oklch(0.95 0.005 268);
+  }
+
+  .dark .avatar { background: oklch(0.25 0.008 268); }
+
+  .avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+  .moment-body { flex: 1; min-width: 0; }
+
+  .moment-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 6px;
+  }
+
+  .moment-name { font-size: 0.85rem; font-weight: 600; color: var(--primary); }
+  .moment-time { font-size: 0.72rem; color: oklch(0.60 0.01 268); }
+  .dark .moment-time { color: oklch(0.50 0.01 268); }
+
+  .moment-text {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: oklch(0.30 0.01 268);
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  .dark .moment-text { color: oklch(0.82 0.005 268); }
+
+  .moment-text a {
+    color: #7c3aed !important;
+    text-decoration: underline;
+    word-break: break-all;
+  }
+
+  html.dark .moment-text a {
+    color: #a78bfa !important;
+  }
+
+  .moment-text a:hover {
+    color: #6d28d9 !important;
+  }
+
+  html.dark .moment-text a:hover {
+    color: #c4b5fd !important;
+  }
+
+  /* 折叠长文本 */
+  .moment-text-wrap { position: relative; }
+
+  .collapse-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .collapse-text.expanded {
+    -webkit-line-clamp: unset;
+    overflow: visible;
+  }
+
+  .expand-btn {
+    display: none;
+    border: none;
+    background: transparent;
+    color: var(--primary);
+    font-size: 0.78rem;
+    cursor: pointer;
+    padding: 2px 0;
+    margin-top: 2px;
+  }
+
+  .expand-btn.show { display: inline-block; }
+
+  .expand-btn:hover { text-decoration: underline; }
+
+  /* 复制按钮 */
+  .moment-actions {
+    flex-shrink: 0;
+    display: flex;
+    align-items: flex-start;
+    padding-top: 2px;
+  }
+
+  .copy-btn {
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: oklch(0.70 0.01 268);
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+    position: relative;
+  }
+
+  .dark .copy-btn { color: oklch(0.45 0.01 268); }
+
+  .copy-btn:hover {
+    background: color-mix(in srgb, var(--primary) 10%, transparent);
+    color: var(--primary);
+  }
+
+  .copy-btn.copied {
+    color: oklch(0.65 0.15 145);
+    background: oklch(0.95 0.05 145);
+  }
+
+  .dark .copy-btn.copied {
+    color: oklch(0.70 0.15 145);
+    background: oklch(0.25 0.05 145);
+  }
+
+  .copy-btn.copied::after {
+    content: '已复制';
+    position: absolute;
+    top: -22px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.6rem;
+    white-space: nowrap;
+    background: oklch(0.2 0.01 268);
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  .dark .copy-btn.copied::after {
+    background: oklch(0.80 0.01 268);
+    color: oklch(0.15 0.01 268);
+  }
+
+  /* 图片网格 */
+  .moment-images {
+    margin-top: 10px;
+    display: grid;
+    gap: 4px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .img-grid-1 { grid-template-columns: 1fr; max-width: 360px; }
+  .img-grid-2 { grid-template-columns: 1fr 1fr; max-width: 300px; }
+  .img-grid-3 { grid-template-columns: 1fr 1fr 1fr; max-width: 340px; }
+  .img-grid-4 { grid-template-columns: 1fr 1fr; max-width: 300px; }
+  .img-grid-multi { grid-template-columns: 1fr 1fr 1fr; max-width: 340px; }
+
+  .img-wrapper {
+    overflow: hidden;
+    background: oklch(0.96 0.005 268);
+    cursor: pointer;
+    border-radius: 6px;
+  }
+
+  .img-grid-2 .img-wrapper,
+  .img-grid-3 .img-wrapper,
+  .img-grid-4 .img-wrapper,
+  .img-grid-multi .img-wrapper {
+    aspect-ratio: 1;
+  }
+
+  .dark .img-wrapper { background: oklch(0.20 0.008 268); }
+
+  .img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+  }
+
+  .img-grid-1 .img-wrapper img {
+    object-fit: contain;
+    max-height: 360px;
+  }
+
+  .img-wrapper:hover img { transform: scale(1.03); }
+
+  /* 日期导航容器 */
+  .notes-date-nav {
+    position: relative;
+    flex-shrink: 0;
+    z-index: 50;
+  }
+
+  /* 切换按钮 */
+  .date-toggle-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--card-bg);
+    border: 1px solid oklch(0.90 0.005 268);
+    color: oklch(0.55 0.01 268);
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .dark .date-toggle-btn {
+    border-color: oklch(0.28 0.01 268);
+    color: oklch(0.50 0.01 268);
+  }
+
+  .date-toggle-btn:hover,
+  .date-toggle-btn.active {
+    color: var(--primary);
+    border-color: color-mix(in srgb, var(--primary) 40%, transparent);
+  }
+
+  /* 弹出面板 - 绝对定位，不影响布局 */
+  .date-nav-panel {
+    display: none;
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 120px;
+    max-height: 360px;
+    overflow-y: auto;
+    border-radius: 10px;
+    background: var(--card-bg);
+    border: 1px solid oklch(0.90 0.005 268);
+    box-shadow: 0 4px 20px oklch(0 0 0 / 0.1);
+    padding: 6px;
+    z-index: 50;
+  }
+
+  .dark .date-nav-panel {
+    border-color: oklch(0.28 0.01 268);
+    box-shadow: 0 4px 20px oklch(0 0 0 / 0.4);
+  }
+
+  .date-nav-panel.open {
+    display: block;
+  }
+
+  .date-panel-header {
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: oklch(0.55 0.01 268);
+    padding: 4px 8px 6px;
+  }
+
+  .dark .date-panel-header {
+    color: oklch(0.50 0.01 268);
+  }
+
+  .date-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .date-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 8px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.75rem;
+    color: oklch(0.45 0.01 268);
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+
+  .dark .date-link { color: oklch(0.55 0.01 268); }
+
+  .date-link:hover {
+    background: color-mix(in srgb, var(--primary) 8%, transparent);
+    color: var(--primary);
+  }
+
+  .date-link.active {
+    background: color-mix(in srgb, var(--primary) 10%, transparent);
+    color: var(--primary);
+    font-weight: 600;
+  }
+
+  .date-link-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: oklch(0.80 0.005 268);
+  }
+
+  .dark .date-link-dot {
+    background: oklch(0.35 0.008 268);
+  }
+
+  .date-link.active .date-link-dot {
+    background: var(--primary);
+  }
+
+  .date-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.78rem;
+    color: oklch(0.50 0.01 268);
+    transition: all 0.15s;
+  }
+
+  .dark .date-link { color: oklch(0.55 0.01 268); }
+
+  .date-link:hover {
+    background: color-mix(in srgb, var(--primary) 8%, transparent);
+    color: var(--primary);
+  }
+
+  .date-link.active {
+    background: color-mix(in srgb, var(--primary) 12%, transparent);
+    color: var(--primary);
+    font-weight: 600;
+  }
+
+  .date-link-count {
+    font-size: 0.65rem;
+    background: oklch(0.93 0.005 268);
+    padding: 1px 6px;
+    border-radius: 10px;
+    color: oklch(0.55 0.01 268);
+  }
+
+  .dark .date-link-count {
+    background: oklch(0.28 0.008 268);
+    color: oklch(0.50 0.01 268);
+  }
+
+  .date-link.active .date-link-count {
+    background: color-mix(in srgb, var(--primary) 20%, transparent);
+    color: var(--primary);
+  }
+
+  /* 图片灯箱 */
+  .note-lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: oklch(0 0 0 / 0.85);
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-out;
+  }
+
+  .note-lightbox.open {
+    display: flex;
+  }
+
+  .note-lightbox img {
+    max-width: 92vw;
+    max-height: 92vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 8px 40px oklch(0 0 0 / 0.5);
+  }
+
+  /* 空状态 */
+  .empty-state { text-align: center; }
+
+  .hidden-card { display: none !important; }
+
+  /* 标签筛选栏 */
+  .tag-filter-bar {
+    overflow: visible;
+  }
+
+  .tag-filter-inner {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .tag-filter-scroll {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 2px 0;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .tag-filter-scroll::-webkit-scrollbar { display: none; }
+
+  .tag-pill {
+    flex-shrink: 0;
+    padding: 4px 12px;
+    border-radius: 14px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border: 1px solid oklch(0.88 0.005 268);
+    background: transparent;
+    color: oklch(0.50 0.01 268);
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+
+  .dark .tag-pill {
+    border-color: oklch(0.30 0.01 268);
+    color: oklch(0.55 0.01 268);
+  }
+
+  .tag-pill:hover {
+    border-color: color-mix(in srgb, var(--primary) 40%, transparent);
+    color: var(--primary);
+  }
+
+  .tag-pill.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+  }
+
+  /* 笔记内标签 */
+  .moment-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+  }
+
+  .note-tag {
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--primary);
+    background: color-mix(in srgb, var(--primary) 8%, transparent);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .note-tag:hover {
+    background: color-mix(in srgb, var(--primary) 18%, transparent);
+  }
+
+  /* 响应式 */
+  @media (max-width: 1024px) {
+    .notes-banner {
+      flex-direction: column;
+      gap: 12px;
+      text-align: center;
+    }
+    .banner-content { flex-direction: column; }
+    .avatar { width: 34px; height: 34px; }
+  }
+</style>

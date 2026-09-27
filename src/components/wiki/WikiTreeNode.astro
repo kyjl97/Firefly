@@ -1,0 +1,59 @@
+---
+import type { WikiNode } from "@utils/wiki";
+
+interface Props {
+	node: WikiNode;
+	currentSlug: string;
+	depth?: number;
+}
+
+const { node, currentSlug, depth = 0 } = Astro.props;
+const isActive = node.slug === currentSlug;
+const paddingLeft = `${depth * 0.75}rem`;
+
+// 检查当前目录是否包含活跃项
+function containsActive(nodes: WikiNode[] | undefined): boolean {
+	if (!nodes) return false;
+	for (const n of nodes) {
+		if (n.slug === currentSlug) return true;
+		if (n.children && containsActive(n.children)) return true;
+	}
+	return false;
+}
+const isExpanded = node.type === "directory" && containsActive(node.children);
+---
+
+{node.type === "directory" ? (
+	<li class="wiki-dir" data-expanded={isExpanded ? "true" : "false"}>
+		<div
+			class="flex items-center gap-1.5 px-2 py-1.5 text-[var(--text-secondary)] font-medium text-sm cursor-pointer hover:bg-[var(--btn-regular-bg)] rounded transition"
+			style={`padding-left: ${paddingLeft}`}
+			onclick="const li=this.parentElement;const ul=this.nextElementSibling;const icon=this.querySelector('.dir-icon');const open=li.dataset.expanded==='true';li.dataset.expanded=open?'false':'true';ul.style.display=open?'none':'block';icon.classList.toggle('rotate-90')"
+		>
+			<svg class:list={["dir-icon w-3.5 h-3.5 shrink-0 transition-transform", {"rotate-90": !isExpanded}]} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+			</svg>
+			<span>{node.title}</span>
+		</div>
+		<ul class="space-y-0.5" style={isExpanded ? "" : "display:none"}>
+			{node.children && node.children.map((child) => (
+				<Astro.self node={child} currentSlug={currentSlug} depth={depth + 1} />
+			))}
+		</ul>
+	</li>
+) : (
+	<li>
+		<a
+			href={`/wiki/${node.slug}/`}
+			class:list={[
+				"block px-2 py-1.5 rounded text-sm transition",
+				isActive
+					? "bg-[var(--btn-regular-bg)] text-[var(--primary)] font-medium"
+					: "text-[var(--text-secondary)] hover:bg-[var(--btn-regular-bg)] hover:text-[var(--primary)]",
+			]}
+			style={`padding-left: ${paddingLeft}`}
+		>
+			{node.title}
+		</a>
+	</li>
+)}

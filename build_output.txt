@@ -1,0 +1,357 @@
+14:52:14 [content] Syncing content
+14:52:14 [content] Synced content
+14:52:14 [types] Generated 736ms
+14:52:14 [build] output: "static"
+14:52:14 [build] mode: "static"
+14:52:14 [build] directory: D:\project2026\fuwari\dist\
+14:52:14 [build] Collecting build info...
+14:52:14 [build] ✓ Completed in 1.04s.
+14:52:15 [build] Building static entrypoints...
+14:52:21 [WARN] [astro-expressive-code] Error while highlighting code block using language "Plain" in document "D:\project2026\fuwari\src\content\posts\AIHacks\Claude code 安装.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:21 [WARN] [astro-expressive-code] Error while highlighting code block using language "JSON" in document "D:\project2026\fuwari\src\content\posts\AIHacks\Claude code 安装.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:21 [WARN] [astro-expressive-code] Error while highlighting code block using language "PowerShell" in document "D:\project2026\fuwari\src\content\posts\AIHacks\Obsidian-cli.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:21 [WARN] [astro-expressive-code] Error while highlighting code block using language "Plain" in document "D:\project2026\fuwari\src\content\posts\AIHacks\Obsidian-cli.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:21 [WARN] [astro-expressive-code] Error while highlighting code block using language "PowerShell" in document "D:\project2026\fuwari\src\content\posts\AIHacks\Obsidian-cli.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:21 [WARN] [astro-expressive-code] Error while highlighting code block using language "PowerShell" in document "D:\project2026\fuwari\src\content\posts\AIHacks\Obsidian-cli.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:21 [WARN] [astro-expressive-code] Error while highlighting code block using language "PowerShell" in document "D:\project2026\fuwari\src\content\posts\AIHacks\Obsidian-cli.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:21 [WARN] [astro-expressive-code] Error while highlighting code block using language "PowerShell" in document "D:\project2026\fuwari\src\content\posts\AIHacks\Obsidian-cli.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:21 [WARN] [astro-expressive-code] Error while highlighting code block using language "PowerShell" in document "D:\project2026\fuwari\src\content\posts\AIHacks\Obsidian-cli.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:21 [WARN] [astro-expressive-code] Error while highlighting code block using language "PowerShell" in document "D:\project2026\fuwari\src\content\posts\AIHacks\Obsidian-cli.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:21 [WARN] [astro-expressive-code] Error while highlighting code block using language "PowerShell" in document "D:\project2026\fuwari\src\content\posts\AIHacks\Obsidian-cli.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:21 [WARN] [astro-expressive-code] Error while highlighting code block using language "PowerShell" in document "D:\project2026\fuwari\src\content\posts\AIHacks\Obsidian-cli.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:21 [WARN] [astro-expressive-code] Error while highlighting code block using language "PowerShell" in document "D:\project2026\fuwari\src\content\posts\AIHacks\Obsidian-cli.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:21 [WARN] [astro-expressive-code] Error while highlighting code block using language "Plain" in document "D:\project2026\fuwari\src\content\posts\AIHacks\Obsidian-cli.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:21 [WARN] [astro-expressive-code] Error while highlighting code block using language "Plain" in document "D:\project2026\fuwari\src\content\posts\AIHacks\Obsidian-cli.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:21 [WARN] [astro-expressive-code] Error while highlighting code block using language "Plain" in document "D:\project2026\fuwari\src\content\posts\AIHacks\Obsidian-cli.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:21 [WARN] [astro-expressive-code] Error while highlighting code block using language "Plain" in document "D:\project2026\fuwari\src\content\posts\AIHacks\Obsidian-cli.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:21 [WARN] [astro-expressive-code] Error while highlighting code block using language "Plain" in document "D:\project2026\fuwari\src\content\posts\AIHacks\Obsidian-cli.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:21 [WARN] [astro-expressive-code] Error while highlighting code block using language "Plain" in document "D:\project2026\fuwari\src\content\posts\AIHacks\Obsidian-cli.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:21 [WARN] [astro-expressive-code] Error while highlighting code block using language "Plain" in document "D:\project2026\fuwari\src\content\posts\AIHacks\Obsidian-cli.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:21 [WARN] [astro-expressive-code] Error while highlighting code block using language "Plain" in document "D:\project2026\fuwari\src\content\posts\AIHacks\Obsidian-cli.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:21 [WARN] [astro-expressive-code] Error while highlighting code block using language "Plain" in document "D:\project2026\fuwari\src\content\posts\AIHacks\Obsidian-cli.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:21 [WARN] [astro-expressive-code] Error while highlighting code block using language "Plain" in document "D:\project2026\fuwari\src\content\posts\AIHacks\Obsidian-cli.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:21 [WARN] [astro-expressive-code] Error while highlighting code block using language "Plain" in document "D:\project2026\fuwari\src\content\posts\AIHacks\Obsidian-cli.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:22 [WARN] [astro-expressive-code] Error while highlighting code block using language "Plain" in document "D:\project2026\fuwari\src\content\posts\AIHacks\cc-Happy.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:22 [WARN] [astro-expressive-code] Error while highlighting code block using language "Plain" in document "D:\project2026\fuwari\src\content\posts\AIHacks\cc-Happy.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:22 [WARN] [astro-expressive-code] Error while highlighting code block using language "env" in document "D:\project2026\fuwari\src\content\posts\AIHacks\free-claude-code.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:22 [WARN] [astro-expressive-code] Error while highlighting code block using language "env" in document "D:\project2026\fuwari\src\content\posts\AIHacks\free-claude-code.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:22 [WARN] [astro-expressive-code] Error while highlighting code block using language "env" in document "D:\project2026\fuwari\src\content\posts\AIHacks\蚂蚁百灵大模型.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:23 [WARN] [astro-expressive-code] Error while highlighting code block using language "Plain" in document "D:\project2026\fuwari\src\content\posts\Technical\openlist-豆包.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:23 [WARN] [astro-expressive-code] Error while highlighting code block using language "Plain" in document "D:\project2026\fuwari\src\content\posts\Technical\openlist-豆包.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:23 [WARN] [astro-expressive-code] Error while highlighting code block using language "custom" in document "D:\project2026\fuwari\src\content\posts\Workflow\AutoHotkey打包exe.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:24 [WARN] [astro-expressive-code] Error while highlighting code block using language "dataview" in document "D:\project2026\fuwari\src\content\posts\Workflow\Obsidian链接收藏自动化.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:24 [WARN] [astro-expressive-code] Error while highlighting code block using language "dataview" in document "D:\project2026\fuwari\src\content\posts\Workflow\Obsidian链接收藏自动化.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:24 [WARN] [astro-expressive-code] Error while highlighting code block using language "dataview" in document "D:\project2026\fuwari\src\content\posts\Workflow\Obsidian链接收藏自动化.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:24 [WARN] [astro-expressive-code] Error while highlighting code block using language "dataview" in document "D:\project2026\fuwari\src\content\posts\Workflow\Obsidian链接收藏自动化.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:24 [WARN] [astro-expressive-code] Error while highlighting code block using language "dataview" in document "D:\project2026\fuwari\src\content\posts\Workflow\Obsidian链接收藏自动化.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:24 [WARN] [astro-expressive-code] Error while highlighting code block using language "dataview" in document "D:\project2026\fuwari\src\content\posts\Workflow\Ob日记与模板.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:24 [WARN] [astro-expressive-code] Error while highlighting code block using language "dataview" in document "D:\project2026\fuwari\src\content\posts\Workflow\Ob日记与模板.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:24 [WARN] [astro-expressive-code] Error while highlighting code block using language "dataviewjs" in document "D:\project2026\fuwari\src\content\posts\Workflow\dataview脚本.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:24 [WARN] [astro-expressive-code] Error while highlighting code block using language "dataviewjs" in document "D:\project2026\fuwari\src\content\posts\Workflow\dataview脚本.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:24 [WARN] [astro-expressive-code] Error while highlighting code block using language "dataviewjs" in document "D:\project2026\fuwari\src\content\posts\Workflow\dataview脚本.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:24 [WARN] [astro-expressive-code] Error while highlighting code block using language "dataviewjs" in document "D:\project2026\fuwari\src\content\posts\Workflow\dataview脚本.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:24 [WARN] [astro-expressive-code] Error while highlighting code block using language "dataviewjs" in document "D:\project2026\fuwari\src\content\posts\Workflow\dataview脚本.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:24 [WARN] [astro-expressive-code] Error while highlighting code block using language "dataviewjs" in document "D:\project2026\fuwari\src\content\posts\Workflow\dataview脚本.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:26 [WARN] [astro-expressive-code] Error while highlighting code block using language "dataview" in document "D:\project2026\fuwari\src\content\posts\Zen\今日新建与更新.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:26 [WARN] [astro-expressive-code] Error while highlighting code block using language "dataview" in document "D:\project2026\fuwari\src\content\posts\Zen\今日新建与更新.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:26 [WARN] [astro-expressive-code] Error while highlighting code block using language "dataview" in document "D:\project2026\fuwari\src\content\posts\Zen\查tags相关的笔记.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:26 [WARN] [astro-expressive-code] Error while highlighting code block using language "dataview" in document "D:\project2026\fuwari\src\content\posts\Zen\查tags相关的笔记.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:26 [WARN] [astro-expressive-code] Error while highlighting code block using language "dataview" in document "D:\project2026\fuwari\src\content\posts\Zen\查tags相关的笔记.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:26 [WARN] [astro-expressive-code] Error while highlighting code block using language "dataview" in document "D:\project2026\fuwari\src\content\posts\Zen\查tags相关的笔记.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:26 [WARN] [astro-expressive-code] Error while highlighting code block using language "dataview" in document "D:\project2026\fuwari\src\content\posts\Zen\查tags相关的笔记.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:26 [WARN] [astro-expressive-code] Error while highlighting code block using language "dataview" in document "D:\project2026\fuwari\src\content\posts\Zen\查tags相关的笔记.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:26 [WARN] [astro-expressive-code] Error while highlighting code block using language "dataviewjs" in document "D:\project2026\fuwari\src\content\posts\Zen\查含关键词笔记.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:26 [WARN] [astro-expressive-code] Error while highlighting code block using language "dataview" in document "D:\project2026\fuwari\src\content\posts\Zen\查看本周创建.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:26 [WARN] [astro-expressive-code] Error while highlighting code block using language "dataview" in document "D:\project2026\fuwari\src\content\posts\Zen\筛查无tags与分类笔记.md". The language could not be found. Using "txt" instead. Ensure that all required languages are either part of the bundle or custom languages provided in the "langs" config option.
+14:52:28 [astro-icon] Loaded icons from public/icons, fa6-brands, fa6-regular, fa6-solid, material-symbols, material-symbols-light, simple-icons
+14:52:31 [vite] [32m✓ built in 16.15s[39m
+14:52:31 [build] ✓ Completed in 16.26s.
+
+ building client (vite) 
+14:52:31 [vite] transforming...
+14:52:33 [vite] [32m✓[39m 195 modules transformed.
+14:52:33 [vite] rendering chunks...
+14:52:33 [vite] computing gzip size...
+14:52:33 [vite] [2mdist/[22m[32m_astro/ec.g1fg5.js                                                              [39m[1m[2m  0.94 kB[22m[1m[22m
+14:52:33 [vite] [2mdist/[22m[35m_astro/Layout.BuewHHUq.css                                                      [39m[1m[2m 13.28 kB[22m[1m[22m[2m │ gzip:  2.53 kB[22m
+14:52:33 [vite] [2mdist/[22m[35m_astro/ec.3wrg1.css                                                             [39m[1m[2m 18.43 kB[22m[1m[22m[2m │ gzip:  4.11 kB[22m
+14:52:33 [vite] [2mdist/[22m[35m_astro/Layout.Ds13mcav.css                                                      [39m[1m[2m 28.21 kB[22m[1m[22m[2m │ gzip:  5.67 kB[22m
+14:52:33 [vite] [2mdist/[22m[36m_astro/url-utils.uEDIkcjJ.js                                                    [39m[1m[2m  0.23 kB[22m[1m[22m[2m │ gzip:  0.16 kB[22m
+14:52:33 [vite] [2mdist/[22m[36m_astro/SwupScriptsPlugin.CRD5-C2F.js                                            [39m[1m[2m  1.10 kB[22m[1m[22m[2m │ gzip:  0.61 kB[22m
+14:52:33 [vite] [2mdist/[22m[36m_astro/client.svelte.B_1DUc79.js                                                [39m[1m[2m  1.13 kB[22m[1m[22m[2m │ gzip:  0.63 kB[22m
+14:52:33 [vite] [2mdist/[22m[36m_astro/index.modern.BC8Oj8jT.js                                                 [39m[1m[2m  1.76 kB[22m[1m[22m[2m │ gzip:  0.91 kB[22m
+14:52:33 [vite] [2mdist/[22m[36m_astro/setting-utils.CHqKfd-3.js                                                [39m[1m[2m  2.18 kB[22m[1m[22m[2m │ gzip:  0.80 kB[22m
+14:52:33 [vite] [2mdist/[22m[36m_astro/SwupHeadPlugin.d6nb3Z__.js                                               [39m[1m[2m  2.57 kB[22m[1m[22m[2m │ gzip:  1.28 kB[22m
+14:52:33 [vite] [2mdist/[22m[36m_astro/base.CrPFMexR.js                                                         [39m[1m[2m  2.85 kB[22m[1m[22m[2m │ gzip:  1.22 kB[22m
+14:52:33 [vite] [2mdist/[22m[36m_astro/page.G51m6u_A.js                                                         [39m[1m[2m  3.19 kB[22m[1m[22m[2m │ gzip:  1.50 kB[22m
+14:52:33 [vite] [2mdist/[22m[36m_astro/PostContentHighlighter.astro_astro_type_script_index_0_lang.CRUtfM_T.js  [39m[1m[2m  5.04 kB[22m[1m[22m[2m │ gzip:  2.10 kB[22m
+14:52:33 [vite] [2mdist/[22m[36m_astro/SwupA11yPlugin.wkXIYGgp.js                                               [39m[1m[2m  5.24 kB[22m[1m[22m[2m │ gzip:  2.12 kB[22m
+14:52:33 [vite] [2mdist/[22m[36m_astro/SwupPreloadPlugin.CoylmUU_.js                                            [39m[1m[2m  6.05 kB[22m[1m[22m[2m │ gzip:  2.35 kB[22m
+14:52:33 [vite] [2mdist/[22m[36m_astro/Search.BroPzEis.js                                                       [39m[1m[2m  7.30 kB[22m[1m[22m[2m │ gzip:  3.34 kB[22m
+14:52:33 [vite] [2mdist/[22m[36m_astro/SwupScrollPlugin.M9KUzlP6.js                                             [39m[1m[2m  8.00 kB[22m[1m[22m[2m │ gzip:  2.40 kB[22m
+14:52:33 [vite] [2mdist/[22m[36m_astro/DisplaySettings.BZp4096s.js                                              [39m[1m[2m  8.80 kB[22m[1m[22m[2m │ gzip:  2.40 kB[22m
+14:52:33 [vite] [2mdist/[22m[36m_astro/NewPostNotification.astro_astro_type_script_index_0_lang.De4i2DDn.js     [39m[1m[2m  9.43 kB[22m[1m[22m[2m │ gzip:  3.56 kB[22m
+14:52:33 [vite] [2mdist/[22m[36m_astro/render.D4aKwFGu.js                                                       [39m[1m[2m 19.67 kB[22m[1m[22m[2m │ gzip:  8.00 kB[22m
+14:52:33 [vite] [2mdist/[22m[36m_astro/Swup.DZDn2d2T.js                                                         [39m[1m[2m 21.62 kB[22m[1m[22m[2m │ gzip:  7.41 kB[22m
+14:52:33 [vite] [2mdist/[22m[36m_astro/Icon.DedYlWTn.js                                                         [39m[1m[2m 28.41 kB[22m[1m[22m[2m │ gzip: 11.57 kB[22m
+14:52:33 [vite] [2mdist/[22m[36m_astro/Layout.astro_astro_type_script_index_1_lang.BNskGRqa.js                  [39m[1m[2m 32.48 kB[22m[1m[22m[2m │ gzip: 15.54 kB[22m
+14:52:33 [vite] [2mdist/[22m[36m_astro/Layout.astro_astro_type_script_index_0_lang.BoB-OW5-.js                  [39m[1m[2m103.78 kB[22m[1m[22m[2m │ gzip: 34.89 kB[22m
+14:52:33 [vite] [32m✓ built in 1.96s[39m
+
+ generating static routes 
+14:52:33 ▶ src/pages/404.astro
+14:52:33   └─ /404.html (+77ms) 
+14:52:33 ▶ src/pages/archive/index.astro
+14:52:33   └─ /archive/index.html (+30ms) 
+14:52:33 ▶ src/pages/categories/[category].astro
+14:52:33   ├─ /categories/AIHacks/index.html (+18ms) 
+14:52:33   ├─ /categories/Software/index.html (+15ms) 
+14:52:33   ├─ /categories/Workflow/index.html (+15ms) 
+14:52:33   ├─ /categories/Technical/index.html (+19ms) 
+14:52:33   ├─ /categories/Xenia/index.html (+15ms) 
+14:52:33   └─ /categories/Zen/index.html (+14ms) 
+14:52:34 ▶ src/pages/friends.astro
+14:52:34   └─ /friends/index.html (+16ms) 
+14:52:34 ▶ src/pages/gallery/index.astro
+14:52:34   └─ /gallery/index.html (+16ms) 
+14:52:34 ▶ src/pages/memoria/index.astro
+14:52:34   └─ /memoria/index.html (+15ms) 
+14:52:34 ▶ src/pages/posts/[...slug].astro
+14:52:34   ├─ /posts/xenia/自我介绍/index.html (+18ms) 
+14:52:34   ├─ /posts/aihacks/kami/index.html (+14ms) 
+14:52:34   ├─ /posts/aihacks/mimo-v25-邀请码-v4b9nj/index.html (+13ms) 
+14:52:34   ├─ /posts/software/mrkdown编辑器/index.html (+14ms) 
+14:52:34   ├─ /posts/software/一键内容同步n媒体平台/index.html (+12ms) 
+14:52:34   ├─ /posts/xenia/hyperframes生成视频/index.html (+15ms) 
+14:52:34   ├─ /posts/aihacks/claudemd与memorymd/index.html (+12ms) 
+14:52:34   ├─ /posts/aihacks/karpathy大神claudemd/index.html (+14ms) 
+14:52:34   ├─ /posts/software/sharex截屏录屏教程/index.html (+12ms) 
+14:52:34   ├─ /posts/technical/一个信息追踪-python-脚本/index.html (+13ms) 
+14:52:34   ├─ /posts/aihacks/xiaomi-mimo百万亿token/index.html (+13ms) 
+14:52:34   ├─ /posts/software/win重装系统/index.html (+14ms) 
+14:52:34   ├─ /posts/aihacks/openrouter/index.html (+12ms) 
+14:52:34   ├─ /posts/aihacks/蚂蚁百灵大模型/index.html (+12ms) 
+14:52:34   ├─ /posts/workflow/obsidian链接收藏自动化/index.html (+14ms) 
+14:52:34   ├─ /posts/xenia/api-开放平台/index.html (+12ms) 
+14:52:34   ├─ /posts/aihacks/flipbook可视化搜索/index.html (+12ms) 
+14:52:34   ├─ /posts/aihacks/4月ai时间线/index.html (+15ms) 
+14:52:34   ├─ /posts/aihacks/claude-code-安装/index.html (+13ms) 
+14:52:34   ├─ /posts/aihacks/free-claude-code/index.html (+12ms) 
+14:52:34   ├─ /posts/aihacks/skills-link/index.html (+13ms) 
+14:52:34   ├─ /posts/aihacks/nvidia-api申请/index.html (+12ms) 
+14:52:34   ├─ /posts/workflow/ob同步notion插件/index.html (+11ms) 
+14:52:34   ├─ /posts/technical/push泄露api/index.html (+14ms) 
+14:52:34   ├─ /posts/workflow/mklink命令/index.html (+12ms) 
+14:52:34   ├─ /posts/xenia/google/index.html (+13ms) 
+14:52:34   ├─ /posts/xenia/skills管理工具/index.html (+12ms) 
+14:52:34   ├─ /posts/aihacks/cc-sync/index.html (+12ms) 
+14:52:34   ├─ /posts/software/unigetui/index.html (+11ms) 
+14:52:34   ├─ /posts/workflow/karpathy/index.html (+14ms) 
+14:52:34   ├─ /posts/xenia/自用chrome插件盘点/index.html (+12ms) 
+14:52:34   ├─ /posts/technical/红都主机教程/index.html (+12ms) 
+14:52:34   ├─ /posts/aihacks/hermes-agent/index.html (+15ms) 
+14:52:34   ├─ /posts/aihacks/qwen-code/index.html (+14ms) 
+14:52:34   ├─ /posts/workflow/博客发布bat/index.html (+14ms) 
+14:52:34   ├─ /posts/workflow/dataview脚本/index.html (+17ms) 
+14:52:34   ├─ /posts/workflow/listary进阶/index.html (+14ms) 
+14:52:34   ├─ /posts/technical/装系统异常/index.html (+14ms) 
+14:52:34   ├─ /posts/software/chrome上编辑本地mrkdown/index.html (+12ms) 
+14:52:34   ├─ /posts/aihacks/zed/index.html (+12ms) 
+14:52:34   ├─ /posts/workflow/ob日记与模板/index.html (+12ms) 
+14:52:34   ├─ /posts/aihacks/秘塔回响/index.html (+13ms) 
+14:52:34   ├─ /posts/software/wezterm/index.html (+12ms) 
+14:52:34   ├─ /posts/aihacks/obsidian-cli/index.html (+12ms) 
+14:52:34   ├─ /posts/xenia/cc命令快捷键/index.html (+12ms) 
+14:52:34   ├─ /posts/aihacks/claude-code源码泄露/index.html (+12ms) 
+14:52:34   ├─ /posts/aihacks/newtype-os/index.html (+12ms) 
+14:52:34   ├─ /posts/zen/查含关键词笔记/index.html (+16ms) 
+14:52:34   ├─ /posts/aihacks/web-access/index.html (+13ms) 
+14:52:34   ├─ /posts/zen/今日新建与更新/index.html (+11ms) 
+14:52:34   ├─ /posts/software/xunlei/index.html (+12ms) 
+14:52:34   ├─ /posts/aihacks/open-cli/index.html (+12ms) 
+14:52:34   ├─ /posts/workflow/notebooklm/index.html (+12ms) 
+14:52:34   ├─ /posts/technical/rustdesk/index.html (+14ms) 
+14:52:34   ├─ /posts/technical/在线图床搭建/index.html (+12ms) 
+14:52:34   ├─ /posts/technical/giffgaff/index.html (+12ms) 
+14:52:34   ├─ /posts/aihacks/weclaw/index.html (+12ms) 
+14:52:34   ├─ /posts/software/mfcmouseeffect/index.html (+12ms) 
+14:52:34   ├─ /posts/technical/passwall2/index.html (+11ms) 
+14:52:34   ├─ /posts/technical/fanchmwrt/index.html (+13ms) 
+14:52:34   ├─ /posts/technical/passwall/index.html (+12ms) 
+14:52:34   ├─ /posts/aihacks/agent-reach/index.html (+12ms) 
+14:52:34   ├─ /posts/aihacks/ui-ux-pro-max-skill/index.html (+12ms) 
+14:52:34   ├─ /posts/aihacks/chrome-devtools-mcp/index.html (+12ms) 
+14:52:34   ├─ /posts/aihacks/codepilot/index.html (+12ms) 
+14:52:34   ├─ /posts/aihacks/feish-umcp/index.html (+14ms) 
+14:52:34   ├─ /posts/aihacks/ljg-card/index.html (+12ms) 
+14:52:34   ├─ /posts/software/terminal-/index.html (+12ms) 
+14:52:34   ├─ /posts/aihacks/cc-happy/index.html (+12ms) 
+14:52:34   ├─ /posts/aihacks/一些送api的平台/index.html (+12ms) 
+14:52:34   ├─ /posts/xenia/自用skill盘点/index.html (+11ms) 
+14:52:34   ├─ /posts/technical/软件汉化/index.html (+14ms) 
+14:52:35   ├─ /posts/technical/酷9教程/index.html (+12ms) 
+14:52:35   ├─ /posts/aihacks/openclaw/index.html (+12ms) 
+14:52:35   ├─ /posts/aihacks/workany/index.html (+12ms) 
+14:52:35   ├─ /posts/software/闪电说/index.html (+11ms) 
+14:52:35   ├─ /posts/workflow/博客工作流/index.html (+12ms) 
+14:52:35   ├─ /posts/technical/vidhub挂载115网盘/index.html (+14ms) 
+14:52:35   ├─ /posts/workflow/obs插件摄像头移动/index.html (+12ms) 
+14:52:35   ├─ /posts/technical/passkeys通行密钥/index.html (+12ms) 
+14:52:35   ├─ /posts/workflow/api封生图skill/index.html (+11ms) 
+14:52:35   ├─ /posts/xenia/博客未来计划/index.html (+12ms) 
+14:52:35   ├─ /posts/xenia/博客封面与画廊/index.html (+12ms) 
+14:52:35   ├─ /posts/technical/openlist-阿里/index.html (+14ms) 
+14:52:35   ├─ /posts/technical/openlist-豆包/index.html (+12ms) 
+14:52:35   ├─ /posts/software/油管下载工具/index.html (+11ms) 
+14:52:35   ├─ /posts/software/软件自解压/index.html (+12ms) 
+14:52:35   ├─ /posts/software/make-sfx-56/index.html (+12ms) 
+14:52:35   ├─ /posts/zen/查tags相关的笔记/index.html (+12ms) 
+14:52:35   ├─ /posts/zen/查看本周创建/index.html (+14ms) 
+14:52:35   ├─ /posts/zen/筛查无tags与分类笔记/index.html (+12ms) 
+14:52:35   ├─ /posts/xenia/bash上传github命令/index.html (+12ms) 
+14:52:35   ├─ /posts/aihacks/mcp清单/index.html (+12ms) 
+14:52:35   ├─ /posts/workflow/piclist图床/index.html (+12ms) 
+14:52:35   ├─ /posts/aihacks/antigravity/index.html (+12ms) 
+14:52:35   ├─ /posts/aihacks/antigravitytool/index.html (+14ms) 
+14:52:35   ├─ /posts/workflow/博客搭建/index.html (+13ms) 
+14:52:35   ├─ /posts/software/pixpin/index.html (+12ms) 
+14:52:35   ├─ /posts/workflow/autohotkey打包exe/index.html (+12ms) 
+14:52:35   ├─ /posts/software/mumu模拟器/index.html (+12ms) 
+14:52:35   ├─ /posts/xenia/vimium快捷键/index.html (+11ms) 
+14:52:35   ├─ /posts/xenia/cmd命令/index.html (+14ms) 
+14:52:35   ├─ /posts/xenia/obsidian快捷键/index.html (+12ms) 
+14:52:35   ├─ /posts/xenia/typora快捷键/index.html (+12ms) 
+14:52:35   ├─ /posts/xenia/ai文章合集/index.html (+11ms) 
+14:52:35   └─ /posts/aihacks/cliproxyapi/index.html (+11ms) 
+14:52:35 λ src/pages/robots.txt.ts
+14:52:35   └─ /robots.txt (+2ms) 
+14:52:35 λ src/pages/rss.xml.ts
+14:52:35   └─ /rss.xml (+289ms) 
+14:52:35 ▶ src/pages/sponsors.astro
+14:52:35   └─ /sponsors/index.html (+13ms) 
+14:52:35 ▶ src/pages/tags/[tag].astro
+14:52:35   ├─ /tags/AI/index.html (+14ms) 
+14:52:35   ├─ /tags/AI工具/index.html (+13ms) 
+14:52:35   ├─ /tags/API/index.html (+15ms) 
+14:52:35   ├─ /tags/Claudecode/index.html (+12ms) 
+14:52:35   ├─ /tags/Agent/index.html (+13ms) 
+14:52:35   ├─ /tags/skill/index.html (+12ms) 
+14:52:35   ├─ /tags/命令行工具/index.html (+12ms) 
+14:52:35   ├─ /tags/MCP/index.html (+13ms) 
+14:52:35   ├─ /tags/技术教程/index.html (+12ms) 
+14:52:35   ├─ /tags/软件推荐/index.html (+12ms) 
+14:52:35   ├─ /tags/NVIDIA/index.html (+12ms) 
+14:52:36   ├─ /tags/免费/index.html (+12ms) 
+14:52:36   ├─ /tags/cli/index.html (+14ms) 
+14:52:36   ├─ /tags/Obsidian/index.html (+12ms) 
+14:52:36   ├─ /tags/Qwen/index.html (+13ms) 
+14:52:36   ├─ /tags/Claude/index.html (+12ms) 
+14:52:36   ├─ /tags/编程助手/index.html (+12ms) 
+14:52:36   ├─ /tags/tools/index.html (+13ms) 
+14:52:36   ├─ /tags/语音输入法/index.html (+12ms) 
+14:52:36   ├─ /tags/蚂蚁百灵/index.html (+12ms) 
+14:52:36   ├─ /tags/chrome插件/index.html (+12ms) 
+14:52:36   ├─ /tags/自解压/index.html (+12ms) 
+14:52:36   ├─ /tags/效率工具/index.html (+13ms) 
+14:52:36   ├─ /tags/终端/index.html (+12ms) 
+14:52:36   ├─ /tags/Win重装系统软件/index.html (+13ms) 
+14:52:36   ├─ /tags/下载工具/index.html (+13ms) 
+14:52:36   ├─ /tags/Windows/index.html (+12ms) 
+14:52:36   ├─ /tags/软件打包/index.html (+13ms) 
+14:52:36   ├─ /tags/Obsidian插件/index.html (+13ms) 
+14:52:36   ├─ /tags/方法论/index.html (+12ms) 
+14:52:36   ├─ /tags/知识管理/index.html (+12ms) 
+14:52:36   ├─ /tags/工作流/index.html (+12ms) 
+14:52:36   ├─ /tags/DOS命令/index.html (+13ms) 
+14:52:36   ├─ /tags/OBS/index.html (+12ms) 
+14:52:36   ├─ /tags/博客/index.html (+12ms) 
+14:52:36   ├─ /tags/网站搭建/index.html (+12ms) 
+14:52:36   ├─ /tags/经验复盘/index.html (+13ms) 
+14:52:36   ├─ /tags/Openwrt/index.html (+13ms) 
+14:52:36   ├─ /tags/openlsit/index.html (+12ms) 
+14:52:36   ├─ /tags/通行密钥/index.html (+12ms) 
+14:52:36   ├─ /tags/在线图床/index.html (+12ms) 
+14:52:36   ├─ /tags/软件汉化/index.html (+12ms) 
+14:52:36   ├─ /tags/google/index.html (+14ms) 
+14:52:36   ├─ /tags/快捷键/index.html (+13ms) 
+14:52:36   └─ /tags/dataview模板/index.html (+12ms) 
+14:52:36 ▶ src/pages/wiki/[...slug].astro
+14:52:36 [WARN] [router] getStaticPaths() returned an invalid path param: "slug". `undefined` expected for an optional param, but got empty string.
+14:52:36   ├─ /wiki/index.html (+18ms) 
+14:52:36   ├─ /wiki/concepts/dataview-templates/index.html (+14ms) 
+14:52:36   ├─ /wiki/concepts/mcp-ecosystem/index.html (+12ms) 
+14:52:36   ├─ /wiki/concepts/static-site-deployment/index.html (+11ms) 
+14:52:36   ├─ /wiki/entities/ai-toolchain/index.html (+11ms) 
+14:52:36   ├─ /wiki/entities/blog-system/index.html (+10ms) 
+14:52:36   ├─ /wiki/entities/obsidian-workflow/index.html (+11ms) 
+14:52:36   ├─ /wiki/sources/aihacks/index.html (+12ms) 
+14:52:36   ├─ /wiki/sources/software/index.html (+10ms) 
+14:52:36   ├─ /wiki/sources/technical/index.html (+10ms) 
+14:52:36   ├─ /wiki/sources/workflow/index.html (+10ms) 
+14:52:36   ├─ /wiki/sources/xenia/index.html (+11ms) 
+14:52:36   ├─ /wiki/sources/zen/index.html (+11ms) 
+14:52:36   ├─ /wiki/synthesis/content-matrix/index.html (+11ms) 
+14:52:36   ├─ /wiki/synthesis/dependencies/index.html (+10ms) 
+14:52:36   ├─ /wiki/index/index.html (+10ms) 
+14:52:36   ├─ /wiki/log/index.html (+16ms) 
+14:52:36   ├─ /wiki/meta.json/index.html (+11ms) 
+14:52:36   ├─ /wiki/overview/index.html (+11ms) 
+14:52:36   ├─ /wiki/purpose/index.html (+10ms) 
+14:52:36   ├─ /wiki/schema/index.html (+10ms) 
+14:52:36   └─ /wiki/目录/index.html (+10ms) 
+14:52:36 ▶ src/pages/[...page].astro
+14:52:36   ├─ /index.html (+18ms) 
+14:52:36   ├─ /2/index.html (+17ms) 
+14:52:36   ├─ /3/index.html (+13ms) 
+14:52:36   ├─ /4/index.html (+14ms) 
+14:52:36   ├─ /5/index.html (+13ms) 
+14:52:36   ├─ /6/index.html (+19ms) 
+14:52:36   ├─ /7/index.html (+14ms) 
+14:52:36   ├─ /8/index.html (+15ms) 
+14:52:36   ├─ /9/index.html (+15ms) 
+14:52:36   ├─ /10/index.html (+14ms) 
+14:52:36   ├─ /11/index.html (+17ms) 
+14:52:36   ├─ /12/index.html (+18ms) 
+14:52:36   ├─ /13/index.html (+18ms) 
+14:52:36   └─ /14/index.html (+14ms) 
+14:52:36 ▶ /ak
+14:52:36   └─ /ak/index.html (+3ms) 
+14:52:36 ▶ /donate
+14:52:36   └─ /donate/index.html (+3ms) 
+14:52:36 ▶ /esa
+14:52:36   └─ /esa/index.html (+2ms) 
+14:52:36 ▶ /gal
+14:52:36   └─ /gal/index.html (+2ms) 
+14:52:36 ▶ /kook
+14:52:36   └─ /kook/index.html (+2ms) 
+14:52:36 ▶ /long
+14:52:36   └─ /long/index.html (+2ms) 
+14:52:36 ▶ /mly
+14:52:36   └─ /mly/index.html (+2ms) 
+14:52:36 ▶ /ok
+14:52:36   └─ /ok/index.html (+2ms) 
+14:52:36 ▶ /plan
+14:52:36   └─ /plan/index.html (+2ms) 
+14:52:36 ▶ /privacy-policy
+14:52:36   └─ /privacy-policy/index.html (+2ms) 
+14:52:36 ▶ /q
+14:52:36   └─ /q/index.html (+2ms) 
+14:52:36 ▶ /s
+14:52:36   └─ /s/index.html (+2ms) 
+14:52:36 ▶ /t
+14:52:36   └─ /t/index.html (+1ms) 
+14:52:36 ▶ /tg
+14:52:36   └─ /tg/index.html (+2ms) 
+14:52:36 ▶ /tit
+14:52:36   └─ /tit/index.html (+2ms) 
+14:52:36 ▶ /tly
+14:52:36   └─ /tly/index.html (+2ms) 
+14:52:36 ▶ /wly
+14:52:36   └─ /wly/index.html (+2ms) 
+14:52:36 ▶ /yyb
+14:52:36   └─ /yyb/index.html (+2ms) 
+14:52:36 ✓ Completed in 3.64s.
+
+14:52:37 [@astrojs/sitemap] `sitemap-index.xml` created at `dist`
+14:52:37 [build] 199 page(s) built in 23.62s
+14:52:37 [build] Complete!

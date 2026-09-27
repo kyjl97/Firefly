@@ -1,0 +1,693 @@
+{
+  "version": 1,
+  "projectName": "fuwari",
+  "updatedAt": "2026-07-13T09:20:23.459Z",
+  "activePageId": "page-d8b4e6b5a0",
+  "pages": [
+    {
+      "id": "page-1219ec22d2",
+      "name": "Page 1",
+      "createdAt": "2026-07-13T09:00:20.544Z",
+      "updatedAt": "2026-07-13T09:00:20.544Z",
+      "viewport": {
+        "x": 0,
+        "y": 0,
+        "zoom": 1
+      },
+      "nodes": [],
+      "edges": []
+    },
+    {
+      "id": "page-d8b4e6b5a0",
+      "name": "个人说明书结构画布",
+      "createdAt": "2026-07-13T09:01:44.616Z",
+      "updatedAt": "2026-07-13T09:20:23.459Z",
+      "viewport": {
+        "x": 445.0315145759929,
+        "y": -931.9808786558444,
+        "zoom": 0.6597539532754723
+      },
+      "nodes": [
+        {
+          "id": "intro-root",
+          "type": "task",
+          "position": {
+            "x": -524.2134110919283,
+            "y": 1882.425214854424
+          },
+          "measured": {
+            "width": 400,
+            "height": 284
+          },
+          "dragging": false,
+          "data": {
+            "title": "个人说明书：个人品牌与服务入口",
+            "body": "来源：D:\\project2026\\fuwari\\src\\content\\posts\\Technical\\00自我介绍.md。用途：把这篇自我介绍整理成可编辑的个人品牌画布。核心理解：作者用“数字生产力玩家、Build in Public 践行者、工作流构建者”作为定位，把内容资产、工具作品、技术服务、社群和分销入口聚合到一个转化型个人说明页。",
+            "effort": "xhigh",
+            "runMode": "flow",
+            "attachments": []
+          },
+          "selected": false
+        },
+        {
+          "id": "intro-audience",
+          "type": "task",
+          "position": {
+            "x": 680,
+            "y": 0
+          },
+          "measured": {
+            "width": 400,
+            "height": 240
+          },
+          "data": {
+            "title": "目标读者与转化对象",
+            "body": "目标读者：想提升效率、学习 AI Agent/AI Coding、配置 Obsidian/Claude Code/Codex 工作流、需要远程技术服务的人。读者动机：找工具、找教程、找可落地服务。主要障碍：入口很多，读者需要快速判断作者能提供什么、该从哪个链接进入。",
+            "effort": "xhigh",
+            "runMode": "flow",
+            "attachments": []
+          },
+          "selected": false
+        },
+        {
+          "id": "intro-positioning",
+          "type": "task",
+          "position": {
+            "x": 680,
+            "y": 380
+          },
+          "measured": {
+            "width": 400,
+            "height": 240
+          },
+          "data": {
+            "title": "作者定位与当前重点",
+            "body": "源文信息：92 年生人，数字生产力玩家、Build in Public 践行者、工作流构建者。当前重点：让 AI Coding Agent 的 Skills 跨平台管理变简单；探索 Obsidian 写作工作流、Claude Skills 工程化和 CLI 工具链；输出 Obsidian 到公众号、X、知乎的多平台分发工作流。",
+            "effort": "xhigh",
+            "runMode": "flow",
+            "attachments": []
+          },
+          "selected": false
+        },
+        {
+          "id": "intro-narrative",
+          "type": "task",
+          "position": {
+            "x": 680,
+            "y": 760
+          },
+          "measured": {
+            "width": 400,
+            "height": 240
+          },
+          "data": {
+            "title": "阅读路径与转化逻辑",
+            "body": "阅读路径：先说明身份和价值主张，再给个人主页与联系方式；随后展示网站入口、Vibe Coding 作品、开源项目和社群；中段明确商业服务和价格；后段列出分销、社媒矩阵、内容专辑、AI Agent 工具栈、API 供应商和学习资源。转化逻辑：先建立可信度，再给服务入口和合作路径。",
+            "effort": "xhigh",
+            "runMode": "flow",
+            "attachments": []
+          },
+          "selected": false
+        },
+        {
+          "id": "intro-sites",
+          "type": "task",
+          "position": {
+            "x": 680,
+            "y": 1140
+          },
+          "measured": {
+            "width": 400,
+            "height": 240
+          },
+          "data": {
+            "title": "网站入口矩阵",
+            "body": "源文网站入口包括：个人博客 kyjl97.github.io、个人简历 cv.kyjl97.github.io、个人主页 me.kyjl97.github.io、商务合作 help.kyjl97.github.io、数字工坊 app.kyjl97.github.io、远程服务 jieliu.me、得救之道导航 123.kyjl97.github.io、Chrome 插件 110.kyjl97.github.io。作用：把读者按需求分流到内容、简历、合作、工具和服务入口。",
+            "effort": "xhigh",
+            "runMode": "flow",
+            "attachments": []
+          },
+          "selected": false
+        },
+        {
+          "id": "intro-builds",
+          "type": "task",
+          "position": {
+            "x": 680,
+            "y": 1520
+          },
+          "measured": {
+            "width": 400,
+            "height": 240
+          },
+          "data": {
+            "title": "Vibe Coding 作品与开源项目",
+            "body": "Vibe Coding 作品：电视喵、魔法指南、密码生成器、计算器、卡片生成器、医疗报销查询、旁路由、直源检测、在线生图。开源代表项目：Firefly 博客、StarTab 标签页扩展、cfg 自用软件备份、oplist-Neumorphism openlist 主题代码。作用：证明作者有持续构建和交付能力。",
+            "effort": "xhigh",
+            "runMode": "flow",
+            "attachments": []
+          },
+          "selected": false
+        },
+        {
+          "id": "intro-community",
+          "type": "task",
+          "position": {
+            "x": 680,
+            "y": 1900
+          },
+          "measured": {
+            "width": 400,
+            "height": 226
+          },
+          "data": {
+            "title": "社群与私域入口",
+            "body": "社群入口包括迅雷群、知识星球、纷传圈子、Telegram、Discord。作用：承接长期关注、资料分发、技术交流和服务转化。需要注意：源文没有解释各社群定位差异，后续可补充“每个社群适合什么人”。",
+            "effort": "xhigh",
+            "runMode": "flow",
+            "attachments": [],
+            "lastRunAt": "2026-07-13T09:19:27.946Z"
+          },
+          "selected": false
+        },
+        {
+          "id": "intro-services",
+          "type": "task",
+          "position": {
+            "x": 1214,
+            "y": 2242
+          },
+          "measured": {
+            "width": 400,
+            "height": 306
+          },
+          "data": {
+            "title": "商业服务：范围、价格与行动入口",
+            "body": "服务范围包括：Win 系统重装/电脑优化、网站搭建/环境配置、办公软件安装/激活/配置、专业软件排错、Claude Code + Obsidian 安装配置、Obsidian→Git→网站工作流部署、AI Agent Skill 定制、OpenList/Alist 网盘挂载、RustDesk 客户端编译。价格：单次问题 35 元起；远程安装配置 50 元起；系统重装/网站搭建/编译/网盘挂载 60 元起。行动入口：提前安装远程协作工具，访问 jieliu.me；更多服务访问 app.kyjl97.github.io。",
+            "effort": "xhigh",
+            "runMode": "flow",
+            "attachments": []
+          },
+          "selected": false,
+          "dragging": false
+        },
+        {
+          "id": "intro-products",
+          "type": "task",
+          "position": {
+            "x": 680,
+            "y": 2660
+          },
+          "measured": {
+            "width": 400,
+            "height": 262
+          },
+          "data": {
+            "title": "分销产品与外部推荐",
+            "body": "分销产品包括：闲管家、数码荔枝 Windows 正版软件、雨云部署 Oplist、仙宫云 Comtyu 云端部署、HeroSMS 接码、环球巴士、GPT-Image-2 生图网站 ListenHub 与 Labnana。作用：补充工具推荐和联盟收入入口。风险：源文没有说明推荐理由、适用人群和免责声明，可在后续增强可信度。",
+            "effort": "xhigh",
+            "runMode": "flow",
+            "attachments": []
+          },
+          "selected": false
+        },
+        {
+          "id": "intro-social",
+          "type": "task",
+          "position": {
+            "x": 680,
+            "y": 3040
+          },
+          "measured": {
+            "width": 400,
+            "height": 262
+          },
+          "data": {
+            "title": "社交媒体与内容资产",
+            "body": "平台矩阵覆盖视频平台、图文平台和开发者平台。源文列出哔哩哔哩、YouTube、抖音、微信公众号、小红书、Twitter、即刻、微博、知乎、CSDN、掘金、博客园、W2Solo、今日头条、搜狐、GitHub 等入口，并给出粉丝数。微信文章专辑包括效率神器、精品插件/脚本、人工智能、Win 教程。作用：展示分发能力和内容沉淀。",
+            "effort": "xhigh",
+            "runMode": "flow",
+            "attachments": []
+          },
+          "selected": false
+        },
+        {
+          "id": "intro-agent-stack",
+          "type": "task",
+          "position": {
+            "x": 680,
+            "y": 3420
+          },
+          "measured": {
+            "width": 400,
+            "height": 262
+          },
+          "data": {
+            "title": "AI Agent 工具栈与 API 供应商",
+            "body": "AI Agent 工具包括 Claude Code、Qwen Code、Newtype-os、CowAgent、Codex、Opencode、Zed、WorkBuddy、Craft Agents、Open Minis，以及榜单、中转站和 cll 工具合集。API 供应商包括智谱、火山、MiniMax、Kimi K2、OpenRouter、APIMart，并附带 Key 创建入口和使用说明链接。作用：支撑作者的 AI Agent 服务和工具研究定位。",
+            "effort": "xhigh",
+            "runMode": "flow",
+            "attachments": []
+          },
+          "selected": false
+        },
+        {
+          "id": "intro-learning",
+          "type": "task",
+          "position": {
+            "x": 680,
+            "y": 3800
+          },
+          "measured": {
+            "width": 400,
+            "height": 262
+          },
+          "data": {
+            "title": "技术社区与关注来源",
+            "body": "技术社区包括 V2EX、W2Solo、LINUX DO、HackerNews、Product Hunt、Reddit、Code Wall、DeepFlood、NodeSeek、电鸭社区、吾爱论坛、远景论坛、阮一峰论坛。关注的 AI 油管博主包括 Karpathy、Chase AI、Liam Ottley、Chris Williamson、技术爬爬虾、神烦老狗；Twitter 博主包括 Zara Zhang、歸藏。作用：说明信息输入来源。",
+            "effort": "xhigh",
+            "runMode": "flow",
+            "attachments": [],
+            "lastRunAt": "2026-07-13T09:08:34.810Z"
+          },
+          "selected": false
+        },
+        {
+          "id": "intro-gaps",
+          "type": "task",
+          "position": {
+            "x": 680,
+            "y": 4180
+          },
+          "measured": {
+            "width": 400,
+            "height": 284
+          },
+          "data": {
+            "title": "可补强点与下一步",
+            "body": "可补强点：一、开头可以更明确“我帮谁解决什么问题”；二、网站入口很多，可按“了解我、看作品、买服务、进社群”重排；三、商业服务可以补充交付流程、付款方式、售后边界和案例；四、分销产品建议增加适用场景与免责声明；五、社媒粉丝数会变化，发布前需要复核。验收标准：画布应能让读者在 1 分钟内看懂作者定位、可信度证据和合作入口。",
+            "effort": "xhigh",
+            "runMode": "flow",
+            "attachments": []
+          },
+          "selected": false
+        }
+      ],
+      "edges": [
+        {
+          "id": "edge-root-audience",
+          "source": "intro-root",
+          "target": "intro-audience"
+        },
+        {
+          "id": "edge-root-positioning",
+          "source": "intro-root",
+          "target": "intro-positioning"
+        },
+        {
+          "id": "edge-root-narrative",
+          "source": "intro-root",
+          "target": "intro-narrative"
+        },
+        {
+          "id": "edge-root-sites",
+          "source": "intro-root",
+          "target": "intro-sites"
+        },
+        {
+          "id": "edge-root-builds",
+          "source": "intro-root",
+          "target": "intro-builds"
+        },
+        {
+          "id": "edge-root-community",
+          "source": "intro-root",
+          "target": "intro-community"
+        },
+        {
+          "id": "edge-root-services",
+          "source": "intro-root",
+          "target": "intro-services"
+        },
+        {
+          "id": "edge-root-products",
+          "source": "intro-root",
+          "target": "intro-products"
+        },
+        {
+          "id": "edge-root-social",
+          "source": "intro-root",
+          "target": "intro-social"
+        },
+        {
+          "id": "edge-root-agent-stack",
+          "source": "intro-root",
+          "target": "intro-agent-stack"
+        },
+        {
+          "id": "edge-root-learning",
+          "source": "intro-root",
+          "target": "intro-learning"
+        },
+        {
+          "id": "edge-root-gaps",
+          "source": "intro-root",
+          "target": "intro-gaps"
+        }
+      ]
+    }
+  ],
+  "viewport": {
+    "x": 445.0315145759929,
+    "y": -931.9808786558444,
+    "zoom": 0.6597539532754723
+  },
+  "nodes": [
+    {
+      "id": "intro-root",
+      "type": "task",
+      "position": {
+        "x": -524.2134110919283,
+        "y": 1882.425214854424
+      },
+      "measured": {
+        "width": 400,
+        "height": 284
+      },
+      "dragging": false,
+      "data": {
+        "title": "个人说明书：个人品牌与服务入口",
+        "body": "来源：D:\\project2026\\fuwari\\src\\content\\posts\\Technical\\00自我介绍.md。用途：把这篇自我介绍整理成可编辑的个人品牌画布。核心理解：作者用“数字生产力玩家、Build in Public 践行者、工作流构建者”作为定位，把内容资产、工具作品、技术服务、社群和分销入口聚合到一个转化型个人说明页。",
+        "effort": "xhigh",
+        "runMode": "flow",
+        "attachments": []
+      },
+      "selected": false
+    },
+    {
+      "id": "intro-audience",
+      "type": "task",
+      "position": {
+        "x": 680,
+        "y": 0
+      },
+      "measured": {
+        "width": 400,
+        "height": 240
+      },
+      "data": {
+        "title": "目标读者与转化对象",
+        "body": "目标读者：想提升效率、学习 AI Agent/AI Coding、配置 Obsidian/Claude Code/Codex 工作流、需要远程技术服务的人。读者动机：找工具、找教程、找可落地服务。主要障碍：入口很多，读者需要快速判断作者能提供什么、该从哪个链接进入。",
+        "effort": "xhigh",
+        "runMode": "flow",
+        "attachments": []
+      },
+      "selected": false
+    },
+    {
+      "id": "intro-positioning",
+      "type": "task",
+      "position": {
+        "x": 680,
+        "y": 380
+      },
+      "measured": {
+        "width": 400,
+        "height": 240
+      },
+      "data": {
+        "title": "作者定位与当前重点",
+        "body": "源文信息：92 年生人，数字生产力玩家、Build in Public 践行者、工作流构建者。当前重点：让 AI Coding Agent 的 Skills 跨平台管理变简单；探索 Obsidian 写作工作流、Claude Skills 工程化和 CLI 工具链；输出 Obsidian 到公众号、X、知乎的多平台分发工作流。",
+        "effort": "xhigh",
+        "runMode": "flow",
+        "attachments": []
+      },
+      "selected": false
+    },
+    {
+      "id": "intro-narrative",
+      "type": "task",
+      "position": {
+        "x": 680,
+        "y": 760
+      },
+      "measured": {
+        "width": 400,
+        "height": 240
+      },
+      "data": {
+        "title": "阅读路径与转化逻辑",
+        "body": "阅读路径：先说明身份和价值主张，再给个人主页与联系方式；随后展示网站入口、Vibe Coding 作品、开源项目和社群；中段明确商业服务和价格；后段列出分销、社媒矩阵、内容专辑、AI Agent 工具栈、API 供应商和学习资源。转化逻辑：先建立可信度，再给服务入口和合作路径。",
+        "effort": "xhigh",
+        "runMode": "flow",
+        "attachments": []
+      },
+      "selected": false
+    },
+    {
+      "id": "intro-sites",
+      "type": "task",
+      "position": {
+        "x": 680,
+        "y": 1140
+      },
+      "measured": {
+        "width": 400,
+        "height": 240
+      },
+      "data": {
+        "title": "网站入口矩阵",
+        "body": "源文网站入口包括：个人博客 kyjl97.github.io、个人简历 cv.kyjl97.github.io、个人主页 me.kyjl97.github.io、商务合作 help.kyjl97.github.io、数字工坊 app.kyjl97.github.io、远程服务 jieliu.me、得救之道导航 123.kyjl97.github.io、Chrome 插件 110.kyjl97.github.io。作用：把读者按需求分流到内容、简历、合作、工具和服务入口。",
+        "effort": "xhigh",
+        "runMode": "flow",
+        "attachments": []
+      },
+      "selected": false
+    },
+    {
+      "id": "intro-builds",
+      "type": "task",
+      "position": {
+        "x": 680,
+        "y": 1520
+      },
+      "measured": {
+        "width": 400,
+        "height": 240
+      },
+      "data": {
+        "title": "Vibe Coding 作品与开源项目",
+        "body": "Vibe Coding 作品：电视喵、魔法指南、密码生成器、计算器、卡片生成器、医疗报销查询、旁路由、直源检测、在线生图。开源代表项目：Firefly 博客、StarTab 标签页扩展、cfg 自用软件备份、oplist-Neumorphism openlist 主题代码。作用：证明作者有持续构建和交付能力。",
+        "effort": "xhigh",
+        "runMode": "flow",
+        "attachments": []
+      },
+      "selected": false
+    },
+    {
+      "id": "intro-community",
+      "type": "task",
+      "position": {
+        "x": 680,
+        "y": 1900
+      },
+      "measured": {
+        "width": 400,
+        "height": 226
+      },
+      "data": {
+        "title": "社群与私域入口",
+        "body": "社群入口包括迅雷群、知识星球、纷传圈子、Telegram、Discord。作用：承接长期关注、资料分发、技术交流和服务转化。需要注意：源文没有解释各社群定位差异，后续可补充“每个社群适合什么人”。",
+        "effort": "xhigh",
+        "runMode": "flow",
+        "attachments": [],
+        "lastRunAt": "2026-07-13T09:19:27.946Z"
+      },
+      "selected": false
+    },
+    {
+      "id": "intro-services",
+      "type": "task",
+      "position": {
+        "x": 1214,
+        "y": 2242
+      },
+      "measured": {
+        "width": 400,
+        "height": 306
+      },
+      "data": {
+        "title": "商业服务：范围、价格与行动入口",
+        "body": "服务范围包括：Win 系统重装/电脑优化、网站搭建/环境配置、办公软件安装/激活/配置、专业软件排错、Claude Code + Obsidian 安装配置、Obsidian→Git→网站工作流部署、AI Agent Skill 定制、OpenList/Alist 网盘挂载、RustDesk 客户端编译。价格：单次问题 35 元起；远程安装配置 50 元起；系统重装/网站搭建/编译/网盘挂载 60 元起。行动入口：提前安装远程协作工具，访问 jieliu.me；更多服务访问 app.kyjl97.github.io。",
+        "effort": "xhigh",
+        "runMode": "flow",
+        "attachments": []
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "intro-products",
+      "type": "task",
+      "position": {
+        "x": 680,
+        "y": 2660
+      },
+      "measured": {
+        "width": 400,
+        "height": 262
+      },
+      "data": {
+        "title": "分销产品与外部推荐",
+        "body": "分销产品包括：闲管家、数码荔枝 Windows 正版软件、雨云部署 Oplist、仙宫云 Comtyu 云端部署、HeroSMS 接码、环球巴士、GPT-Image-2 生图网站 ListenHub 与 Labnana。作用：补充工具推荐和联盟收入入口。风险：源文没有说明推荐理由、适用人群和免责声明，可在后续增强可信度。",
+        "effort": "xhigh",
+        "runMode": "flow",
+        "attachments": []
+      },
+      "selected": false
+    },
+    {
+      "id": "intro-social",
+      "type": "task",
+      "position": {
+        "x": 680,
+        "y": 3040
+      },
+      "measured": {
+        "width": 400,
+        "height": 262
+      },
+      "data": {
+        "title": "社交媒体与内容资产",
+        "body": "平台矩阵覆盖视频平台、图文平台和开发者平台。源文列出哔哩哔哩、YouTube、抖音、微信公众号、小红书、Twitter、即刻、微博、知乎、CSDN、掘金、博客园、W2Solo、今日头条、搜狐、GitHub 等入口，并给出粉丝数。微信文章专辑包括效率神器、精品插件/脚本、人工智能、Win 教程。作用：展示分发能力和内容沉淀。",
+        "effort": "xhigh",
+        "runMode": "flow",
+        "attachments": []
+      },
+      "selected": false
+    },
+    {
+      "id": "intro-agent-stack",
+      "type": "task",
+      "position": {
+        "x": 680,
+        "y": 3420
+      },
+      "measured": {
+        "width": 400,
+        "height": 262
+      },
+      "data": {
+        "title": "AI Agent 工具栈与 API 供应商",
+        "body": "AI Agent 工具包括 Claude Code、Qwen Code、Newtype-os、CowAgent、Codex、Opencode、Zed、WorkBuddy、Craft Agents、Open Minis，以及榜单、中转站和 cll 工具合集。API 供应商包括智谱、火山、MiniMax、Kimi K2、OpenRouter、APIMart，并附带 Key 创建入口和使用说明链接。作用：支撑作者的 AI Agent 服务和工具研究定位。",
+        "effort": "xhigh",
+        "runMode": "flow",
+        "attachments": []
+      },
+      "selected": false
+    },
+    {
+      "id": "intro-learning",
+      "type": "task",
+      "position": {
+        "x": 680,
+        "y": 3800
+      },
+      "measured": {
+        "width": 400,
+        "height": 262
+      },
+      "data": {
+        "title": "技术社区与关注来源",
+        "body": "技术社区包括 V2EX、W2Solo、LINUX DO、HackerNews、Product Hunt、Reddit、Code Wall、DeepFlood、NodeSeek、电鸭社区、吾爱论坛、远景论坛、阮一峰论坛。关注的 AI 油管博主包括 Karpathy、Chase AI、Liam Ottley、Chris Williamson、技术爬爬虾、神烦老狗；Twitter 博主包括 Zara Zhang、歸藏。作用：说明信息输入来源。",
+        "effort": "xhigh",
+        "runMode": "flow",
+        "attachments": [],
+        "lastRunAt": "2026-07-13T09:08:34.810Z"
+      },
+      "selected": false
+    },
+    {
+      "id": "intro-gaps",
+      "type": "task",
+      "position": {
+        "x": 680,
+        "y": 4180
+      },
+      "measured": {
+        "width": 400,
+        "height": 284
+      },
+      "data": {
+        "title": "可补强点与下一步",
+        "body": "可补强点：一、开头可以更明确“我帮谁解决什么问题”；二、网站入口很多，可按“了解我、看作品、买服务、进社群”重排；三、商业服务可以补充交付流程、付款方式、售后边界和案例；四、分销产品建议增加适用场景与免责声明；五、社媒粉丝数会变化，发布前需要复核。验收标准：画布应能让读者在 1 分钟内看懂作者定位、可信度证据和合作入口。",
+        "effort": "xhigh",
+        "runMode": "flow",
+        "attachments": []
+      },
+      "selected": false
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-root-audience",
+      "source": "intro-root",
+      "target": "intro-audience"
+    },
+    {
+      "id": "edge-root-positioning",
+      "source": "intro-root",
+      "target": "intro-positioning"
+    },
+    {
+      "id": "edge-root-narrative",
+      "source": "intro-root",
+      "target": "intro-narrative"
+    },
+    {
+      "id": "edge-root-sites",
+      "source": "intro-root",
+      "target": "intro-sites"
+    },
+    {
+      "id": "edge-root-builds",
+      "source": "intro-root",
+      "target": "intro-builds"
+    },
+    {
+      "id": "edge-root-community",
+      "source": "intro-root",
+      "target": "intro-community"
+    },
+    {
+      "id": "edge-root-services",
+      "source": "intro-root",
+      "target": "intro-services"
+    },
+    {
+      "id": "edge-root-products",
+      "source": "intro-root",
+      "target": "intro-products"
+    },
+    {
+      "id": "edge-root-social",
+      "source": "intro-root",
+      "target": "intro-social"
+    },
+    {
+      "id": "edge-root-agent-stack",
+      "source": "intro-root",
+      "target": "intro-agent-stack"
+    },
+    {
+      "id": "edge-root-learning",
+      "source": "intro-root",
+      "target": "intro-learning"
+    },
+    {
+      "id": "edge-root-gaps",
+      "source": "intro-root",
+      "target": "intro-gaps"
+    }
+  ]
+}

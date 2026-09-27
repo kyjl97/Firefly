@@ -1,0 +1,6 @@
+{
+  "name": "kyjl97-blog",
+  "version": "0.1.0",
+  "description": "只读访问 blog.kyjl97.github.io 得救之道博客文章",
+  "opencli": ">=1.8.6"
+}

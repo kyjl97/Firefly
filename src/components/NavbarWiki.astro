@@ -1,0 +1,33 @@
+---
+import { url } from "@utils/url-utils";
+---
+
+<div id="navbar" class="z-50 onload-animation">
+    <div class="absolute h-8 left-0 right-0 -top-8 bg-[var(--card-bg)] transition"></div>
+    <div class:list={[
+        "card-base border border-black/10 dark:border-white/10 !overflow-visible max-w-[var(--page-width)] h-[4.5rem] !rounded-t-none mx-auto flex items-center px-4"
+    ]}>
+        <a href={url('/wiki/')} class="btn-plain scale-animation rounded-lg h-[3.25rem] px-5 font-bold active:scale-95">
+            <div class="flex flex-row items-center text-md">
+                <span class="navbar-title-gradient text-lg font-bold">Wiki</span>
+            </div>
+        </a>
+    </div>
+</div>
+
+<style>
+/* 导航栏标题 - 渐变色 */
+.navbar-title-gradient {
+    background: linear-gradient(135deg, #0ea5e9, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+html.dark .navbar-title-gradient {
+    background: linear-gradient(135deg, #38bdf8, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+</style>

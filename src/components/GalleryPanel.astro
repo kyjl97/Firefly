@@ -1,0 +1,148 @@
+---
+import { getSortedPosts } from "../utils/content-utils";
+import { getPostUrlBySlug } from "../utils/url-utils";
+
+interface Props {
+	cols?: number; // 每行显示几列
+}
+
+const { cols = 3 } = Astro.props;
+
+const posts = await getSortedPosts();
+
+// 过滤出有封面图的文章
+const postsWithCover = posts.filter(
+	(post) => post.data.image || post.data.cover,
+);
+---
+
+<div class="gallery-container">
+    <div class="gallery-grid" style={`--cols: ${cols}`}>
+        {postsWithCover.map(post => (
+            <a 
+                href={getPostUrlBySlug(post.id)}
+                class="gallery-card group"
+                aria-label={post.data.title}
+            >
+                <div class="card-image">
+                    {post.data.image && (
+                        <img
+                            src={post.data.image}
+                            alt={post.data.title}
+                            width="400"
+                            height="250"
+                            class="cover-image"
+                        />
+                    )}
+                    <div class="card-overlay"></div>
+                </div>
+                <!-- 隐藏标题，图片本身已包含标题信息 -->
+                <!-- <div class="card-title">
+                    {post.data.title}
+                </div> -->
+            </a>
+        ))}
+    </div>
+    
+    {postsWithCover.length === 0 && (
+        <div class="empty-state">
+            暂无封面图文章
+        </div>
+    )}
+</div>
+
+<style>
+    .gallery-container {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(var(--cols), 1fr);
+        gap: 1rem;
+    }
+
+    @media (max-width: 1024px) {
+        .gallery-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 640px) {
+        .gallery-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .gallery-card {
+        position: relative;
+        display: block;
+        border-radius: 12px;
+        overflow: hidden;
+        text-decoration: none;
+        background: var(--card-bg);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .gallery-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-image {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        overflow: hidden;
+    }
+
+    .cover-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+    }
+
+    .gallery-card:hover .cover-image {
+        transform: scale(1.08);
+    }
+
+    .card-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.7) 0%,
+            rgba(0, 0, 0, 0) 50%
+        );
+        opacity: 0.6;
+        transition: opacity 0.3s ease;
+    }
+
+    .gallery-card:hover .card-overlay {
+        opacity: 0.8;
+    }
+
+    .card-title {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 0.75rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: white;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    .empty-state {
+        text-align: center;
+        padding: 3rem;
+        color: var(--text-50);
+    }
+</style>

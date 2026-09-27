@@ -1,0 +1,16 @@
+{
+  "agents": {
+    "chief": {
+      "model": "opencode-go/glm-5.2"
+    },
+    "deputy": {
+      "model": "opencode-go/deepseek-v4-flash"
+    },
+    "researcher": {
+      "model": "opencode-go/deepseek-v4-flash"
+    },
+    "editor": {
+      "model": "deepseek/deepseek-v4-flash"
+    }
+  }
+}

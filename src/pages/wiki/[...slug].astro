@@ -1,0 +1,197 @@
+---
+import WikiTreeNode from "@components/wiki/WikiTreeNode.astro";
+import WikiLayout from "@layouts/WikiLayout.astro";
+import {
+	type WikiNode,
+	extractHeadings,
+	getWikiBySlug,
+	getWikiTree,
+	renderWikiContent,
+} from "@utils/wiki";
+
+// 获取所有 wiki slug
+export function getStaticPaths() {
+	const tree = getWikiTree();
+	const slugs: string[] = [];
+
+	function collectSlugs(nodes: WikiNode[]) {
+		for (const node of nodes) {
+			if (node.type === "file") {
+				slugs.push(node.slug);
+			}
+			if (node.children) {
+				collectSlugs(node.children);
+			}
+		}
+	}
+
+	collectSlugs(tree);
+
+	return [
+		{ params: { slug: "" } },  // /wiki/ → index
+		...slugs.map((slug) => ({
+			params: { slug },
+		})),
+	];
+}
+
+const { slug } = Astro.params;
+const wiki = getWikiBySlug(slug || "index");
+
+if (!wiki) {
+	return Astro.redirect("/wiki/");
+}
+
+const headings = wiki.content ? extractHeadings(wiki.content) : [];
+const htmlContent = wiki.content ? renderWikiContent(wiki.content) : "";
+const tree = getWikiTree();
+---
+
+<WikiLayout title={wiki.title + " - Wiki"} headings={headings}>
+	<div class="wiki-container flex gap-6 w-full">
+		<!-- 左侧树形导航 -->
+		<aside class="wiki-sidebar hidden lg:block w-64 shrink-0">
+			<nav class="wiki-nav sticky top-4 max-h-[calc(100vh-2rem)] overflow-y-auto hide-scrollbar">
+				<ul class="space-y-0.5">
+					{tree.map((node) => (
+						<WikiTreeNode node={node} currentSlug={slug || "index"} />
+					))}
+				</ul>
+			</nav>
+		</aside>
+
+		<!-- 中间内容区域 -->
+		<main class="wiki-content flex-1 min-w-0">
+			<article class="card-base px-6 md:px-9 py-6 mb-4">
+				<h1 class="text-2xl font-bold mb-4 text-[var(--primary)]">{wiki.title}</h1>
+				<div class="prose dark:prose-invert max-w-none markdown-content" set:html={htmlContent} />
+			</article>
+		</main>
+	</div>
+
+	<script>
+		// 保持侧边栏滚动位置
+		const wikiNav = document.querySelector('.wiki-nav');
+		if (wikiNav) {
+			const savedPos = sessionStorage.getItem('wiki-sidebar-scroll');
+			if (savedPos) {
+				wikiNav.scrollTop = parseInt(savedPos, 10);
+			}
+			wikiNav.addEventListener('scroll', () => {
+				sessionStorage.setItem('wiki-sidebar-scroll', String(wikiNav.scrollTop));
+			});
+		}
+	</script>
+</WikiLayout>
+
+<style>
+	.wiki-container {
+		min-height: calc(100vh - 10rem);
+	}
+
+	.markdown-content :global(h2) {
+		margin-top: 1.75rem;
+		margin-bottom: 0.875rem;
+		font-size: 1.625rem;
+		font-weight: 700;
+		color: var(--primary);
+		border-bottom: 2px solid var(--line-divider);
+		padding-bottom: 0.625rem;
+	}
+
+	.markdown-content :global(h3) {
+		margin-top: 1.5rem;
+		margin-bottom: 0.625rem;
+		font-size: 1.375rem;
+		font-weight: 700;
+		color: #e4e4e7;
+	}
+
+	.markdown-content :global(p) {
+		margin-bottom: 1.125rem;
+		line-height: 1.875;
+		font-size: 1.0625rem;
+		color: #d4d4d8;
+	}
+
+	.markdown-content :global(ul),
+	.markdown-content :global(ol) {
+		margin-bottom: 1rem;
+		padding-left: 1.5rem;
+		color: #d4d4d8;
+	}
+
+	.markdown-content :global(li) {
+		margin-bottom: 0.375rem;
+		line-height: 1.75;
+		color: #d4d4d8;
+	}
+
+	.markdown-content :global(a) {
+		color: var(--primary);
+		text-decoration: underline;
+		text-underline-offset: 2px;
+	}
+
+	.markdown-content :global(a:hover) {
+		opacity: 0.8;
+	}
+
+	.markdown-content :global(table) {
+		width: 100%;
+		border-collapse: collapse;
+		margin-bottom: 1rem;
+		font-size: 0.875rem;
+	}
+
+	.markdown-content :global(th),
+	.markdown-content :global(td) {
+		border: 1px solid var(--line-divider);
+		padding: 0.5rem 0.75rem;
+		text-align: left;
+		color: #d4d4d8;
+	}
+
+	.markdown-content :global(th) {
+		background: var(--btn-regular-bg);
+		font-weight: 600;
+		color: #e4e4e7;
+	}
+
+	.markdown-content :global(code) {
+		background: var(--btn-regular-bg);
+		padding: 0.125rem 0.375rem;
+		border-radius: 0.25rem;
+		font-size: 0.875em;
+		color: #fafafa;
+	}
+
+	.markdown-content :global(strong) {
+		color: #fafafa;
+		font-weight: 700;
+	}
+
+	.markdown-content :global(em) {
+		color: #e4e4e7;
+	}
+
+	.markdown-content :global(pre) {
+		background: var(--code-block-bg);
+		padding: 1rem;
+		border-radius: 0.5rem;
+		overflow-x: auto;
+		margin-bottom: 1rem;
+	}
+
+	.markdown-content :global(pre code) {
+		background: transparent;
+		padding: 0;
+	}
+
+	.markdown-content :global(blockquote) {
+		border-left: 3px solid var(--primary);
+		padding-left: 1rem;
+		margin-bottom: 1rem;
+		color: #a1a1aa;
+	}
+</style>

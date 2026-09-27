@@ -1,0 +1,13 @@
+{
+  "name": "kyjl97-cli",
+  "version": "0.1.0",
+  "description": "在终端搜索并打开得救之道博客文章",
+  "type": "module",
+  "bin": {
+    "kyjl97": "bin/kyjl97.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT"
+}

@@ -2663,207 +2663,6 @@ npx -y mcp-excalidraw-server export --out 你的笔记库/diagrams/架构图.exc
 &lt;li&gt;运行方式：本地画布服务 + CLI / MCP / REST 三种接口&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;我装完之后最大的感受是：AI 工具圈正在从&quot;AI 生成内容给你看&quot;走向&quot;AI 直接在你的工作环境里干活&quot;。mcp_excalidraw 就是这种趋势里一个很典型的例子——它不给你一张图，而是给你一块 AI 能持续作画的画布。&lt;/p&gt;
-</content:encoded></item><item><title>gstack工作流</title><link>https://jieliu.me/posts/aihacks/gstack/</link><guid isPermaLink="true">https://jieliu.me/posts/aihacks/gstack/</guid><description>gstack 不是一个聊天窗口，而是把规划、开发、测试、发布、监控连成闭环的「Agent 路由器」。本文拆解它包含的 53 个专业子技能、各自做什么、适合谁。</description><pubDate>Tue, 11 Aug 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;如果你还在把 AI 当作聊天框来用，每次遇到新任务都手动复制、粘贴、写提示词，那么你可能正在陷入“低效勤奋”的怪圈。&lt;/p&gt;
-&lt;p&gt;真正能带来生产力爆发的，不是一个更会聊天的提示词，而是一套把流程沉淀下来的操作系统。&lt;/p&gt;
-&lt;p&gt;最近在技术圈和创业圈里，有一个被称为“外挂”的工具被频繁提及，那就是 &lt;strong&gt;gstack&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;它的定位不是一个具体的 AI 功能，而是一个能够把你的规划、开发、测试、发布与监控连接在一起的 &lt;strong&gt;「Agent 路由器」&lt;/strong&gt;。&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h3&gt;为什么你一直在和 AI 聊天，效率却没有翻倍？&lt;/h3&gt;
-&lt;p&gt;很多人使用 AI 的方式，本质上依然是“手工业者”的作风：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;想做一个功能，先去写提示词；&lt;/li&gt;
-&lt;li&gt;代码写出来了，复制到本地；&lt;/li&gt;
-&lt;li&gt;出了报错，把报错复制回 AI；&lt;/li&gt;
-&lt;li&gt;测试和上线，全部靠人肉操作。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;这种做法至少会带来三个不可避免的问题：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;上下文越来越长&lt;/strong&gt;：随着对话进行，AI 的记忆开始错乱。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;标准不稳定&lt;/strong&gt;：今天的 AI 能写出高水准代码，明天可能就因为提示词微调而胡言乱语。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;经验无法复利&lt;/strong&gt;：上一次踩过的坑，在开新对话时，AI 还会再踩一遍。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;所以，真正的效率翻倍，不是让 AI 替你打工，而是让你成为&lt;strong&gt;系统设计者&lt;/strong&gt;——你定义流程和标准，AI 负责在系统内流转。&lt;/p&gt;
-&lt;p&gt;这就是 gstack 诞生的背景。&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h3&gt;gstack 到底是什么？&lt;/h3&gt;
-&lt;p&gt;gstack 的本质，不是一个大模型接口，而是一个专为开发者和技术创业者设计的 &lt;strong&gt;Agent 分发中心&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;你可以把它理解为网络里的“路由器”。在平时，你不需要知道具体该调用哪一个 AI 模块，你只需要把任务丢给 gstack，它会根据你的语义，自动判断并分发给对应的 Specialized Agent（专业智能体）。&lt;/p&gt;
-&lt;p&gt;它彻底打破了“一问一答”的单点聊天模式，而是构建了一个完整的&lt;strong&gt;闭环流转工作流&lt;/strong&gt;：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;规划阶段&lt;/strong&gt;：你想做一个商业构想，它分发给 &lt;code&gt;/office-hours&lt;/code&gt;（商业方案）和 &lt;code&gt;/plan-eng-review&lt;/code&gt;（工程可行性评估）。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;开发阶段&lt;/strong&gt;：它分发给 &lt;code&gt;/spec&lt;/code&gt; 自动生成需求文档，并由专业代码 Agent 执行。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;质量阶段&lt;/strong&gt;：遇到 Bug，它自动分发给 &lt;code&gt;/investigate&lt;/code&gt; 进行问题定位；需要视觉和 UI 测试，它自动分发给 &lt;code&gt;/browse&lt;/code&gt; 进行真实浏览器级别的测试。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;发布阶段&lt;/strong&gt;：确认无误后，分发给 &lt;code&gt;/ship&lt;/code&gt; 或 &lt;code&gt;/land-and-deploy&lt;/code&gt; 自动完成提交、代码审查和部署。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;这种设计的好处显而易见：&lt;strong&gt;你不需要记住每一个细分的技能名字，你只需要向路由器说出你想要的结果。&lt;/strong&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h3&gt;gstack 到底装了多少把“工具”？&lt;/h3&gt;
-&lt;p&gt;如果你打开 gstack 的技能目录，会数到 &lt;strong&gt;53 个专业子技能&lt;/strong&gt;，加上负责调度的路由器本体 &lt;code&gt;gstack&lt;/code&gt;，整套技能集一共 &lt;strong&gt;54 个&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;它们不是一堆零散的提示词，而是按软件的完整生命周期排好序的。先给你一张总览表：&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;阶段&lt;/th&gt;
-&lt;th&gt;子技能数&lt;/th&gt;
-&lt;th&gt;代表技能&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;规划与战略&lt;/td&gt;
-&lt;td&gt;8&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;/office-hours&lt;/code&gt; · &lt;code&gt;/spec&lt;/code&gt; · &lt;code&gt;/plan-eng-review&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;设计与视觉&lt;/td&gt;
-&lt;td&gt;6&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;/design-consultation&lt;/code&gt; · &lt;code&gt;/design-review&lt;/code&gt; · &lt;code&gt;/diagram&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;质量与测试&lt;/td&gt;
-&lt;td&gt;12&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;/investigate&lt;/code&gt; · &lt;code&gt;/qa&lt;/code&gt; · &lt;code&gt;/review&lt;/code&gt; · &lt;code&gt;/browse&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;iOS 专项&lt;/td&gt;
-&lt;td&gt;5&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;/ios-fix&lt;/code&gt; · &lt;code&gt;/ios-qa&lt;/code&gt; · &lt;code&gt;/ios-design-review&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;发布与运维&lt;/td&gt;
-&lt;td&gt;5&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;/ship&lt;/code&gt; · &lt;code&gt;/land-and-deploy&lt;/code&gt; · &lt;code&gt;/canary&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;文档与沉淀&lt;/td&gt;
-&lt;td&gt;4&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;/document-generate&lt;/code&gt; · &lt;code&gt;/make-pdf&lt;/code&gt; · &lt;code&gt;/skillify&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;上下文与记忆&lt;/td&gt;
-&lt;td&gt;5&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;/context-save&lt;/code&gt; · &lt;code&gt;/context-restore&lt;/code&gt; · &lt;code&gt;/learn&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;安全与边界&lt;/td&gt;
-&lt;td&gt;5&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;/careful&lt;/code&gt; · &lt;code&gt;/guard&lt;/code&gt; · &lt;code&gt;/cso&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;协作与元能力&lt;/td&gt;
-&lt;td&gt;3&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;/pair-agent&lt;/code&gt; · &lt;code&gt;/retro&lt;/code&gt; · &lt;code&gt;/gstack-upgrade&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;合计&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;&lt;strong&gt;53&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;—&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;下面按这 9 个阶段，说清楚每个阶段在干什么、该谁用。&lt;/p&gt;
-&lt;h4&gt;1. 规划与战略：先把方向想清楚&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;/office-hours&lt;/code&gt;：YC 式“办公室对话”，两种模式，帮你快速判断一个想法值不值得做、怎么收敛。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/spec&lt;/code&gt;：把一句模糊的需求变成精确的规格说明，或直接生成可进 backlog 的 GitHub issue。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/plan-ceo-review&lt;/code&gt;：创始人视角审计划——战略、范围、野心够不够大。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/plan-eng-review&lt;/code&gt;：工程经理视角审架构与可行性，动手前先排雷。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/plan-design-review&lt;/code&gt;：设计师视角审计划里的体验与视觉风险。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/plan-devex-review&lt;/code&gt;：审开发者体验——API / CLI / SDK 的设计是否好用。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/plan-tune&lt;/code&gt;：调问题的敏感度（“别老问我这个”），减少无意义的反复追问。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/autoplan&lt;/code&gt;：一次性把上面所有评审跑完，给出统一结论。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;适合谁&lt;/strong&gt;：创始人、产品经理、技术负责人、架构师。&lt;/p&gt;
-&lt;h4&gt;2. 设计与视觉：让产物长得对&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;/design-consultation&lt;/code&gt;：设计咨询，定品牌调性和视觉系统。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/design-review&lt;/code&gt;：对线上真实站点做设计审计，挑刺。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/design-html&lt;/code&gt;：把设计稿落成生产级 HTML。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/design-shotgun&lt;/code&gt;：一次甩出多版 A/B 设计方案，挑着用。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/devex-review&lt;/code&gt;：实时审计“从零到跑起来”的上手成本。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/diagram&lt;/code&gt;：把一段文字描述变成架构图 / 流程图。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;适合谁&lt;/strong&gt;：设计师、前端、独立开发者。&lt;/p&gt;
-&lt;h4&gt;3. 质量与测试：找到问题、守住标准&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;/investigate&lt;/code&gt;：系统化调试，从现象追到根因，而不是瞎试。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/qa&lt;/code&gt;：系统化测试 Web 应用，覆盖主要流程。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/qa-only&lt;/code&gt;：只产出 bug 报告，不擅自改代码。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/review&lt;/code&gt;：上线前做 PR / diff 审查，守住质量门。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/browse&lt;/code&gt;：无头浏览器跑 QA、截图、看真实渲染。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/open-gstack-browser&lt;/code&gt;：启动一个可被 AI 直接操控的真实浏览器。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/setup-browser-cookies&lt;/code&gt;：导入登录态 cookie，做需要鉴权的测试。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/scrape&lt;/code&gt;：从网页抓取结构化数据。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/health&lt;/code&gt;：代码质量看板，一眼看清技术债。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/benchmark&lt;/code&gt;：性能回归检测，防止越改越慢。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/benchmark-models&lt;/code&gt;：跨模型横向基准对比。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/codex&lt;/code&gt;：Codex CLI 包装，给关键改动找第二意见。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;适合谁&lt;/strong&gt;：开发、QA、测试工程师。&lt;/p&gt;
-&lt;h4&gt;4. iOS 专项：移动端也有一套&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;/ios-clean&lt;/code&gt;、&lt;code&gt;/ios-design-review&lt;/code&gt;、&lt;code&gt;/ios-fix&lt;/code&gt;、&lt;code&gt;/ios-qa&lt;/code&gt;、&lt;code&gt;/ios-sync&lt;/code&gt;：一套针对 SwiftUI / iOS 的专项，覆盖清理调试桥接、设计审查、自动修 bug、真机 QA、重新生成调试桥。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;适合谁&lt;/strong&gt;：iOS / 移动端开发者。&lt;/p&gt;
-&lt;h4&gt;5. 发布与运维：稳稳地上线&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;/ship&lt;/code&gt;：发版流程——检测冲突、合并、建 PR 一条龙。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/land-and-deploy&lt;/code&gt;：合并 + 部署 + 验证作为单次流动完成。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/setup-deploy&lt;/code&gt;：为项目配置部署管线。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/canary&lt;/code&gt;：上线后金丝雀监控，盯住异常。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/landing-report&lt;/code&gt;：只读的队列看板，看清待办堆积。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;适合谁&lt;/strong&gt;：DevOps、技术负责人、独立开发者。&lt;/p&gt;
-&lt;h4&gt;6. 文档与沉淀：让经验留下&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;/document-generate&lt;/code&gt;：从代码反推缺失的文档。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/document-release&lt;/code&gt;：发版后自动补文档。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/make-pdf&lt;/code&gt;：把 markdown 转成可发布的 PDF。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/skillify&lt;/code&gt;：把一次成功的操作流程固化成可复用 skill，让经验复利。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;适合谁&lt;/strong&gt;：技术写作者、想建方法论的团队。&lt;/p&gt;
-&lt;h4&gt;7. 上下文与记忆：跨会话不丢状态&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;/context-save&lt;/code&gt;：把当前工作状态存盘。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/context-restore&lt;/code&gt;：换会话 / 换机器后把上下文接回来。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/learn&lt;/code&gt;：管理项目里沉淀的经验教训。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/setup-gbrain&lt;/code&gt; &amp;amp; &lt;code&gt;/sync-gbrain&lt;/code&gt;：接 GBrain，跨机器语义检索你的代码与文档。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;适合谁&lt;/strong&gt;：长期维护项目、多机协作的人。&lt;/p&gt;
-&lt;h4&gt;8. 安全与边界：动刀之前先系安全带&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;/careful&lt;/code&gt;：危险命令前的护栏，先问再动。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/guard&lt;/code&gt;：全安全模式，锁死破坏性操作。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/freeze&lt;/code&gt; &amp;amp; &lt;code&gt;/unfreeze&lt;/code&gt;：把编辑范围限制在某个目录，防止改错地方。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/cso&lt;/code&gt;：安全官模式，查 OWASP 漏洞与安全隐患。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;适合谁&lt;/strong&gt;：所有人，尤其在生产环境操作的人。&lt;/p&gt;
-&lt;h4&gt;9. 协作与元能力：把系统跑起来&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;/pair-agent&lt;/code&gt;：给当前分支配对一个远程 AI agent 协同。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/retro&lt;/code&gt;：每周工程复盘，看看这周交付了啥。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/gstack-upgrade&lt;/code&gt;：一键升级 gstack 本身。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;适合谁&lt;/strong&gt;：团队、长期使用者。&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h3&gt;它如何撬动生产力？&lt;/h3&gt;
-&lt;p&gt;一个完整的 gstack 套件，主要通过三个层次实现生产力放大：&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;第一，按需路由（Dynamic Routing）&lt;/strong&gt;
-传统的 Agent 系统是静态的，而 gstack 是动态路由的。它会根据你的指令或对话上下文，自动加载最适合的模型和技能前言（Preamble），省去你手动选模型、拼 Prompt 的时间。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;第二，闭环联动（Flow Loop）&lt;/strong&gt;
-gstack 的工作流是可复现的。从设计、评审、测试到上线，每一个环节的输出都是下一个环节的输入。这种“流水线”式的闭环，让复杂的开发任务能像工业制造一样稳定推进。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;第三，经验回流与复利（Local Learnings）&lt;/strong&gt;
-当你在终端中遇到并解决了某个环境报错，gstack 会在本地自动生成一条 &lt;code&gt;operational learning&lt;/code&gt; 记录。下一次你或 AI 再遇到同类场景时，这段经验会被自动作为背景知识载入，从而实现技能的“自我进化”。&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h3&gt;从手工业者升级为系统设计者&lt;/h3&gt;
-&lt;p&gt;对于技术创业者或小团队来说，最大的瓶颈永远是“人手”。你不仅缺开发，更缺能帮你做架构设计、测试和发布的工程师。&lt;/p&gt;
-&lt;p&gt;gstack 的意义，恰恰在于用流程替代了这些昂贵的摩擦。&lt;/p&gt;
-&lt;p&gt;它让你从一次性灵感的手工业者，升级为了&lt;strong&gt;系统设计者&lt;/strong&gt;。你的核心职责不再是去和 AI 磨叽一段具体的代码，而是去建立标准、理顺流程、判断价值，让 50 多个 AI Agent 沿着你的路由轨道高效奔跑。&lt;/p&gt;
-&lt;p&gt;这才是真正能长久沉淀、产生复利的“外挂”。&lt;/p&gt;
-&lt;hr /&gt;
-&lt;blockquote&gt;
-&lt;p&gt;如果你也想把自己的工具链 / Agent 工作流搭起来，但卡在环境配置或某一步报错，欢迎来聊——我可以帮你把 gstack 这类工作流真正接进日常。&lt;/p&gt;
-&lt;/blockquote&gt;
 </content:encoded></item><item><title>gstack路由：创业外挂</title><link>https://jieliu.me/posts/aihacks/gstack%E5%88%9B%E4%B8%9A%E8%80%85%E7%9A%84-ai-%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%A4%96%E6%8C%82/</link><guid isPermaLink="true">https://jieliu.me/posts/aihacks/gstack%E5%88%9B%E4%B8%9A%E8%80%85%E7%9A%84-ai-%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%A4%96%E6%8C%82/</guid><description>gstack 不是一个聊天窗口，而是把规划、开发、测试、发布、监控连成闭环的「Agent 路由器」。本文拆解它包含的 53 个专业子技能、各自做什么、适合谁。</description><pubDate>Tue, 11 Aug 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;如果你还在把 AI 当作聊天框来用，每次遇到新任务都手动复制、粘贴、写提示词，那么你可能正在陷入&quot;低效勤奋&quot;的怪圈。&lt;/p&gt;
 &lt;p&gt;真正能带来生产力爆发的，不是一个更会聊天的提示词，而是一套把流程沉淀下来的操作系统。&lt;/p&gt;
 &lt;p&gt;最近在技术圈和创业圈里，有一个被称为&quot;外挂&quot;的工具被频繁提及，那就是 &lt;strong&gt;gstack&lt;/strong&gt;。&lt;/p&gt;
@@ -3061,6 +2860,207 @@ gstack 的工作流是可复现的。从设计、评审、测试到上线，每�
 &lt;p&gt;gstack 的意义，恰恰在于用流程替代了这些昂贵的摩擦。&lt;/p&gt;
 &lt;p&gt;它让你从一次性灵感的手工业者，升级为了&lt;strong&gt;系统设计者&lt;/strong&gt;。你的核心职责不再是去和 AI 磨叽一段具体的代码，而是去建立标准、理顺流程、判断价值，让 50 多个 AI Agent 沿着你的路由轨道高效奔跑。&lt;/p&gt;
 &lt;p&gt;这才是真正能长久沉淀、产生复利的&quot;外挂&quot;。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果你也想把自己的工具链 / Agent 工作流搭起来，但卡在环境配置或某一步报错，欢迎来聊——我可以帮你把 gstack 这类工作流真正接进日常。&lt;/p&gt;
+&lt;/blockquote&gt;
+</content:encoded></item><item><title>gstack工作流</title><link>https://jieliu.me/posts/aihacks/gstack/</link><guid isPermaLink="true">https://jieliu.me/posts/aihacks/gstack/</guid><description>gstack 不是一个聊天窗口，而是把规划、开发、测试、发布、监控连成闭环的「Agent 路由器」。本文拆解它包含的 53 个专业子技能、各自做什么、适合谁。</description><pubDate>Tue, 11 Aug 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;如果你还在把 AI 当作聊天框来用，每次遇到新任务都手动复制、粘贴、写提示词，那么你可能正在陷入“低效勤奋”的怪圈。&lt;/p&gt;
+&lt;p&gt;真正能带来生产力爆发的，不是一个更会聊天的提示词，而是一套把流程沉淀下来的操作系统。&lt;/p&gt;
+&lt;p&gt;最近在技术圈和创业圈里，有一个被称为“外挂”的工具被频繁提及，那就是 &lt;strong&gt;gstack&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;它的定位不是一个具体的 AI 功能，而是一个能够把你的规划、开发、测试、发布与监控连接在一起的 &lt;strong&gt;「Agent 路由器」&lt;/strong&gt;。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h3&gt;为什么你一直在和 AI 聊天，效率却没有翻倍？&lt;/h3&gt;
+&lt;p&gt;很多人使用 AI 的方式，本质上依然是“手工业者”的作风：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;想做一个功能，先去写提示词；&lt;/li&gt;
+&lt;li&gt;代码写出来了，复制到本地；&lt;/li&gt;
+&lt;li&gt;出了报错，把报错复制回 AI；&lt;/li&gt;
+&lt;li&gt;测试和上线，全部靠人肉操作。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这种做法至少会带来三个不可避免的问题：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;上下文越来越长&lt;/strong&gt;：随着对话进行，AI 的记忆开始错乱。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;标准不稳定&lt;/strong&gt;：今天的 AI 能写出高水准代码，明天可能就因为提示词微调而胡言乱语。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;经验无法复利&lt;/strong&gt;：上一次踩过的坑，在开新对话时，AI 还会再踩一遍。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;所以，真正的效率翻倍，不是让 AI 替你打工，而是让你成为&lt;strong&gt;系统设计者&lt;/strong&gt;——你定义流程和标准，AI 负责在系统内流转。&lt;/p&gt;
+&lt;p&gt;这就是 gstack 诞生的背景。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h3&gt;gstack 到底是什么？&lt;/h3&gt;
+&lt;p&gt;gstack 的本质，不是一个大模型接口，而是一个专为开发者和技术创业者设计的 &lt;strong&gt;Agent 分发中心&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;你可以把它理解为网络里的“路由器”。在平时，你不需要知道具体该调用哪一个 AI 模块，你只需要把任务丢给 gstack，它会根据你的语义，自动判断并分发给对应的 Specialized Agent（专业智能体）。&lt;/p&gt;
+&lt;p&gt;它彻底打破了“一问一答”的单点聊天模式，而是构建了一个完整的&lt;strong&gt;闭环流转工作流&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;规划阶段&lt;/strong&gt;：你想做一个商业构想，它分发给 &lt;code&gt;/office-hours&lt;/code&gt;（商业方案）和 &lt;code&gt;/plan-eng-review&lt;/code&gt;（工程可行性评估）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;开发阶段&lt;/strong&gt;：它分发给 &lt;code&gt;/spec&lt;/code&gt; 自动生成需求文档，并由专业代码 Agent 执行。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;质量阶段&lt;/strong&gt;：遇到 Bug，它自动分发给 &lt;code&gt;/investigate&lt;/code&gt; 进行问题定位；需要视觉和 UI 测试，它自动分发给 &lt;code&gt;/browse&lt;/code&gt; 进行真实浏览器级别的测试。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;发布阶段&lt;/strong&gt;：确认无误后，分发给 &lt;code&gt;/ship&lt;/code&gt; 或 &lt;code&gt;/land-and-deploy&lt;/code&gt; 自动完成提交、代码审查和部署。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这种设计的好处显而易见：&lt;strong&gt;你不需要记住每一个细分的技能名字，你只需要向路由器说出你想要的结果。&lt;/strong&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h3&gt;gstack 到底装了多少把“工具”？&lt;/h3&gt;
+&lt;p&gt;如果你打开 gstack 的技能目录，会数到 &lt;strong&gt;53 个专业子技能&lt;/strong&gt;，加上负责调度的路由器本体 &lt;code&gt;gstack&lt;/code&gt;，整套技能集一共 &lt;strong&gt;54 个&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;它们不是一堆零散的提示词，而是按软件的完整生命周期排好序的。先给你一张总览表：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;阶段&lt;/th&gt;
+&lt;th&gt;子技能数&lt;/th&gt;
+&lt;th&gt;代表技能&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;规划与战略&lt;/td&gt;
+&lt;td&gt;8&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;/office-hours&lt;/code&gt; · &lt;code&gt;/spec&lt;/code&gt; · &lt;code&gt;/plan-eng-review&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;设计与视觉&lt;/td&gt;
+&lt;td&gt;6&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;/design-consultation&lt;/code&gt; · &lt;code&gt;/design-review&lt;/code&gt; · &lt;code&gt;/diagram&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;质量与测试&lt;/td&gt;
+&lt;td&gt;12&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;/investigate&lt;/code&gt; · &lt;code&gt;/qa&lt;/code&gt; · &lt;code&gt;/review&lt;/code&gt; · &lt;code&gt;/browse&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;iOS 专项&lt;/td&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;/ios-fix&lt;/code&gt; · &lt;code&gt;/ios-qa&lt;/code&gt; · &lt;code&gt;/ios-design-review&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;发布与运维&lt;/td&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;/ship&lt;/code&gt; · &lt;code&gt;/land-and-deploy&lt;/code&gt; · &lt;code&gt;/canary&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;文档与沉淀&lt;/td&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;/document-generate&lt;/code&gt; · &lt;code&gt;/make-pdf&lt;/code&gt; · &lt;code&gt;/skillify&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;上下文与记忆&lt;/td&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;/context-save&lt;/code&gt; · &lt;code&gt;/context-restore&lt;/code&gt; · &lt;code&gt;/learn&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;安全与边界&lt;/td&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;/careful&lt;/code&gt; · &lt;code&gt;/guard&lt;/code&gt; · &lt;code&gt;/cso&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;协作与元能力&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;/pair-agent&lt;/code&gt; · &lt;code&gt;/retro&lt;/code&gt; · &lt;code&gt;/gstack-upgrade&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;合计&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;53&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;下面按这 9 个阶段，说清楚每个阶段在干什么、该谁用。&lt;/p&gt;
+&lt;h4&gt;1. 规划与战略：先把方向想清楚&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;/office-hours&lt;/code&gt;：YC 式“办公室对话”，两种模式，帮你快速判断一个想法值不值得做、怎么收敛。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/spec&lt;/code&gt;：把一句模糊的需求变成精确的规格说明，或直接生成可进 backlog 的 GitHub issue。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/plan-ceo-review&lt;/code&gt;：创始人视角审计划——战略、范围、野心够不够大。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/plan-eng-review&lt;/code&gt;：工程经理视角审架构与可行性，动手前先排雷。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/plan-design-review&lt;/code&gt;：设计师视角审计划里的体验与视觉风险。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/plan-devex-review&lt;/code&gt;：审开发者体验——API / CLI / SDK 的设计是否好用。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/plan-tune&lt;/code&gt;：调问题的敏感度（“别老问我这个”），减少无意义的反复追问。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/autoplan&lt;/code&gt;：一次性把上面所有评审跑完，给出统一结论。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;适合谁&lt;/strong&gt;：创始人、产品经理、技术负责人、架构师。&lt;/p&gt;
+&lt;h4&gt;2. 设计与视觉：让产物长得对&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;/design-consultation&lt;/code&gt;：设计咨询，定品牌调性和视觉系统。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/design-review&lt;/code&gt;：对线上真实站点做设计审计，挑刺。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/design-html&lt;/code&gt;：把设计稿落成生产级 HTML。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/design-shotgun&lt;/code&gt;：一次甩出多版 A/B 设计方案，挑着用。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/devex-review&lt;/code&gt;：实时审计“从零到跑起来”的上手成本。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/diagram&lt;/code&gt;：把一段文字描述变成架构图 / 流程图。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;适合谁&lt;/strong&gt;：设计师、前端、独立开发者。&lt;/p&gt;
+&lt;h4&gt;3. 质量与测试：找到问题、守住标准&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;/investigate&lt;/code&gt;：系统化调试，从现象追到根因，而不是瞎试。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/qa&lt;/code&gt;：系统化测试 Web 应用，覆盖主要流程。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/qa-only&lt;/code&gt;：只产出 bug 报告，不擅自改代码。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/review&lt;/code&gt;：上线前做 PR / diff 审查，守住质量门。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/browse&lt;/code&gt;：无头浏览器跑 QA、截图、看真实渲染。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/open-gstack-browser&lt;/code&gt;：启动一个可被 AI 直接操控的真实浏览器。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/setup-browser-cookies&lt;/code&gt;：导入登录态 cookie，做需要鉴权的测试。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/scrape&lt;/code&gt;：从网页抓取结构化数据。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/health&lt;/code&gt;：代码质量看板，一眼看清技术债。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/benchmark&lt;/code&gt;：性能回归检测，防止越改越慢。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/benchmark-models&lt;/code&gt;：跨模型横向基准对比。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/codex&lt;/code&gt;：Codex CLI 包装，给关键改动找第二意见。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;适合谁&lt;/strong&gt;：开发、QA、测试工程师。&lt;/p&gt;
+&lt;h4&gt;4. iOS 专项：移动端也有一套&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;/ios-clean&lt;/code&gt;、&lt;code&gt;/ios-design-review&lt;/code&gt;、&lt;code&gt;/ios-fix&lt;/code&gt;、&lt;code&gt;/ios-qa&lt;/code&gt;、&lt;code&gt;/ios-sync&lt;/code&gt;：一套针对 SwiftUI / iOS 的专项，覆盖清理调试桥接、设计审查、自动修 bug、真机 QA、重新生成调试桥。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;适合谁&lt;/strong&gt;：iOS / 移动端开发者。&lt;/p&gt;
+&lt;h4&gt;5. 发布与运维：稳稳地上线&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;/ship&lt;/code&gt;：发版流程——检测冲突、合并、建 PR 一条龙。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/land-and-deploy&lt;/code&gt;：合并 + 部署 + 验证作为单次流动完成。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/setup-deploy&lt;/code&gt;：为项目配置部署管线。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/canary&lt;/code&gt;：上线后金丝雀监控，盯住异常。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/landing-report&lt;/code&gt;：只读的队列看板，看清待办堆积。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;适合谁&lt;/strong&gt;：DevOps、技术负责人、独立开发者。&lt;/p&gt;
+&lt;h4&gt;6. 文档与沉淀：让经验留下&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;/document-generate&lt;/code&gt;：从代码反推缺失的文档。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/document-release&lt;/code&gt;：发版后自动补文档。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/make-pdf&lt;/code&gt;：把 markdown 转成可发布的 PDF。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/skillify&lt;/code&gt;：把一次成功的操作流程固化成可复用 skill，让经验复利。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;适合谁&lt;/strong&gt;：技术写作者、想建方法论的团队。&lt;/p&gt;
+&lt;h4&gt;7. 上下文与记忆：跨会话不丢状态&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;/context-save&lt;/code&gt;：把当前工作状态存盘。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/context-restore&lt;/code&gt;：换会话 / 换机器后把上下文接回来。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/learn&lt;/code&gt;：管理项目里沉淀的经验教训。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/setup-gbrain&lt;/code&gt; &amp;amp; &lt;code&gt;/sync-gbrain&lt;/code&gt;：接 GBrain，跨机器语义检索你的代码与文档。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;适合谁&lt;/strong&gt;：长期维护项目、多机协作的人。&lt;/p&gt;
+&lt;h4&gt;8. 安全与边界：动刀之前先系安全带&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;/careful&lt;/code&gt;：危险命令前的护栏，先问再动。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/guard&lt;/code&gt;：全安全模式，锁死破坏性操作。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/freeze&lt;/code&gt; &amp;amp; &lt;code&gt;/unfreeze&lt;/code&gt;：把编辑范围限制在某个目录，防止改错地方。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/cso&lt;/code&gt;：安全官模式，查 OWASP 漏洞与安全隐患。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;适合谁&lt;/strong&gt;：所有人，尤其在生产环境操作的人。&lt;/p&gt;
+&lt;h4&gt;9. 协作与元能力：把系统跑起来&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;/pair-agent&lt;/code&gt;：给当前分支配对一个远程 AI agent 协同。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/retro&lt;/code&gt;：每周工程复盘，看看这周交付了啥。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/gstack-upgrade&lt;/code&gt;：一键升级 gstack 本身。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;适合谁&lt;/strong&gt;：团队、长期使用者。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h3&gt;它如何撬动生产力？&lt;/h3&gt;
+&lt;p&gt;一个完整的 gstack 套件，主要通过三个层次实现生产力放大：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第一，按需路由（Dynamic Routing）&lt;/strong&gt;
+传统的 Agent 系统是静态的，而 gstack 是动态路由的。它会根据你的指令或对话上下文，自动加载最适合的模型和技能前言（Preamble），省去你手动选模型、拼 Prompt 的时间。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第二，闭环联动（Flow Loop）&lt;/strong&gt;
+gstack 的工作流是可复现的。从设计、评审、测试到上线，每一个环节的输出都是下一个环节的输入。这种“流水线”式的闭环，让复杂的开发任务能像工业制造一样稳定推进。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第三，经验回流与复利（Local Learnings）&lt;/strong&gt;
+当你在终端中遇到并解决了某个环境报错，gstack 会在本地自动生成一条 &lt;code&gt;operational learning&lt;/code&gt; 记录。下一次你或 AI 再遇到同类场景时，这段经验会被自动作为背景知识载入，从而实现技能的“自我进化”。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h3&gt;从手工业者升级为系统设计者&lt;/h3&gt;
+&lt;p&gt;对于技术创业者或小团队来说，最大的瓶颈永远是“人手”。你不仅缺开发，更缺能帮你做架构设计、测试和发布的工程师。&lt;/p&gt;
+&lt;p&gt;gstack 的意义，恰恰在于用流程替代了这些昂贵的摩擦。&lt;/p&gt;
+&lt;p&gt;它让你从一次性灵感的手工业者，升级为了&lt;strong&gt;系统设计者&lt;/strong&gt;。你的核心职责不再是去和 AI 磨叽一段具体的代码，而是去建立标准、理顺流程、判断价值，让 50 多个 AI Agent 沿着你的路由轨道高效奔跑。&lt;/p&gt;
+&lt;p&gt;这才是真正能长久沉淀、产生复利的“外挂”。&lt;/p&gt;
 &lt;hr /&gt;
 &lt;blockquote&gt;
 &lt;p&gt;如果你也想把自己的工具链 / Agent 工作流搭起来，但卡在环境配置或某一步报错，欢迎来聊——我可以帮你把 gstack 这类工作流真正接进日常。&lt;/p&gt;
@@ -3766,193 +3766,6 @@ https://www.youtube.com/watch?v=xxxxxxxxxxx
 &lt;li&gt;上下文太满、回复变慢时，最实用的是说 &lt;code&gt;rewind 压缩前面的过程，保留结论&lt;/code&gt;；想干净重来就开新会话（&lt;code&gt;omp&lt;/code&gt; 自动建新会话，&lt;code&gt;--resume&lt;/code&gt; 可回到旧会话）。&lt;/li&gt;
 &lt;li&gt;压缩不会丢失你明确保留的结论（checkpoint/rewind 会生成一份报告作为新上下文起点）。&lt;/li&gt;
 &lt;/ul&gt;
-</content:encoded></item><item><title>Vercel CLI</title><link>https://jieliu.me/posts/aihacks/vercel-cli/</link><guid isPermaLink="true">https://jieliu.me/posts/aihacks/vercel-cli/</guid><pubDate>Wed, 05 Aug 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;如果你用过 Vercel（全球流行的前端托管/云平台），一定见过 &lt;code&gt;vercel&lt;/code&gt; 这个命令行工具。它到底是什么？简单说：&lt;strong&gt;Vercel CLI 是 Vercel 官方出的命令行工具，让你在终端里就能把项目部署上线、管理域名和环境变量，不用去网页上点点点。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;注意：&lt;strong&gt;它不是 AI 智能体，也没有任何 AI 能力&lt;/strong&gt;。它只是一个「云平台遥控器」——负责把你的代码打包、上传、发布到 Vercel 的服务器上。&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h2&gt;一、它能干什么？&lt;/h2&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;功能&lt;/th&gt;
-&lt;th&gt;说明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;部署上线&lt;/td&gt;
-&lt;td&gt;把本地代码构建后发布到云端，生成可访问的线上地址&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;登录授权&lt;/td&gt;
-&lt;td&gt;设备码登录你的 Vercel 账号&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;管理环境变量&lt;/td&gt;
-&lt;td&gt;添加/查看 API Key 等敏感配置（加密存储）&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;绑定域名&lt;/td&gt;
-&lt;td&gt;把自定义域名挂到你的项目上&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;项目管理&lt;/td&gt;
-&lt;td&gt;查看部署记录、项目信息、成员等&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;核心价值：&lt;strong&gt;一切操作可脚本化、可自动化&lt;/strong&gt;，比在网页上手动点击高效得多。&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h2&gt;二、怎么安装？&lt;/h2&gt;
-&lt;p&gt;Vercel CLI 是一个 npm 包，一条命令全局安装：&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;命令&lt;/th&gt;
-&lt;th&gt;说明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;npm install -g vercel&lt;/td&gt;
-&lt;td&gt;全局安装 Vercel CLI（需要先装 Node.js）&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;vercel --version&lt;/td&gt;
-&lt;td&gt;验证是否安装成功&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;装完登录一次即可：&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;命令&lt;/th&gt;
-&lt;th&gt;说明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;vercel login&lt;/td&gt;
-&lt;td&gt;设备码授权登录（浏览器确认）&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;vercel whoami&lt;/td&gt;
-&lt;td&gt;查看当前登录的账号&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;hr /&gt;
-&lt;h2&gt;三、最常用的几个命令&lt;/h2&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;命令&lt;/th&gt;
-&lt;th&gt;说明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;vercel deploy --prod&lt;/td&gt;
-&lt;td&gt;部署到生产环境（正式上线）&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;vercel env add 变量名 production&lt;/td&gt;
-&lt;td&gt;添加云端环境变量（--value 指定值，--sensitive 加密存储）&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;vercel env pull&lt;/td&gt;
-&lt;td&gt;把云端环境变量下载到本地 .env.local&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;vercel link&lt;/td&gt;
-&lt;td&gt;把本地文件夹和云端项目绑定&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;vercel domains add 域名 项目名&lt;/td&gt;
-&lt;td&gt;给项目绑定自定义域名&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;vercel ls&lt;/td&gt;
-&lt;td&gt;查看项目的部署记录&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;hr /&gt;
-&lt;h2&gt;四、实际应用场景（以部署 AI 智能体为例）&lt;/h2&gt;
-&lt;p&gt;在搭建飞书 AI 营销团队时，整个流程全靠 Vercel CLI 串起来：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;vercel login&lt;/code&gt; 登录&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;vercel link&lt;/code&gt; 绑定云端项目&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;vercel env add DEEPSEEK_API_KEY production --sensitive --yes&lt;/code&gt; 配置大模型密钥&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;vercel deploy --prod --yes&lt;/code&gt; 一键部署上线&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;vercel domains add bot.你的域名.com 项目名&lt;/code&gt; 绑定国内可达域名&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;strong&gt;GitHub 推送 ≠ 部署&lt;/strong&gt;：推送到 GitHub 只是代码备份；要让线上更新，必须执行 &lt;code&gt;vercel deploy&lt;/code&gt;（或配置 Git 集成自动部署）。&lt;/p&gt;
-&lt;h3&gt;让 AI 智能体帮你部署（提示词模板）&lt;/h3&gt;
-&lt;p&gt;不用自己敲命令，把这些提示词直接发给 AI 编程助手（Claude Code / Codex 等），它会自动执行上面的流程：&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;① 首次部署上线&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;帮我部署这个项目到 Vercel 生产环境：
-1. 检查 Vercel CLI 是否安装（vercel --version），没有就 npm install -g vercel
-2. 检查是否已登录（vercel whoami），没登录就发起 vercel login 并等我完成设备授权
-3. 执行 vercel link --project &amp;lt;项目名&amp;gt; --yes 绑定云端项目
-4. 执行 vercel deploy --prod --yes 部署上线
-5. 把生成的线上地址告诉我
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;② 配置环境变量（API Key）&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;帮我把 DEEPSEEK_API_KEY 配置到 Vercel 生产环境。密钥在本地 .env.local 里，
-用 vercel env add 添加并加密存储（--sensitive），全程不要打印密钥本身。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;③ 日常更新部署（改完代码重新上线）&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;代码已修改并通过本地验证（pnpm validate）。执行 vercel deploy --prod --yes
-重新部署到生产环境，完成后确认 readyState 为 READY，并告诉我新的线上地址。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;④ 绑定自定义域名&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;帮我把 bot.example.com 绑定到这个项目：先检查 Cloudflare DNS 是否已配好
-CNAME（目标 cname.vercel-dns.com，开启代理），然后用 vercel domains add
-bot.example.com &amp;lt;项目名&amp;gt; 绑定，最后 curl 测试域名返回 200。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;⑤ 一条龙（改代码 + 验证 + 部署）&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;改完这个 bug 后：1) 运行 pnpm validate 确认 0 错误 2) 执行 vercel deploy --prod --yes
-部署 3) 确认线上可用，汇报结果。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;blockquote&gt;
-&lt;p&gt;⚠️ 安全提醒：提示词里不要粘贴真实 API Key；密钥只写在本地 &lt;code&gt;.env.local&lt;/code&gt;（已被 .gitignore 忽略），AI 用 &lt;code&gt;vercel env add&lt;/code&gt; 上传时走加密存储。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3&gt;部署的三种方式对比&lt;/h3&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;概念&lt;/th&gt;
-&lt;th&gt;是什么&lt;/th&gt;
-&lt;th&gt;适用场景&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;vercel deploy&lt;/td&gt;
-&lt;td&gt;手动把本地代码部署上线&lt;/td&gt;
-&lt;td&gt;开发调试、需要手动控制发布节奏&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;eve deploy&lt;/td&gt;
-&lt;td&gt;eve 框架封装的一键部署命令&lt;/td&gt;
-&lt;td&gt;eve 项目专用（部分环境可能报错，如 Windows 下 pnpm 路径问题）&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Git 集成部署&lt;/td&gt;
-&lt;td&gt;配置后每次 git push 自动触发部署&lt;/td&gt;
-&lt;td&gt;团队协作、希望「推送即上线」的自动化工作流&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;&lt;strong&gt;关键区别&lt;/strong&gt;：GitHub 推送 ≠ 部署。推送到 GitHub 只是代码备份；要让线上更新，必须执行 &lt;code&gt;vercel deploy&lt;/code&gt;，或配置 Git 集成让它自动部署。&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h2&gt;五、不装 CLI 行不行？&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;可以&lt;/strong&gt;。Vercel 网页控制台（dashboard）能完成大部分操作：部署点按钮、环境变量在 Settings 里填、域名在 Settings 里加。&lt;/p&gt;
-&lt;p&gt;CLI 的优势是&lt;strong&gt;效率&lt;/strong&gt;：一条命令替代十几次点击，还能写进脚本自动化。开发者和 AI 智能体（比如让 Agent 帮你部署）都更偏好 CLI 方式。&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h2&gt;总结&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;Vercel CLI = 把项目部署到 Vercel 云的命令行遥控器。&lt;/strong&gt; 装一次、登录一次，之后所有部署、配置、域名管理都能在终端里完成，是「云端部署」这件事最顺手的姿势。&lt;/p&gt;
 </content:encoded></item><item><title>Vercel-Agent-Stack-Eve-Sandbox</title><link>https://jieliu.me/posts/aihacks/vercel-agent-stack-eve-sandbox/</link><guid isPermaLink="true">https://jieliu.me/posts/aihacks/vercel-agent-stack-eve-sandbox/</guid><pubDate>Wed, 05 Aug 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;如果你经常用 AI 帮自己写文章、发推特、发邮件，那 Vercel Labs 最近在 GitHub 上悄悄开源的这两个项目，绝对值得你关注：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;eve 营销智能体团队模板&lt;/strong&gt;：项目地址为 &lt;a href=&quot;https://github.com/vercel-labs/marketing-team-eve-template&quot;&gt;marketing-team-eve-template&lt;/a&gt;&lt;/li&gt;
@@ -4247,6 +4060,193 @@ export const deepseekModel = createOpenAI({
 &lt;/ul&gt;
 &lt;h3&gt;Q3：Vercel 免费额度超标了真的不会偷偷扣我信用卡的钱吗？&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;绝对不会&lt;/strong&gt;。Vercel 个人 Hobby 账户有强制的免费超量保护机制。不管是云端浏览器 Sandbox 使用的 CPU 时间超限，还是 Vercel Blob 的存储空间占满，一旦超出免费上限，系统会直接&lt;strong&gt;暂停服务&lt;/strong&gt;，等待下个计费周期重置。不会在后台产生扣款订单，大可放心玩耍。&lt;/p&gt;
+</content:encoded></item><item><title>Vercel CLI</title><link>https://jieliu.me/posts/aihacks/vercel-cli/</link><guid isPermaLink="true">https://jieliu.me/posts/aihacks/vercel-cli/</guid><pubDate>Wed, 05 Aug 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;如果你用过 Vercel（全球流行的前端托管/云平台），一定见过 &lt;code&gt;vercel&lt;/code&gt; 这个命令行工具。它到底是什么？简单说：&lt;strong&gt;Vercel CLI 是 Vercel 官方出的命令行工具，让你在终端里就能把项目部署上线、管理域名和环境变量，不用去网页上点点点。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;注意：&lt;strong&gt;它不是 AI 智能体，也没有任何 AI 能力&lt;/strong&gt;。它只是一个「云平台遥控器」——负责把你的代码打包、上传、发布到 Vercel 的服务器上。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;一、它能干什么？&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;功能&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;部署上线&lt;/td&gt;
+&lt;td&gt;把本地代码构建后发布到云端，生成可访问的线上地址&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;登录授权&lt;/td&gt;
+&lt;td&gt;设备码登录你的 Vercel 账号&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;管理环境变量&lt;/td&gt;
+&lt;td&gt;添加/查看 API Key 等敏感配置（加密存储）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;绑定域名&lt;/td&gt;
+&lt;td&gt;把自定义域名挂到你的项目上&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;项目管理&lt;/td&gt;
+&lt;td&gt;查看部署记录、项目信息、成员等&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;核心价值：&lt;strong&gt;一切操作可脚本化、可自动化&lt;/strong&gt;，比在网页上手动点击高效得多。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;二、怎么安装？&lt;/h2&gt;
+&lt;p&gt;Vercel CLI 是一个 npm 包，一条命令全局安装：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;npm install -g vercel&lt;/td&gt;
+&lt;td&gt;全局安装 Vercel CLI（需要先装 Node.js）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;vercel --version&lt;/td&gt;
+&lt;td&gt;验证是否安装成功&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;装完登录一次即可：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;vercel login&lt;/td&gt;
+&lt;td&gt;设备码授权登录（浏览器确认）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;vercel whoami&lt;/td&gt;
+&lt;td&gt;查看当前登录的账号&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr /&gt;
+&lt;h2&gt;三、最常用的几个命令&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;vercel deploy --prod&lt;/td&gt;
+&lt;td&gt;部署到生产环境（正式上线）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;vercel env add 变量名 production&lt;/td&gt;
+&lt;td&gt;添加云端环境变量（--value 指定值，--sensitive 加密存储）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;vercel env pull&lt;/td&gt;
+&lt;td&gt;把云端环境变量下载到本地 .env.local&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;vercel link&lt;/td&gt;
+&lt;td&gt;把本地文件夹和云端项目绑定&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;vercel domains add 域名 项目名&lt;/td&gt;
+&lt;td&gt;给项目绑定自定义域名&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;vercel ls&lt;/td&gt;
+&lt;td&gt;查看项目的部署记录&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr /&gt;
+&lt;h2&gt;四、实际应用场景（以部署 AI 智能体为例）&lt;/h2&gt;
+&lt;p&gt;在搭建飞书 AI 营销团队时，整个流程全靠 Vercel CLI 串起来：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;vercel login&lt;/code&gt; 登录&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;vercel link&lt;/code&gt; 绑定云端项目&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;vercel env add DEEPSEEK_API_KEY production --sensitive --yes&lt;/code&gt; 配置大模型密钥&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;vercel deploy --prod --yes&lt;/code&gt; 一键部署上线&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;vercel domains add bot.你的域名.com 项目名&lt;/code&gt; 绑定国内可达域名&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;GitHub 推送 ≠ 部署&lt;/strong&gt;：推送到 GitHub 只是代码备份；要让线上更新，必须执行 &lt;code&gt;vercel deploy&lt;/code&gt;（或配置 Git 集成自动部署）。&lt;/p&gt;
+&lt;h3&gt;让 AI 智能体帮你部署（提示词模板）&lt;/h3&gt;
+&lt;p&gt;不用自己敲命令，把这些提示词直接发给 AI 编程助手（Claude Code / Codex 等），它会自动执行上面的流程：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;① 首次部署上线&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;帮我部署这个项目到 Vercel 生产环境：
+1. 检查 Vercel CLI 是否安装（vercel --version），没有就 npm install -g vercel
+2. 检查是否已登录（vercel whoami），没登录就发起 vercel login 并等我完成设备授权
+3. 执行 vercel link --project &amp;lt;项目名&amp;gt; --yes 绑定云端项目
+4. 执行 vercel deploy --prod --yes 部署上线
+5. 把生成的线上地址告诉我
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;② 配置环境变量（API Key）&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;帮我把 DEEPSEEK_API_KEY 配置到 Vercel 生产环境。密钥在本地 .env.local 里，
+用 vercel env add 添加并加密存储（--sensitive），全程不要打印密钥本身。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;③ 日常更新部署（改完代码重新上线）&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;代码已修改并通过本地验证（pnpm validate）。执行 vercel deploy --prod --yes
+重新部署到生产环境，完成后确认 readyState 为 READY，并告诉我新的线上地址。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;④ 绑定自定义域名&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;帮我把 bot.example.com 绑定到这个项目：先检查 Cloudflare DNS 是否已配好
+CNAME（目标 cname.vercel-dns.com，开启代理），然后用 vercel domains add
+bot.example.com &amp;lt;项目名&amp;gt; 绑定，最后 curl 测试域名返回 200。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;⑤ 一条龙（改代码 + 验证 + 部署）&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;改完这个 bug 后：1) 运行 pnpm validate 确认 0 错误 2) 执行 vercel deploy --prod --yes
+部署 3) 确认线上可用，汇报结果。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;⚠️ 安全提醒：提示词里不要粘贴真实 API Key；密钥只写在本地 &lt;code&gt;.env.local&lt;/code&gt;（已被 .gitignore 忽略），AI 用 &lt;code&gt;vercel env add&lt;/code&gt; 上传时走加密存储。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;部署的三种方式对比&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;概念&lt;/th&gt;
+&lt;th&gt;是什么&lt;/th&gt;
+&lt;th&gt;适用场景&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;vercel deploy&lt;/td&gt;
+&lt;td&gt;手动把本地代码部署上线&lt;/td&gt;
+&lt;td&gt;开发调试、需要手动控制发布节奏&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;eve deploy&lt;/td&gt;
+&lt;td&gt;eve 框架封装的一键部署命令&lt;/td&gt;
+&lt;td&gt;eve 项目专用（部分环境可能报错，如 Windows 下 pnpm 路径问题）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Git 集成部署&lt;/td&gt;
+&lt;td&gt;配置后每次 git push 自动触发部署&lt;/td&gt;
+&lt;td&gt;团队协作、希望「推送即上线」的自动化工作流&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;关键区别&lt;/strong&gt;：GitHub 推送 ≠ 部署。推送到 GitHub 只是代码备份；要让线上更新，必须执行 &lt;code&gt;vercel deploy&lt;/code&gt;，或配置 Git 集成让它自动部署。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;五、不装 CLI 行不行？&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;可以&lt;/strong&gt;。Vercel 网页控制台（dashboard）能完成大部分操作：部署点按钮、环境变量在 Settings 里填、域名在 Settings 里加。&lt;/p&gt;
+&lt;p&gt;CLI 的优势是&lt;strong&gt;效率&lt;/strong&gt;：一条命令替代十几次点击，还能写进脚本自动化。开发者和 AI 智能体（比如让 Agent 帮你部署）都更偏好 CLI 方式。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;总结&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Vercel CLI = 把项目部署到 Vercel 云的命令行遥控器。&lt;/strong&gt; 装一次、登录一次，之后所有部署、配置、域名管理都能在终端里完成，是「云端部署」这件事最顺手的姿势。&lt;/p&gt;
 </content:encoded></item><item><title>14人AI飞书团队</title><link>https://jieliu.me/posts/aihacks/%E6%88%91%E6%8B%9B%E4%BA%86-14-%E4%B8%AAai%E5%91%98%E5%B7%A5/</link><guid isPermaLink="true">https://jieliu.me/posts/aihacks/%E6%88%91%E6%8B%9B%E4%BA%86-14-%E4%B8%AAai%E5%91%98%E5%B7%A5/</guid><pubDate>Wed, 05 Aug 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;今天，我拥有了一支 &lt;strong&gt;14 人的 AI 团队&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;它就住在我飞书的聊天框里。发一条消息，它写文章、查资料、核事实、审稿、排版，还能给我出短视频脚本。&lt;/p&gt;
 &lt;p&gt;更离谱的是：&lt;strong&gt;这 14 个 AI 员工 24 小时待命，成本几乎为零&lt;/strong&gt;。&lt;/p&gt;
@@ -11752,6 +11752,71 @@ https://github.com/zarazhangrui/beautiful-html-templates&lt;/p&gt;
 &lt;li&gt;&lt;strong&gt;下载使用&lt;/strong&gt; — 下载 HTML 文件自行整合&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;作为展示页&lt;/strong&gt; — 作为独立的演示/作品集页面&lt;/li&gt;
 &lt;/ol&gt;
+</content:encoded></item><item><title>Wechat-Converter插件</title><link>https://jieliu.me/posts/workflow/wechat-converter%E6%8F%92%E4%BB%B6/</link><guid isPermaLink="true">https://jieliu.me/posts/workflow/wechat-converter%E6%8F%92%E4%BB%B6/</guid><pubDate>Mon, 04 May 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;最近使用了一款叫「Wechat Converter」的 Obsidian 插件，觉得挺好用的，支持一键将 Obsidian 中的 Markdown 文档推送至微信公众号草稿箱。&lt;/p&gt;
+&lt;p&gt;但由于我网络 IP 经常变化，直接请求微信 API 会被拦截，本文将详细拆解配置代理流程，重点解决代理服务部署问题，让你顺利落地插件功能。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gitee.com/da-qiang-classmate/typora/raw/master/image/20260504184445684.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;h3&gt;获取 AppID 与 AppSecret&lt;/h3&gt;
+&lt;p&gt;在&lt;strong&gt;微信开发者平台&lt;/strong&gt;获取公众号的核心凭证，用于插件与微信 API 对接：&lt;/p&gt;
+&lt;p&gt;进入「我的业务与服务 → 公众号 → 基础信息」，就可以看到「AppID」与「AppSecret」。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h3&gt;部署 CF Worker 服务&lt;/h3&gt;
+&lt;h4&gt;第一步：创建 Cloudflare Worker&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;登录 Cloudflare Dashboard。&lt;/li&gt;
+&lt;li&gt;左侧菜单 &lt;code&gt;计算&lt;/code&gt; → &lt;code&gt;Workers 和 Pages&lt;/code&gt; → &lt;code&gt;创建应用程序&lt;/code&gt; → &lt;code&gt;从 Hello World! 开始&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;为服务命名（建议命名为 &lt;code&gt;wechat-proxy&lt;/code&gt;），点击 &lt;code&gt;部署&lt;/code&gt; 部署初始版本。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr /&gt;
+&lt;h4&gt;第二步：编辑 Worker 代码&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;前往此页面，点击复制 &lt;code&gt;Cloudflare Worker&lt;/code&gt; 方案的完整代理代码。&lt;/li&gt;
+&lt;li&gt;回到 Cloudflare 仪表盘，点击右上角 &lt;code&gt;编辑代码&lt;/code&gt;，&lt;code&gt;删除所有原有代码&lt;/code&gt;，粘贴复制的代码。&lt;/li&gt;
+&lt;li&gt;点击 &lt;code&gt;部署&lt;/code&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr /&gt;
+&lt;h4&gt;第三步：配置微信 IP 白名单&lt;/h4&gt;
+&lt;p&gt;你需要将 Cloudflare 的出口 IP 添加到微信公众号后台。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;登录微信公众号平台&lt;/li&gt;
+&lt;li&gt;进入 &lt;code&gt;设置与开发&lt;/code&gt; → &lt;code&gt;安全中心&lt;/code&gt; → &lt;code&gt;IP 白名单&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;复制以下 IP 列表，粘贴到输入框中并保存：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;173.245.48.0/20
+103.21.244.0/22
+103.22.200.0/22
+103.31.4.0/22
+141.101.64.0/18
+108.162.192.0/18
+190.93.240.0/20
+188.114.96.0/20
+197.234.240.0/22
+198.41.128.0/17
+162.158.0.0/15
+104.16.0.0/13
+104.24.0.0/14
+172.64.0.0/13
+131.0.72.0/22
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;最终插件配置&lt;/h3&gt;
+&lt;p&gt;打开 Obsidian，进入本插件设置页。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;添加账号&lt;/code&gt;：填写「公众号名字」、「AppID」与「AppSecret」。&lt;/li&gt;
+&lt;li&gt;找到 &lt;code&gt;高级设置&lt;/code&gt; → &lt;code&gt;API 代理地址&lt;/code&gt;，填入你的代理 URL。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;注意事项：
+Cloudflare 的 IP 列表可能会偶发变动，若出现连接问题，请查阅 Cloudflare 官方 IP 列表，官方页面同时包含 IPv4 和 IPv6 列表，&lt;strong&gt;请仅复制 IPv4 列表&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;另外，Obsidian不要有 WebP 格式图片。如果你使用 PicList 并安装了压缩插件，图片可能会被自动转换为 WebP 格式，导致推送失败。还有就是正文中不要插入微信以外的超链接。&lt;/p&gt;
+&lt;h3&gt;相关资料&lt;/h3&gt;
+&lt;p&gt;→ Wechat Converter
+https://github.com/DavidLam-oss/obsidian-wechat-converter&lt;/p&gt;
+&lt;p&gt;→ 微信开发者平台
+https://developers.weixin.qq.com/&lt;/p&gt;
+&lt;p&gt;→ 部署替换代码
+https://xiaoweibox.top/chats/wechat-proxy.html&lt;/p&gt;
+&lt;p&gt;→ Cloudflare 官网
+https://dash.cloudflare.com/&lt;/p&gt;
+&lt;p&gt;→ Cloudflare 官方 IP 列表
+https://www.cloudflare.com/ips&lt;/p&gt;
 </content:encoded></item><item><title>B站字幕剪藏OB教程</title><link>https://jieliu.me/posts/technical/bilibili-obsidian-clipper/</link><guid isPermaLink="true">https://jieliu.me/posts/technical/bilibili-obsidian-clipper/</guid><pubDate>Mon, 04 May 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;经常看 B 站学习，想要把课程字幕一键存入 Obsidian 知识库，反复整理复盘？&lt;/p&gt;
 &lt;p&gt;Bilibili Obsidian Clipper 这款浏览器插件完美解决这个痛点，抓取 B 站视频字幕，预览导出 Markdown，还能借助 Obsidian Local REST API 直接一键写入笔记库。&lt;/p&gt;
 &lt;h3&gt;1.安装chrome插件&lt;/h3&gt;
@@ -11870,71 +11935,6 @@ deepseek-v4-flash
 &lt;pre&gt;&lt;code&gt;nslookup kyjl97.github.io
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;解析结果若返回 Cloudflare 节点 IP，即代表 CDN 已成功启用。此时用户访问流程为「用户→CF 节点→源站」，网站访问速度、稳定性与安全性均得到全面提升。&lt;/p&gt;
-</content:encoded></item><item><title>Wechat-Converter插件</title><link>https://jieliu.me/posts/workflow/wechat-converter%E6%8F%92%E4%BB%B6/</link><guid isPermaLink="true">https://jieliu.me/posts/workflow/wechat-converter%E6%8F%92%E4%BB%B6/</guid><pubDate>Mon, 04 May 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;最近使用了一款叫「Wechat Converter」的 Obsidian 插件，觉得挺好用的，支持一键将 Obsidian 中的 Markdown 文档推送至微信公众号草稿箱。&lt;/p&gt;
-&lt;p&gt;但由于我网络 IP 经常变化，直接请求微信 API 会被拦截，本文将详细拆解配置代理流程，重点解决代理服务部署问题，让你顺利落地插件功能。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://gitee.com/da-qiang-classmate/typora/raw/master/image/20260504184445684.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-&lt;h3&gt;获取 AppID 与 AppSecret&lt;/h3&gt;
-&lt;p&gt;在&lt;strong&gt;微信开发者平台&lt;/strong&gt;获取公众号的核心凭证，用于插件与微信 API 对接：&lt;/p&gt;
-&lt;p&gt;进入「我的业务与服务 → 公众号 → 基础信息」，就可以看到「AppID」与「AppSecret」。&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h3&gt;部署 CF Worker 服务&lt;/h3&gt;
-&lt;h4&gt;第一步：创建 Cloudflare Worker&lt;/h4&gt;
-&lt;ol&gt;
-&lt;li&gt;登录 Cloudflare Dashboard。&lt;/li&gt;
-&lt;li&gt;左侧菜单 &lt;code&gt;计算&lt;/code&gt; → &lt;code&gt;Workers 和 Pages&lt;/code&gt; → &lt;code&gt;创建应用程序&lt;/code&gt; → &lt;code&gt;从 Hello World! 开始&lt;/code&gt;。&lt;/li&gt;
-&lt;li&gt;为服务命名（建议命名为 &lt;code&gt;wechat-proxy&lt;/code&gt;），点击 &lt;code&gt;部署&lt;/code&gt; 部署初始版本。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;hr /&gt;
-&lt;h4&gt;第二步：编辑 Worker 代码&lt;/h4&gt;
-&lt;ol&gt;
-&lt;li&gt;前往此页面，点击复制 &lt;code&gt;Cloudflare Worker&lt;/code&gt; 方案的完整代理代码。&lt;/li&gt;
-&lt;li&gt;回到 Cloudflare 仪表盘，点击右上角 &lt;code&gt;编辑代码&lt;/code&gt;，&lt;code&gt;删除所有原有代码&lt;/code&gt;，粘贴复制的代码。&lt;/li&gt;
-&lt;li&gt;点击 &lt;code&gt;部署&lt;/code&gt;。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;hr /&gt;
-&lt;h4&gt;第三步：配置微信 IP 白名单&lt;/h4&gt;
-&lt;p&gt;你需要将 Cloudflare 的出口 IP 添加到微信公众号后台。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;登录微信公众号平台&lt;/li&gt;
-&lt;li&gt;进入 &lt;code&gt;设置与开发&lt;/code&gt; → &lt;code&gt;安全中心&lt;/code&gt; → &lt;code&gt;IP 白名单&lt;/code&gt;。&lt;/li&gt;
-&lt;li&gt;复制以下 IP 列表，粘贴到输入框中并保存：&lt;/li&gt;
-&lt;/ol&gt;
-&lt;pre&gt;&lt;code&gt;173.245.48.0/20
-103.21.244.0/22
-103.22.200.0/22
-103.31.4.0/22
-141.101.64.0/18
-108.162.192.0/18
-190.93.240.0/20
-188.114.96.0/20
-197.234.240.0/22
-198.41.128.0/17
-162.158.0.0/15
-104.16.0.0/13
-104.24.0.0/14
-172.64.0.0/13
-131.0.72.0/22
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3&gt;最终插件配置&lt;/h3&gt;
-&lt;p&gt;打开 Obsidian，进入本插件设置页。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;添加账号&lt;/code&gt;：填写「公众号名字」、「AppID」与「AppSecret」。&lt;/li&gt;
-&lt;li&gt;找到 &lt;code&gt;高级设置&lt;/code&gt; → &lt;code&gt;API 代理地址&lt;/code&gt;，填入你的代理 URL。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;注意事项：
-Cloudflare 的 IP 列表可能会偶发变动，若出现连接问题，请查阅 Cloudflare 官方 IP 列表，官方页面同时包含 IPv4 和 IPv6 列表，&lt;strong&gt;请仅复制 IPv4 列表&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;另外，Obsidian不要有 WebP 格式图片。如果你使用 PicList 并安装了压缩插件，图片可能会被自动转换为 WebP 格式，导致推送失败。还有就是正文中不要插入微信以外的超链接。&lt;/p&gt;
-&lt;h3&gt;相关资料&lt;/h3&gt;
-&lt;p&gt;→ Wechat Converter
-https://github.com/DavidLam-oss/obsidian-wechat-converter&lt;/p&gt;
-&lt;p&gt;→ 微信开发者平台
-https://developers.weixin.qq.com/&lt;/p&gt;
-&lt;p&gt;→ 部署替换代码
-https://xiaoweibox.top/chats/wechat-proxy.html&lt;/p&gt;
-&lt;p&gt;→ Cloudflare 官网
-https://dash.cloudflare.com/&lt;/p&gt;
-&lt;p&gt;→ Cloudflare 官方 IP 列表
-https://www.cloudflare.com/ips&lt;/p&gt;
 </content:encoded></item><item><title>kami</title><link>https://jieliu.me/posts/aihacks/kami/</link><guid isPermaLink="true">https://jieliu.me/posts/aihacks/kami/</guid><pubDate>Sun, 03 May 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;AI生成文档最大的问题不是内容差，而是排版千篇一律的灰色平庸。&lt;/p&gt;
 &lt;p&gt;Kami（紙）是一个面向AI Agent的文档排版设计系统，用一套约束语言让每份输出都像专业印刷品。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;项目地址&lt;/strong&gt;：https://github.com/tw93/kami&lt;/p&gt;
@@ -13970,74 +13970,6 @@ cd C:\Users\Administrator\AISkills
 &lt;/ol&gt;
 &lt;hr /&gt;
 &lt;p&gt;&lt;strong&gt;参考资料&lt;/strong&gt;：&lt;a href=&quot;https://mp.weixin.qq.com/s/XWS97jr_PwcbbmKkZVqbyw&quot;&gt;点此查看&lt;/a&gt;&lt;/p&gt;
-</content:encoded></item><item><title>push泄露API</title><link>https://jieliu.me/posts/technical/push%E6%B3%84%E9%9C%B2api/</link><guid isPermaLink="true">https://jieliu.me/posts/technical/push%E6%B3%84%E9%9C%B2api/</guid><pubDate>Tue, 21 Apr 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;今天在推送 &lt;code&gt;fuwari&lt;/code&gt; 博客仓库到 GitHub 时，遭遇了一个意料之外但又在情理之中的拦截。GitHub 直接拒绝了我的推送，提示发现了「Secret（密钥）」泄露。经过排查和修复，两个仓库的 API Token 泄露风险已解除。写下这篇文章，既是复盘，也是给有类似经历的朋友一个参考。
-&lt;img src=&quot;https://gitee.com/da-qiang-classmate/typora/raw/master/image/20260421233006929.webp&quot; alt=&quot;image.png&quot; /&gt;&lt;/p&gt;
-&lt;h2&gt;事件回顾&lt;/h2&gt;
-&lt;p&gt;像往常一样，我在 Obsidian 中写完一篇博客后，执行 &lt;code&gt;git push&lt;/code&gt; 准备推送到 GitHub。然而这次推送失败了，错误信息如下：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;remote: error: GH013: Repository rule violations found for refs/heads/main.
-remote:
-remote: - Push cannot contain secrets
-remote:
-remote:  — Notion API Token ——————————————————————————————————
-remote:    locations:
-remote:      - commit: 25f1c5df1c410ba48f6890a8961371de5cf6cef8
-remote:        path: src/content/.obsidian/plugins/share-to-notionnext/data.json:29
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;GitHub 的 &lt;strong&gt;Push Protection（推送保护）&lt;/strong&gt; 功能检测到了我的 Notion API Token 泄露。问题出在 Obsidian 插件 &lt;code&gt;Share to NotionNext&lt;/code&gt; 的配置文件 &lt;code&gt;data.json&lt;/code&gt; 中，我配置了 Notion 的 API 密钥，而这个文件被 Git 跟踪并推送到了远程仓库。&lt;/p&gt;
-&lt;p&gt;有趣的是，同步排查另一个仓库 &lt;code&gt;zhishiku&lt;/code&gt; 时，我发现它虽然也安装了同样的插件、同样包含 API Token，却没有被拦截。这可能是因为 Token 格式（&lt;code&gt;ntn_&lt;/code&gt; 开头）的识别率不同，或者该仓库的 Push Protection 设置没有 fuwari 那么严格。但不管怎样，这确实是一个安全隐患。&lt;/p&gt;
-&lt;h2&gt;问题根因&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;为什么 API Token 会泄露到 GitHub？&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;核心原因是：&lt;strong&gt;Obsidian 的 &lt;code&gt;.obsidian&lt;/code&gt; 目录被 Git 跟踪了。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;.obsidian&lt;/code&gt; 是 Obsidian 的配置目录，里面包含了插件配置、主题设置、工作区状态等信息。当我们安装像 &lt;code&gt;Share to NotionNext&lt;/code&gt; 这类需要 API 密钥的插件时，插件会把配置（包括 Token）保存在 &lt;code&gt;data.json&lt;/code&gt; 文件中。如果这个目录被 Git 跟踪，每次推送都会把这些敏感信息一起送到远程仓库。&lt;/p&gt;
-&lt;p&gt;GitHub 提供了 Secret Scanning（密钥扫描）功能，会自动扫描推送的内容，识别常见的密钥格式（如 AWS Key、Notion Token、OpenAI API Key 等），发现后会拦截推送并通知开发者。这就是为什么 fuwari 仓库被拦截的原因。&lt;/p&gt;
-&lt;h2&gt;解决方案&lt;/h2&gt;
-&lt;h3&gt;方案一：修改 .gitignore（推荐）&lt;/h3&gt;
-&lt;p&gt;最简单有效的方案是把 &lt;code&gt;.obsidian/&lt;/code&gt; 目录加入 &lt;code&gt;.gitignore&lt;/code&gt;，让 Git 忽略这个目录。具体步骤如下：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;在项目根目录的 &lt;code&gt;.gitignore&lt;/code&gt; 文件中添加：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;.obsidian/
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;从 Git 跟踪中移除已存在的 &lt;code&gt;.obsidian&lt;/code&gt; 目录：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;git rm --cached -r .obsidian/
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;提交并推送：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;git add .gitignore
-git commit -m &quot;chore: ignore .obsidian directory&quot;
-git push
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;这样操作后，&lt;code&gt;.obsidian&lt;/code&gt; 目录会保留在本地，但不会被 Git 跟踪，API Token 也就不会再泄露了。&lt;/p&gt;
-&lt;h3&gt;方案二：清理 Git 历史&lt;/h3&gt;
-&lt;p&gt;如果已经推送了包含 Token 的提交，需要从 Git 历史中彻底删除它。可以使用 &lt;code&gt;git filter-repo&lt;/code&gt; 工具：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# 安装工具
-pip install git-filter-repo
-
-# 从历史中移除指定文件
-git filter-repo --path .obsidian/plugins/share-to-notionnext/data.json --invert-paths --force
-
-# 重新添加 remote 并推送
-git remote add origin your-repo-url
-git push --force
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;注意：这种方法会重写 Git 历史，如果与其他开发者共享仓库，需要协调好。&lt;/p&gt;
-&lt;h3&gt;方案三：轮换 API Token&lt;/h3&gt;
-&lt;p&gt;无论采用哪种方案，都建议&lt;strong&gt;重新生成 API Token&lt;/strong&gt;。即使已经修复了泄露问题，旧的 Token 可能已经在某个时刻被恶意获取。前往相关服务的设置页面（如 Notion 集成设置）生成新的密钥，并更新本地配置。&lt;/p&gt;
-&lt;h2&gt;经验总结&lt;/h2&gt;
-&lt;p&gt;这次事件虽然是个「事故」，但也带来了几点有价值的思考：&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;第一，敏感配置一定要排除在 Git 跟踪之外。&lt;/strong&gt; 不只是 &lt;code&gt;.obsidian&lt;/code&gt;，任何包含 API Key、Token、密码的文件都应该加入 &lt;code&gt;.gitignore&lt;/code&gt;。常见的包括 &lt;code&gt;.env&lt;/code&gt;、&lt;code&gt;.env.local&lt;/code&gt;、&lt;code&gt;config/secrets.json&lt;/code&gt; 等。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;第二，GitHub 的 Push Protection 是最后一道防线，而非第一道。&lt;/strong&gt; 这次能被拦截是幸运的，说明 GitHub 的密钥扫描确实在起作用。但并非所有格式的密钥都能被识别，这次 &lt;code&gt;zhishiku&lt;/code&gt; 仓库的 Token 就漏过了扫描。所以不能依赖 GitHub 的保护，自己做好防范才是根本。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;第三，本地配置不影响使用。&lt;/strong&gt; 很多人担心忽略 &lt;code&gt;.obsidian&lt;/code&gt; 后会影响 Obsidian 的功能。实际上 &lt;code&gt;.gitignore&lt;/code&gt; 只是阻止 Git 跟踪，不影响文件的本地存在和使用。插件配置会正常读取本地文件，只是不会同步到远程仓库。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;第四，定期排查仓库安全。&lt;/strong&gt; 建议定期检查自己的仓库是否有敏感信息泄露，可以用 GitHub 的「Secret scanning alerts」功能查看已泄露的密钥（如果有的话）。&lt;/p&gt;
-&lt;h2&gt;附：两个仓库的修复记录&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&quot;https://gitee.com/da-qiang-classmate/typora/raw/master/image/20260422222241120.webp&quot; alt=&quot;image.png&quot; /&gt;&lt;/p&gt;
-&lt;p&gt;修复完成后，两个仓库都安全了，以后再也不用担心 API Token 泄露的问题。&lt;/p&gt;
-&lt;p&gt;文章来源：&lt;a href=&quot;https://kyjl97.github.io/&quot;&gt;kyjl97.github.io&lt;/a&gt;  远程技术支持：&lt;a href=&quot;https://github.com/kyjl97/&quot;&gt;fix.kyjl97.github.io&lt;/a&gt;&lt;/p&gt;
 </content:encoded></item><item><title>OB同步notion插件</title><link>https://jieliu.me/posts/workflow/ob%E5%90%8C%E6%AD%A5notion%E6%8F%92%E4%BB%B6/</link><guid isPermaLink="true">https://jieliu.me/posts/workflow/ob%E5%90%8C%E6%AD%A5notion%E6%8F%92%E4%BB%B6/</guid><pubDate>Tue, 21 Apr 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;我最近发现了一个超好用的 Obsidian 神器，叫 Share to NotionNext！&lt;/p&gt;
 &lt;p&gt;可以直接把Obsidian里的Markdown同步到Notion数据库，还能自动生成NotionNext博客，告别复制粘贴、排版错乱，一篇文章秒发博客。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://gitee.com/da-qiang-classmate/typora/raw/master/image/20260421200259532.webp&quot; alt=&quot;image.png&quot; /&gt;&lt;/p&gt;
@@ -14141,6 +14073,74 @@ https://v.douyin.com/4K4Njgxq0Oc/&lt;/p&gt;
 https://mp.weixin.qq.com/s/kPjIpHmzciWY8_3ettEVsg&lt;/p&gt;
 &lt;p&gt;→NotionNext帮助手册：
 https://docs.tangly1024.com/about&lt;/p&gt;
+</content:encoded></item><item><title>push泄露API</title><link>https://jieliu.me/posts/technical/push%E6%B3%84%E9%9C%B2api/</link><guid isPermaLink="true">https://jieliu.me/posts/technical/push%E6%B3%84%E9%9C%B2api/</guid><pubDate>Tue, 21 Apr 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;今天在推送 &lt;code&gt;fuwari&lt;/code&gt; 博客仓库到 GitHub 时，遭遇了一个意料之外但又在情理之中的拦截。GitHub 直接拒绝了我的推送，提示发现了「Secret（密钥）」泄露。经过排查和修复，两个仓库的 API Token 泄露风险已解除。写下这篇文章，既是复盘，也是给有类似经历的朋友一个参考。
+&lt;img src=&quot;https://gitee.com/da-qiang-classmate/typora/raw/master/image/20260421233006929.webp&quot; alt=&quot;image.png&quot; /&gt;&lt;/p&gt;
+&lt;h2&gt;事件回顾&lt;/h2&gt;
+&lt;p&gt;像往常一样，我在 Obsidian 中写完一篇博客后，执行 &lt;code&gt;git push&lt;/code&gt; 准备推送到 GitHub。然而这次推送失败了，错误信息如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;remote: error: GH013: Repository rule violations found for refs/heads/main.
+remote:
+remote: - Push cannot contain secrets
+remote:
+remote:  — Notion API Token ——————————————————————————————————
+remote:    locations:
+remote:      - commit: 25f1c5df1c410ba48f6890a8961371de5cf6cef8
+remote:        path: src/content/.obsidian/plugins/share-to-notionnext/data.json:29
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;GitHub 的 &lt;strong&gt;Push Protection（推送保护）&lt;/strong&gt; 功能检测到了我的 Notion API Token 泄露。问题出在 Obsidian 插件 &lt;code&gt;Share to NotionNext&lt;/code&gt; 的配置文件 &lt;code&gt;data.json&lt;/code&gt; 中，我配置了 Notion 的 API 密钥，而这个文件被 Git 跟踪并推送到了远程仓库。&lt;/p&gt;
+&lt;p&gt;有趣的是，同步排查另一个仓库 &lt;code&gt;zhishiku&lt;/code&gt; 时，我发现它虽然也安装了同样的插件、同样包含 API Token，却没有被拦截。这可能是因为 Token 格式（&lt;code&gt;ntn_&lt;/code&gt; 开头）的识别率不同，或者该仓库的 Push Protection 设置没有 fuwari 那么严格。但不管怎样，这确实是一个安全隐患。&lt;/p&gt;
+&lt;h2&gt;问题根因&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;为什么 API Token 会泄露到 GitHub？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;核心原因是：&lt;strong&gt;Obsidian 的 &lt;code&gt;.obsidian&lt;/code&gt; 目录被 Git 跟踪了。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;.obsidian&lt;/code&gt; 是 Obsidian 的配置目录，里面包含了插件配置、主题设置、工作区状态等信息。当我们安装像 &lt;code&gt;Share to NotionNext&lt;/code&gt; 这类需要 API 密钥的插件时，插件会把配置（包括 Token）保存在 &lt;code&gt;data.json&lt;/code&gt; 文件中。如果这个目录被 Git 跟踪，每次推送都会把这些敏感信息一起送到远程仓库。&lt;/p&gt;
+&lt;p&gt;GitHub 提供了 Secret Scanning（密钥扫描）功能，会自动扫描推送的内容，识别常见的密钥格式（如 AWS Key、Notion Token、OpenAI API Key 等），发现后会拦截推送并通知开发者。这就是为什么 fuwari 仓库被拦截的原因。&lt;/p&gt;
+&lt;h2&gt;解决方案&lt;/h2&gt;
+&lt;h3&gt;方案一：修改 .gitignore（推荐）&lt;/h3&gt;
+&lt;p&gt;最简单有效的方案是把 &lt;code&gt;.obsidian/&lt;/code&gt; 目录加入 &lt;code&gt;.gitignore&lt;/code&gt;，让 Git 忽略这个目录。具体步骤如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;在项目根目录的 &lt;code&gt;.gitignore&lt;/code&gt; 文件中添加：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.obsidian/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;从 Git 跟踪中移除已存在的 &lt;code&gt;.obsidian&lt;/code&gt; 目录：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git rm --cached -r .obsidian/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;提交并推送：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git add .gitignore
+git commit -m &quot;chore: ignore .obsidian directory&quot;
+git push
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;这样操作后，&lt;code&gt;.obsidian&lt;/code&gt; 目录会保留在本地，但不会被 Git 跟踪，API Token 也就不会再泄露了。&lt;/p&gt;
+&lt;h3&gt;方案二：清理 Git 历史&lt;/h3&gt;
+&lt;p&gt;如果已经推送了包含 Token 的提交，需要从 Git 历史中彻底删除它。可以使用 &lt;code&gt;git filter-repo&lt;/code&gt; 工具：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 安装工具
+pip install git-filter-repo
+
+# 从历史中移除指定文件
+git filter-repo --path .obsidian/plugins/share-to-notionnext/data.json --invert-paths --force
+
+# 重新添加 remote 并推送
+git remote add origin your-repo-url
+git push --force
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;注意：这种方法会重写 Git 历史，如果与其他开发者共享仓库，需要协调好。&lt;/p&gt;
+&lt;h3&gt;方案三：轮换 API Token&lt;/h3&gt;
+&lt;p&gt;无论采用哪种方案，都建议&lt;strong&gt;重新生成 API Token&lt;/strong&gt;。即使已经修复了泄露问题，旧的 Token 可能已经在某个时刻被恶意获取。前往相关服务的设置页面（如 Notion 集成设置）生成新的密钥，并更新本地配置。&lt;/p&gt;
+&lt;h2&gt;经验总结&lt;/h2&gt;
+&lt;p&gt;这次事件虽然是个「事故」，但也带来了几点有价值的思考：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第一，敏感配置一定要排除在 Git 跟踪之外。&lt;/strong&gt; 不只是 &lt;code&gt;.obsidian&lt;/code&gt;，任何包含 API Key、Token、密码的文件都应该加入 &lt;code&gt;.gitignore&lt;/code&gt;。常见的包括 &lt;code&gt;.env&lt;/code&gt;、&lt;code&gt;.env.local&lt;/code&gt;、&lt;code&gt;config/secrets.json&lt;/code&gt; 等。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第二，GitHub 的 Push Protection 是最后一道防线，而非第一道。&lt;/strong&gt; 这次能被拦截是幸运的，说明 GitHub 的密钥扫描确实在起作用。但并非所有格式的密钥都能被识别，这次 &lt;code&gt;zhishiku&lt;/code&gt; 仓库的 Token 就漏过了扫描。所以不能依赖 GitHub 的保护，自己做好防范才是根本。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第三，本地配置不影响使用。&lt;/strong&gt; 很多人担心忽略 &lt;code&gt;.obsidian&lt;/code&gt; 后会影响 Obsidian 的功能。实际上 &lt;code&gt;.gitignore&lt;/code&gt; 只是阻止 Git 跟踪，不影响文件的本地存在和使用。插件配置会正常读取本地文件，只是不会同步到远程仓库。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第四，定期排查仓库安全。&lt;/strong&gt; 建议定期检查自己的仓库是否有敏感信息泄露，可以用 GitHub 的「Secret scanning alerts」功能查看已泄露的密钥（如果有的话）。&lt;/p&gt;
+&lt;h2&gt;附：两个仓库的修复记录&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;https://gitee.com/da-qiang-classmate/typora/raw/master/image/20260422222241120.webp&quot; alt=&quot;image.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;修复完成后，两个仓库都安全了，以后再也不用担心 API Token 泄露的问题。&lt;/p&gt;
+&lt;p&gt;文章来源：&lt;a href=&quot;https://kyjl97.github.io/&quot;&gt;kyjl97.github.io&lt;/a&gt;  远程技术支持：&lt;a href=&quot;https://github.com/kyjl97/&quot;&gt;fix.kyjl97.github.io&lt;/a&gt;&lt;/p&gt;
 </content:encoded></item><item><title>谷歌新产品&amp;功能</title><link>https://jieliu.me/posts/software/google/</link><guid isPermaLink="true">https://jieliu.me/posts/software/google/</guid><pubDate>Mon, 20 Apr 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;这篇文章将在后续的时间里会持续更新谷歌最新推出的一些新产品，不限于各种新品或原本产品的新功能。&lt;/p&gt;
 &lt;h2&gt;产品-Google App&lt;/h2&gt;
 &lt;p&gt;Windows 版下载： &lt;strong&gt;&lt;a href=&quot;https://search.google/google-app/desktop/&quot;&gt;点击前往&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
@@ -19001,6 +19001,66 @@ category: Technical
 &lt;h2&gt;网易爆米花（手机端/TV端）&lt;/h2&gt;
 &lt;p&gt;网易爆米花官网：&lt;a href=&quot;https://bmh.163.com/&quot;&gt;点此直达&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;添加WebDAV，自动刮削&lt;/p&gt;
+</content:encoded></item><item><title>OBS摄像头移动</title><link>https://jieliu.me/posts/workflow/obs%E6%8F%92%E4%BB%B6%E6%91%84%E5%83%8F%E5%A4%B4%E7%A7%BB%E5%8A%A8/</link><guid isPermaLink="true">https://jieliu.me/posts/workflow/obs%E6%8F%92%E4%BB%B6%E6%91%84%E5%83%8F%E5%A4%B4%E7%A7%BB%E5%8A%A8/</guid><description>想让 OBS 摄像头实现「一键移动+一键复位」的平滑效果？不管是直播过场切换、录课构图调整，还是避免画面遮挡，motion-effect 插件都能轻松搞定！无需复杂操作，3 步就能实现精准位移，让你的...</description><pubDate>Thu, 15 Jan 2026 11:20:00 GMT</pubDate><content:encoded>&lt;p&gt;想让 OBS 摄像头实现「一键移动+一键复位」的平滑效果？不管是直播过场切换、录课构图调整，还是避免画面遮挡，motion-effect 插件都能轻松搞定！无需复杂操作，3 步就能实现精准位移，让你的画面切换更专业～&lt;/p&gt;
+&lt;h2&gt;一、插件简介&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;开发者：CatxFish（免费开源）&lt;/li&gt;
+&lt;li&gt;核心功能：画面平滑运动控制（平移、旋转、变焦等），支持往返触发&lt;/li&gt;
+&lt;li&gt;适配设备：绝大多数普通 USB 摄像头、部分 PTZ 摄像头&lt;/li&gt;
+&lt;li&gt;兼容系统：Windows、macOS、Linux&lt;/li&gt;
+&lt;li&gt;项目地址：https://github.com/CatxFish/motion-effect&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;二、安装步骤&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;下载对应系统安装包，解压后将文件放入 obs-studio 主文件夹&lt;/li&gt;
+&lt;li&gt;重启 OBS 完成生效&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;三、前置准备&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;场景名：教程（可自定义）&lt;/li&gt;
+&lt;li&gt;源：摄像头、显示器（按需添加）&lt;/li&gt;
+&lt;li&gt;目标效果：按快捷键 → 摄像头右下移动；再按快捷键 → 摄像头左上返回&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;四、配置流程&lt;/h2&gt;
+&lt;h3&gt;1. 记录初始坐标&lt;/h3&gt;
+&lt;p&gt;右键「源→摄像头」→ 变换→编辑变换，记录初始坐标（示例：1725, 489）&lt;/p&gt;
+&lt;h3&gt;2. 添加运动滤镜&lt;/h3&gt;
+&lt;p&gt;选中场景「教程」→ 右键→滤镜→效果滤镜→左下角「+」→ 选择「Motion」
+命名滤镜（自定义），核心参数配置：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Trigger Behavior 设为「Hotkey (Round trip)」（往返模式）&lt;/li&gt;
+&lt;li&gt;填写记录的初始坐标与目标坐标（示例目标：1735, 539）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;https://gitee.com/da-qiang-classmate/typora/raw/master/image/image-20260117005310134.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;h3&gt;3. 绑定快捷键&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;OBS 顶部→设置→快捷键&lt;/li&gt;
+&lt;li&gt;找到对应滤镜，为「Forward」和「Backward」绑定同一快捷键（示例：Alt+K）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;https://gitee.com/da-qiang-classmate/typora/raw/master/image/image-20260117005511984.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;h2&gt;五、效果说明&lt;/h2&gt;
+&lt;p&gt;&lt;img alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;以上就是 motion-effect 插件的核心配置流程，全程聚焦「快速部署+实用效果」，无需多余步骤！插件轻量开源，兼容主流系统与摄像头，如需调整移动距离、速度或拓展多档位，直接修改坐标与参数即可。&lt;/p&gt;
+&lt;p&gt;✨ &lt;strong&gt;互动时间&lt;/strong&gt;
+你平时用 OBS 做直播/录课时，还遇到过哪些画面调整的难题？欢迎在评论区留言分享，我会一一解答～&lt;/p&gt;
+&lt;p&gt;如果觉得这篇教程对你有帮助，别忘了&lt;strong&gt;点赞+收藏+转发&lt;/strong&gt;三连呀！关注我，后续分享更多OBS 实用技巧、效率工具干货，下次见～ 👋&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;得救之道远程技术支持：fix.kyjl97.github.io&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;+86新注册电报，绕过sms收费
+1、换IP，建议，美 日 新 节点，不建议香港节点。
+2、换客户端，telegramx，或者这两个。
+[telegramx](https://github.com/TGX-Android/Telegram-X/releases) [第三方客户端](https://github.com/forkgram/TelegramAndroid/releases) [飞机旧版](https://www.apkmirror.com/uploads/?devcategory=telegram-fz-llc)
+
+3、卡bug，可以邮箱验证优先邮箱验证。
+
+遇到付费解密强制重启app，多试几次有概率可以跳过。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;+86新注册电报，绕过sms收费&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;1、换IP，建议，美 日 新 节点，不建议香港节点。
+2、换客户端，telegramx，或者这两个。
+&lt;a href=&quot;https://github.com/TGX-Android/Telegram-X/releases&quot;&gt;telegramx&lt;/a&gt; &lt;a href=&quot;https://github.com/forkgram/TelegramAndroid/releases&quot;&gt;第三方客户端&lt;/a&gt; &lt;a href=&quot;https://www.apkmirror.com/uploads/?devcategory=telegram-fz-llc&quot;&gt;飞机旧版&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;3、卡bug，可以邮箱验证优先邮箱验证。遇到付费解密强制重启app，多试几次有概率可以跳过。&lt;/p&gt;
+&lt;/blockquote&gt;
 </content:encoded></item><item><title>Passkeys密钥详解</title><link>https://jieliu.me/posts/technical/passkeys%E9%80%9A%E8%A1%8C%E5%AF%86%E9%92%A5/</link><guid isPermaLink="true">https://jieliu.me/posts/technical/passkeys%E9%80%9A%E8%A1%8C%E5%AF%86%E9%92%A5/</guid><description>你是否厌倦了记密码？设个简单的不安全，设个复杂的记不住？每次登录还要翻找密码本、或者点那该死的&apos;忘记密码&apos;？这几天测试了一圈Passkeys（通行密钥），我只能...</description><pubDate>Thu, 15 Jan 2026 11:20:00 GMT</pubDate><content:encoded>&lt;p&gt;你是否厌倦了记密码？设个简单的不安全，设个复杂的记不住？每次登录还要翻找密码本、或者点那该死的&quot;忘记密码&quot;？这几天测试了一圈&lt;strong&gt;Passkeys（通行密钥）&lt;/strong&gt;，我只能说：**真TM牛逼！**以后再也不用记密码了，指纹一按、Face ID 一扫，直接登录，速度那叫一个快！今天就给大家分享这个让密码彻底淘汰的神仙技术。&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;一、什么是 Passkeys？&lt;/h2&gt;
@@ -19163,66 +19223,6 @@ https://www.passkeys.com/websites-with-passkey-support-sites-directory&lt;/p&gt;
 &lt;li&gt;建议配合密码管理器使用，覆盖不支持的场景&lt;/li&gt;
 &lt;li&gt;多设备备份很重要，别只依赖单一设备&lt;/li&gt;
 &lt;/ul&gt;
-</content:encoded></item><item><title>OBS摄像头移动</title><link>https://jieliu.me/posts/workflow/obs%E6%8F%92%E4%BB%B6%E6%91%84%E5%83%8F%E5%A4%B4%E7%A7%BB%E5%8A%A8/</link><guid isPermaLink="true">https://jieliu.me/posts/workflow/obs%E6%8F%92%E4%BB%B6%E6%91%84%E5%83%8F%E5%A4%B4%E7%A7%BB%E5%8A%A8/</guid><description>想让 OBS 摄像头实现「一键移动+一键复位」的平滑效果？不管是直播过场切换、录课构图调整，还是避免画面遮挡，motion-effect 插件都能轻松搞定！无需复杂操作，3 步就能实现精准位移，让你的...</description><pubDate>Thu, 15 Jan 2026 11:20:00 GMT</pubDate><content:encoded>&lt;p&gt;想让 OBS 摄像头实现「一键移动+一键复位」的平滑效果？不管是直播过场切换、录课构图调整，还是避免画面遮挡，motion-effect 插件都能轻松搞定！无需复杂操作，3 步就能实现精准位移，让你的画面切换更专业～&lt;/p&gt;
-&lt;h2&gt;一、插件简介&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;开发者：CatxFish（免费开源）&lt;/li&gt;
-&lt;li&gt;核心功能：画面平滑运动控制（平移、旋转、变焦等），支持往返触发&lt;/li&gt;
-&lt;li&gt;适配设备：绝大多数普通 USB 摄像头、部分 PTZ 摄像头&lt;/li&gt;
-&lt;li&gt;兼容系统：Windows、macOS、Linux&lt;/li&gt;
-&lt;li&gt;项目地址：https://github.com/CatxFish/motion-effect&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;二、安装步骤&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;下载对应系统安装包，解压后将文件放入 obs-studio 主文件夹&lt;/li&gt;
-&lt;li&gt;重启 OBS 完成生效&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2&gt;三、前置准备&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;场景名：教程（可自定义）&lt;/li&gt;
-&lt;li&gt;源：摄像头、显示器（按需添加）&lt;/li&gt;
-&lt;li&gt;目标效果：按快捷键 → 摄像头右下移动；再按快捷键 → 摄像头左上返回&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;四、配置流程&lt;/h2&gt;
-&lt;h3&gt;1. 记录初始坐标&lt;/h3&gt;
-&lt;p&gt;右键「源→摄像头」→ 变换→编辑变换，记录初始坐标（示例：1725, 489）&lt;/p&gt;
-&lt;h3&gt;2. 添加运动滤镜&lt;/h3&gt;
-&lt;p&gt;选中场景「教程」→ 右键→滤镜→效果滤镜→左下角「+」→ 选择「Motion」
-命名滤镜（自定义），核心参数配置：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Trigger Behavior 设为「Hotkey (Round trip)」（往返模式）&lt;/li&gt;
-&lt;li&gt;填写记录的初始坐标与目标坐标（示例目标：1735, 539）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&quot;https://gitee.com/da-qiang-classmate/typora/raw/master/image/image-20260117005310134.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-&lt;h3&gt;3. 绑定快捷键&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;OBS 顶部→设置→快捷键&lt;/li&gt;
-&lt;li&gt;找到对应滤镜，为「Forward」和「Backward」绑定同一快捷键（示例：Alt+K）&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;img src=&quot;https://gitee.com/da-qiang-classmate/typora/raw/master/image/image-20260117005511984.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-&lt;h2&gt;五、效果说明&lt;/h2&gt;
-&lt;p&gt;&lt;img alt=&quot;&quot; /&gt;&lt;/p&gt;
-&lt;p&gt;以上就是 motion-effect 插件的核心配置流程，全程聚焦「快速部署+实用效果」，无需多余步骤！插件轻量开源，兼容主流系统与摄像头，如需调整移动距离、速度或拓展多档位，直接修改坐标与参数即可。&lt;/p&gt;
-&lt;p&gt;✨ &lt;strong&gt;互动时间&lt;/strong&gt;
-你平时用 OBS 做直播/录课时，还遇到过哪些画面调整的难题？欢迎在评论区留言分享，我会一一解答～&lt;/p&gt;
-&lt;p&gt;如果觉得这篇教程对你有帮助，别忘了&lt;strong&gt;点赞+收藏+转发&lt;/strong&gt;三连呀！关注我，后续分享更多OBS 实用技巧、效率工具干货，下次见～ 👋&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;得救之道远程技术支持：fix.kyjl97.github.io&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;+86新注册电报，绕过sms收费
-1、换IP，建议，美 日 新 节点，不建议香港节点。
-2、换客户端，telegramx，或者这两个。
-[telegramx](https://github.com/TGX-Android/Telegram-X/releases) [第三方客户端](https://github.com/forkgram/TelegramAndroid/releases) [飞机旧版](https://www.apkmirror.com/uploads/?devcategory=telegram-fz-llc)
-
-3、卡bug，可以邮箱验证优先邮箱验证。
-
-遇到付费解密强制重启app，多试几次有概率可以跳过。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;+86新注册电报，绕过sms收费&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;1、换IP，建议，美 日 新 节点，不建议香港节点。
-2、换客户端，telegramx，或者这两个。
-&lt;a href=&quot;https://github.com/TGX-Android/Telegram-X/releases&quot;&gt;telegramx&lt;/a&gt; &lt;a href=&quot;https://github.com/forkgram/TelegramAndroid/releases&quot;&gt;第三方客户端&lt;/a&gt; &lt;a href=&quot;https://www.apkmirror.com/uploads/?devcategory=telegram-fz-llc&quot;&gt;飞机旧版&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;3、卡bug，可以邮箱验证优先邮箱验证。遇到付费解密强制重启app，多试几次有概率可以跳过。&lt;/p&gt;
-&lt;/blockquote&gt;
 </content:encoded></item><item><title>WPS软件优化指南</title><link>https://jieliu.me/posts/software/wps%E8%BD%AF%E4%BB%B6%E4%BC%98%E5%8C%96%E6%8C%87%E5%8D%97/</link><guid isPermaLink="true">https://jieliu.me/posts/software/wps%E8%BD%AF%E4%BB%B6%E4%BC%98%E5%8C%96%E6%8C%87%E5%8D%97/</guid><pubDate>Thu, 01 Jan 2026 00:00:00 GMT</pubDate><content:encoded>&lt;h3&gt;干掉资源管理器里面的WPS云盘。&lt;/h3&gt;
 &lt;p&gt;&lt;img src=&quot;https://gitee.com/da-qiang-classmate/typora/raw/master/image/20260811204810407.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;概调看图软件。
@@ -19968,6 +19968,70 @@ https://github.com/dontbesilent2025/dbskill&lt;/p&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+</content:encoded></item><item><title>AgentCLI清单</title><link>https://jieliu.me/posts/aihacks/%E6%88%91%E7%9A%84-agent-cli-%E9%83%A8%E7%BD%B2%E6%B8%85%E5%8D%95%E5%A4%8D%E7%9B%98/</link><guid isPermaLink="true">https://jieliu.me/posts/aihacks/%E6%88%91%E7%9A%84-agent-cli-%E9%83%A8%E7%BD%B2%E6%B8%85%E5%8D%95%E5%A4%8D%E7%9B%98/</guid><pubDate>Thu, 01 Jan 2026 00:00:00 GMT</pubDate><content:encoded>&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;软件&lt;/th&gt;
+&lt;th&gt;状态&lt;/th&gt;
+&lt;th&gt;接口文档&lt;/th&gt;
+&lt;th&gt;备注&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;omp&lt;/td&gt;
+&lt;td&gt;✅&lt;/td&gt;
+&lt;td&gt;/Models&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;OMP%20agent.md&quot;&gt;OMP agent&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;codex&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;借助opencodex&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Grok Build&lt;/td&gt;
+&lt;td&gt;✅&lt;/td&gt;
+&lt;td&gt;借助opencodex&lt;/td&gt;
+&lt;td&gt;时而有点慢&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Claude code&lt;/td&gt;
+&lt;td&gt;✅&lt;/td&gt;
+&lt;td&gt;CC Switch或借助opencodex&lt;/td&gt;
+&lt;td&gt;后者启动命令ocx Claude&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;OpenCode&lt;/td&gt;
+&lt;td&gt;✅&lt;/td&gt;
+&lt;td&gt;CC Switch&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Kimi CLI&lt;/td&gt;
+&lt;td&gt;✅&lt;/td&gt;
+&lt;td&gt;C:\Users\Administrator.kimi-code\config.toml&lt;/td&gt;
+&lt;td&gt;需手动配置 用的小米的API&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Qwen&lt;/td&gt;
+&lt;td&gt;✅&lt;/td&gt;
+&lt;td&gt;C:\Users\Administrator.qwen\settings.json&lt;/td&gt;
+&lt;td&gt;用的小米模型、蚂蚁百灵&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;已卸载&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;gemini cli&lt;/li&gt;
+&lt;li&gt;hermes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;参考资料&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;Qwen%20code.md&quot;&gt;Qwen code&lt;/a&gt; :&lt;a href=&quot;https://qwenlm.github.io/qwen-code-docs/zh/users/configuration/model-providers/&quot;&gt;参照&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;kimi CLI 接口配置：&lt;a href=&quot;https://www.kimi.com/code/docs/kimi-code-cli/configuration/config-files.html&quot;&gt;参照&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </content:encoded></item><item><title>AI使用复盘</title><link>https://jieliu.me/posts/aihacks/%E6%88%91%E7%9A%84-ai-%E7%9C%9F%E5%AE%9E%E4%BD%BF%E7%94%A8%E6%83%85%E5%86%B5%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%A4%8D%E7%9B%98/</link><guid isPermaLink="true">https://jieliu.me/posts/aihacks/%E6%88%91%E7%9A%84-ai-%E7%9C%9F%E5%AE%9E%E4%BD%BF%E7%94%A8%E6%83%85%E5%86%B5%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%A4%8D%E7%9B%98/</guid><pubDate>Thu, 01 Jan 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;我经常在后台收到朋友们的提问：“得救之道，你每天全职在家做自媒体和远程服务，到底是怎么用 AI 的？用到了什么程度？”&lt;/p&gt;
 &lt;p&gt;其实，我不是什么程序员，只是个高中毕业、喜欢折腾工具的普通人。两年前，我也和大家一样，在各种 AI 概念和工具里迷茫，装了一堆软件却不知道能拿它们干什么。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://gitee.com/da-qiang-classmate/typora/raw/master/image/20260810120928795.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
@@ -20037,70 +20101,6 @@ AI 真正强大的地方，&lt;strong&gt;是作为你各种工具链的“粘合
 &lt;p&gt;2，日常用 Codex 做自动化、写脚本、管理项目？这套完整落地实战手册，避开大量踩坑流程：&lt;a href=&quot;https://mp.weixin.qq.com/s/F3HS6BUfTDP0h3rFipoJhA&quot;&gt;点此查看&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;3，需要一对一远程技术支持：
 Codex 安装调试、疑难故障修复、Plus 版本升级、专属 Skill 自动化工作流定制，找我&lt;/p&gt;
-</content:encoded></item><item><title>AgentCLI清单</title><link>https://jieliu.me/posts/aihacks/%E6%88%91%E7%9A%84-agent-cli-%E9%83%A8%E7%BD%B2%E6%B8%85%E5%8D%95%E5%A4%8D%E7%9B%98/</link><guid isPermaLink="true">https://jieliu.me/posts/aihacks/%E6%88%91%E7%9A%84-agent-cli-%E9%83%A8%E7%BD%B2%E6%B8%85%E5%8D%95%E5%A4%8D%E7%9B%98/</guid><pubDate>Thu, 01 Jan 2026 00:00:00 GMT</pubDate><content:encoded>&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;软件&lt;/th&gt;
-&lt;th&gt;状态&lt;/th&gt;
-&lt;th&gt;接口文档&lt;/th&gt;
-&lt;th&gt;备注&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;omp&lt;/td&gt;
-&lt;td&gt;✅&lt;/td&gt;
-&lt;td&gt;/Models&lt;/td&gt;
-&lt;td&gt;&lt;a href=&quot;OMP%20agent.md&quot;&gt;OMP agent&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;codex&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;借助opencodex&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Grok Build&lt;/td&gt;
-&lt;td&gt;✅&lt;/td&gt;
-&lt;td&gt;借助opencodex&lt;/td&gt;
-&lt;td&gt;时而有点慢&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Claude code&lt;/td&gt;
-&lt;td&gt;✅&lt;/td&gt;
-&lt;td&gt;CC Switch或借助opencodex&lt;/td&gt;
-&lt;td&gt;后者启动命令ocx Claude&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;OpenCode&lt;/td&gt;
-&lt;td&gt;✅&lt;/td&gt;
-&lt;td&gt;CC Switch&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Kimi CLI&lt;/td&gt;
-&lt;td&gt;✅&lt;/td&gt;
-&lt;td&gt;C:\Users\Administrator.kimi-code\config.toml&lt;/td&gt;
-&lt;td&gt;需手动配置 用的小米的API&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Qwen&lt;/td&gt;
-&lt;td&gt;✅&lt;/td&gt;
-&lt;td&gt;C:\Users\Administrator.qwen\settings.json&lt;/td&gt;
-&lt;td&gt;用的小米模型、蚂蚁百灵&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;已卸载&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;gemini cli&lt;/li&gt;
-&lt;li&gt;hermes&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;参考资料&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;Qwen%20code.md&quot;&gt;Qwen code&lt;/a&gt; :&lt;a href=&quot;https://qwenlm.github.io/qwen-code-docs/zh/users/configuration/model-providers/&quot;&gt;参照&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;kimi CLI 接口配置：&lt;a href=&quot;https://www.kimi.com/code/docs/kimi-code-cli/configuration/config-files.html&quot;&gt;参照&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
 </content:encoded></item><item><title>AI接管下载器</title><link>https://jieliu.me/posts/aihacks/%E8%AE%A9ai%E6%8E%A5%E7%AE%A1%E4%BD%A0%E7%9A%84%E7%BD%91%E7%9B%98%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/</link><guid isPermaLink="true">https://jieliu.me/posts/aihacks/%E8%AE%A9ai%E6%8E%A5%E7%AE%A1%E4%BD%A0%E7%9A%84%E7%BD%91%E7%9B%98%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/</guid><pubDate>Thu, 01 Jan 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;AI 刚帮你写好一份总结，却得手动复制、另存、再上传到网盘；或者看到一个资源链接，得切到迅雷、开远程下载、盯着进度。&lt;/p&gt;
 &lt;p&gt;只需两步，现在可以直接交给 Agent 办。这篇实测两个接法：一个是让 Agent 用自然语言直接操作你的&lt;strong&gt;夸克网盘&lt;/strong&gt;（存 / 找 / 下 / 分享 / 整理 / 总结，一句话搞定）；一个是把&lt;strong&gt;迅雷&lt;/strong&gt;变成 Agent 能调度的「远程下载器」（扔个链接就下）。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://gitee.com/da-qiang-classmate/typora/raw/master/image/20260808171514389.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
@@ -20776,7 +20776,7 @@ function extractFirstImageIgnoreFrontmatter(content) {
 &lt;h3&gt;操作步骤&lt;/h3&gt;
 &lt;p&gt;下面说下详细操作步骤：&lt;/p&gt;
 &lt;h4&gt;1. 注册魔搭社区并获取 Key&lt;/h4&gt;
-&lt;p&gt;&lt;strong&gt;注册地址&lt;/strong&gt;：&lt;a href=&quot;https://www.modelscope.cn/register?inviteCode=sphinx30&amp;amp;invitorName=sphinx30&quot;&gt;点此直达&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注册地址&lt;/strong&gt;：&lt;a href=&quot;https://jieliu.me&quot;&gt;点此直达&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;可以使用 GitHub 注册登录，需绑定阿里云账号、实名认证。&lt;/p&gt;
 &lt;/blockquote&gt;

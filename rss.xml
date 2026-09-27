@@ -6882,6 +6882,14 @@ LLM Wiki：  原始文档 → LLM 编译成 wiki → 持续更新 → 回答（�
 &lt;p&gt;&lt;em&gt;&amp;gt;/ 更多Agent实战干货
 迎访问我的博客：&lt;a href=&quot;https://kyjl97.github.io/&quot;&gt;kyjl97.github.io&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;文章来源&lt;/strong&gt;：&lt;a href=&quot;https://mp.weixin.qq.com/s/5LkcBS6TvwXEGxIMiA-1jQ&quot;&gt;点此查看&lt;/a&gt;&lt;/p&gt;
+</content:encoded></item><item><title>openlsit最新挂载123云盘</title><link>https://jieliu.me/posts/software/openlsit%E6%9C%80%E6%96%B0%E6%8C%82%E8%BD%BD123%E4%BA%91%E7%9B%98/</link><guid isPermaLink="true">https://jieliu.me/posts/software/openlsit%E6%9C%80%E6%96%B0%E6%8C%82%E8%BD%BD123%E4%BA%91%E7%9B%98/</guid><pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;img src=&quot;https://gitee.com/da-qiang-classmate/typora/raw/master/image/20260726002110405.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;驱动：123云盘开放平台
+网页代理→关闭
+WebDAV 策略*：302重定向
+访问临牌：
+刷新临牌:&lt;/p&gt;
+&lt;p&gt;https://api,oplist.org/获取地址
+123网盘(OAuth2)跳转登录&lt;/p&gt;
 </content:encoded></item><item><title>openlsit云端部署教程</title><link>https://jieliu.me/posts/software/openlsit%E4%BA%91%E7%AB%AF%E9%83%A8%E7%BD%B2/</link><guid isPermaLink="true">https://jieliu.me/posts/software/openlsit%E4%BA%91%E7%AB%AF%E9%83%A8%E7%BD%B2/</guid><description>一款 Windows 上可用的开源提词器，支持语音自动跟读、防截屏和专注模式。</description><pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;雨云
 https://jieliu.me&lt;/p&gt;
 &lt;p&gt;进去选择玩具LXC  20/年  练手用
@@ -6901,14 +6909,6 @@ https://56idc.net/store/toy-vps&lt;/p&gt;
 https://www.litepan.top/&lt;/p&gt;
 &lt;p&gt;OpenList挂载123云盘无法显示内容
 https://www.bilibili.com/video/BV1igMw6XEMu/&lt;/p&gt;
-</content:encoded></item><item><title>openlsit最新挂载123云盘</title><link>https://jieliu.me/posts/software/openlsit%E6%9C%80%E6%96%B0%E6%8C%82%E8%BD%BD123%E4%BA%91%E7%9B%98/</link><guid isPermaLink="true">https://jieliu.me/posts/software/openlsit%E6%9C%80%E6%96%B0%E6%8C%82%E8%BD%BD123%E4%BA%91%E7%9B%98/</guid><pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;img src=&quot;https://gitee.com/da-qiang-classmate/typora/raw/master/image/20260726002110405.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-&lt;p&gt;驱动：123云盘开放平台
-网页代理→关闭
-WebDAV 策略*：302重定向
-访问临牌：
-刷新临牌:&lt;/p&gt;
-&lt;p&gt;https://api,oplist.org/获取地址
-123网盘(OAuth2)跳转登录&lt;/p&gt;
 </content:encoded></item><item><title>自用电脑提示词软件</title><link>https://jieliu.me/posts/software/%E8%87%AA%E7%94%A8%E7%94%B5%E8%84%91%E6%8F%90%E7%A4%BA%E8%AF%8D%E8%BD%AF%E4%BB%B6/</link><guid isPermaLink="true">https://jieliu.me/posts/software/%E8%87%AA%E7%94%A8%E7%94%B5%E8%84%91%E6%8F%90%E7%A4%BA%E8%AF%8D%E8%BD%AF%E4%BB%B6/</guid><description>一款 Windows 上可用的开源提词器，支持语音自动跟读、防截屏和专注模式。</description><pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;最近找到一个挺适合线上会议和录视频使用的开源提词器。它是一个面向 Windows 的桌面提词器，核心思路很简单：把讲稿贴进去，然后在会议、直播或录制时悬浮在屏幕上辅助阅读。&lt;/p&gt;
 &lt;p&gt;项目地址
 https://github.com/pyzskw/meeting-teleprompter
@@ -10633,30 +10633,6 @@ mklink /D &quot;C:\Users\Administrator\.workbuddy\skills&quot; &quot;C:\Users\Ad
 &lt;p&gt;日常用 Codex 做自动化、写脚本、管理项目？这套完整落地实战手册，避开大量踩坑流程：&lt;a href=&quot;https://mp.weixin.qq.com/s/F3HS6BUfTDP0h3rFipoJhA&quot;&gt;点此查看&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;3. 一对一远程技术支持&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;需要一对一远程技术支持：Codex 安装调试、疑难故障修复、Plus 版本升级、专属 Skill 自动化工作流定制，GitHub: https://github.com/kyjl97&lt;/p&gt;
-</content:encoded></item><item><title>博客导航栏抖动修复记</title><link>https://jieliu.me/posts/technical/%E5%AF%BC%E8%88%AA%E6%A0%8F%E6%8A%96%E5%8A%A8%E4%BF%AE%E5%A4%8D%E8%AE%B0/</link><guid isPermaLink="true">https://jieliu.me/posts/technical/%E5%AF%BC%E8%88%AA%E6%A0%8F%E6%8A%96%E5%8A%A8%E4%BF%AE%E5%A4%8D%E8%AE%B0/</guid><pubDate>Sun, 10 May 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;这个 bug 折磨了我好几天。每次点博客导航栏上的链接，其他几个文字就像被电了一下，集体向右哆嗦一下再弹回来。不像什么大问题，但每次看到都很难受。&lt;/p&gt;
-&lt;p&gt;我尝试了不同的模型去修复这个问题，都没有找到真正的元凶&lt;/p&gt;
-&lt;h2&gt;第一回合：怀疑字体&lt;/h2&gt;
-&lt;p&gt;我用的霞鹜文楷是 web font，&lt;code&gt;font-display: swap&lt;/code&gt; 意味着页面先用系统字体渲染，等霞鹜文楷下载完了再替换。两种字体对同一个字母的宽度不一样——&quot;Home&quot;在 Roboto 下可能 42px 宽，霞鹜文楷下变成 47px。这 5px 的差距在 flex 布局里足以把旁边的元素挤开。&lt;/p&gt;
-&lt;p&gt;于是我把导航栏字体全改成了系统字体。心想这下总不会有字体替换了吧？部署上去一看——还在抖。&lt;/p&gt;
-&lt;p&gt;字体不是根因。&lt;/p&gt;
-&lt;h2&gt;第二回合：怀疑 CSS 动画&lt;/h2&gt;
-&lt;p&gt;又检查了全局 CSS，发现几乎所有文字元素都挂了 &lt;code&gt;transition&lt;/code&gt;。是不是点链接时 focus 状态触发了什么动画？把 outline 禁了，把颜色从半透明改成不透明，把 &lt;code&gt;scrollbar-gutter&lt;/code&gt; 设成 &lt;code&gt;stable&lt;/code&gt;……一套组合拳打下去，毫无改善。&lt;/p&gt;
-&lt;p&gt;CSS 动画也不是根因。&lt;/p&gt;
-&lt;h2&gt;第三回合：偶然发现&lt;/h2&gt;
-&lt;p&gt;反复看 Navbar.astro 的代码，突然注意到一行：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;Search client:only=&quot;svelte&quot;&amp;gt;&amp;lt;/Search&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;code&gt;client:only&lt;/code&gt; 在 Astro 里的意思是&quot;这个组件完全跳过服务器渲染&quot;。也就是说，服务器生成的 HTML 里，搜索框的位置只有一个空的占位注释。浏览器拿到 HTML 开始渲染的时候，导航栏右侧是空的。&lt;/p&gt;
-&lt;p&gt;然后 Svelte 在浏览器里初始化完成，搜索框的完整 DOM 突然出现——一个大约 176px 宽的家伙毫无征兆地插进了 &lt;code&gt;flex justify-between&lt;/code&gt; 的布局里。flex 引擎被迫重新分配空间，所有导航链接被挤得集体右移。&lt;/p&gt;
-&lt;p&gt;等用户看到的时候，Svelte 早已初始化完了，文字也回到了正确的位置。整个过程不到 100 毫秒，但肉眼刚好能捕捉到那个&quot;闪&quot;的瞬间。&lt;/p&gt;
-&lt;h2&gt;修复&lt;/h2&gt;
-&lt;p&gt;给 Search 组件外面包了一个固定宽度的容器：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&quot;w-11 lg:w-44 h-11 flex items-center justify-end&quot;&amp;gt;
-    &amp;lt;Search client:only=&quot;svelte&quot;&amp;gt;&amp;lt;/Search&amp;gt;
-&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;不管 Svelte 初始化了没有，这个容器的宽度永远是 176px。布局从一开始就是稳定的。&lt;/p&gt;
-&lt;p&gt;一个宽度的差异，修了好几天。&lt;/p&gt;
 </content:encoded></item><item><title>Claude Code 桥接工具</title><link>https://jieliu.me/posts/aihacks/claude-code-%E6%A1%A5%E6%8E%A5%E5%B7%A5%E5%85%B7/</link><guid isPermaLink="true">https://jieliu.me/posts/aihacks/claude-code-%E6%A1%A5%E6%8E%A5%E5%B7%A5%E5%85%B7/</guid><pubDate>Sun, 10 May 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;很多开发者都有这样一个刚需：正在电脑上用 &lt;strong&gt;Claude Code&lt;/strong&gt; 开发项目，突然临时有事需要离开工位。 、&lt;/p&gt;
 &lt;p&gt;人一走，就没法继续和电脑端的 Claude Code 交互跟进任务。其实现在已有不少解决方案，可以通过技能把 Claude Code 桥接到第三方平台，比如飞书、微信、Telegram。哪怕不在电脑旁，也能随时查看开发进度、远程下发指令操控。&lt;/p&gt;
 &lt;p&gt;weclaw
@@ -10717,6 +10693,30 @@ https://github.com/lc2panda/claude-plugin-wechat&lt;/p&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+</content:encoded></item><item><title>博客导航栏抖动修复记</title><link>https://jieliu.me/posts/technical/%E5%AF%BC%E8%88%AA%E6%A0%8F%E6%8A%96%E5%8A%A8%E4%BF%AE%E5%A4%8D%E8%AE%B0/</link><guid isPermaLink="true">https://jieliu.me/posts/technical/%E5%AF%BC%E8%88%AA%E6%A0%8F%E6%8A%96%E5%8A%A8%E4%BF%AE%E5%A4%8D%E8%AE%B0/</guid><pubDate>Sun, 10 May 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;这个 bug 折磨了我好几天。每次点博客导航栏上的链接，其他几个文字就像被电了一下，集体向右哆嗦一下再弹回来。不像什么大问题，但每次看到都很难受。&lt;/p&gt;
+&lt;p&gt;我尝试了不同的模型去修复这个问题，都没有找到真正的元凶&lt;/p&gt;
+&lt;h2&gt;第一回合：怀疑字体&lt;/h2&gt;
+&lt;p&gt;我用的霞鹜文楷是 web font，&lt;code&gt;font-display: swap&lt;/code&gt; 意味着页面先用系统字体渲染，等霞鹜文楷下载完了再替换。两种字体对同一个字母的宽度不一样——&quot;Home&quot;在 Roboto 下可能 42px 宽，霞鹜文楷下变成 47px。这 5px 的差距在 flex 布局里足以把旁边的元素挤开。&lt;/p&gt;
+&lt;p&gt;于是我把导航栏字体全改成了系统字体。心想这下总不会有字体替换了吧？部署上去一看——还在抖。&lt;/p&gt;
+&lt;p&gt;字体不是根因。&lt;/p&gt;
+&lt;h2&gt;第二回合：怀疑 CSS 动画&lt;/h2&gt;
+&lt;p&gt;又检查了全局 CSS，发现几乎所有文字元素都挂了 &lt;code&gt;transition&lt;/code&gt;。是不是点链接时 focus 状态触发了什么动画？把 outline 禁了，把颜色从半透明改成不透明，把 &lt;code&gt;scrollbar-gutter&lt;/code&gt; 设成 &lt;code&gt;stable&lt;/code&gt;……一套组合拳打下去，毫无改善。&lt;/p&gt;
+&lt;p&gt;CSS 动画也不是根因。&lt;/p&gt;
+&lt;h2&gt;第三回合：偶然发现&lt;/h2&gt;
+&lt;p&gt;反复看 Navbar.astro 的代码，突然注意到一行：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;Search client:only=&quot;svelte&quot;&amp;gt;&amp;lt;/Search&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;client:only&lt;/code&gt; 在 Astro 里的意思是&quot;这个组件完全跳过服务器渲染&quot;。也就是说，服务器生成的 HTML 里，搜索框的位置只有一个空的占位注释。浏览器拿到 HTML 开始渲染的时候，导航栏右侧是空的。&lt;/p&gt;
+&lt;p&gt;然后 Svelte 在浏览器里初始化完成，搜索框的完整 DOM 突然出现——一个大约 176px 宽的家伙毫无征兆地插进了 &lt;code&gt;flex justify-between&lt;/code&gt; 的布局里。flex 引擎被迫重新分配空间，所有导航链接被挤得集体右移。&lt;/p&gt;
+&lt;p&gt;等用户看到的时候，Svelte 早已初始化完了，文字也回到了正确的位置。整个过程不到 100 毫秒，但肉眼刚好能捕捉到那个&quot;闪&quot;的瞬间。&lt;/p&gt;
+&lt;h2&gt;修复&lt;/h2&gt;
+&lt;p&gt;给 Search 组件外面包了一个固定宽度的容器：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&quot;w-11 lg:w-44 h-11 flex items-center justify-end&quot;&amp;gt;
+    &amp;lt;Search client:only=&quot;svelte&quot;&amp;gt;&amp;lt;/Search&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;不管 Svelte 初始化了没有，这个容器的宽度永远是 176px。布局从一开始就是稳定的。&lt;/p&gt;
+&lt;p&gt;一个宽度的差异，修了好几天。&lt;/p&gt;
 </content:encoded></item><item><title>离线安装微软商城软件</title><link>https://jieliu.me/posts/aihacks/win%E5%AE%89%E8%A3%85codex-app/</link><guid isPermaLink="true">https://jieliu.me/posts/aihacks/win%E5%AE%89%E8%A3%85codex-app/</guid><pubDate>Sat, 09 May 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;很多朋友安装了精简版 Windows，却遭遇致命痛点：想装个应用，系统却强行跳转微软商城？&lt;/p&gt;
 &lt;p&gt;Microsoft Store 打不开、下载失败、寸步难行！今天以 &lt;strong&gt;Codex&lt;/strong&gt; 为例，手把手教你离线安装微软商城应用&lt;/p&gt;
 &lt;p&gt;这不仅是解决 Codex 的方案，更是&lt;strong&gt;破解所有微软商城应用安装僵局的终极钥匙&lt;/strong&gt;！&lt;/p&gt;
@@ -11146,119 +11146,6 @@ https://anatomy-livid.vercel.app/&lt;/p&gt;
 主流消费级显卡（如 RTX 3060 12G）也能轻松跑起来！以前跑本地视频生成模型极吃显存，
 现在轻量化方案（GGUF / nvfp4）百花齐放，本地生成视频终于接地气了。
 https://huggingface.co/realrebelai/MiniMax-H3_GGUFs/tree/main&lt;/p&gt;
-</content:encoded></item><item><title>Warp终端测评记录</title><link>https://jieliu.me/posts/software/warp/</link><guid isPermaLink="true">https://jieliu.me/posts/software/warp/</guid><pubDate>Thu, 07 May 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;10小时GitHub狂揽3万星，OpenAI亲自下场成为Founding Sponsor，由Rust原生打造的Warp终端，正在以颠覆性的方式，彻底改写开发者对命令行工具的认知。&lt;/p&gt;
-&lt;h3&gt;安装&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;官网：warp.dev&lt;/li&gt;
-&lt;li&gt;winget安装命令安装&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre&gt;&lt;code&gt;winget install Warp.Warp
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&quot;https://gitee.com/da-qiang-classmate/typora/raw/master/image/20260510004653994.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-&lt;h3&gt;更好主题&lt;/h3&gt;
-&lt;p&gt;在 Warp 里按 &lt;code&gt;Ctrl + ,&lt;/code&gt;  搜索→ Themes&lt;/p&gt;
-&lt;h3&gt;关闭启动提示&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;右下角有个 &lt;strong&gt;&quot;Don&apos;t show again&quot;&lt;/strong&gt; 按钮，直接点它就行。&lt;/li&gt;
-&lt;li&gt;如果点了还弹，设置搜索Warp Agent ，关闭Include agent-executed commands in history&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;img src=&quot;https://gitee.com/da-qiang-classmate/typora/raw/master/image/20260510001737774.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-&lt;h3&gt;cc启动Claude&lt;/h3&gt;
-&lt;p&gt;在 Warp里执行命令&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;notepad $PROFILE
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;然后把这段代码粘贴进去&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;oh-my-posh init pwsh --config &quot;$env:POSH_THEMES_PATH/M365Princess.omp.json&quot; | Invoke-Expression
-
-function cc { claude --dangerously-skip-permissions }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&quot;https://gitee.com/da-qiang-classmate/typora/raw/master/image/20260510005702430.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-&lt;h3&gt;一键右键粘贴&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;安装 &lt;strong&gt;AutoHotkey&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;新建 &lt;code&gt;Warp_RightClick_Paste.ahk&lt;/code&gt;：&lt;/li&gt;
-&lt;/ol&gt;
-&lt;pre&gt;&lt;code&gt;#IfWinActive ahk_exe warp.exe
-~RButton::
-    SendInput ^+v  ; 发送 Ctrl+Shift+V
-    return
-#IfWinActive
-&lt;/code&gt;&lt;/pre&gt;
-&lt;ol&gt;
-&lt;li&gt;运行脚本 → &lt;strong&gt;右键 = 直接粘贴&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3&gt;常用快捷键&lt;/h3&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;快捷键&lt;/th&gt;
-&lt;th&gt;功能说明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;Ctrl + ,&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;打开设置&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;Ctrl + P&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;查看历史输入命令&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;Ctrl + Shift + T&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;新建终端会话&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;Ctrl + Shift + V&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;粘贴&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;Ctrl + Shift + D&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;右拆分窗格&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;Ctrl + Alt + ↑ / ↓&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;切换光标&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;Ctrl + Shift + B&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;显示/隐藏左侧栏&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;体验下来，Warp 的垂直侧边标签体验格外出色，多开 AI Agent 会话一目了然，批量切换工作流也十分顺手。&lt;/p&gt;
-&lt;p&gt;唯一小小的遗憾就是，软件默认右键无法直接一键粘贴，稍微影响日常操作的流畅度。&lt;/p&gt;
-&lt;p&gt;即便有这点小瑕疵，也完全不影响它作为终端工具的综合实力，侧边标签加持下的多会话管理，依旧是重度多开、常驻 AI Agent 用户的绝佳选择。&lt;/p&gt;
-</content:encoded></item><item><title>几个推特有关的插件</title><link>https://jieliu.me/posts/software/%E5%87%A0%E4%B8%AA%E6%8E%A8%E7%89%B9%E6%9C%89%E5%85%B3%E7%9A%84%E6%8F%92%E4%BB%B6/</link><guid isPermaLink="true">https://jieliu.me/posts/software/%E5%87%A0%E4%B8%AA%E6%8E%A8%E7%89%B9%E6%9C%89%E5%85%B3%E7%9A%84%E6%8F%92%E4%BB%B6/</guid><pubDate>Thu, 07 May 2026 00:00:00 GMT</pubDate><content:encoded>&lt;h3&gt;Twitter Video&lt;/h3&gt;
-&lt;p&gt;下载推特视频
-https://chromewebstore.google.com/detail/twitter-videogif-download/lpfalnepgkapbckncailhheiabcjlbje?hl=zh-CN&amp;amp;utm_source=ext_sidebar
-&lt;img src=&quot;https://gitee.com/da-qiang-classmate/typora/raw/master/image/20260507004604717.png&quot; alt=&quot;image.png&quot; /&gt;&lt;/p&gt;
-&lt;h3&gt;X 爆款监测&lt;/h3&gt;
-&lt;p&gt;调用x内置的Grok生成推文回复
-https://chromewebstore.google.com/detail/x-viral-monitor/dkplofpecmjmbhgjgleeflcnfgfkdfpd
-&lt;img src=&quot;https://gitee.com/da-qiang-classmate/typora/raw/master/image/20260507004215890.png&quot; alt=&quot;image.png&quot; /&gt;
-监控当前页面热点
-&lt;img src=&quot;https://gitee.com/da-qiang-classmate/typora/raw/master/image/20260507004423972.png&quot; alt=&quot;image.png&quot; /&gt;&lt;/p&gt;
-&lt;h3&gt;XHunt&lt;/h3&gt;
-&lt;p&gt;监控web3推文&lt;/p&gt;
-&lt;h3&gt;x-capture&lt;/h3&gt;
-&lt;p&gt;一键从 X/Twitter 里的提示词推文提取结构化 Prompt
-https://x.com/LouwlouAiDev/status/2051932155505516861
-https://github.com/denghuichao/x-capture&lt;/p&gt;
-&lt;h3&gt;两个热帖搜索网站&lt;/h3&gt;
-&lt;p&gt;https://sopilot.net/zh/hot-tweets
-https://x-sou.com/&lt;/p&gt;
-&lt;h3&gt;X Data Scraper&lt;/h3&gt;
-&lt;p&gt;任意页面的数据抓取  &lt;a href=&quot;https://x.com/ttmouse/status/2001941518765183033&quot;&gt;演示&lt;/a&gt;
-https://chromewebstore.google.com/detail/x-data-scraper/icnlkhdghnkbmcfcjjgbmndigmofnocn?hl=en-US&lt;/p&gt;
-&lt;h3&gt;Twillot&lt;/h3&gt;
-&lt;p&gt;实现书签的搜索功能 找推文方便很多  &lt;a href=&quot;https://x.com/0x17B/status/1497889044227067904&quot;&gt;高级技巧&lt;/a&gt;
-https://chromewebstore.google.com/detail/twillot-your-twitter-orga/flkokionhgagpmnhlngldhbfnblmenen
-网页⬇️
-https://x.com/0x17B/status/1497889044227067904&lt;/p&gt;
-&lt;h3&gt;# Minimal&lt;/h3&gt;
-&lt;p&gt;自定义界面，消除干扰，获得更简约的外观，在使用 Twitter 时更加专注和高效
-https://chromewebstore.google.com/detail/minimal-theme-for-twitter/pobhoodpcipjmedfenaigbeloiidbflp&lt;/p&gt;
 </content:encoded></item><item><title>复现Karpathy的LLM Wiki</title><link>https://jieliu.me/posts/workflow/%E5%A4%8D%E7%8E%B0karpathy%E7%9A%84llm-wiki/</link><guid isPermaLink="true">https://jieliu.me/posts/workflow/%E5%A4%8D%E7%8E%B0karpathy%E7%9A%84llm-wiki/</guid><pubDate>Thu, 07 May 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;AI 时代最大的讽刺：我们拥有了最强大的知识处理工具，却仍在用最原始的方式管理知识。&lt;/p&gt;
 &lt;p&gt;前 Tesla AI 总监 Karpathy 给出了他的答案——&lt;strong&gt;LLM Wiki&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;这套框架近期在 GitHub 上引发广泛关注。仔细研读后，我发现它的核心价值不在于技术实现，而在于一套关于&lt;strong&gt;知识组织的理念与行为准则&lt;/strong&gt;——门槛极低，却能带来质的飞跃。&lt;/p&gt;
@@ -11454,6 +11341,119 @@ updated: &quot;2026-05-07&quot;
 &lt;p&gt;Karpathy 的 LLM Wiki 框架，本质是把知识管理从&quot;每次查询时重新派生&quot;变成&quot;编译一次，保持最新&quot;。&lt;/p&gt;
 &lt;p&gt;这才是真正的&lt;strong&gt;可复利&lt;/strong&gt;知识层。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;工具会变，但这套方法论值得长期践行!&lt;/strong&gt;&lt;/p&gt;
+</content:encoded></item><item><title>Warp终端测评记录</title><link>https://jieliu.me/posts/software/warp/</link><guid isPermaLink="true">https://jieliu.me/posts/software/warp/</guid><pubDate>Thu, 07 May 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;10小时GitHub狂揽3万星，OpenAI亲自下场成为Founding Sponsor，由Rust原生打造的Warp终端，正在以颠覆性的方式，彻底改写开发者对命令行工具的认知。&lt;/p&gt;
+&lt;h3&gt;安装&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;官网：warp.dev&lt;/li&gt;
+&lt;li&gt;winget安装命令安装&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;winget install Warp.Warp
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&quot;https://gitee.com/da-qiang-classmate/typora/raw/master/image/20260510004653994.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;h3&gt;更好主题&lt;/h3&gt;
+&lt;p&gt;在 Warp 里按 &lt;code&gt;Ctrl + ,&lt;/code&gt;  搜索→ Themes&lt;/p&gt;
+&lt;h3&gt;关闭启动提示&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;右下角有个 &lt;strong&gt;&quot;Don&apos;t show again&quot;&lt;/strong&gt; 按钮，直接点它就行。&lt;/li&gt;
+&lt;li&gt;如果点了还弹，设置搜索Warp Agent ，关闭Include agent-executed commands in history&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;https://gitee.com/da-qiang-classmate/typora/raw/master/image/20260510001737774.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;h3&gt;cc启动Claude&lt;/h3&gt;
+&lt;p&gt;在 Warp里执行命令&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;notepad $PROFILE
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然后把这段代码粘贴进去&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;oh-my-posh init pwsh --config &quot;$env:POSH_THEMES_PATH/M365Princess.omp.json&quot; | Invoke-Expression
+
+function cc { claude --dangerously-skip-permissions }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&quot;https://gitee.com/da-qiang-classmate/typora/raw/master/image/20260510005702430.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;h3&gt;一键右键粘贴&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;安装 &lt;strong&gt;AutoHotkey&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;新建 &lt;code&gt;Warp_RightClick_Paste.ahk&lt;/code&gt;：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;#IfWinActive ahk_exe warp.exe
+~RButton::
+    SendInput ^+v  ; 发送 Ctrl+Shift+V
+    return
+#IfWinActive
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;运行脚本 → &lt;strong&gt;右键 = 直接粘贴&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;常用快捷键&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;快捷键&lt;/th&gt;
+&lt;th&gt;功能说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Ctrl + ,&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;打开设置&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Ctrl + P&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查看历史输入命令&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Ctrl + Shift + T&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;新建终端会话&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Ctrl + Shift + V&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;粘贴&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Ctrl + Shift + D&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;右拆分窗格&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Ctrl + Alt + ↑ / ↓&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;切换光标&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Ctrl + Shift + B&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;显示/隐藏左侧栏&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;体验下来，Warp 的垂直侧边标签体验格外出色，多开 AI Agent 会话一目了然，批量切换工作流也十分顺手。&lt;/p&gt;
+&lt;p&gt;唯一小小的遗憾就是，软件默认右键无法直接一键粘贴，稍微影响日常操作的流畅度。&lt;/p&gt;
+&lt;p&gt;即便有这点小瑕疵，也完全不影响它作为终端工具的综合实力，侧边标签加持下的多会话管理，依旧是重度多开、常驻 AI Agent 用户的绝佳选择。&lt;/p&gt;
+</content:encoded></item><item><title>几个推特有关的插件</title><link>https://jieliu.me/posts/software/%E5%87%A0%E4%B8%AA%E6%8E%A8%E7%89%B9%E6%9C%89%E5%85%B3%E7%9A%84%E6%8F%92%E4%BB%B6/</link><guid isPermaLink="true">https://jieliu.me/posts/software/%E5%87%A0%E4%B8%AA%E6%8E%A8%E7%89%B9%E6%9C%89%E5%85%B3%E7%9A%84%E6%8F%92%E4%BB%B6/</guid><pubDate>Thu, 07 May 2026 00:00:00 GMT</pubDate><content:encoded>&lt;h3&gt;Twitter Video&lt;/h3&gt;
+&lt;p&gt;下载推特视频
+https://chromewebstore.google.com/detail/twitter-videogif-download/lpfalnepgkapbckncailhheiabcjlbje?hl=zh-CN&amp;amp;utm_source=ext_sidebar
+&lt;img src=&quot;https://gitee.com/da-qiang-classmate/typora/raw/master/image/20260507004604717.png&quot; alt=&quot;image.png&quot; /&gt;&lt;/p&gt;
+&lt;h3&gt;X 爆款监测&lt;/h3&gt;
+&lt;p&gt;调用x内置的Grok生成推文回复
+https://chromewebstore.google.com/detail/x-viral-monitor/dkplofpecmjmbhgjgleeflcnfgfkdfpd
+&lt;img src=&quot;https://gitee.com/da-qiang-classmate/typora/raw/master/image/20260507004215890.png&quot; alt=&quot;image.png&quot; /&gt;
+监控当前页面热点
+&lt;img src=&quot;https://gitee.com/da-qiang-classmate/typora/raw/master/image/20260507004423972.png&quot; alt=&quot;image.png&quot; /&gt;&lt;/p&gt;
+&lt;h3&gt;XHunt&lt;/h3&gt;
+&lt;p&gt;监控web3推文&lt;/p&gt;
+&lt;h3&gt;x-capture&lt;/h3&gt;
+&lt;p&gt;一键从 X/Twitter 里的提示词推文提取结构化 Prompt
+https://x.com/LouwlouAiDev/status/2051932155505516861
+https://github.com/denghuichao/x-capture&lt;/p&gt;
+&lt;h3&gt;两个热帖搜索网站&lt;/h3&gt;
+&lt;p&gt;https://sopilot.net/zh/hot-tweets
+https://x-sou.com/&lt;/p&gt;
+&lt;h3&gt;X Data Scraper&lt;/h3&gt;
+&lt;p&gt;任意页面的数据抓取  &lt;a href=&quot;https://x.com/ttmouse/status/2001941518765183033&quot;&gt;演示&lt;/a&gt;
+https://chromewebstore.google.com/detail/x-data-scraper/icnlkhdghnkbmcfcjjgbmndigmofnocn?hl=en-US&lt;/p&gt;
+&lt;h3&gt;Twillot&lt;/h3&gt;
+&lt;p&gt;实现书签的搜索功能 找推文方便很多  &lt;a href=&quot;https://x.com/0x17B/status/1497889044227067904&quot;&gt;高级技巧&lt;/a&gt;
+https://chromewebstore.google.com/detail/twillot-your-twitter-orga/flkokionhgagpmnhlngldhbfnblmenen
+网页⬇️
+https://x.com/0x17B/status/1497889044227067904&lt;/p&gt;
+&lt;h3&gt;# Minimal&lt;/h3&gt;
+&lt;p&gt;自定义界面，消除干扰，获得更简约的外观，在使用 Twitter 时更加专注和高效
+https://chromewebstore.google.com/detail/minimal-theme-for-twitter/pobhoodpcipjmedfenaigbeloiidbflp&lt;/p&gt;
 </content:encoded></item><item><title>张咋啦html模板库</title><link>https://jieliu.me/posts/aihacks/ai-%E5%B9%BB%E7%81%AF%E7%89%87%E6%A8%A1%E6%9D%BF%E5%BA%93/</link><guid isPermaLink="true">https://jieliu.me/posts/aihacks/ai-%E5%B9%BB%E7%81%AF%E7%89%87%E6%A8%A1%E6%9D%BF%E5%BA%93/</guid><pubDate>Wed, 06 May 2026 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
 &lt;p&gt;AI 时代的 HTML 幻灯片模板库，让任何 AI Agent 都能为用户生成精美的演示文稿。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -12380,21 +12380,6 @@ tl.to(&quot;#title&quot;, {
 &lt;li&gt;项目地址：https://github.com/heygen-com/hyperframes&lt;/li&gt;
 &lt;li&gt;作者推文：https://x.com/liu8in/status/2044827628700684463&lt;/li&gt;
 &lt;/ul&gt;
-</content:encoded></item><item><title>Python信息追踪</title><link>https://jieliu.me/posts/technical/%E4%B8%80%E4%B8%AA%E4%BF%A1%E6%81%AF%E8%BF%BD%E8%B8%AA-python-%E8%84%9A%E6%9C%AC/</link><guid isPermaLink="true">https://jieliu.me/posts/technical/%E4%B8%80%E4%B8%AA%E4%BF%A1%E6%81%AF%E8%BF%BD%E8%B8%AA-python-%E8%84%9A%E6%9C%AC/</guid><pubDate>Thu, 30 Apr 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;这个开源项目，你丢一个名字/手机号/IP给它，得到关联的社交媒体账号、归属地、地理位置信息。&lt;/p&gt;
-&lt;p&gt;在 GitHub 已获取 11.8k star。
-项目地址
-https://github.com/HunxByts/GhostTrack&lt;/p&gt;
-&lt;p&gt;仅仅一个 Python 脚本，用来做 IP / 手机号 / 用户名的基础 OSINT 信息收集。&lt;/p&gt;
-&lt;p&gt;三个模块，覆盖常见情报场景：&lt;/p&gt;
-&lt;p&gt;IP Tracker：输入目标 IP，可获取基础地理位置信息，也可以结合 Seeker 等工具做进一步关联分析（例如辅助反查真实 IP）
-Phone Tracker：手机号归属地、运营商信息查询，属于 OSINT 中很常见的基础能力
-Username Tracker：输入用户名，跨多个平台搜索公开账号信息，把分散的社交媒体痕迹拼接起来&lt;/p&gt;
-&lt;p&gt;适合人群：&lt;/p&gt;
-&lt;p&gt;做渗透测试前期信息收集的安全工程师
-学习 OSINT 方法论的安全方向学生
-CTF 比赛中需要快速做信息侦察的选手
-对信息安全和数据关联分析感兴趣的开发者&lt;/p&gt;
-&lt;p&gt;⚠️ 需要强调：该工具仅用于合法授权的安全研究与学习用途，禁止用于任何未经授权的个人追踪或隐私侵犯行为。&lt;/p&gt;
 </content:encoded></item><item><title>Claude与记忆</title><link>https://jieliu.me/posts/aihacks/claudemd%E4%B8%8Ememorymd/</link><guid isPermaLink="true">https://jieliu.me/posts/aihacks/claudemd%E4%B8%8Ememorymd/</guid><description>一个给 AI 看，一个给 AI 记。搞混了，你的 AI 助手就废了。</description><pubDate>Thu, 30 Apr 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;很多人用 Claude Code 写了上百篇文章，但99%的人从来没搞清楚一个最基本的问题：&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;CLAUDE.md 和 MEMORY.md 到底有什么区别？&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;今天用一张表、一个比喻，彻底讲清楚。&lt;/p&gt;
@@ -12745,6 +12730,21 @@ curl -o ~/.claude/CLAUDE.md \
 &lt;p&gt;Karpathy 的核心洞察就一句话：&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;别告诉 AI 怎么做，告诉它什么算做完，然后放手让它跑。&lt;/strong&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
+</content:encoded></item><item><title>Python信息追踪</title><link>https://jieliu.me/posts/technical/%E4%B8%80%E4%B8%AA%E4%BF%A1%E6%81%AF%E8%BF%BD%E8%B8%AA-python-%E8%84%9A%E6%9C%AC/</link><guid isPermaLink="true">https://jieliu.me/posts/technical/%E4%B8%80%E4%B8%AA%E4%BF%A1%E6%81%AF%E8%BF%BD%E8%B8%AA-python-%E8%84%9A%E6%9C%AC/</guid><pubDate>Thu, 30 Apr 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;这个开源项目，你丢一个名字/手机号/IP给它，得到关联的社交媒体账号、归属地、地理位置信息。&lt;/p&gt;
+&lt;p&gt;在 GitHub 已获取 11.8k star。
+项目地址
+https://github.com/HunxByts/GhostTrack&lt;/p&gt;
+&lt;p&gt;仅仅一个 Python 脚本，用来做 IP / 手机号 / 用户名的基础 OSINT 信息收集。&lt;/p&gt;
+&lt;p&gt;三个模块，覆盖常见情报场景：&lt;/p&gt;
+&lt;p&gt;IP Tracker：输入目标 IP，可获取基础地理位置信息，也可以结合 Seeker 等工具做进一步关联分析（例如辅助反查真实 IP）
+Phone Tracker：手机号归属地、运营商信息查询，属于 OSINT 中很常见的基础能力
+Username Tracker：输入用户名，跨多个平台搜索公开账号信息，把分散的社交媒体痕迹拼接起来&lt;/p&gt;
+&lt;p&gt;适合人群：&lt;/p&gt;
+&lt;p&gt;做渗透测试前期信息收集的安全工程师
+学习 OSINT 方法论的安全方向学生
+CTF 比赛中需要快速做信息侦察的选手
+对信息安全和数据关联分析感兴趣的开发者&lt;/p&gt;
+&lt;p&gt;⚠️ 需要强调：该工具仅用于合法授权的安全研究与学习用途，禁止用于任何未经授权的个人追踪或隐私侵犯行为。&lt;/p&gt;
 </content:encoded></item><item><title>ShareX配置全面指南</title><link>https://jieliu.me/posts/software/sharex/</link><guid isPermaLink="true">https://jieliu.me/posts/software/sharex/</guid><pubDate>Thu, 30 Apr 2026 00:00:00 GMT</pubDate><content:encoded>&lt;h3&gt;关闭通知&lt;/h3&gt;
 &lt;p&gt;位置：动作设置→通知
 建议把“任务完成后显示短暂通知”取消打勾
@@ -14141,37 +14141,6 @@ https://v.douyin.com/4K4Njgxq0Oc/&lt;/p&gt;
 https://mp.weixin.qq.com/s/kPjIpHmzciWY8_3ettEVsg&lt;/p&gt;
 &lt;p&gt;→NotionNext帮助手册：
 https://docs.tangly1024.com/about&lt;/p&gt;
-</content:encoded></item><item><title>谷歌新产品&amp;功能</title><link>https://jieliu.me/posts/software/google/</link><guid isPermaLink="true">https://jieliu.me/posts/software/google/</guid><pubDate>Mon, 20 Apr 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;这篇文章将在后续的时间里会持续更新谷歌最新推出的一些新产品，不限于各种新品或原本产品的新功能。&lt;/p&gt;
-&lt;h2&gt;产品-Google App&lt;/h2&gt;
-&lt;p&gt;Windows 版下载： &lt;strong&gt;&lt;a href=&quot;https://search.google/google-app/desktop/&quot;&gt;点击前往&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;内置的AI模型是Google最新最强的Gemini 3模型，同时内置了AI生图功能，使用的是 Google 最强的Nano Banana 2 模型，可以自由切换需要的功能！&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;使用说明&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Alt+空格&lt;/strong&gt;呼出搜索&lt;/li&gt;
-&lt;li&gt;支持上传图片，文件目前还不支持上传&lt;/li&gt;
-&lt;li&gt;生图的话好像有点问题&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;功能-垂直标签页开启&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;chrome://flags/#vertical-tabs并回车。&lt;/li&gt;
-&lt;li&gt;将右侧的下拉菜单由 &quot;Default&quot; 修改为 &quot;Enabled&quot;，重启浏览器&lt;/li&gt;
-&lt;li&gt;新开标签页，右键标题栏，点击“将标签页移至侧边”&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&quot;https://gitee.com/da-qiang-classmate/typora/raw/master/image/image-20260420211847140.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-&lt;h2&gt;功能-Chrome-Gemini&lt;/h2&gt;
-&lt;p&gt;&lt;em&gt;更新时间：2026/04/20&lt;/em&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;前置条件：魔法美区，&lt;a&gt;点此设置&lt;/a&gt;chrome语言英语&lt;/li&gt;
-&lt;li&gt;关闭chrome浏览器，PowerShell执行命令&lt;/li&gt;
-&lt;/ol&gt;
-&lt;pre&gt;&lt;code&gt;irm https://raw.githubusercontent.com/appsail/Gemini-in-Chrome/main/install.ps1 | iex
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;相关资料&lt;/p&gt;
-&lt;p&gt;https://x.com/AppSaildotDEV/status/2016743176497991798&lt;/p&gt;
-&lt;p&gt;https://github.com/lcandy2/enable-chrome-ai/blob/main/README.zh.md&lt;/p&gt;
-&lt;p&gt;https://x.com/liyue_ai/status/2017259163127304623&lt;/p&gt;
-&lt;p&gt;https://www.youtube.com/watch?v=4Gz2Sxgpv20&lt;/p&gt;
-&lt;p&gt;https://x.com/linxiaobei888/status/2017061177311056343&lt;/p&gt;
 </content:encoded></item><item><title>mklink命令使用指南</title><link>https://jieliu.me/posts/workflow/mklink%E5%91%BD%E4%BB%A4/</link><guid isPermaLink="true">https://jieliu.me/posts/workflow/mklink%E5%91%BD%E4%BB%A4/</guid><pubDate>Mon, 20 Apr 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;你是否遇到过这些问题：想让软件从A目录读取文件，但文件实际存放在B目录？&lt;/p&gt;
 &lt;p&gt;想在多个位置同步同一个文件，又不想每次手动复制？或是想给文件夹创建&quot;替身&quot;，让不同程序都能访问？&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Windows 自带的 mklink 命令，就是解决这些问题的神器。&lt;/strong&gt;&lt;/p&gt;
@@ -14213,6 +14182,37 @@ mklink /h &quot;D:\project2026\zhishiku\QWEN\知识库规范.md&quot; &quot;D:\p
 &lt;li&gt;如果你需要跨盘操作，选择软链接；如果只在同盘内使用，硬链接更稳定&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;掌握这四个命令，你就是Windows文件管理的高手了。&lt;/strong&gt;&lt;/p&gt;
+</content:encoded></item><item><title>谷歌新产品&amp;功能</title><link>https://jieliu.me/posts/software/google/</link><guid isPermaLink="true">https://jieliu.me/posts/software/google/</guid><pubDate>Mon, 20 Apr 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;这篇文章将在后续的时间里会持续更新谷歌最新推出的一些新产品，不限于各种新品或原本产品的新功能。&lt;/p&gt;
+&lt;h2&gt;产品-Google App&lt;/h2&gt;
+&lt;p&gt;Windows 版下载： &lt;strong&gt;&lt;a href=&quot;https://search.google/google-app/desktop/&quot;&gt;点击前往&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;内置的AI模型是Google最新最强的Gemini 3模型，同时内置了AI生图功能，使用的是 Google 最强的Nano Banana 2 模型，可以自由切换需要的功能！&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;使用说明&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Alt+空格&lt;/strong&gt;呼出搜索&lt;/li&gt;
+&lt;li&gt;支持上传图片，文件目前还不支持上传&lt;/li&gt;
+&lt;li&gt;生图的话好像有点问题&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;功能-垂直标签页开启&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;chrome://flags/#vertical-tabs并回车。&lt;/li&gt;
+&lt;li&gt;将右侧的下拉菜单由 &quot;Default&quot; 修改为 &quot;Enabled&quot;，重启浏览器&lt;/li&gt;
+&lt;li&gt;新开标签页，右键标题栏，点击“将标签页移至侧边”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;https://gitee.com/da-qiang-classmate/typora/raw/master/image/image-20260420211847140.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;h2&gt;功能-Chrome-Gemini&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;更新时间：2026/04/20&lt;/em&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;前置条件：魔法美区，&lt;a&gt;点此设置&lt;/a&gt;chrome语言英语&lt;/li&gt;
+&lt;li&gt;关闭chrome浏览器，PowerShell执行命令&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;irm https://raw.githubusercontent.com/appsail/Gemini-in-Chrome/main/install.ps1 | iex
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;相关资料&lt;/p&gt;
+&lt;p&gt;https://x.com/AppSaildotDEV/status/2016743176497991798&lt;/p&gt;
+&lt;p&gt;https://github.com/lcandy2/enable-chrome-ai/blob/main/README.zh.md&lt;/p&gt;
+&lt;p&gt;https://x.com/liyue_ai/status/2017259163127304623&lt;/p&gt;
+&lt;p&gt;https://www.youtube.com/watch?v=4Gz2Sxgpv20&lt;/p&gt;
+&lt;p&gt;https://x.com/linxiaobei888/status/2017061177311056343&lt;/p&gt;
 </content:encoded></item><item><title>cc-sync</title><link>https://jieliu.me/posts/aihacks/cc-sync/</link><guid isPermaLink="true">https://jieliu.me/posts/aihacks/cc-sync/</guid><pubDate>Sat, 18 Apr 2026 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
 &lt;p&gt;换电脑后，你最怕什么？不是装机，而是你和 Claude 聊了半天的代码、需求、方案——全没了。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -14286,31 +14286,6 @@ bash ~/.claude/uninstall.sh
 &lt;p&gt;你和 Claude 聊了半小时的需求、写的代码片段——换台电脑全没了。&lt;/p&gt;
 &lt;p&gt;cc-sync 让你&lt;strong&gt;永远从上次停下的地方继续&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;工具不帮你做事，但帮你少重复做事。&lt;/strong&gt;&lt;/p&gt;
-</content:encoded></item><item><title>UniGetUI包管理工具</title><link>https://jieliu.me/posts/software/unigetui/</link><guid isPermaLink="true">https://jieliu.me/posts/software/unigetui/</guid><pubDate>Sat, 18 Apr 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;重装系统最烦的就是一个个装软件？UniGetUI 直接帮你一键搞定。&lt;/p&gt;
-&lt;p&gt;UniGetUI 是一款开源 GUI 包管理工具，专为 Windows 10/11 设计，统一整合 WinGet、Scoop、Chocolatey、pip、npm、.NET Tool、PowerShell Gallery 等常用命令行包管理器，可视化操作更简单。&lt;/p&gt;
-&lt;p&gt;开源地址：https://github.com/Devolutions/UniGetUI&lt;/p&gt;
-&lt;h2&gt;软件界面&lt;/h2&gt;
-&lt;p&gt;打开 UniGetUI 主界面，布局简洁清晰，核心功能一目了然：发现软件包、软件更新、已安装软件包、软件捆绑包，新手也能快速上手。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://gitee.com/da-qiang-classmate/typora/raw/master/image/image-20260417214231839.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-&lt;h2&gt;备份与导入&lt;/h2&gt;
-&lt;h4&gt;1️⃣ 本地方式&lt;/h4&gt;
-&lt;ol&gt;
-&lt;li&gt;进入已安装的软件标签页&lt;/li&gt;
-&lt;li&gt;勾选需要备份的软件（可全选）&lt;/li&gt;
-&lt;li&gt;点击添加所选项进捆绑包，自动跳转至软件捆绑包页面&lt;/li&gt;
-&lt;li&gt;点击另存为，生成软件捆绑包.ubundle文件&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;新电脑或重装系统后，只需在软件捆绑包页面打开备份文件，即可一键批量安装所有软件，自动下载、自动配置，无需逐个去官网下载安装。&lt;/p&gt;
-&lt;h4&gt;2️⃣ 云端方式&lt;/h4&gt;
-&lt;ol&gt;
-&lt;li&gt;打开 UniGetUI 设置界面&lt;/li&gt;
-&lt;li&gt;进入 &lt;strong&gt;&quot;设置 &amp;gt; 软件包备份&quot;&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;使用 GitHub 帐户登录&lt;/li&gt;
-&lt;li&gt;点击&lt;strong&gt;立即执行云备份&lt;/strong&gt;-备份&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;换新设备后，同样在备份设置中，直接从云端还原即可。&lt;/p&gt;
-&lt;p&gt;以上就是本期全部内容。如果本教程对你有帮助，欢迎点赞、收藏、转发三连，你的支持是我持续更新的动力。&lt;/p&gt;
-&lt;p&gt;Ps. 想要学习AI、提升数字化效率、打造全自动工作流，也欢迎加入我的专属社群：https://t.zsxq.com/d4zSX&lt;/p&gt;
 </content:encoded></item><item><title>Karpathy知识管理方法论</title><link>https://jieliu.me/posts/workflow/karpathy/</link><guid isPermaLink="true">https://jieliu.me/posts/workflow/karpathy/</guid><pubDate>Sat, 18 Apr 2026 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
 &lt;p&gt;告别一盘散沙的笔记，AI让知识真正&quot;活&quot;起来。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -14423,6 +14398,31 @@ AI 维护的知识库，包括摘要、概念页面、关联链接。AI 编写�
 &lt;p&gt;&lt;strong&gt;人类的工作是筛选来源、提出好问题、思考意义。&lt;/strong&gt;
 &lt;strong&gt;其他一切，交给 AI。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;你有自己的知识管理方法吗？评论区聊聊 👇&lt;/em&gt;&lt;/p&gt;
+</content:encoded></item><item><title>UniGetUI包管理工具</title><link>https://jieliu.me/posts/software/unigetui/</link><guid isPermaLink="true">https://jieliu.me/posts/software/unigetui/</guid><pubDate>Sat, 18 Apr 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;重装系统最烦的就是一个个装软件？UniGetUI 直接帮你一键搞定。&lt;/p&gt;
+&lt;p&gt;UniGetUI 是一款开源 GUI 包管理工具，专为 Windows 10/11 设计，统一整合 WinGet、Scoop、Chocolatey、pip、npm、.NET Tool、PowerShell Gallery 等常用命令行包管理器，可视化操作更简单。&lt;/p&gt;
+&lt;p&gt;开源地址：https://github.com/Devolutions/UniGetUI&lt;/p&gt;
+&lt;h2&gt;软件界面&lt;/h2&gt;
+&lt;p&gt;打开 UniGetUI 主界面，布局简洁清晰，核心功能一目了然：发现软件包、软件更新、已安装软件包、软件捆绑包，新手也能快速上手。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gitee.com/da-qiang-classmate/typora/raw/master/image/image-20260417214231839.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;h2&gt;备份与导入&lt;/h2&gt;
+&lt;h4&gt;1️⃣ 本地方式&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;进入已安装的软件标签页&lt;/li&gt;
+&lt;li&gt;勾选需要备份的软件（可全选）&lt;/li&gt;
+&lt;li&gt;点击添加所选项进捆绑包，自动跳转至软件捆绑包页面&lt;/li&gt;
+&lt;li&gt;点击另存为，生成软件捆绑包.ubundle文件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;新电脑或重装系统后，只需在软件捆绑包页面打开备份文件，即可一键批量安装所有软件，自动下载、自动配置，无需逐个去官网下载安装。&lt;/p&gt;
+&lt;h4&gt;2️⃣ 云端方式&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;打开 UniGetUI 设置界面&lt;/li&gt;
+&lt;li&gt;进入 &lt;strong&gt;&quot;设置 &amp;gt; 软件包备份&quot;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;使用 GitHub 帐户登录&lt;/li&gt;
+&lt;li&gt;点击&lt;strong&gt;立即执行云备份&lt;/strong&gt;-备份&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;换新设备后，同样在备份设置中，直接从云端还原即可。&lt;/p&gt;
+&lt;p&gt;以上就是本期全部内容。如果本教程对你有帮助，欢迎点赞、收藏、转发三连，你的支持是我持续更新的动力。&lt;/p&gt;
+&lt;p&gt;Ps. 想要学习AI、提升数字化效率、打造全自动工作流，也欢迎加入我的专属社群：https://t.zsxq.com/d4zSX&lt;/p&gt;
 </content:encoded></item><item><title>免费云主机建站指南</title><link>https://jieliu.me/posts/technical/%E7%BA%A2%E9%83%BD%E4%B8%BB%E6%9C%BA%E6%95%99%E7%A8%8B/</link><guid isPermaLink="true">https://jieliu.me/posts/technical/%E7%BA%A2%E9%83%BD%E4%B8%BB%E6%9C%BA%E6%95%99%E7%A8%8B/</guid><pubDate>Thu, 16 Apr 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;最近上网冲浪的时候，偶然发现了红都主机 —— 一个提供永久免费 PHP 虚拟主机的国内服务商!&lt;/p&gt;
 &lt;p&gt;不用花一分钱就能开通稳定的云虚拟主机，对学生党、个人开发者和想做轻量小站的朋友来说太友好了。&lt;/p&gt;
 &lt;p&gt;今天这篇文章，我就从注册激活到网站上线，手把手教大家用红都主机从零搭建一个属于自己的网站，全程零成本，新手也能轻松上手。&lt;/p&gt;
@@ -17017,73 +17017,6 @@ opencli profile use work       # 选定一个作为默认
 &lt;li&gt;Browser Bridge 文档：&lt;a href=&quot;https://opencli.info/docs/zh/guide/browser-bridge.html&quot;&gt;https://opencli.info/docs/zh/guide/browser-bridge.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;文章来源：&lt;a href=&quot;https://kyjl97.github.io/&quot;&gt;kyjl97.github.io&lt;/a&gt;  远程技术支持：&lt;a href=&quot;https://github.com/kyjl97/&quot;&gt;fix.kyjl97.github.io&lt;/a&gt;&lt;/p&gt;
-</content:encoded></item><item><title>开发Rustdesk编译工具</title><link>https://jieliu.me/posts/technical/rustdesk/</link><guid isPermaLink="true">https://jieliu.me/posts/technical/rustdesk/</guid><pubDate>Mon, 23 Mar 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;作为一名技术爱好者，偶然在闲鱼上刷到定制化的Rustdesk客户端，简洁的界面和实用的功能让我萌生了自研同款编译工具的想法。虽花费数百元向卖家请教却因对方忙碌无疾而终，但也坚定了我靠技术实现需求的决心——最终借助Codex从命令行版本起步，迭代出可视化网页面板的Rustdesk一键编译工具，现将整个开发过程与成果分享如下。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://gitee.com/da-qiang-classmate/typora/raw/master/image/image-20260323223059574.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-&lt;h2&gt;一、成品核心优势&lt;/h2&gt;
-&lt;p&gt;相较于原生Rustdesk，定制编译后的工具在使用体验上做了针对性优化：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;无感连接&lt;/strong&gt;：控制端与客户端建立连接时无感知，无需繁琐确认步骤；&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;免安装特性&lt;/strong&gt;：客户端和控制端均为绿色单文件，无需安装即可运行；&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;隐私化展示&lt;/strong&gt;：控制端界面隐藏设备ID，仅客户端显示ID，兼顾使用便捷性与设备安全性。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2&gt;二、开发环境准备&lt;/h2&gt;
-&lt;p&gt;为保证编译流程的稳定性和兼容性，需提前配置以下开发环境：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;脚本执行环境：PowerShell 7（推荐版本，兼容更多命令）；&lt;/li&gt;
-&lt;li&gt;主开发语言：Python 3.10+（适配第三方库及语法特性）；&lt;/li&gt;
-&lt;li&gt;底层编译依赖：Rust（通过rustup管理版本）、LLVM（clang编译器）；&lt;/li&gt;
-&lt;li&gt;依赖库管理：vcpkg（用于管理C/C++依赖库）；&lt;/li&gt;
-&lt;li&gt;代码拉取工具：Git（获取Rustdesk源码及依赖）。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;三、项目结构梳理&lt;/h2&gt;
-&lt;p&gt;整个编译工具的目录结构清晰划分，便于维护和扩展：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;D:\project2026\rustdesk
-├─ tools\one_click_pack.ps1                     # 命令行版一键出包脚本（核心逻辑）
-├─ tools\pack_web_ui.py                         # 可视化网页面板核心代码
-├─ tools\start_pack_web_ui.ps1                  # 网页面板一键启动脚本
-├─ src\ui\index.tis / index.css / ab.tis        # Rustdesk UI定制化改动文件
-├─ libs\portable\generate.py                    # 便携包生成逻辑
-└─ target\release\rustdesk-portable-packer.exe  # 编译后生成的单文件打包器
-
-C:\Users\Administrator\rustdesk-build-platform\storage\artifacts
-├─ vfun-client-complete                         # 客户端打包素材（资源、配置模板等）
-└─ vfun-controller-complete                     # 控制端打包素材
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2&gt;四、编译流程解析&lt;/h2&gt;
-&lt;p&gt;整个编译过程实现全自动化，仅需输入核心参数即可生成定制化exe文件，流程如下：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;输入客户参数
-   ↓
-one_click_pack.ps1 / 网页面板
-   ↓
-生成 customer.json（client/controller）
-   ↓
-同步 UI 文件到 artifacts
-   ↓
-generate.py 打包
-   ↓
-输出 2 个 exe（客户端 + 控制端）
-&lt;/code&gt;&lt;/pre&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;参数输入&lt;/strong&gt;：在命令行/网页面板中填写域名、公钥、品牌名称、访问密码等定制化参数；&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;脚本触发&lt;/strong&gt;：执行&lt;code&gt;one_click_pack.ps1&lt;/code&gt;命令行脚本或通过网页面板触发编译；&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;配置生成&lt;/strong&gt;：自动生成&lt;code&gt;customer.json&lt;/code&gt;配置文件（区分客户端/控制端参数）；&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;资源同步&lt;/strong&gt;：将定制化UI文件同步到打包素材目录&lt;code&gt;artifacts&lt;/code&gt;；&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;打包编译&lt;/strong&gt;：调用&lt;code&gt;generate.py&lt;/code&gt;执行便携包打包逻辑；&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;成果输出&lt;/strong&gt;：最终生成2个独立exe文件（客户端+控制端）。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3&gt;快速运行方式&lt;/h3&gt;
-&lt;p&gt;只需执行以下PowerShell命令，即可启动可视化网页面板：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;amp; &apos;D:\project2026\rustdesk\tools\start_pack_web_ui.ps1&apos;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2&gt;五、编译成果展示&lt;/h2&gt;
-&lt;p&gt;整个编译流程耗时约4分钟，最终输出按“品牌-类型-时间戳”命名的可执行文件，示例如下：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;得救之道-控制端-20260323-102318.exe&lt;/li&gt;
-&lt;li&gt;得救之道-客户端-20260323-102318.exe&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;目前该工具仅支持Windows版本的Rustdesk控制端/客户端编译，若有定制编译需求，可访问 GitHub https://github.com/kyjl97交流。&lt;/p&gt;
-&lt;h2&gt;六、写在最后&lt;/h2&gt;
-&lt;p&gt;本次开发从闲鱼灵感出发，基于Python、PowerShell等技术栈实现了Rustdesk定制化编译工具，核心优化了连接体验、免安装和隐私展示三大特性；工具实现了从命令行到网页可视化面板的迭代，编译流程自动化，仅需输入核心参数即可快速生成定制化exe文件；项目结构清晰，依赖环境明确，编译耗时约4分钟，仅支持Windows版本的Rustdesk控制端/客户端编译。&lt;/p&gt;
 </content:encoded></item><item><title>NBLM指南</title><link>https://jieliu.me/posts/aihacks/notebooklm/</link><guid isPermaLink="true">https://jieliu.me/posts/aihacks/notebooklm/</guid><pubDate>Mon, 23 Mar 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;NotebookLM 是一个只根据你输入的信息思考的人工智能。 它不像 ChatGPT 那样引用整个互联网的信息，而是读取并回答“只提供你给我的材料”。&lt;/p&gt;
 &lt;p&gt;在咨询通用人工智能关于职业相关事务时，它可能会检测到年龄、工作类型和背景等负面因素，并无意中给出严厉的评价。 NotebookLM 不用担心这些。 他们只会给你你想要申诉的信息，所以他们只会考虑。&lt;/p&gt;
 &lt;p&gt;因此，你输入的信息质量和数量，将决定结果的质量。&lt;/p&gt;
@@ -17205,6 +17138,73 @@ https://www.bilibili.com/video/BV1EDcSzxErw/?spm_id_from=333.1387.favlist.conten
 https://www.biji.com/mine/notes/WPKWeqx2wyV6g4QP&lt;/p&gt;
 &lt;h2&gt;写在最后&lt;/h2&gt;
 &lt;p&gt;当NotebookLM 把 1 小时的学习压缩到 15 分钟，把 3 天的调研缩短到 1 小时，效率差距已不再是努力程度，而是工具选择。从学生到科研人员，从产品经理到内容创作者，这款被《巴伦周刊》称为 “生成式 AI 杀手级应用” 的工具，正在重构知识工作的底层逻辑。现在登录 Google 账号即可免费体验，你的 10 倍效率革命，从上传第一份文档开始。&lt;/p&gt;
+</content:encoded></item><item><title>开发Rustdesk编译工具</title><link>https://jieliu.me/posts/technical/rustdesk/</link><guid isPermaLink="true">https://jieliu.me/posts/technical/rustdesk/</guid><pubDate>Mon, 23 Mar 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;作为一名技术爱好者，偶然在闲鱼上刷到定制化的Rustdesk客户端，简洁的界面和实用的功能让我萌生了自研同款编译工具的想法。虽花费数百元向卖家请教却因对方忙碌无疾而终，但也坚定了我靠技术实现需求的决心——最终借助Codex从命令行版本起步，迭代出可视化网页面板的Rustdesk一键编译工具，现将整个开发过程与成果分享如下。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gitee.com/da-qiang-classmate/typora/raw/master/image/image-20260323223059574.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;h2&gt;一、成品核心优势&lt;/h2&gt;
+&lt;p&gt;相较于原生Rustdesk，定制编译后的工具在使用体验上做了针对性优化：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;无感连接&lt;/strong&gt;：控制端与客户端建立连接时无感知，无需繁琐确认步骤；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;免安装特性&lt;/strong&gt;：客户端和控制端均为绿色单文件，无需安装即可运行；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;隐私化展示&lt;/strong&gt;：控制端界面隐藏设备ID，仅客户端显示ID，兼顾使用便捷性与设备安全性。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;二、开发环境准备&lt;/h2&gt;
+&lt;p&gt;为保证编译流程的稳定性和兼容性，需提前配置以下开发环境：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;脚本执行环境：PowerShell 7（推荐版本，兼容更多命令）；&lt;/li&gt;
+&lt;li&gt;主开发语言：Python 3.10+（适配第三方库及语法特性）；&lt;/li&gt;
+&lt;li&gt;底层编译依赖：Rust（通过rustup管理版本）、LLVM（clang编译器）；&lt;/li&gt;
+&lt;li&gt;依赖库管理：vcpkg（用于管理C/C++依赖库）；&lt;/li&gt;
+&lt;li&gt;代码拉取工具：Git（获取Rustdesk源码及依赖）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;三、项目结构梳理&lt;/h2&gt;
+&lt;p&gt;整个编译工具的目录结构清晰划分，便于维护和扩展：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;D:\project2026\rustdesk
+├─ tools\one_click_pack.ps1                     # 命令行版一键出包脚本（核心逻辑）
+├─ tools\pack_web_ui.py                         # 可视化网页面板核心代码
+├─ tools\start_pack_web_ui.ps1                  # 网页面板一键启动脚本
+├─ src\ui\index.tis / index.css / ab.tis        # Rustdesk UI定制化改动文件
+├─ libs\portable\generate.py                    # 便携包生成逻辑
+└─ target\release\rustdesk-portable-packer.exe  # 编译后生成的单文件打包器
+
+C:\Users\Administrator\rustdesk-build-platform\storage\artifacts
+├─ vfun-client-complete                         # 客户端打包素材（资源、配置模板等）
+└─ vfun-controller-complete                     # 控制端打包素材
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;四、编译流程解析&lt;/h2&gt;
+&lt;p&gt;整个编译过程实现全自动化，仅需输入核心参数即可生成定制化exe文件，流程如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;输入客户参数
+   ↓
+one_click_pack.ps1 / 网页面板
+   ↓
+生成 customer.json（client/controller）
+   ↓
+同步 UI 文件到 artifacts
+   ↓
+generate.py 打包
+   ↓
+输出 2 个 exe（客户端 + 控制端）
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;参数输入&lt;/strong&gt;：在命令行/网页面板中填写域名、公钥、品牌名称、访问密码等定制化参数；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;脚本触发&lt;/strong&gt;：执行&lt;code&gt;one_click_pack.ps1&lt;/code&gt;命令行脚本或通过网页面板触发编译；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;配置生成&lt;/strong&gt;：自动生成&lt;code&gt;customer.json&lt;/code&gt;配置文件（区分客户端/控制端参数）；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;资源同步&lt;/strong&gt;：将定制化UI文件同步到打包素材目录&lt;code&gt;artifacts&lt;/code&gt;；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;打包编译&lt;/strong&gt;：调用&lt;code&gt;generate.py&lt;/code&gt;执行便携包打包逻辑；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;成果输出&lt;/strong&gt;：最终生成2个独立exe文件（客户端+控制端）。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;快速运行方式&lt;/h3&gt;
+&lt;p&gt;只需执行以下PowerShell命令，即可启动可视化网页面板：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;amp; &apos;D:\project2026\rustdesk\tools\start_pack_web_ui.ps1&apos;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;五、编译成果展示&lt;/h2&gt;
+&lt;p&gt;整个编译流程耗时约4分钟，最终输出按“品牌-类型-时间戳”命名的可执行文件，示例如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;得救之道-控制端-20260323-102318.exe&lt;/li&gt;
+&lt;li&gt;得救之道-客户端-20260323-102318.exe&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;目前该工具仅支持Windows版本的Rustdesk控制端/客户端编译，若有定制编译需求，可访问 GitHub https://github.com/kyjl97交流。&lt;/p&gt;
+&lt;h2&gt;六、写在最后&lt;/h2&gt;
+&lt;p&gt;本次开发从闲鱼灵感出发，基于Python、PowerShell等技术栈实现了Rustdesk定制化编译工具，核心优化了连接体验、免安装和隐私展示三大特性；工具实现了从命令行到网页可视化面板的迭代，编译流程自动化，仅需输入核心参数即可快速生成定制化exe文件；项目结构清晰，依赖环境明确，编译耗时约4分钟，仅支持Windows版本的Rustdesk控制端/客户端编译。&lt;/p&gt;
 </content:encoded></item><item><title>零成本搭建在线图床</title><link>https://jieliu.me/posts/technical/%E5%9C%A8%E7%BA%BF%E5%9B%BE%E5%BA%8A%E6%90%AD%E5%BB%BA/</link><guid isPermaLink="true">https://jieliu.me/posts/technical/%E5%9C%A8%E7%BA%BF%E5%9B%BE%E5%BA%8A%E6%90%AD%E5%BB%BA/</guid><pubDate>Sun, 22 Mar 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;90%的博主都不知道！免费100G图床竟比付费的还稳定～ 写文章、做分享时，你是不是也总被图床问题折磨？免费的容量小得可怜，付费的一年要花几百块，更糟的是还常遇到文件失效、大文件传不了的坑，辛苦写的内容全白费！今天就分享一个零成本神方案——用GitHub 4k+星标的开源项目CloudFlare-ImgBed搭配HuggingFace，10分钟快速搭建100G免费图床，无需实名认证、支持大文件自动分片上传，不用额外买服务器，稳定又省心，自媒体、学生、打工人都能用～&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://gitee.com/da-qiang-classmate/typora/raw/master/image/image-20260122014636902.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 &lt;h2&gt;一、工具介绍：CloudFlare-ImgBed&lt;/h2&gt;
@@ -19510,6 +19510,24 @@ wrangler deploy
 &lt;p&gt;如果你是一个既懂技术、又喜欢跟人打交道、不想整天只坐在工位上修 bug 的工程师——FDE 可能是这个时代最适合你的岗位之一。&lt;/p&gt;
 &lt;p&gt;硅谷有句话：&quot;&lt;strong&gt;人人都想造火箭，但没人愿意把火箭开上太空。&lt;/strong&gt;&quot;&lt;/p&gt;
 &lt;p&gt;FDE，就是那个开火箭的人。当然，前提是——你真的想开。&lt;/p&gt;
+</content:encoded></item><item><title>OCGo套餐</title><link>https://jieliu.me/posts/aihacks/opencode-go%E5%A5%97%E9%A4%90%E6%B4%BB%E5%8A%A8/</link><guid isPermaLink="true">https://jieliu.me/posts/aihacks/opencode-go%E5%A5%97%E9%A4%90%E6%B4%BB%E5%8A%A8/</guid><description>DeepSeek API 即将涨价，OpenCode Go 套餐却半价放送，10 刀额度翻倍到等效 120 刀，约 31 万次请求。附配置避坑指南。</description><pubDate>Thu, 01 Jan 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;DeepSeek API 马上要涨价了，这波大家应该都知道了。&lt;/p&gt;
+&lt;p&gt;但我发现一个事——&lt;strong&gt;OpenCode 的 Go 套餐不但没涨，还在半价活动，而且额度翻倍了。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;10 刀套餐，原本每个月给 60 刀等效额度，现在直接翻到 &lt;strong&gt;等效 120 美元&lt;/strong&gt;，差不多 &lt;strong&gt;31 万次请求&lt;/strong&gt;。算下来，比之前便宜了一半还多。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gitee.com/da-qiang-classmate/typora/raw/master/image/cover-deepseek-opencode-20260809-143029.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;h3&gt;✅ 5 折优惠通道&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://opencode.ai/go?ref=9AYD2ZQFJG&quot;&gt;https://opencode.ai/go?ref=9AYD2ZQFJG&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gitee.com/da-qiang-classmate/typora/raw/master/image/d0451d046b390564b049b2ebbad0d9e0.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;h3&gt;⚠️ 配置避坑：记得打开这个开关&lt;/h3&gt;
+&lt;p&gt;订阅完之后，&lt;strong&gt;一定要在 Go 的界面&lt;/strong&gt;，把提供商里面的「&lt;strong&gt;启用部署在中国的模型&lt;/strong&gt;」这个开关打开。&lt;/p&gt;
+&lt;p&gt;如果不打开，你把 API 配置到任何智能体里，都会报 &lt;strong&gt;401、403 或各种诡异的错误&lt;/strong&gt;。我第一次踩坑就折腾了半天。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gitee.com/da-qiang-classmate/typora/raw/master/image/20260809141217543.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;h3&gt;🔧 接入智能体&lt;/h3&gt;
+&lt;p&gt;将 API 接入到自己的智能体。我习惯用 Codex，通过 &lt;a href=&quot;https://mp.weixin.qq.com/s/_pSBZvLVB_-zhlruIKMgCw&quot;&gt;OpenCode&lt;/a&gt; 这个工具来配置，操作很简单：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gitee.com/da-qiang-classmate/typora/raw/master/image/20260809141557253.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;以上。&lt;/p&gt;
+&lt;p&gt;如果对你有所帮助，还望不吝点赞与关注，这也是对我最大的鼓励与支持。&lt;/p&gt;
+&lt;p&gt;如需 Codex 协助安装、报错问题修复、Plus 升级、Skill 工作流定制，找我：&lt;strong&gt;kyjl97&lt;/strong&gt;&lt;/p&gt;
 </content:encoded></item><item><title>Netlify CLI工具</title><link>https://jieliu.me/posts/aihacks/netlify-cli/</link><guid isPermaLink="true">https://jieliu.me/posts/aihacks/netlify-cli/</guid><pubDate>Thu, 01 Jan 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Netlify CLI 是 Netlify 官方提供的命令行工具，允许开发者在本地终端中完成站点的本地运行、配置管理、API 调试和直接部署发布。&lt;/p&gt;
 &lt;p&gt;对于频繁迭代静态网页、单页应用（SPA）或轻量 Serverless 后端的开发者，Netlify CLI 能够极大简化线上控制台的繁琐操作。&lt;/p&gt;
 &lt;hr /&gt;
@@ -19635,24 +19653,6 @@ netlify deploy --dir=./dist --prod
 &lt;pre&gt;&lt;code&gt;$env:http_proxy=&quot;http://127.0.0.1:7890&quot;
 netlify deploy --prod
 &lt;/code&gt;&lt;/pre&gt;
-</content:encoded></item><item><title>OCGo套餐</title><link>https://jieliu.me/posts/aihacks/opencode-go%E5%A5%97%E9%A4%90%E6%B4%BB%E5%8A%A8/</link><guid isPermaLink="true">https://jieliu.me/posts/aihacks/opencode-go%E5%A5%97%E9%A4%90%E6%B4%BB%E5%8A%A8/</guid><description>DeepSeek API 即将涨价，OpenCode Go 套餐却半价放送，10 刀额度翻倍到等效 120 刀，约 31 万次请求。附配置避坑指南。</description><pubDate>Thu, 01 Jan 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;DeepSeek API 马上要涨价了，这波大家应该都知道了。&lt;/p&gt;
-&lt;p&gt;但我发现一个事——&lt;strong&gt;OpenCode 的 Go 套餐不但没涨，还在半价活动，而且额度翻倍了。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;10 刀套餐，原本每个月给 60 刀等效额度，现在直接翻到 &lt;strong&gt;等效 120 美元&lt;/strong&gt;，差不多 &lt;strong&gt;31 万次请求&lt;/strong&gt;。算下来，比之前便宜了一半还多。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://gitee.com/da-qiang-classmate/typora/raw/master/image/cover-deepseek-opencode-20260809-143029.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-&lt;h3&gt;✅ 5 折优惠通道&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&quot;https://opencode.ai/go?ref=9AYD2ZQFJG&quot;&gt;https://opencode.ai/go?ref=9AYD2ZQFJG&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://gitee.com/da-qiang-classmate/typora/raw/master/image/d0451d046b390564b049b2ebbad0d9e0.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-&lt;h3&gt;⚠️ 配置避坑：记得打开这个开关&lt;/h3&gt;
-&lt;p&gt;订阅完之后，&lt;strong&gt;一定要在 Go 的界面&lt;/strong&gt;，把提供商里面的「&lt;strong&gt;启用部署在中国的模型&lt;/strong&gt;」这个开关打开。&lt;/p&gt;
-&lt;p&gt;如果不打开，你把 API 配置到任何智能体里，都会报 &lt;strong&gt;401、403 或各种诡异的错误&lt;/strong&gt;。我第一次踩坑就折腾了半天。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://gitee.com/da-qiang-classmate/typora/raw/master/image/20260809141217543.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-&lt;h3&gt;🔧 接入智能体&lt;/h3&gt;
-&lt;p&gt;将 API 接入到自己的智能体。我习惯用 Codex，通过 &lt;a href=&quot;https://mp.weixin.qq.com/s/_pSBZvLVB_-zhlruIKMgCw&quot;&gt;OpenCode&lt;/a&gt; 这个工具来配置，操作很简单：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://gitee.com/da-qiang-classmate/typora/raw/master/image/20260809141557253.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;以上。&lt;/p&gt;
-&lt;p&gt;如果对你有所帮助，还望不吝点赞与关注，这也是对我最大的鼓励与支持。&lt;/p&gt;
-&lt;p&gt;如需 Codex 协助安装、报错问题修复、Plus 升级、Skill 工作流定制，找我：&lt;strong&gt;kyjl97&lt;/strong&gt;&lt;/p&gt;
 </content:encoded></item><item><title>dbskill使用说明书</title><link>https://jieliu.me/posts/aihacks/dbskill/</link><guid isPermaLink="true">https://jieliu.me/posts/aihacks/dbskill/</guid><pubDate>Thu, 01 Jan 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;dbskill 是一套装在 Agent 里的“商业工具箱”技能，包含 30 个分工明确的子技能（如商业模式诊断、对标研究、内容诊断、知识库搭建、微信号排版等），不管你是分析生意、打磨内容还是搭建工作流，只要说一句“不知道下一步该干嘛”，它就帮你路由到对应的技能。&lt;/p&gt;
 &lt;p&gt;开源地址
 https://github.com/dontbesilent2025/dbskill&lt;/p&gt;

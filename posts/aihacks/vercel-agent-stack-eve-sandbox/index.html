@@ -1,0 +1,649 @@
+<!DOCTYPE html><html lang="zh-CN" class="bg-[var(--page-bg)] text-[12px] md:text-[16px] dark" data-overlayscrollbars-initialize data-astro-cid-sckkx6r4 style="--bannerOffset: 15vh;--banner-height-home: 65vh;--banner-height: 35vh;--configHue: 250;--page-width: 75rem;--bg-url: none;--bg-enable: 0;--bg-position: center;--bg-size: cover;--bg-repeat: no-repeat;--bg-attachment: fixed;--bg-opacity: 1;--configHue: 250;"> <!-- 手机端适配 --> <head><title>Vercel-Agent-Stack-Eve-Sandbox - 得救之道</title><meta name="referrer" content="no-referrer"><meta charset="UTF-8"><meta name="description" content="kyjl97 的个人博客，持续记录学习、工具与成长，探索 AI 工具、自动化、知识管理与写作工作流。"><meta name="author" content="kyjl97"><meta name="keywords" content="得救之道, kyjl97, AI 工具, 知识管理, 个人博客"><meta property="og:site_name" content="得救之道"><meta property="og:url" content="https://jieliu.me/Firefly/posts/aihacks/vercel-agent-stack-eve-sandbox/"><meta property="og:title" content="Vercel-Agent-Stack-Eve-Sandbox - 得救之道"><meta property="og:description" content="kyjl97 的个人博客，持续记录学习、工具与成长，探索 AI 工具、自动化、知识管理与写作工作流。"><meta property="og:type" content="article"><meta name="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://jieliu.me/Firefly/posts/aihacks/vercel-agent-stack-eve-sandbox/"><meta name="twitter:title" content="Vercel-Agent-Stack-Eve-Sandbox - 得救之道"><meta name="twitter:description" content="kyjl97 的个人博客，持续记录学习、工具与成长，探索 AI 工具、自动化、知识管理与写作工作流。"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.7.9"><link rel="canonical" href="https://jieliu.me/Firefly/posts/aihacks/vercel-agent-stack-eve-sandbox/"><link rel="preconnect" href="https://pic1.acofork.com"><link rel="preconnect" href="https://umami.acofork.com"><link rel="preconnect" href="https://support.nodeget.com"><!-- 霞鹜文楷字体已通过 npm 本地化 --><script src="/js/umami-share.js" defer></script><link rel="icon" href="/Firefly/brand-logo.png" sizes="32x32"><!-- Set the theme before the page is rendered to avoid a flash --><script>(function(){const DEFAULT_THEME = "auto";
+const LIGHT_MODE = "light";
+const DARK_MODE = "dark";
+const AUTO_MODE = "auto";
+const BANNER_HEIGHT_EXTEND = 30;
+const PAGE_WIDTH = 75;
+const configHue = 250;
+const forceDarkMode = false;
+
+			// Force dark mode if configured
+			if (forceDarkMode) {
+				document.documentElement.classList.add('dark');
+				localStorage.setItem('theme', DARK_MODE);
+			} else {
+				// Load the theme from local storage
+			const theme = localStorage.getItem('theme') || DEFAULT_THEME;
+			switch (theme) {
+				case LIGHT_MODE:
+					document.documentElement.classList.remove('dark');
+					document.documentElement.style.backgroundColor = '#f5f4ed';
+					break
+				case DARK_MODE:
+					document.documentElement.classList.add('dark');
+					document.documentElement.style.backgroundColor = '#0A0A0A';
+					break
+				case AUTO_MODE:
+					if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+						document.documentElement.classList.add('dark');
+						document.documentElement.style.backgroundColor = '#0A0A0A';
+					} else {
+						document.documentElement.classList.remove('dark');
+						document.documentElement.style.backgroundColor = '#f5f4ed';
+					}
+			}
+			}
+
+			// Load the hue from local storage
+			const hue = localStorage.getItem('hue') || configHue;
+			document.documentElement.style.setProperty('--hue', hue);
+
+			// calculate the --banner-height-extend, which needs to be a multiple of 4 to avoid blurry text
+			let offset = Math.floor(window.innerHeight * (BANNER_HEIGHT_EXTEND / 100));
+			offset = offset - offset % 4;
+			document.documentElement.style.setProperty('--banner-height-extend', `${offset}px`);
+		})();</script><!-- 防止闪烁：立即设置渐变色样式 --><style>
+			/* 导航栏 */
+			.navbar-title-gradient,
+			.navbar-title-gradient-icon,
+			/* 分类组件 */
+			.hacker-icon,
+			.category-title,
+			/* 微信公众号 */
+			.decoration-title,
+			.gradient-text,
+			.gradient-icon {
+				background: linear-gradient(135deg, #0ea5e9, #8b5cf6) !important;
+				-webkit-background-clip: text !important;
+				-webkit-text-fill-color: transparent !important;
+				background-clip: text !important;
+			}
+			html.dark .navbar-title-gradient,
+			html.dark .navbar-title-gradient-icon,
+			html.dark .hacker-icon,
+			html.dark .category-title,
+			html.dark .decoration-title,
+			html.dark .gradient-text,
+			html.dark .gradient-icon {
+				background: linear-gradient(135deg, #38bdf8, #a78bfa) !important;
+				-webkit-background-clip: text !important;
+				-webkit-text-fill-color: transparent !important;
+				background-clip: text !important;
+			}
+			/* 确保卡片背景色 */
+			.card-base {
+				background: oklch(0.97 0.003 268) !important;
+			}
+			html.dark .card-base {
+				background: oklch(0.22 0.008 268) !important;
+			}
+			/* 全局背景色 - 强制羊皮纸色 */
+			html, body, .os-viewport, .os-content {
+				background-color: #f5f4ed !important;
+			}
+			html.dark, html.dark body, html.dark .os-viewport, html.dark .os-content {
+				background-color: #0A0A0A !important;
+			}
+			#bg-box {
+				background-color: #f5f4ed !important;
+				opacity: 0 !important;
+			}
+			html.dark #bg-box {
+				background-color: #0A0A0A !important;
+			}
+		</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Vercel-Agent-Stack-Eve-Sandbox","description":"Vercel-Agent-Stack-Eve-Sandbox","author":{"@type":"Person","name":"kyjl97","url":"https://jieliu.me/"},"datePublished":"2026-08-05","inLanguage":"zh-CN"}</script><link rel="alternate" type="application/rss+xml" title="kyjl97" href="https://jieliu.me/rss.xml"><link rel="stylesheet" href="/Firefly/_astro/Layout.BuewHHUq.css">
+<link rel="stylesheet" href="/Firefly/_astro/Layout.Ds13mcav.css">
+<link rel="stylesheet" href="/Firefly/_astro/_page_.dPc1VzHN.css">
+<style>input.svelte-1mch5eg:focus{outline:0}.search-panel.svelte-1mch5eg{background-color:var(--float-panel-bg-opaque);max-height:calc(100vh - 100px);overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none}.search-panel.svelte-1mch5eg::-webkit-scrollbar{display:none}
+</style>
+<link rel="stylesheet" href="/Firefly/_astro/_slug_.NOlZCIZU.css">
+<link rel="stylesheet" href="/Firefly/_astro/_page_.kGqOPqJz.css">
+<style>.image-content[data-astro-cid-i2xmscho]{transition:transform .3s ease-out}.image-wrapper[data-astro-cid-i2xmscho]:hover .image-content[data-astro-cid-i2xmscho]{transform:scale(1.05)}
+#display-setting.svelte-1rks09j input[type=number]:where(.svelte-1rks09j){-moz-appearance:textfield}#display-setting.svelte-1rks09j input[type=number]:where(.svelte-1rks09j)::-webkit-inner-spin-button,#display-setting.svelte-1rks09j input[type=number]:where(.svelte-1rks09j)::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}#display-setting.svelte-1rks09j input[type=range]:where(.svelte-1rks09j){-webkit-appearance:none;height:1.5rem;background-color:transparent;transition:background-image .15s ease-in-out}#display-setting.svelte-1rks09j input[type=range]:where(.svelte-1rks09j):not(#colorSlider){background-image:linear-gradient(to right,var(--primary) 0%,var(--primary) var(--value-percent),transparent var(--value-percent),transparent 100%)}#display-setting.svelte-1rks09j input[type=range]:where(.svelte-1rks09j)::-webkit-slider-thumb{-webkit-appearance:none;height:0;width:0;background:transparent;box-shadow:none;border:none}#display-setting.svelte-1rks09j input[type=range]:where(.svelte-1rks09j)::-moz-range-thumb{-webkit-appearance:none;height:0;width:0;background:transparent;box-shadow:none;border:none}#display-setting.svelte-1rks09j input[type=range]:where(.svelte-1rks09j)::-ms-thumb{-webkit-appearance:none;height:0;width:0;background:transparent;box-shadow:none;border:none}#display-setting.svelte-1rks09j #colorSlider:where(.svelte-1rks09j){background-image:var(--color-selection-bar)}#display-setting.svelte-1rks09j #colorSlider:where(.svelte-1rks09j)::-webkit-slider-thumb{-webkit-appearance:none;height:1rem;width:.5rem;border-radius:.125rem;background:#ffffffb3;box-shadow:none;margin-top:0;transform:none;-webkit-transition:background .15s;transition:background .15s}#display-setting.svelte-1rks09j #colorSlider:where(.svelte-1rks09j)::-webkit-slider-thumb:hover{background:#fffc}#display-setting.svelte-1rks09j #colorSlider:where(.svelte-1rks09j)::-webkit-slider-thumb:active{background:#fff9}#display-setting.svelte-1rks09j #colorSlider:where(.svelte-1rks09j)::-moz-range-thumb{-webkit-appearance:none;height:1rem;width:.5rem;border-radius:.125rem;border-width:0;background:#ffffffb3;box-shadow:none;transform:none;-moz-transition:background .15s;transition:background .15s}#display-setting.svelte-1rks09j #colorSlider:where(.svelte-1rks09j)::-moz-range-thumb:hover{background:#fffc}#display-setting.svelte-1rks09j #colorSlider:where(.svelte-1rks09j)::-moz-range-thumb:active{background:#fff9}#display-setting.svelte-1rks09j #colorSlider:where(.svelte-1rks09j)::-ms-thumb{-webkit-appearance:none;height:1rem;width:.5rem;border-radius:.125rem;background:#ffffffb3;box-shadow:none;transform:none;-ms-transition:background .15s;transition:background .15s}#display-setting.svelte-1rks09j #colorSlider:where(.svelte-1rks09j)::-ms-thumb:hover{background:#fffc}#display-setting.svelte-1rks09j #colorSlider:where(.svelte-1rks09j)::-ms-thumb:active{background:#fff9}#display-setting.svelte-1rks09j .toggle-switch:where(.svelte-1rks09j){-webkit-appearance:none;-moz-appearance:none;appearance:none;width:3rem;height:1.5rem;background:var(--btn-regular-bg);border-radius:999px;position:relative;cursor:pointer;transition:background .3s}#display-setting.svelte-1rks09j .toggle-switch:where(.svelte-1rks09j):after{content:"";position:absolute;top:.25rem;left:.25rem;width:1rem;height:1rem;background:var(--btn-content);border-radius:50%;transition:transform .3s}#display-setting.svelte-1rks09j .toggle-switch:where(.svelte-1rks09j):checked{background:var(--primary)}#display-setting.svelte-1rks09j .toggle-switch:where(.svelte-1rks09j):checked:after{transform:translate(1.5rem);background:#fff}
+</style></head> <body class=" min-h-screen " data-overlayscrollbars-initialize data-astro-cid-sckkx6r4 style="--bannerOffset: 15vh;--banner-height-home: 65vh;--banner-height: 35vh;--configHue: 250;--page-width: 75rem;--bg-url: none;--bg-enable: 0;--bg-position: center;--bg-size: cover;--bg-repeat: no-repeat;--bg-attachment: fixed;--bg-opacity: 1;--configHue: 250;"> <noscript> <style>
+				#bg-box {
+					opacity: 1 !important;
+				}
+			</style> </noscript> <div id="bg-box" data-astro-cid-sckkx6r4 style="--bannerOffset: 15vh;--banner-height-home: 65vh;--banner-height: 35vh;--configHue: 250;--page-width: 75rem;--bg-url: none;--bg-enable: 0;--bg-position: center;--bg-size: cover;--bg-repeat: no-repeat;--bg-attachment: fixed;--bg-opacity: 1;--configHue: 250;"></div> <div id="config-carrier" data-hue="250"></div> <div id="new-post-notification" class="fixed bottom-4 right-4 z-50 flex flex-col items-end pointer-events-none" data-astro-cid-6yyxny4o> <!-- Minimized State (Bell Icon) --> <button id="notification-minimized" class="pointer-events-auto bg-[var(--card-bg)] border border-[var(--primary)] text-[var(--primary)] p-3 rounded-full shadow-lg transform translate-y-20 opacity-0 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:scale-110 active:scale-95 flex items-center justify-center relative group" data-astro-cid-6yyxny4o> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-6yyxny4o><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" data-astro-cid-6yyxny4o></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" data-astro-cid-6yyxny4o></path></svg> <span id="notification-dot" class="absolute top-0 right-0 w-3 h-3 bg-red-500 rounded-full border-2 border-[var(--card-bg)] hidden animate-pulse" data-astro-cid-6yyxny4o></span> </button> <!-- Expanded State (Panel) --> <div id="notification-panel" class="pointer-events-auto bg-[var(--card-bg)] border border-[var(--primary)] rounded-xl shadow-lg p-4 max-w-[90vw] w-80 transform translate-y-4 opacity-0 scale-95 origin-bottom-right transition-all duration-300 hidden absolute bottom-16 right-0 sm:bottom-14" data-astro-cid-6yyxny4o> <div class="flex items-center justify-between mb-3" data-astro-cid-6yyxny4o> <div class="flex items-center gap-2 text-[var(--primary)]" data-astro-cid-6yyxny4o> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-6yyxny4o><path d="M4 11a9 9 0 0 1 9 9" data-astro-cid-6yyxny4o></path><path d="M4 4a16 16 0 0 1 16 16" data-astro-cid-6yyxny4o></path><circle cx="5" cy="19" r="1" data-astro-cid-6yyxny4o></circle></svg> <h3 class="font-bold text-black dark:text-white" data-astro-cid-6yyxny4o>发现新文章</h3> </div> <div class="flex items-center gap-1" data-astro-cid-6yyxny4o> <button id="clear-notification" class="text-black/50 dark:text-white/50 hover:text-red-500 transition-colors p-1 rounded-md hover:bg-red-500/10" title="清空通知" data-astro-cid-6yyxny4o> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-6yyxny4o><path d="M3 6h18" data-astro-cid-6yyxny4o></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" data-astro-cid-6yyxny4o></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" data-astro-cid-6yyxny4o></path></svg> </button> <button id="minimize-notification" class="text-black/50 dark:text-white/50 hover:text-[var(--primary)] transition-colors p-1 rounded-md hover:bg-[var(--primary)]/10" title="隐藏" data-astro-cid-6yyxny4o> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-6yyxny4o><line x1="18" y1="6" x2="6" y2="18" data-astro-cid-6yyxny4o></line><line x1="6" y1="6" x2="18" y2="18" data-astro-cid-6yyxny4o></line></svg> </button> </div> </div> <div id="new-post-list" class="text-sm text-black/80 dark:text-white/80 transition-colors space-y-1 max-h-[60vh] overflow-y-auto overflow-x-hidden custom-scrollbar" data-astro-cid-6yyxny4o></div> </div> </div> <script type="module" src="/Firefly/_astro/NewPostNotification.astro_astro_type_script_index_0_lang.CqctPKl2.js"></script>    <div id="top-row" class="z-50 pointer-events-none relative max-w-[var(--page-width)] px-4 md:px-4 mx-auto" data-astro-cid-haiuh7kc style=""> <div id="navbar-wrapper" class="pointer-events-auto sticky top-0" data-astro-cid-haiuh7kc style=""> <div id="navbar" class="z-50" data-astro-cid-5blmo7yk> <div class="absolute h-8 left-0 right-0 -top-8 bg-[var(--page-bg)] transition" data-astro-cid-5blmo7yk></div> <!-- used for onload animation --> <div class="card-base border border-black/10 dark:border-white/10 !overflow-visible max-w-[var(--page-width)] h-[4.5rem] !rounded-t-none mx-auto flex items-center justify-between px-4" data-astro-cid-5blmo7yk> <a href="/Firefly/" class="btn-plain rounded-lg h-[3.25rem] px-5 font-bold" data-astro-cid-5blmo7yk> <div class="flex flex-row items-center text-md" data-astro-cid-5blmo7yk> <svg width="1em" height="1em" class="text-[1.75rem] mb-1 mr-2 navbar-title-gradient-icon" data-astro-cid-5blmo7yk="true" data-icon="material-symbols:home-outline-rounded">   <symbol id="ai:material-symbols:home-outline-rounded" viewBox="0 0 24 24"><path fill="currentColor" d="M6 19h3v-5q0-.425.288-.712T10 13h4q.425 0 .713.288T15 14v5h3v-9l-6-4.5L6 10zm-2 0v-9q0-.475.213-.9t.587-.7l6-4.5q.525-.4 1.2-.4t1.2.4l6 4.5q.375.275.588.7T20 10v9q0 .825-.588 1.413T18 21h-4q-.425 0-.712-.288T13 20v-5h-2v5q0 .425-.288.713T10 21H6q-.825 0-1.412-.587T4 19m8-6.75"/></symbol><use href="#ai:material-symbols:home-outline-rounded"></use>  </svg> <span class="navbar-title-gradient text-lg navbar-blog-title" data-astro-cid-5blmo7yk>Blog</span> </div> </a> <div class="hidden md:flex items-center gap-1" data-astro-cid-5blmo7yk>  <a aria-label="Home" href="/Firefly/" class="btn-plain rounded-lg h-11 px-3 font-bold" data-astro-cid-5blmo7yk> <div class="flex items-center" data-astro-cid-5blmo7yk> Home  </div> </a><a aria-label="Archive" href="/Firefly/archive/" class="btn-plain rounded-lg h-11 px-3 font-bold" data-astro-cid-5blmo7yk> <div class="flex items-center" data-astro-cid-5blmo7yk> Archive  </div> </a><a aria-label="Gallery" href="/Firefly/gallery/" class="btn-plain rounded-lg h-11 px-3 font-bold" data-astro-cid-5blmo7yk> <div class="flex items-center" data-astro-cid-5blmo7yk> Gallery  </div> </a><a aria-label="Notes" href="/Firefly/notes/" class="btn-plain rounded-lg h-11 px-3 font-bold" data-astro-cid-5blmo7yk> <div class="flex items-center" data-astro-cid-5blmo7yk> Notes  </div> </a><a aria-label="Wiki" href="/wiki/" target="_blank" class="btn-plain rounded-lg h-11 px-3 font-bold" data-astro-cid-5blmo7yk> <div class="flex items-center" data-astro-cid-5blmo7yk> Wiki <svg width="1em" height="1em" class="text-[0.875rem] transition -translate-y-[1px] ml-1 text-black/[0.2] dark:text-white/[0.2]" data-astro-cid-5blmo7yk="true" data-icon="fa6-solid:arrow-up-right-from-square">   <symbol id="ai:fa6-solid:arrow-up-right-from-square" viewBox="0 0 512 512"><path fill="currentColor" d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32zM80 32C35.8 32 0 67.8 0 112v320c0 44.2 35.8 80 80 80h320c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v112c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16h112c17.7 0 32-14.3 32-32s-14.3-32-32-32z"/></symbol><use href="#ai:fa6-solid:arrow-up-right-from-square"></use>  </svg> </div> </a><a aria-label="About" href="https://jieliu.me" target="_blank" class="btn-plain rounded-lg h-11 px-3 font-bold" data-astro-cid-5blmo7yk> <div class="flex items-center" data-astro-cid-5blmo7yk> About <svg width="1em" height="1em" viewBox="0 0 512 512" class="text-[0.875rem] transition -translate-y-[1px] ml-1 text-black/[0.2] dark:text-white/[0.2]" data-astro-cid-5blmo7yk="true" data-icon="fa6-solid:arrow-up-right-from-square">   <use href="#ai:fa6-solid:arrow-up-right-from-square"></use>  </svg> </div> </a>  <div class="relative" id="more-menu-wrapper" data-astro-cid-5blmo7yk> <button aria-label="More" class="btn-plain rounded-lg h-11 px-3 font-bold flex items-center gap-1" id="more-menu-btn" data-astro-cid-5blmo7yk>
+More
+<svg width="1em" height="1em" class="text-[1.1rem] transition-transform" id="more-menu-arrow" data-astro-cid-5blmo7yk="true" data-icon="material-symbols:expand-more">   <symbol id="ai:material-symbols:expand-more" viewBox="0 0 24 24"><path fill="currentColor" d="m12 15.375l-6-6l1.4-1.4l4.6 4.6l4.6-4.6l1.4 1.4z"/></symbol><use href="#ai:material-symbols:expand-more"></use>  </svg> </button> <div id="more-menu-panel" class="float-panel float-panel-closed absolute left-1/2 -translate-x-1/2 min-w-[132px] p-1.5 flex flex-col" style="top: calc(100% + 0.25rem);" data-astro-cid-5blmo7yk> <a href="https://kyjl97.github.io/remote/" target="_blank" rel="noopener noreferrer" class="btn-plain rounded-md h-8 px-3 font-bold flex items-center justify-between gap-2 text-sm" data-astro-cid-5blmo7yk> <span data-astro-cid-5blmo7yk>OpenList</span> <svg width="1em" height="1em" viewBox="0 0 512 512" class="text-[0.7rem] text-black/20 dark:text-white/20" data-astro-cid-5blmo7yk="true" data-icon="fa6-solid:arrow-up-right-from-square">   <use href="#ai:fa6-solid:arrow-up-right-from-square"></use>  </svg> </a><a href="https://kyjl97.github.io/oszen/" target="_blank" rel="noopener noreferrer" class="btn-plain rounded-md h-8 px-3 font-bold flex items-center justify-between gap-2 text-sm" data-astro-cid-5blmo7yk> <span data-astro-cid-5blmo7yk>作品集</span> <svg width="1em" height="1em" viewBox="0 0 512 512" class="text-[0.7rem] text-black/20 dark:text-white/20" data-astro-cid-5blmo7yk="true" data-icon="fa6-solid:arrow-up-right-from-square">   <use href="#ai:fa6-solid:arrow-up-right-from-square"></use>  </svg> </a><a href="https://github.com/kyjl97/" target="_blank" rel="noopener noreferrer" class="btn-plain rounded-md h-8 px-3 font-bold flex items-center justify-between gap-2 text-sm" data-astro-cid-5blmo7yk> <span data-astro-cid-5blmo7yk>远程服务</span> <svg width="1em" height="1em" viewBox="0 0 512 512" class="text-[0.7rem] text-black/20 dark:text-white/20" data-astro-cid-5blmo7yk="true" data-icon="fa6-solid:arrow-up-right-from-square">   <use href="#ai:fa6-solid:arrow-up-right-from-square"></use>  </svg> </a><a href="/friends/" target="_blank" rel="noopener noreferrer" class="btn-plain rounded-md h-8 px-3 font-bold flex items-center justify-between gap-2 text-sm" data-astro-cid-5blmo7yk> <span data-astro-cid-5blmo7yk>友链</span> <svg width="1em" height="1em" viewBox="0 0 512 512" class="text-[0.7rem] text-black/20 dark:text-white/20" data-astro-cid-5blmo7yk="true" data-icon="fa6-solid:arrow-up-right-from-square">   <use href="#ai:fa6-solid:arrow-up-right-from-square"></use>  </svg> </a><a href="/sponsors/" target="_blank" rel="noopener noreferrer" class="btn-plain rounded-md h-8 px-3 font-bold flex items-center justify-between gap-2 text-sm" data-astro-cid-5blmo7yk> <span data-astro-cid-5blmo7yk>赞助</span> <svg width="1em" height="1em" viewBox="0 0 512 512" class="text-[0.7rem] text-black/20 dark:text-white/20" data-astro-cid-5blmo7yk="true" data-icon="fa6-solid:arrow-up-right-from-square">   <use href="#ai:fa6-solid:arrow-up-right-from-square"></use>  </svg> </a> </div> </div>  <a aria-label="RSS" href="/Firefly/https:/kyjl97.github.io/Firefly/rss.xml" target="_blank" class="btn-plain rounded-lg h-11 px-2 font-bold" data-astro-cid-5blmo7yk> <img src="/rss-icon.png" alt="RSS" class="w-5 h-5 rss-icon" data-astro-cid-5blmo7yk> </a> </div> <div class="flex" data-astro-cid-5blmo7yk> <!--<SearchPanel client:load>--> <!-- 搜索框容器：固定宽度防止 Svelte 水合时布局抖动 --> <div class="w-11 lg:w-44 h-11 flex items-center justify-end" data-astro-cid-5blmo7yk> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).only=e;window.dispatchEvent(new Event("astro:only"));})();;(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>1/0*t},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="Z1kHjfl" component-url="/Firefly/_astro/Search.C6qb_kQl.js" component-export="default" renderer-url="/Firefly/_astro/client.svelte.DlHUcu_Y.js" props="{&quot;data-astro-cid-5blmo7yk&quot;:[0,true]}" ssr client="only" opts="{&quot;name&quot;:&quot;Search&quot;,&quot;value&quot;:&quot;svelte&quot;}"></astro-island> </div>  <button aria-label="Menu" name="Nav Menu" class="btn-plain rounded-lg w-11 h-11 md:!hidden" id="nav-menu-switch" data-astro-cid-5blmo7yk> <svg width="1em" height="1em" class="text-[1.25rem]" data-astro-cid-5blmo7yk="true" data-icon="material-symbols:menu-rounded">   <symbol id="ai:material-symbols:menu-rounded" viewBox="0 0 24 24"><path fill="currentColor" d="M4 18q-.425 0-.712-.288T3 17t.288-.712T4 16h16q.425 0 .713.288T21 17t-.288.713T20 18zm0-5q-.425 0-.712-.288T3 12t.288-.712T4 11h16q.425 0 .713.288T21 12t-.288.713T20 13zm0-5q-.425 0-.712-.288T3 7t.288-.712T4 6h16q.425 0 .713.288T21 7t-.288.713T20 8z"/></symbol><use href="#ai:material-symbols:menu-rounded"></use>  </svg> </button> </div> <div id="nav-menu-panel" class="float-panel float-panel-closed absolute transition-all fixed right-4 px-2 py-2" data-astro-cid-h5lvqo6o> <a href="/Firefly/" class="group flex justify-between items-center py-2 pl-3 pr-1 rounded-lg gap-8
+            hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] transition
+        " data-astro-cid-h5lvqo6o> <div class="transition text-black/75 dark:text-white/75 font-bold group-hover:text-[var(--primary)] group-active:text-[var(--primary)] flex items-center gap-2" data-astro-cid-h5lvqo6o> Home </div> <svg width="1em" height="1em" class="transition text-[1.25rem] text-[var(--primary)]" data-astro-cid-h5lvqo6o="true" data-icon="material-symbols:chevron-right-rounded">   <symbol id="ai:material-symbols:chevron-right-rounded" viewBox="0 0 24 24"><path fill="currentColor" d="M12.6 12L8.7 8.1q-.275-.275-.275-.7t.275-.7t.7-.275t.7.275l4.6 4.6q.15.15.213.325t.062.375t-.062.375t-.213.325l-4.6 4.6q-.275.275-.7.275t-.7-.275t-.275-.7t.275-.7z"/></symbol><use href="#ai:material-symbols:chevron-right-rounded"></use>  </svg> </a><a href="/Firefly/archive/" class="group flex justify-between items-center py-2 pl-3 pr-1 rounded-lg gap-8
+            hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] transition
+        " data-astro-cid-h5lvqo6o> <div class="transition text-black/75 dark:text-white/75 font-bold group-hover:text-[var(--primary)] group-active:text-[var(--primary)] flex items-center gap-2" data-astro-cid-h5lvqo6o> Archive </div> <svg width="1em" height="1em" viewBox="0 0 24 24" class="transition text-[1.25rem] text-[var(--primary)]" data-astro-cid-h5lvqo6o="true" data-icon="material-symbols:chevron-right-rounded">   <use href="#ai:material-symbols:chevron-right-rounded"></use>  </svg> </a><a href="/Firefly/gallery/" class="group flex justify-between items-center py-2 pl-3 pr-1 rounded-lg gap-8
+            hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] transition
+        " data-astro-cid-h5lvqo6o> <div class="transition text-black/75 dark:text-white/75 font-bold group-hover:text-[var(--primary)] group-active:text-[var(--primary)] flex items-center gap-2" data-astro-cid-h5lvqo6o> Gallery </div> <svg width="1em" height="1em" viewBox="0 0 24 24" class="transition text-[1.25rem] text-[var(--primary)]" data-astro-cid-h5lvqo6o="true" data-icon="material-symbols:chevron-right-rounded">   <use href="#ai:material-symbols:chevron-right-rounded"></use>  </svg> </a><a href="/Firefly/notes/" class="group flex justify-between items-center py-2 pl-3 pr-1 rounded-lg gap-8
+            hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] transition
+        " data-astro-cid-h5lvqo6o> <div class="transition text-black/75 dark:text-white/75 font-bold group-hover:text-[var(--primary)] group-active:text-[var(--primary)] flex items-center gap-2" data-astro-cid-h5lvqo6o> Notes </div> <svg width="1em" height="1em" viewBox="0 0 24 24" class="transition text-[1.25rem] text-[var(--primary)]" data-astro-cid-h5lvqo6o="true" data-icon="material-symbols:chevron-right-rounded">   <use href="#ai:material-symbols:chevron-right-rounded"></use>  </svg> </a><a href="/Firefly/sponsors/" class="group flex justify-between items-center py-2 pl-3 pr-1 rounded-lg gap-8
+            hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] transition
+        " data-astro-cid-h5lvqo6o> <div class="transition text-black/75 dark:text-white/75 font-bold group-hover:text-[var(--primary)] group-active:text-[var(--primary)] flex items-center gap-2" data-astro-cid-h5lvqo6o> 赞助 </div> <svg width="1em" height="1em" viewBox="0 0 24 24" class="transition text-[1.25rem] text-[var(--primary)]" data-astro-cid-h5lvqo6o="true" data-icon="material-symbols:chevron-right-rounded">   <use href="#ai:material-symbols:chevron-right-rounded"></use>  </svg> </a><a href="/wiki/" class="group flex justify-between items-center py-2 pl-3 pr-1 rounded-lg gap-8
+            hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] transition
+        " target="_blank" data-astro-cid-h5lvqo6o> <div class="transition text-black/75 dark:text-white/75 font-bold group-hover:text-[var(--primary)] group-active:text-[var(--primary)] flex items-center gap-2" data-astro-cid-h5lvqo6o> Wiki </div> <svg width="1em" height="1em" viewBox="0 0 512 512" class="transition text-[0.75rem] text-black/25 dark:text-white/25 -translate-x-1" data-astro-cid-h5lvqo6o="true" data-icon="fa6-solid:arrow-up-right-from-square">   <use href="#ai:fa6-solid:arrow-up-right-from-square"></use>  </svg> </a><a href="https://jieliu.me" class="group flex justify-between items-center py-2 pl-3 pr-1 rounded-lg gap-8
+            hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] transition
+        " target="_blank" data-astro-cid-h5lvqo6o> <div class="transition text-black/75 dark:text-white/75 font-bold group-hover:text-[var(--primary)] group-active:text-[var(--primary)] flex items-center gap-2" data-astro-cid-h5lvqo6o> About </div> <svg width="1em" height="1em" viewBox="0 0 512 512" class="transition text-[0.75rem] text-black/25 dark:text-white/25 -translate-x-1" data-astro-cid-h5lvqo6o="true" data-icon="fa6-solid:arrow-up-right-from-square">   <use href="#ai:fa6-solid:arrow-up-right-from-square"></use>  </svg> </a><a href="/Firefly/friends/" class="group flex justify-between items-center py-2 pl-3 pr-1 rounded-lg gap-8
+            hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] transition
+        " data-astro-cid-h5lvqo6o> <div class="transition text-black/75 dark:text-white/75 font-bold group-hover:text-[var(--primary)] group-active:text-[var(--primary)] flex items-center gap-2" data-astro-cid-h5lvqo6o> 友链 </div> <svg width="1em" height="1em" viewBox="0 0 24 24" class="transition text-[1.25rem] text-[var(--primary)]" data-astro-cid-h5lvqo6o="true" data-icon="material-symbols:chevron-right-rounded">   <use href="#ai:material-symbols:chevron-right-rounded"></use>  </svg> </a><a href="https://kyjl97.github.io/remote/" class="group flex justify-between items-center py-2 pl-3 pr-1 rounded-lg gap-8
+            hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] transition
+        " target="_blank" data-astro-cid-h5lvqo6o> <div class="transition text-black/75 dark:text-white/75 font-bold group-hover:text-[var(--primary)] group-active:text-[var(--primary)] flex items-center gap-2" data-astro-cid-h5lvqo6o> OpenList </div> <svg width="1em" height="1em" viewBox="0 0 512 512" class="transition text-[0.75rem] text-black/25 dark:text-white/25 -translate-x-1" data-astro-cid-h5lvqo6o="true" data-icon="fa6-solid:arrow-up-right-from-square">   <use href="#ai:fa6-solid:arrow-up-right-from-square"></use>  </svg> </a><a href="https://github.com/kyjl97/" class="group flex justify-between items-center py-2 pl-3 pr-1 rounded-lg gap-8
+            hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] transition
+        " target="_blank" data-astro-cid-h5lvqo6o> <div class="transition text-black/75 dark:text-white/75 font-bold group-hover:text-[var(--primary)] group-active:text-[var(--primary)] flex items-center gap-2" data-astro-cid-h5lvqo6o> 远程服务 </div> <svg width="1em" height="1em" viewBox="0 0 512 512" class="transition text-[0.75rem] text-black/25 dark:text-white/25 -translate-x-1" data-astro-cid-h5lvqo6o="true" data-icon="fa6-solid:arrow-up-right-from-square">   <use href="#ai:fa6-solid:arrow-up-right-from-square"></use>  </svg> </a><a href="https://kyjl97.github.io/oszen/" class="group flex justify-between items-center py-2 pl-3 pr-1 rounded-lg gap-8
+            hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] transition
+        " target="_blank" data-astro-cid-h5lvqo6o> <div class="transition text-black/75 dark:text-white/75 font-bold group-hover:text-[var(--primary)] group-active:text-[var(--primary)] flex items-center gap-2" data-astro-cid-h5lvqo6o> 作品集 </div> <svg width="1em" height="1em" viewBox="0 0 512 512" class="transition text-[0.75rem] text-black/25 dark:text-white/25 -translate-x-1" data-astro-cid-h5lvqo6o="true" data-icon="fa6-solid:arrow-up-right-from-square">   <use href="#ai:fa6-solid:arrow-up-right-from-square"></use>  </svg> </a><a href="https://kyjl97.github.io/Shopping/" class="group flex justify-between items-center py-2 pl-3 pr-1 rounded-lg gap-8
+            hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] transition
+        " target="_blank" data-astro-cid-h5lvqo6o> <div class="transition text-black/75 dark:text-white/75 font-bold group-hover:text-[var(--primary)] group-active:text-[var(--primary)] flex items-center gap-2" data-astro-cid-h5lvqo6o> 工坊 </div> <svg width="1em" height="1em" viewBox="0 0 512 512" class="transition text-[0.75rem] text-black/25 dark:text-white/25 -translate-x-1" data-astro-cid-h5lvqo6o="true" data-icon="fa6-solid:arrow-up-right-from-square">   <use href="#ai:fa6-solid:arrow-up-right-from-square"></use>  </svg> </a><a href="https://kyjl97.github.io/Firefly/rss.xml" class="group flex justify-between items-center py-2 pl-3 pr-1 rounded-lg gap-8
+            hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] transition
+        " target="_blank" data-astro-cid-h5lvqo6o> <div class="transition text-black/75 dark:text-white/75 font-bold group-hover:text-[var(--primary)] group-active:text-[var(--primary)] flex items-center gap-2" data-astro-cid-h5lvqo6o> <img src="/rss-icon.png" alt="RSS" class="w-5 h-5 rss-icon" data-astro-cid-h5lvqo6o> </div> <svg width="1em" height="1em" viewBox="0 0 512 512" class="transition text-[0.75rem] text-black/25 dark:text-white/25 -translate-x-1" data-astro-cid-h5lvqo6o="true" data-icon="fa6-solid:arrow-up-right-from-square">   <use href="#ai:fa6-solid:arrow-up-right-from-square"></use>  </svg> </a> </div>  <astro-island uid="Z1lXT63" component-url="/Firefly/_astro/DisplaySettings.Dlralt9p.js" component-export="default" renderer-url="/Firefly/_astro/client.svelte.DlHUcu_Y.js" props="{&quot;data-astro-cid-5blmo7yk&quot;:[0,true]}" ssr client="only" opts="{&quot;name&quot;:&quot;DisplaySettings&quot;,&quot;value&quot;:&quot;svelte&quot;}"></astro-island> </div> </div> <script type="module">function i(){let l=document.getElementById("display-settings-switch");l&&(l.onclick=function(){let e=document.getElementById("display-setting");e&&e.classList.toggle("float-panel-closed")});let o=document.getElementById("nav-menu-switch");o&&(o.onclick=function(){let e=document.getElementById("nav-menu-panel");e&&e.classList.toggle("float-panel-closed")});let c=document.getElementById("more-menu-btn"),n=document.getElementById("more-menu-panel"),t=document.getElementById("more-menu-arrow");c&&n&&(c.onclick=function(e){e.stopPropagation(),n.classList.toggle("float-panel-closed"),t&&t.classList.toggle("rotate-180")},document.addEventListener("click",function(e){let a=document.getElementById("more-menu-wrapper");a&&!a.contains(e.target)&&(n.classList.add("float-panel-closed"),t&&t.classList.remove("rotate-180"))}))}i();</script>  </div> </div>   <div class="absolute w-full z-30 pointer-events-none" style="top: 5.5rem; " data-astro-cid-haiuh7kc> <!-- The pointer-events-none here prevent blocking the click event of the TOC --> <div class="relative max-w-[var(--page-width)] mx-auto pointer-events-auto" data-astro-cid-haiuh7kc style=""> <div id="main-grid" class="transition duration-700 w-full left-0 right-0 grid grid-cols-[17.5rem_auto] grid-rows-[auto_auto_auto] lg:grid-rows-[auto_1fr]
+    mx-auto gap-4 px-4 md:px-4" data-astro-cid-haiuh7kc style=""> <!-- Banner image credit -->  <div id="sidebar" class="hidden lg:block mb-4 row-start-2 col-span-2 lg:row-start-1 lg:col-span-1 lg:max-w-[17.5rem] w-full"> <div class="flex flex-col w-full gap-4 mb-4"> <div class="profile-glow-wrapper" data-astro-cid-ufwobukd> <div class="card-base p-3 border border-black/10 dark:border-white/10 profile-card-enhanced" data-astro-cid-ufwobukd> <div class="relative mx-auto mt-1 mb-3 w-28 h-28 rounded-full overflow-hidden" style="--theme-hue: 250" data-astro-cid-ufwobukd> <img src="/brand-logo.png" alt="得救之道 Logo" class="w-full h-full object-cover transition duration-500" width="112" height="112" loading="eager" data-astro-cid-ufwobukd> </div> <div class="px-2 text-center" data-astro-cid-ufwobukd> <div class="font-bold text-xl mb-1 transition text-black dark:text-white profile-name" data-astro-cid-ufwobukd>kyjl97</div> <div class="h-px w-8 mx-auto mb-3 transition bg-[oklch(0.58_0.16_268)]" data-astro-cid-ufwobukd></div> <div class="text-center mb-2.5 transition text-black dark:text-neutral-400 profile-bio" data-astro-cid-ufwobukd>微信公众号「得救之道」创作者<br>内容记录 · AI 工具 · 知识管理</div> <div class="flex flex-wrap gap-2 justify-center mb-1" data-astro-cid-ufwobukd> <!-- 微信图标 - 点击弹窗 --> <button aria-label="微信" onclick="openQRModal()" class="social-icon-btn rounded-lg h-10 w-10 active:scale-90" data-astro-cid-ufwobukd> <svg class="w-6 h-6 transition fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" data-astro-cid-ufwobukd> <path fill-rule="evenodd" clip-rule="evenodd" d="M21.502 19.525c1.524-1.105 2.498-2.738 2.498-4.554 0-3.326-3.237-6.023-7.229-6.023s-7.229 2.697-7.229 6.023c0 3.327 3.237 6.024 7.229 6.024.825 0 1.621-.117 2.36-.33l.212-.032c.139 0 .265.043.384.111l1.583.914.139.045c.133 0 .241-.108.241-.241l-.039-.176-.326-1.215-.025-.154c0-.162.08-.305.202-.392zm-12.827-17.228c-4.791 0-8.675 3.236-8.675 7.229 0 2.178 1.168 4.139 2.997 5.464.147.104.243.276.243.471l-.03.184-.391 1.458-.047.211c0 .16.13.29.289.29l.168-.054 1.899-1.097c.142-.082.293-.133.46-.133l.255.038c.886.255 1.842.397 2.832.397l.476-.012c-.188-.564-.291-1.158-.291-1.771 0-3.641 3.542-6.593 7.911-6.593l.471.012c-.653-3.453-4.24-6.094-8.567-6.094zm5.686 11.711c-.532 0-.963-.432-.963-.964 0-.533.431-.964.963-.964.533 0 .964.431.964.964 0 .532-.431.964-.964.964zm4.82 0c-.533 0-.964-.432-.964-.964 0-.533.431-.964.964-.964.532 0 .963.431.963.964 0 .532-.431.964-.963.964zm-13.398-5.639c-.639 0-1.156-.518-1.156-1.156 0-.639.517-1.157 1.156-1.157.639 0 1.157.518 1.157 1.157 0 .638-.518 1.156-1.157 1.156zm5.783 0c-.639 0-1.156-.518-1.156-1.156 0-.639.517-1.157 1.156-1.157.639 0 1.157.518 1.157 1.157 0 .638-.518 1.156-1.157 1.156z" data-astro-cid-ufwobukd></path> </svg> </button> <!-- 其他社交链接 -->  </div> <!-- 全站文章与字数统计 --> <div class="grid grid-cols-2 mt-3 pt-3 border-t border-neutral-300 dark:border-neutral-700" data-astro-cid-ufwobukd> <div class="text-center" data-astro-cid-ufwobukd> <div class="text-xs mb-1 flex items-center justify-center gap-1 text-neutral-600 dark:text-neutral-400" data-astro-cid-ufwobukd> <svg width="1em" height="1em" class="text-base" data-astro-cid-ufwobukd="true" data-icon="material-symbols:article-outline">   <symbol id="ai:material-symbols:article-outline" viewBox="0 0 24 24"><path fill="currentColor" d="M7 17h7v-2H7zm0-4h10v-2H7zm0-4h10V7H7zM5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h14q.825 0 1.413.588T21 5v14q0 .825-.587 1.413T19 21zm0-2h14V5H5zM5 5v14z"/></symbol><use href="#ai:material-symbols:article-outline"></use>  </svg> <span class="text-xs" data-astro-cid-ufwobukd>文章数</span> </div> <div class="font-bold text-lg text-neutral-700 dark:text-neutral-300" data-astro-cid-ufwobukd>217</div> </div> <div class="text-center border-l border-neutral-300 dark:border-neutral-700" data-astro-cid-ufwobukd> <div class="text-xs mb-1 flex items-center justify-center gap-1 text-neutral-600 dark:text-neutral-400" data-astro-cid-ufwobukd> <svg width="1em" height="1em" class="text-base" data-astro-cid-ufwobukd="true" data-icon="material-symbols:format-list-numbered">   <symbol id="ai:material-symbols:format-list-numbered" viewBox="0 0 24 24"><path fill="currentColor" d="M3 22v-1.5h2.5v-.75H4v-1.5h1.5v-.75H3V16h3q.425 0 .713.288T7 17v1q0 .425-.288.713T6 19q.425 0 .713.288T7 20v1q0 .425-.288.713T6 22zm0-7v-2.75q0-.425.288-.712T4 11.25h1.5v-.75H3V9h3q.425 0 .713.288T7 10v1.75q0 .425-.288.713T6 12.75H4.5v.75H7V15zm1.5-7V3.5H3V2h3v6zM9 19v-2h12v2zm0-6v-2h12v2zm0-6V5h12v2z"/></symbol><use href="#ai:material-symbols:format-list-numbered"></use>  </svg> <span class="text-xs" data-astro-cid-ufwobukd>总字数</span> </div> <div class="font-bold text-lg text-neutral-700 dark:text-neutral-300" data-astro-cid-ufwobukd> 22.5w
+</div> </div> </div> </div> </div> </div> <script>(function(){const name = "kyjl97";
+
+    // 立即设置标题渐变
+    document.addEventListener('DOMContentLoaded', () => {
+        const updateGradient = () => {
+            const isDark = document.documentElement.classList.contains('dark');
+            const nameElements = document.querySelectorAll('.profile-name-gradient');
+            nameElements.forEach(el => {
+                el.style.background = isDark
+                    ? 'linear-gradient(135deg, #38bdf8, #a78bfa)'
+                    : 'linear-gradient(135deg, #0ea5e9, #8b5cf6)';
+                el.style.webkitBackgroundClip = 'text';
+                el.style.webkitTextFillColor = 'transparent';
+                el.style.backgroundClip = 'text';
+                el.style.color = 'transparent';
+            });
+        };
+        updateGradient();
+        // 监听主题变化
+        new MutationObserver(updateGradient).observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ['class']
+        });
+    });
+})();</script>   <script>
+    // 打开二维码弹窗
+    function openQRModal() {
+        const modal = document.getElementById('qr-modal');
+        modal.classList.remove('hidden');
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+
+    // 关闭二维码弹窗
+    function closeQRModal() {
+        const modal = document.getElementById('qr-modal');
+        modal.classList.add('hidden');
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+    }
+
+    // 打开赞助弹窗
+    function openSponsorModal() {
+        const modal = document.getElementById('sponsor-modal');
+        modal.classList.remove('hidden');
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+
+    // 关闭赞助弹窗
+    function closeSponsorModal() {
+        const modal = document.getElementById('sponsor-modal');
+        modal.classList.add('hidden');
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+    }
+
+    // 切换支付方式
+    function switchPayment(type) {
+        const qrImg = document.getElementById('sponsor-qr-img');
+        const wechatTab = document.getElementById('wechat-pay-tab');
+        const alipayTab = document.getElementById('alipay-tab');
+
+        if (type === 'wechat') {
+            qrImg.src = '/sponsors/wechat.png';
+            wechatTab.style.background = 'rgba(255,255,255,0.15)';
+            wechatTab.style.color = 'white';
+            alipayTab.style.background = 'transparent';
+            alipayTab.style.color = 'rgba(255,255,255,0.6)';
+        } else {
+            qrImg.src = '/sponsors/alipay.png';
+            alipayTab.style.background = 'rgba(255,255,255,0.15)';
+            alipayTab.style.color = 'white';
+            wechatTab.style.background = 'transparent';
+            wechatTab.style.color = 'rgba(255,255,255,0.6)';
+        }
+    }
+
+    // 复制微信号
+    function copyModalWx(e) {
+        if (e) e.stopPropagation();
+        const wxId = document.getElementById('modal-wx-id').innerText;
+        const textArea = document.createElement("textarea");
+        textArea.value = wxId;
+        textArea.style.position = "fixed";
+        textArea.style.left = "-9999px";
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        try {
+            const successful = document.execCommand('copy');
+            if (successful) {
+                const btn = e.target;
+                const oldText = btn.innerText;
+                btn.innerText = '已复制！';
+                btn.style.color = "#4ade80";
+                setTimeout(() => {
+                    btn.innerText = oldText;
+                    btn.style.color = "";
+                }, 2000);
+            }
+        } catch (err) {
+            console.error('复制失败', err);
+        }
+        document.body.removeChild(textArea);
+    }
+
+    // ESC 键关闭弹窗
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeQRModal();
+            closeSponsorModal();
+        }
+    });
+</script> <div class="image-decoration-wrapper" data-astro-cid-n2ckqmjb> <div class="image-decoration" data-astro-cid-n2ckqmjb> <img src="https://gitee.com/da-qiang-classmate/typora/raw/master/image/weix1.webp" alt="装饰图片" class="image-decoration-img img-primary" data-astro-cid-n2ckqmjb> <img src="https://gitee.com/da-qiang-classmate/typora/raw/master/image/weix2.webp" alt="装饰图片" class="image-decoration-img img-hover" data-astro-cid-n2ckqmjb> </div> </div>  <div class="category-list" data-astro-cid-6z4ofoif> <div class="category-header" data-astro-cid-6z4ofoif> <div class="decoration-line" data-astro-cid-6z4ofoif></div> </div> <div class="flex flex-col gap-2" data-astro-cid-6z4ofoif> <a href="/categories/Software/" class="category-item group" data-astro-cid-6z4ofoif> <div class="category-card" data-astro-cid-6z4ofoif> <span class="category-name" data-astro-cid-6z4ofoif>Software</span> <span class="category-count" data-astro-cid-6z4ofoif>49</span> </div> </a><a href="/categories/Technical/" class="category-item group" data-astro-cid-6z4ofoif> <div class="category-card" data-astro-cid-6z4ofoif> <span class="category-name" data-astro-cid-6z4ofoif>Technical</span> <span class="category-count" data-astro-cid-6z4ofoif>22</span> </div> </a><a href="/categories/AIHacks/" class="category-item group" data-astro-cid-6z4ofoif> <div class="category-card" data-astro-cid-6z4ofoif> <span class="category-name" data-astro-cid-6z4ofoif>AIHacks</span> <span class="category-count" data-astro-cid-6z4ofoif>121</span> </div> </a><a href="/categories/Workflow/" class="category-item group" data-astro-cid-6z4ofoif> <div class="category-card" data-astro-cid-6z4ofoif> <span class="category-name" data-astro-cid-6z4ofoif>Workflow</span> <span class="category-count" data-astro-cid-6z4ofoif>15</span> </div> </a> </div> </div>  <div class="firefly-container" data-astro-cid-tdsynljt> <div class="tech-bg" data-astro-cid-tdsynljt> <!-- 科技网格 --> <div class="tech-grid" data-astro-cid-tdsynljt></div> <!-- 中心光晕 --> <div class="center-glow" data-astro-cid-tdsynljt></div> </div> <!-- 萤火虫标签 --> <a href="/tags/ai/" class="firefly" style="
+                --start-x: 5px; 
+                --start-y: 0px;
+                --float-x: 66.88814987130561px;
+                --float-y: 0px;
+                --delay: 1.2336723243896661s;
+                --duration: 5.267101019547097s;
+                --hue: 0;
+            " data-astro-cid-tdsynljt> <span class="firefly-glow" data-astro-cid-tdsynljt></span> <span class="firefly-text" data-astro-cid-tdsynljt>ai</span> </a><a href="/tags/AI/" class="firefly" style="
+                --start-x: 4.619397662556434px; 
+                --start-y: 1.913417161825449px;
+                --float-x: 67.04807464855416px;
+                --float-y: 16.51344924184053px;
+                --delay: 0.8143798195746403s;
+                --duration: 5.5185525854120465s;
+                --hue: 30;
+            " data-astro-cid-tdsynljt> <span class="firefly-glow" data-astro-cid-tdsynljt></span> <span class="firefly-text" data-astro-cid-tdsynljt>AI</span> </a><a href="/tags/软件推荐/" class="firefly" style="
+                --start-x: 3.5355339059327378px; 
+                --start-y: 3.5355339059327373px;
+                --float-x: 42.558026624924146px;
+                --float-y: 37.69996228168088px;
+                --delay: 1.4643746370044601s;
+                --duration: 6.589804388348272s;
+                --hue: 60;
+            " data-astro-cid-tdsynljt> <span class="firefly-glow" data-astro-cid-tdsynljt></span> <span class="firefly-text" data-astro-cid-tdsynljt>软件推荐</span> </a><a href="/tags/workflow/" class="firefly" style="
+                --start-x: 1.9134171618254492px; 
+                --start-y: 4.619397662556434px;
+                --float-x: 24.96250357500822px;
+                --float-y: 54.12497221337102px;
+                --delay: 1.7766210705176526s;
+                --duration: 4.5295755044866475s;
+                --hue: 90;
+            " data-astro-cid-tdsynljt> <span class="firefly-glow" data-astro-cid-tdsynljt></span> <span class="firefly-text" data-astro-cid-tdsynljt>workflow</span> </a><a href="/tags/skill/" class="firefly" style="
+                --start-x: 3.061616997868383e-16px; 
+                --start-y: 5px;
+                --float-x: 3.191032736799658e-15px;
+                --float-y: 49.476859474072526px;
+                --delay: 0.1942399552750982s;
+                --duration: 4.928076582352025s;
+                --hue: 120;
+            " data-astro-cid-tdsynljt> <span class="firefly-glow" data-astro-cid-tdsynljt></span> <span class="firefly-text" data-astro-cid-tdsynljt>skill</span> </a><a href="/tags/agent/" class="firefly" style="
+                --start-x: -1.9134171618254485px; 
+                --start-y: 4.619397662556434px;
+                --float-x: -21.49696568931682px;
+                --float-y: 55.094305818136014px;
+                --delay: 0.5221182698996389s;
+                --duration: 6.528580436642713s;
+                --hue: 150;
+            " data-astro-cid-tdsynljt> <span class="firefly-glow" data-astro-cid-tdsynljt></span> <span class="firefly-text" data-astro-cid-tdsynljt>agent</span> </a><a href="/tags/工作流/" class="firefly" style="
+                --start-x: -3.5355339059327373px; 
+                --start-y: 3.5355339059327378px;
+                --float-x: -35.774662850536586px;
+                --float-y: 45.895167901724186px;
+                --delay: 0.21065351454964087s;
+                --duration: 5.980386245532954s;
+                --hue: 180;
+            " data-astro-cid-tdsynljt> <span class="firefly-glow" data-astro-cid-tdsynljt></span> <span class="firefly-text" data-astro-cid-tdsynljt>工作流</span> </a><a href="/tags/codex/" class="firefly" style="
+                --start-x: -4.619397662556434px; 
+                --start-y: 1.9134171618254494px;
+                --float-x: -50.59562172305646px;
+                --float-y: 22.409837632232527px;
+                --delay: 1.685913146847109s;
+                --duration: 6.119386028183916s;
+                --hue: 210;
+            " data-astro-cid-tdsynljt> <span class="firefly-glow" data-astro-cid-tdsynljt></span> <span class="firefly-text" data-astro-cid-tdsynljt>codex</span> </a><a href="/tags/Agent/" class="firefly" style="
+                --start-x: -5px; 
+                --start-y: 6.123233995736766e-16px;
+                --float-x: -63.83508830937245px;
+                --float-y: 6.998472993948258e-15px;
+                --delay: 1.1500435571016183s;
+                --duration: 4.111134365925089s;
+                --hue: 240;
+            " data-astro-cid-tdsynljt> <span class="firefly-glow" data-astro-cid-tdsynljt></span> <span class="firefly-text" data-astro-cid-tdsynljt>Agent</span> </a><a href="/tags/技术教程/" class="firefly" style="
+                --start-x: -4.619397662556434px; 
+                --start-y: -1.9134171618254483px;
+                --float-x: -52.76143701436473px;
+                --float-y: -23.513302618567618px;
+                --delay: 1.7449472475815253s;
+                --duration: 4.405727440003069s;
+                --hue: 270;
+            " data-astro-cid-tdsynljt> <span class="firefly-glow" data-astro-cid-tdsynljt></span> <span class="firefly-text" data-astro-cid-tdsynljt>技术教程</span> </a><a href="/tags/AI Agent/" class="firefly" style="
+                --start-x: -3.5355339059327386px; 
+                --start-y: -3.5355339059327373px;
+                --float-x: -38.22858886698024px;
+                --float-y: -32.77248335678135px;
+                --delay: 0.1926530552863559s;
+                --duration: 5.407796896088675s;
+                --hue: 300;
+            " data-astro-cid-tdsynljt> <span class="firefly-glow" data-astro-cid-tdsynljt></span> <span class="firefly-text" data-astro-cid-tdsynljt>AI Agent</span> </a><a href="/tags/Windows/" class="firefly" style="
+                --start-x: -1.9134171618254516px; 
+                --start-y: -4.619397662556432px;
+                --float-x: -21.41235140024145px;
+                --float-y: -49.77986990222685px;
+                --delay: 0.2550832296808876s;
+                --duration: 4.725787368731108s;
+                --hue: 330;
+            " data-astro-cid-tdsynljt> <span class="firefly-glow" data-astro-cid-tdsynljt></span> <span class="firefly-text" data-astro-cid-tdsynljt>Windows</span> </a><a href="/tags/博客/" class="firefly" style="
+                --start-x: -9.184850993605148e-16px; 
+                --start-y: -5px;
+                --float-x: -1.3929450877686563e-14px;
+                --float-y: -44.38381672622508px;
+                --delay: 0.21878836724567252s;
+                --duration: 5.944364994353174s;
+                --hue: 0;
+            " data-astro-cid-tdsynljt> <span class="firefly-glow" data-astro-cid-tdsynljt></span> <span class="firefly-text" data-astro-cid-tdsynljt>博客</span> </a><a href="/tags/Obsidian插件/" class="firefly" style="
+                --start-x: 1.91341716182545px; 
+                --start-y: -4.619397662556433px;
+                --float-x: 29.092482830431695px;
+                --float-y: -49.85631238788458px;
+                --delay: 1.2889928706472142s;
+                --duration: 4.6538668094889974s;
+                --hue: 30;
+            " data-astro-cid-tdsynljt> <span class="firefly-glow" data-astro-cid-tdsynljt></span> <span class="firefly-text" data-astro-cid-tdsynljt>Obsidian插件</span> </a><a href="/tags/Obsidian/" class="firefly" style="
+                --start-x: 3.535533905932737px; 
+                --start-y: -3.5355339059327386px;
+                --float-x: 53.78945593154128px;
+                --float-y: -44.73772872948773px;
+                --delay: 1.7988209333710343s;
+                --duration: 5.967973835184103s;
+                --hue: 60;
+            " data-astro-cid-tdsynljt> <span class="firefly-glow" data-astro-cid-tdsynljt></span> <span class="firefly-text" data-astro-cid-tdsynljt>Obsidian</span> </a><a href="/tags/api/" class="firefly" style="
+                --start-x: 4.619397662556432px; 
+                --start-y: -1.913417161825452px;
+                --float-x: 54.36132241968311px;
+                --float-y: -24.491278252177977px;
+                --delay: 1.265385179928718s;
+                --duration: 6.574012838136307s;
+                --hue: 90;
+            " data-astro-cid-tdsynljt> <span class="firefly-glow" data-astro-cid-tdsynljt></span> <span class="firefly-text" data-astro-cid-tdsynljt>api</span> </a> </div>  </div>  </div> <main id="swup-container" class="row-start-1 col-span-2 lg:row-start-1 lg:col-span-1 overflow-visible min-w-0" data-astro-cid-haiuh7kc style=""> <div id="content-wrapper" class="onload-animation" data-astro-cid-haiuh7kc style=""> <!-- the overflow-hidden here prevent long text break the layout--> <!-- content wrapper -->    <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative mb-4" data-astro-cid-egg7nqdx> <div id="post-container" class="card-base z-10 px-6 md:px-9 pt-6 pb-4 relative w-full" data-astro-cid-egg7nqdx> <!-- title --> <div class="relative onload-animation" data-astro-cid-egg7nqdx> <div data-pagefind-body data-pagefind-weight="10" data-pagefind-meta="title" class="transition w-full flex items-center font-bold mb-3
+                    text-3xl md:text-[2.25rem]/[2.75rem]
+                    text-black/90 dark:text-white/90
+                    md:before:w-1 before:h-5 before:rounded-md before:bg-[var(--primary)]
+                    before:absolute before:top-[0.75rem] before:left-[-1.125rem]
+                " data-astro-cid-egg7nqdx> <span data-astro-cid-egg7nqdx>Vercel-Agent-Stack-Eve-Sandbox</span> </div> </div> <!-- description/excerpt - 已隐藏，避免与文章开头重复 --> <!-- {(entry.data.description || remarkPluginFrontmatter.excerpt) && (
+                <div class="onload-animation mb-4">
+                    <div class="text-black/75 dark:text-white/75 text-sm leading-relaxed">
+                        {entry.data.description || remarkPluginFrontmatter.excerpt}
+                    </div>
+                </div>
+            )} --> <!-- metadata --> <div class="onload-animation" data-astro-cid-egg7nqdx> <div class="flex flex-wrap text-neutral-500 dark:text-neutral-400 items-center gap-4 gap-x-4 gap-y-2 mb-5"> <!-- category --> <a href="/Firefly/categories/AIHacks/" class="flex items-center hover:text-[var(--primary)] transition"> <div class="meta-icon"> <svg width="1em" height="1em" class="text-xl" data-icon="material-symbols:folder-outline-rounded">   <symbol id="ai:material-symbols:folder-outline-rounded" viewBox="0 0 24 24"><path fill="currentColor" d="M4 20q-.825 0-1.412-.587T2 18V6q0-.825.588-1.412T4 4h5.175q.4 0 .763.15t.637.425L12 6h8q.825 0 1.413.588T22 8v10q0 .825-.587 1.413T20 20zm0-2h16V8h-8.825l-2-2H4zm0 0V6z"/></symbol><use href="#ai:material-symbols:folder-outline-rounded"></use>  </svg> </div> <span class="text-50 text-sm font-medium">AIHacks</span> </a> <!-- publish date --> <div class="flex items-center"> <div class="meta-icon"> <svg width="1em" height="1em" class="text-xl" data-icon="material-symbols:calendar-today-outline-rounded">   <symbol id="ai:material-symbols:calendar-today-outline-rounded" viewBox="0 0 24 24"><path fill="currentColor" d="M5 22q-.825 0-1.412-.587T3 20V6q0-.825.588-1.412T5 4h1V3q0-.425.288-.712T7 2t.713.288T8 3v1h8V3q0-.425.288-.712T17 2t.713.288T18 3v1h1q.825 0 1.413.588T21 6v14q0 .825-.587 1.413T19 22zm0-2h14V10H5zM5 8h14V6H5zm0 0V6z"/></symbol><use href="#ai:material-symbols:calendar-today-outline-rounded"></use>  </svg> </div> <span class="text-50 text-sm font-medium">2026-08-05</span> </div> <!-- update date -->  <!-- word count & reading time --> <div class="flex items-center"> <div class="meta-icon"> <svg width="1em" height="1em" class="text-xl" data-icon="material-symbols:notes-rounded">   <symbol id="ai:material-symbols:notes-rounded" viewBox="0 0 24 24"><path fill="currentColor" d="M4 18q-.425 0-.712-.288T3 17t.288-.712T4 16h10q.425 0 .713.288T15 17t-.288.713T14 18zm0-5q-.425 0-.712-.288T3 12t.288-.712T4 11h16q.425 0 .713.288T21 12t-.288.713T20 13zm0-5q-.425 0-.712-.288T3 7t.288-.712T4 6h16q.425 0 .713.288T21 7t-.288.713T20 8z"/></symbol><use href="#ai:material-symbols:notes-rounded"></use>  </svg> </div> <span class="text-50 text-sm font-medium">4468 字</span> </div><div class="flex items-center"> <div class="meta-icon"> <svg width="1em" height="1em" class="text-xl" data-icon="material-symbols:schedule-outline-rounded">   <symbol id="ai:material-symbols:schedule-outline-rounded" viewBox="0 0 24 24"><path fill="currentColor" d="M13 11.6V8q0-.425-.288-.712T12 7t-.712.288T11 8v3.975q0 .2.075.388t.225.337l3.3 3.3q.275.275.7.275T16 16t.275-.7t-.275-.7zM12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22m0-2q3.325 0 5.663-2.337T20 12t-2.337-5.663T12 4T6.337 6.338T4 12t2.338 5.663T12 20"/></symbol><use href="#ai:material-symbols:schedule-outline-rounded"></use>  </svg> </div> <span class="text-50 text-sm font-medium">22 分钟</span> </div> </div>  </div> <!-- 封面图已移至文章内容中显示 --> <div data-pagefind-body class="prose dark:prose-invert prose-base !max-w-none custom-md break-words mb-6 markdown-content onload-animation">  <!--<div class="prose dark:prose-invert max-w-none custom-md">--> <!--<div class="max-w-none custom-md">-->  <p>如果你经常用 AI 帮自己写文章、发推特、发邮件，那 Vercel Labs 最近在 GitHub 上悄悄开源的这两个项目，绝对值得你关注：</p>
+<ol>
+<li><strong>eve 营销智能体团队模板</strong>：项目地址为 <a href="https://github.com/vercel-labs/marketing-team-eve-template" rel="nofollow" target="_blank">marketing-team-eve-template</a></li>
+<li><strong>云端浏览器工具</strong>：项目地址为 <a href="https://github.com/vercel-labs/remote-agent-browser" rel="nofollow" target="_blank">remote-agent-browser</a></li>
+</ol>
+<p>结合 Vercel 官方上线的 <a href="https://vercel.com/kb/agent-stack" rel="nofollow" target="_blank">Agent Stack (智能体技术栈)</a> 介绍，这标志着 Vercel 正在把 AI 智能体（Agent）变成可以直接帮我们干活的“云端虚拟员工团队”。</p>
+<p>我们用大白话来拆解一下这两个工具，帮你算清“账单成本”，并手把手教你如何零门槛搭建出一套属于你自己的 AI 营销部门。</p>
+<p><img src="https://github.com/user-attachments/assets/b72d9959-5bed-4b86-a40a-7fc7bfe8fe80" alt=""></p>
+<hr>
+<section><h2 id="一-核心疑问这和普通的-ai-智能体如-cozedifygpts有什么区别">一、 核心疑问：这和普通的 AI 智能体（如 Coze、Dify、GPTs）有什么区别？<a class="anchor" href="#一-核心疑问这和普通的-ai-智能体如-cozedifygpts有什么区别"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><p>很多人会疑惑：我平时用 GPTs 或者 Dify 写个工作流，不也能查资料、写文案吗？Vercel 这套东西到底有什么特别的？</p><p>我们可以用“个人小作坊”与“正规公司”的区别来理解：</p><section><h3 id="1-普通智能体如-difycoze一个人在战斗">1. 普通智能体（如 Dify、Coze）：“一个人在战斗”<a class="anchor" href="#1-普通智能体如-difycoze一个人在战斗"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p>普通的智能体本质上是一个“聊天窗口”的套壳。你给它堆一堆提示词，它能写文章。但如果你让它执行复杂工作（例如：写 Notion 博客 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 提炼短推特 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 配图 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 群发邮件），它很快就会**“脑载过载”**：</p><ul>
+<li><strong>上下文爆掉</strong>：把所有的逻辑、API 密钥、长短文章全塞进一个 AI 脑袋里，它会迅速把格式写偏、遗忘前文。</li>
+<li><strong>安全隐患</strong>：你必须把 Notion 的密钥、Resend 邮件的 API Key 直接粘在代码里，一旦 AI 越轨，密钥极易泄露。</li>
+<li><strong>无法操作真实网页</strong>：它无法登录需要验证码的后台，也无法替你去网页上点击按钮、下载 PDF。</li>
+</ul></section><section><h3 id="2-vercel-的-agent-stack正规公司团队">2. Vercel 的 Agent Stack：“正规公司团队”<a class="anchor" href="#2-vercel-的-agent-stack正规公司团队"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p>Vercel 提供的这套技术方案，真正实现了“企业级智能体”落地：</p><ul>
+<li><strong>公司制多代理解耦（各司其职）</strong>：Lead 智能体是“老板”，只分发任务；写手、社媒、邮件、SEO 是“专业员工”。每个 AI 员工都住在自己独立的云端小沙箱里，不知道其他 AI 的工具和隐私，写文案前只去读一份共享的“品牌手册”。这样 AI 脑袋很清爽，绝不会越写越乱。</li>
+<li><strong>自带云端 Chrome 浏览器（能像人一样上网）</strong>：普通 AI 只能抓取干瘪的网页 HTML（还经常被防爬阻拦）。Vercel 的云端浏览器直接给 AI 配了一台<strong>带 Chrome 浏览器的云端电脑</strong>，AI 可以自己登录账号、绕过防爬检测、点按钮、甚至把下载的文件直接回传给你。</li>
+<li><strong>高危操作必须人类审批（安全闭环）</strong>：你的 Notion/Resend 密钥全部托管在云端，AI 摸不到。当 AI 想要群发邮件或删除草稿时，它会在你的 Slack（飞书）里弹出一个卡片，<strong>只有你亲手点一下“Approve (同意)”按钮，它才敢执行</strong>。</li>
+</ul><hr></section></section>
+<section><h2 id="二-优势与原理这套系统到底是怎么跑起来的">二、 优势与原理：这套系统到底是怎么跑起来的？<a class="anchor" href="#二-优势与原理这套系统到底是怎么跑起来的"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><section><h3 id="1-核心优势是什么">1. 核心优势是什么？<a class="anchor" href="#1-核心优势是什么"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><ul>
+<li><strong>任务零污染，越干越聪明</strong>：普通的 AI 聊久了会“变笨”（上下文污染）。Eve 框架中，每个 AI 都在完全独立的微型沙盒（Micro-Sandbox）里运行，任务完成沙盒立即销毁。每次接受指令都是“全新大脑”，绝对不受历史对话干扰。</li>
+<li><strong>资产中心流转</strong>：AI 团队生成的所有配图、排版、甚至网页下载的 CSV 文件，全部自动上传到云端的 Vercel Blob 中心化存储中。AI 写手写好 Notion 博客后，推特 AI 会自动去云端读出它的内容生成推特，整个过程没有文本冗余。</li>
+</ul></section><section><h3 id="2-底层运行原理是什么">2. 底层运行原理是什么？<a class="anchor" href="#2-底层运行原理是什么"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p>这套系统看似复杂，其实底层的协同逻辑非常清晰：</p><ol>
+<li><strong>主管解析与分发</strong>：当你在 Slack 里 @AI 主管 并派发一个任务，<code>lead</code> 主控智能体首先读取你存在云端的“品牌手册”和“喜好”，为任务写出一份 <strong>Brief（任务简报）</strong>，然后把简报丢给特定的专业 AI（比如文案写手）。</li>
+<li><strong>临时云沙盒启动（计算隔离）</strong>：Vercel 的工作流引擎在云端立刻启动一个临时的 <strong>Vercel Sandbox 实例</strong>（云端安全计算容器）。</li>
+<li><strong>独立执行与资产共享</strong>：专业 AI 在这个临时沙盒里通过绑定的 SaaS 工具干活（如读写 Notion、下载数据到沙盒临时文件、写入 Vercel Blob），并把生成的产物（如 Notion 页面链接）返回。</li>
+<li><strong>人类审查与沙盒销毁</strong>：如果涉及到群发邮件等高危操作，工作流引擎自动暂停，并在你的 Slack 界面弹出 <code>Approve / Deny</code> 按钮。当你点击同意后，任务继续并完成最终提交，最后云端临时沙盒被自动销毁。</li>
+</ol><hr></section></section>
+<section><h2 id="三-ai-营销天团用-eve-框架把杂活全自动串联">三、 AI 营销天团：用 Eve 框架把杂活全自动串联<a class="anchor" href="#三-ai-营销天团用-eve-框架把杂活全自动串联"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><p>在 Eve 营销团队模板中，多智能体的分工非常精细：</p><ul>
+<li><strong>团队主管 (lead)</strong>：负责接收你的指令，写好任务需求，然后把任务派发给手下的专业 AI。</li>
+<li><strong>文案写手 (content-marketer)</strong>：专门写长文章，写完后直接自动同步到你的 <a href="https://notion.so" rel="nofollow" target="_blank">Notion</a> 知识库。</li>
+<li><strong>社媒协调员 (social-media-coordinator)</strong>：负责把长文章精简成适合发在 X (Twitter), LinkedIn, Threads 上的短贴文，并自动排期到你的 <a href="https://typefully.com" rel="nofollow" target="_blank">Typefully</a> 草稿箱。</li>
+<li><strong>邮件群发员 (email)</strong>：负责把文章改写成适合发给订阅用户的精简邮件，并自动配置好 <a href="https://resend.com" rel="nofollow" target="_blank">Resend</a> 的邮件发送列表。</li>
+<li><strong>SEO 优化师 (seo)</strong>：负责帮你审计页面，生成搜索引擎最喜欢的 JSON-LD 结构化数据。</li>
+</ul><hr></section>
+<section><h2 id="四-给-ai-专配的云端-chrome-浏览器">四、 给 AI 专配的云端 Chrome 浏览器<a class="anchor" href="#四-给-ai-专配的云端-chrome-浏览器"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><p>Vercel 开源的 <a href="https://github.com/vercel-labs/remote-agent-browser" rel="nofollow" target="_blank">Remote Agent Browser</a> 运行在隔离的 <a href="https://vercel.com/docs/vercel-sandbox" rel="nofollow" target="_blank">Vercel Sandbox</a> 里，为 AI 提供了极强的网络爬取与操作能力：</p><ul>
+<li><strong>不占本地内存</strong>：所有的浏览器操作都在云端运行，你本地的电脑不会卡顿。</li>
+<li><strong>能记住登录状态</strong>：你可以设定一个会话 ID，让 AI 即使换了任务，也依然处于同一个登录账号下，Cookie、页面状态全部能保留。</li>
+<li><strong>直接传输文件</strong>：AI 在网页上下载的数据、截图等文件，可以直接以 Buffer 字节的形式传送回你的本地。</li>
+</ul><hr></section>
+<section><h2 id="五--账单明细搞定这一套到底要花多少钱">五、 💰 账单明细：搞定这一套，到底要花多少钱？<a class="anchor" href="#五--账单明细搞定这一套到底要花多少钱"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><p>很多人一听到“云端运行”、“Sandbox 沙箱”、“多智能体协作”就担心会产生天价账单。</p><p><strong>结论放在最前面：个人玩家完全可以做到「0元白嫖运行」，只有调用大模型（API Key）会产生极其低廉的按量费用（一天几分钱到几毛钱）。</strong></p><p>具体费用构成和免费额度对比如下：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">服务组件</th><th align="left">费用标准</th><th align="left">避坑提醒 / 免费额度</th></tr></thead><tbody><tr><td align="left">Vercel Sandbox (运行云端浏览器)</td><td align="left">免费 (个人 Hobby 计划)</td><td align="left">免费额度完全够日常零星任务。Hobby 计划超出额度只会暂停服务，<strong>不会自动扣费</strong>，绝对安全。</td></tr><tr><td align="left">Vercel Blob (存储品牌文档与图片)</td><td align="left">免费 (个人 Hobby 计划)</td><td align="left">提供 250MB 免费存储，存日常 Markdown 文本和配图绰绰有余。超出无自动扣费。</td></tr><tr><td align="left">Resend (群发邮件)</td><td align="left">免费 (Free 计划)</td><td align="left">允许绑定自定义域名，<strong>每月免费发送 3000 封邮件</strong>（每天限 100 封），超过 100 封可购买 Pro，不然只是暂停发送。</td></tr><tr><td align="left">Notion / Slack / Typefully</td><td align="left">免费 (个人基础版)</td><td align="left">使用个人账号配合基础的草稿、协作功能完全免费。</td></tr><tr><td align="left">大模型 (LLM) API 消耗</td><td align="left">按量自付 (需自备 API Key)</td><td align="left">费用取决于你配置什么模型。若使用 DeepSeek，单次营销分发任务的 Token 成本可能在 <strong>几分钱</strong> 左右。</td></tr></tbody></table><hr></section>
+<section><h2 id="六--商业机密既然免费vercel-到底靠什么赚钱">六、 🏦 商业机密：既然免费，Vercel 到底靠什么赚钱？<a class="anchor" href="#六--商业机密既然免费vercel-到底靠什么赚钱"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><p>算完账你可能会好奇：这套系统对个人玩家几乎是免费的，那 Vercel 这么大一家公司，到底靠什么赚钱？是不是有什么隐藏收费？</p><p><strong>一句话回答：开源的东西不赚钱（甚至倒贴），Vercel 赚的是「你用完它之后，继续留在云上花钱」的钱。</strong></p><section><h3 id="1-开源的部分免费的钓鱼饵">1. 开源的部分：免费的“钓鱼饵”<a class="anchor" href="#1-开源的部分免费的钓鱼饵"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p><code>eve</code> 框架、<code>marketing-team-eve-template</code> 模板、<code>remote-agent-browser</code> 全部开源免费。它们的真实用途是<strong>占领开发者心智</strong>，让你把项目部署到 Vercel 自家的云平台。这就是经典的“开源获客 → 云服务变现”打法（GitLab、Supabase 都是同一套路）。</p></section><section><h3 id="2-赚钱的部分vercel-云平台本身">2. 赚钱的部分：Vercel 云平台本身<a class="anchor" href="#2-赚钱的部分vercel-云平台本身"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p>真正赚钱的是这些云服务，超过免费额度后按量计费：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">收入来源</th><th align="left">怎么赚</th></tr></thead><tbody><tr><td align="left">托管订阅</td><td align="left">Hobby 免费，但 Pro（约 $20/人/月）和企业版是主要收入：构建分钟数、带宽、Serverless 函数调用量。</td></tr><tr><td align="left">Sandbox 算力</td><td align="left">智能体每次干活都要开云端沙盒，超过免费额度后按量收费（约 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.128</mn><mi mathvariant="normal">/</mi><mi>C</mi><mi>P</mi><mi>U</mi><mtext>小时、</mtext></mrow><annotation encoding="application/x-tex">0.128/CPU 小时、</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0.128/</span><span class="mord mathnormal" style="margin-right:0.13889em;">CP</span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="mord cjk_fallback">小时、</span></span></span></span>0.0212/GB·小时）。</td></tr><tr><td align="left">Vercel Blob 存储</td><td align="left">智能体产生的图片、文档、数据存云端，超过 250MB 免费额后按量收费。</td></tr><tr><td align="left">AI Gateway</td><td align="left">智能体调大模型走 Vercel 的网关时，Vercel 在中间当“模型批发商”，<strong>赚差价或平台服务费</strong>。</td></tr><tr><td align="left">Vercel Connect</td><td align="left">连接 Notion/Slack/Resend 的授权中继层，未来可做企业级抽成。</td></tr><tr><td align="left">企业客户</td><td align="left">私有化部署、合规、SLA 保障、专属支持——客单价最高的部分。</td></tr></tbody></table></section><section><h3 id="3-免费额度就是试用装">3. 免费额度就是“试用装”<a class="anchor" href="#3-免费额度就是试用装"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p>这套商业模型的核心是：<strong>免费额度卡得刚好够你玩，不够你用</strong>。</p><ol>
+<li>你看到开源模板 → 免费部署 → 觉得好用</li>
+<li>免费额度（Sandbox CPU、Blob 250MB、每月请求量）只够日常零星试用</li>
+<li>一旦你真把它当生产工具用（团队多人、高频任务、大量文件）→ 免费额度不够 → 系统提示你升级 Pro 或按量付费</li>
+<li>企业用户要求私有部署、数据合规、SLA → 直接签 Enterprise 大单</li>
+</ol></section><section><h3 id="4-️-一个值得留意的隐性成本">4. ⚠️ 一个值得留意的隐性成本<a class="anchor" href="#4-️-一个值得留意的隐性成本"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p><strong>AI Gateway 差价</strong>：如果你用 Vercel 的 AI Gateway 调模型（模型 ID 写成 <code>deepseek/deepseek-chat</code> 这种网关格式），Vercel 会作为中间代理，定价可能比直连官方贵一点——这是他们的利润点之一。
+<strong>省钱技巧</strong>：本文配的示例是<strong>直连 DeepSeek 官方</strong>（<code>baseURL: https://api.deepseek.com</code>），请求不经过 Vercel 网关，这部分差价可以直接省掉。</p><p><strong>总结</strong>：Vercel 赌的是“AI Agent 会成为主流应用形态”，所以先免费送你铲子（开源框架），等你在他们的云上挖出金矿（生产级使用），再收租（托管 + 算力 + 存储 + AI 流量）。个人用户只要控制用量，完全可以长期白嫖。</p><hr></section></section>
+<section><h2 id="七--动手实操3步搭建你自己的-ai-营销部门">七、 🚀 动手实操：3步搭建你自己的 AI 营销部门<a class="anchor" href="#七--动手实操3步搭建你自己的-ai-营销部门"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><p>以下是具体的搭建和运行指南。只要你准备好 GitHub 和 Vercel 账号，按照这三步走，10分钟就能跑起来：</p><section><h3 id="第一步一键云端部署">第一步：一键云端部署<a class="anchor" href="#第一步一键云端部署"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><ol>
+<li>点击进入 <a href="https://github.com/vercel-labs/marketing-team-eve-template" rel="nofollow" target="_blank">Eve 营销团队模板 GitHub 仓库</a>。</li>
+<li>点击 README 中的 <strong>Deploy with Vercel</strong> 按钮。</li>
+<li>Vercel 部署向导会自动弹出。根据提示连接你的各大平台账号：
+<ul>
+<li><strong>Notion</strong>（用于同步文档与知识库，通过 Vercel Connect 授权）</li>
+<li><strong>Resend</strong>（用于群发邮件，通过 Vercel Connect 授权）</li>
+<li><strong>Slack</strong>（作为你和 AI 员工对话、审批的聊天软件界面）</li>
+<li><strong>Typefully API Key</strong>（在你的 Typefully 账户<a href="https://typefully.com/?settings=api" rel="nofollow" target="_blank">设置</a>里生成并填入，用于自动排期推特）  每月 15 次发布额度</li>
+</ul>
+</li>
+<li>点击 Deploy 完成云端部署。</li>
+</ol></section><section><h3 id="第二步将项目同步到本地电脑">第二步：将项目同步到本地电脑<a class="anchor" href="#第二步将项目同步到本地电脑"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p>部署成功后，你需要在本地进行调试。请在终端执行以下命令：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">命令</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left">git clone <a href="https://github.com/vercel-labs/marketing-team-eve-template.git" rel="nofollow" target="_blank">https://github.com/vercel-labs/marketing-team-eve-template.git</a></td><td align="left">克隆 Vercel 营销团队模板仓库到本地</td></tr><tr><td align="left">cd marketing-team-eve-template</td><td align="left">进入项目文件夹</td></tr><tr><td align="left">pnpm install</td><td align="left">安装项目所需的依赖包（需要提前安装 Node.js 和 pnpm）</td></tr><tr><td align="left">vercel link</td><td align="left">将本地代码与你刚刚在云端部署的 Vercel 项目进行绑定</td></tr><tr><td align="left">vercel env pull</td><td align="left">一键拉取云端项目的 API Key 等环境变量并生成本地 .env.local 配置文件</td></tr></tbody></table></section><section><h3 id="第三步本地启动与对话">第三步：本地启动与对话<a class="anchor" href="#第三步本地启动与对话"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p>完成以上步骤后，你可以直接在本地终端运行 Agent 调试控制台：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">命令</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left">pnpm dev</td><td align="left">本地启动开发环境，开启 TUI 终端界面进行调试</td></tr></tbody></table><p>启动后，你既可以在终端命令行中直接给 AI 主管派发任务，也可以直接在第一步中配好的 <strong>Slack 频道</strong>里 @AI 机器人，开始让你的 AI 营销团队干活。</p><hr></section></section>
+<section><h2 id="八--场景实测给-5-位-ai-员工的测试提示词">八、 🎯 场景实测：给 5 位 AI 员工的测试提示词<a class="anchor" href="#八--场景实测给-5-位-ai-员工的测试提示词"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><p>启动控制台（<code>pnpm dev</code>）后，你可以直接复制并输入以下提示词，体验不同“虚拟员工”的分工与能力：</p><section><h3 id="1-品牌定位专家-product-marketer">1. 品牌定位专家 (product-marketer)<a class="anchor" href="#1-品牌定位专家-product-marketer"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p><strong>测试提示词</strong>：</p><div class="expressive-code"><link rel="stylesheet" href="/Firefly/_astro/ec.21b5w.css"><script type="module" src="/Firefly/_astro/ec.g1fg5.js"></script><figure class="frame"><figcaption class="header"></figcaption><pre data-language="text" class="wrap" style="--ecMaxLine:80ch"><code><div class="ec-line"><div class="code"><span style="--0:#e1e4e8;--1:#e1e4e8">基于我们目前的产品特点，帮我梳理我们的核心产品卖点（Value Propositions），确认并更新我们团队共享的品牌设定文档（Brand Context）。</span></div></div></code><button class="copy-btn" aria-label="Copy code"><div class="copy-btn-icon"><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="copy-btn-icon copy-icon"><path d="M368.37-237.37q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-474.26q0-34.48 24.26-58.74 24.26-24.26 58.74-24.26h378.26q34.48 0 58.74 24.26 24.26 24.26 24.26 58.74v474.26q0 34.48-24.26 58.74-24.26 24.26-58.74 24.26H368.37Zm0-83h378.26v-474.26H368.37v474.26Zm-155 238q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-515.76q0-17.45 11.96-29.48 11.97-12.02 29.33-12.02t29.54 12.02q12.17 12.03 12.17 29.48v515.76h419.76q17.45 0 29.48 11.96 12.02 11.97 12.02 29.33t-12.02 29.54q-12.03 12.17-29.48 12.17H213.37Zm155-238v-474.26 474.26Z"></path></svg><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="copy-btn-icon success-icon"><path d="m389-377.13 294.7-294.7q12.58-12.67 29.52-12.67 16.93 0 29.61 12.67 12.67 12.68 12.67 29.53 0 16.86-12.28 29.14L419.07-288.41q-12.59 12.67-29.52 12.67-16.94 0-29.62-12.67L217.41-430.93q-12.67-12.68-12.79-29.45-.12-16.77 12.55-29.45 12.68-12.67 29.62-12.67 16.93 0 29.28 12.67L389-377.13Z"></path></svg></div></button></pre></figure></div><p><strong>干活效果</strong>：
+该任务会自动分配给 <code>product-marketer</code> 智能体。它会整理出精准的受众痛点与产品卖点，并把这些信息固化到共享的品牌文档里，成为其他所有 AI 写作时的知识背景。</p></section><section><h3 id="2-文案写手-content-marketer">2. 文案写手 (content-marketer)<a class="anchor" href="#2-文案写手-content-marketer"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p><strong>测试提示词</strong>：</p><div class="expressive-code"><figure class="frame"><figcaption class="header"></figcaption><pre data-language="text" class="wrap" style="--ecMaxLine:88ch"><code><div class="ec-line"><div class="code"><span style="--0:#e1e4e8;--1:#e1e4e8">写一篇关于“AI 智能体（Agent）如何改变普通人数字工作流”的深度博客文章。大纲需要包含痛点分析与具体的自动化案例。文章撰写完毕后，自动保存到我的 Notion 数据库中。</span></div></div></code><button class="copy-btn" aria-label="Copy code"><div class="copy-btn-icon"><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="copy-btn-icon copy-icon"><path d="M368.37-237.37q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-474.26q0-34.48 24.26-58.74 24.26-24.26 58.74-24.26h378.26q34.48 0 58.74 24.26 24.26 24.26 24.26 58.74v474.26q0 34.48-24.26 58.74-24.26 24.26-58.74 24.26H368.37Zm0-83h378.26v-474.26H368.37v474.26Zm-155 238q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-515.76q0-17.45 11.96-29.48 11.97-12.02 29.33-12.02t29.54 12.02q12.17 12.03 12.17 29.48v515.76h419.76q17.45 0 29.48 11.96 12.02 11.97 12.02 29.33t-12.02 29.54q-12.03 12.17-29.48 12.17H213.37Zm155-238v-474.26 474.26Z"></path></svg><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="copy-btn-icon success-icon"><path d="m389-377.13 294.7-294.7q12.58-12.67 29.52-12.67 16.93 0 29.61 12.67 12.67 12.68 12.67 29.53 0 16.86-12.28 29.14L419.07-288.41q-12.59 12.67-29.52 12.67-16.94 0-29.62-12.67L217.41-430.93q-12.67-12.68-12.79-29.45-.12-16.77 12.55-29.45 12.68-12.67 29.62-12.67 16.93 0 29.28 12.67L389-377.13Z"></path></svg></div></button></pre></figure></div><p><strong>干活效果</strong>：
+任务分发给 <code>content-marketer</code>。它会在后台静默完成资料搜集、文章起草与润色，最后生成一个 Notion 链接返回给您。</p></section><section><h3 id="3-社媒协调员-social-media-coordinator">3. 社媒协调员 (social-media-coordinator)<a class="anchor" href="#3-社媒协调员-social-media-coordinator"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p><strong>测试提示词</strong>：</p><div class="expressive-code"><figure class="frame"><figcaption class="header"></figcaption><pre data-language="text" class="wrap" style="--ecMaxLine:109ch"><code><div class="ec-line"><div class="code"><span style="--0:#e1e4e8;--1:#e1e4e8">根据我们刚才写好的这篇 Notion 博客内容，帮我提炼 3 条适合发布在 Twitter 上的短贴文。每条贴文要包含 Hook（吸睛开头）和引导点击的 Action 话术，生成后推送到 Typefully 的草稿箱。</span></div></div></code><button class="copy-btn" aria-label="Copy code"><div class="copy-btn-icon"><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="copy-btn-icon copy-icon"><path d="M368.37-237.37q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-474.26q0-34.48 24.26-58.74 24.26-24.26 58.74-24.26h378.26q34.48 0 58.74 24.26 24.26 24.26 24.26 58.74v474.26q0 34.48-24.26 58.74-24.26 24.26-58.74 24.26H368.37Zm0-83h378.26v-474.26H368.37v474.26Zm-155 238q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-515.76q0-17.45 11.96-29.48 11.97-12.02 29.33-12.02t29.54 12.02q12.17 12.03 12.17 29.48v515.76h419.76q17.45 0 29.48 11.96 12.02 11.97 12.02 29.33t-12.02 29.54q-12.03 12.17-29.48 12.17H213.37Zm155-238v-474.26 474.26Z"></path></svg><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="copy-btn-icon success-icon"><path d="m389-377.13 294.7-294.7q12.58-12.67 29.52-12.67 16.93 0 29.61 12.67 12.67 12.68 12.67 29.53 0 16.86-12.28 29.14L419.07-288.41q-12.59 12.67-29.52 12.67-16.94 0-29.62-12.67L217.41-430.93q-12.67-12.68-12.79-29.45-.12-16.77 12.55-29.45 12.68-12.67 29.62-12.67 16.93 0 29.28 12.67L389-377.13Z"></path></svg></div></button></pre></figure></div><p><strong>干活效果</strong>：
+任务分发给 <code>social-media-coordinator</code>。它会自动拉取最新的 Notion 页面，分析长文，提炼短贴，并在您的 Typefully 中自动排期创建 3 篇推特草稿。</p></section><section><h3 id="4-seo-优化师-seo">4. SEO 优化师 (seo)<a class="anchor" href="#4-seo-优化师-seo"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p><strong>测试提示词</strong>：</p><div class="expressive-code"><figure class="frame"><figcaption class="header"></figcaption><pre data-language="text" class="wrap" style="--ecMaxLine:66ch"><code><div class="ec-line"><div class="code"><span style="--0:#e1e4e8;--1:#e1e4e8">帮我审计我们刚才生成的 Notion 博客页面，检查关键词密度、主副标题层级结构，并生成对应的 JSON-LD 结构化数据优化方案。</span></div></div></code><button class="copy-btn" aria-label="Copy code"><div class="copy-btn-icon"><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="copy-btn-icon copy-icon"><path d="M368.37-237.37q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-474.26q0-34.48 24.26-58.74 24.26-24.26 58.74-24.26h378.26q34.48 0 58.74 24.26 24.26 24.26 24.26 58.74v474.26q0 34.48-24.26 58.74-24.26 24.26-58.74 24.26H368.37Zm0-83h378.26v-474.26H368.37v474.26Zm-155 238q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-515.76q0-17.45 11.96-29.48 11.97-12.02 29.33-12.02t29.54 12.02q12.17 12.03 12.17 29.48v515.76h419.76q17.45 0 29.48 11.96 12.02 11.97 12.02 29.33t-12.02 29.54q-12.03 12.17-29.48 12.17H213.37Zm155-238v-474.26 474.26Z"></path></svg><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="copy-btn-icon success-icon"><path d="m389-377.13 294.7-294.7q12.58-12.67 29.52-12.67 16.93 0 29.61 12.67 12.67 12.68 12.67 29.53 0 16.86-12.28 29.14L419.07-288.41q-12.59 12.67-29.52 12.67-16.94 0-29.62-12.67L217.41-430.93q-12.67-12.68-12.79-29.45-.12-16.77 12.55-29.45 12.68-12.67 29.62-12.67 16.93 0 29.28 12.67L389-377.13Z"></path></svg></div></button></pre></figure></div><p><strong>干活效果</strong>：
+任务分发给 <code>seo</code>。它会调取网页内容进行语义级 SEO 扫描，并产出规范化的 Schema 配置代码。</p></section><section><h3 id="5-邮件群发员-email">5. 邮件群发员 (email)<a class="anchor" href="#5-邮件群发员-email"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p><strong>测试提示词</strong>：</p><div class="expressive-code"><figure class="frame"><figcaption class="header"></figcaption><pre data-language="text" class="wrap" style="--ecMaxLine:91ch"><code><div class="ec-line"><div class="code"><span style="--0:#e1e4e8;--1:#e1e4e8">把我们上一篇关于工作流的博客内容改写为一份精简的 Newsletter 邮件，适配我的 Resend 模板，并在 Resend 后台创建一个待发送的邮件群发活动（Campaign）。</span></div></div></code><button class="copy-btn" aria-label="Copy code"><div class="copy-btn-icon"><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="copy-btn-icon copy-icon"><path d="M368.37-237.37q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-474.26q0-34.48 24.26-58.74 24.26-24.26 58.74-24.26h378.26q34.48 0 58.74 24.26 24.26 24.26 24.26 58.74v474.26q0 34.48-24.26 58.74-24.26 24.26-58.74 24.26H368.37Zm0-83h378.26v-474.26H368.37v474.26Zm-155 238q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-515.76q0-17.45 11.96-29.48 11.97-12.02 29.33-12.02t29.54 12.02q12.17 12.03 12.17 29.48v515.76h419.76q17.45 0 29.48 11.96 12.02 11.97 12.02 29.33t-12.02 29.54q-12.03 12.17-29.48 12.17H213.37Zm155-238v-474.26 474.26Z"></path></svg><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="copy-btn-icon success-icon"><path d="m389-377.13 294.7-294.7q12.58-12.67 29.52-12.67 16.93 0 29.61 12.67 12.67 12.68 12.67 29.53 0 16.86-12.28 29.14L419.07-288.41q-12.59 12.67-29.52 12.67-16.94 0-29.62-12.67L217.41-430.93q-12.67-12.68-12.79-29.45-.12-16.77 12.55-29.45 12.68-12.67 29.62-12.67 16.93 0 29.28 12.67L389-377.13Z"></path></svg></div></button></pre></figure></div><p><strong>干活效果</strong>：
+任务分发给 <code>email</code>。它会根据邮件读者的阅读习惯把文章改写为更短的 Newsletter，在 Resend 后台建好 Campaign。<strong>注意：因为涉及到实际发送，系统在最后一步会暂停并向您发送一个审批卡片，必须由您在终端或 Slack 中点击“同意（Approve）”才会真正发信。</strong></p><hr></section></section>
+<section><h2 id="九--常见问题-faq">九、 💡 常见问题 (FAQ)<a class="anchor" href="#九--常见问题-faq"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><section><h3 id="q1可以配置我自己持有的-api-key-吗怎么配置">Q1：可以配置我自己持有的 API Key 吗？怎么配置？<a class="anchor" href="#q1可以配置我自己持有的-api-key-吗怎么配置"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p>可以，而且大模型的 API Key <strong>必须</strong>由你自己配置。需要修改以下 3 类文件：</p><p><strong>① 本地环境配置文件（.env.local）</strong></p><p>绝对路径：
+<code>C:\Users\Administrator\Documents\codex\2026-08-05\marketing-team-eve-template\.env.local</code></p><p>在文件末尾追加对应模型的 API Key，例如 DeepSeek 官方 Key：</p><div class="expressive-code"><figure class="frame is-terminal"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="bash" class="wrap" style="--ecMaxLine:29ch"><code><div class="ec-line"><div class="code"><span style="--0:#E1E4E8;--1:#E1E4E8">DEEPSEEK_API_KEY</span><span style="--0:#F97583;--1:#F97583">=</span><span style="--0:#9ECBFF;--1:#9ECBFF">"您的官方APIKey"</span></div></div></code><button class="copy-btn" aria-label="Copy code"><div class="copy-btn-icon"><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="copy-btn-icon copy-icon"><path d="M368.37-237.37q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-474.26q0-34.48 24.26-58.74 24.26-24.26 58.74-24.26h378.26q34.48 0 58.74 24.26 24.26 24.26 24.26 58.74v474.26q0 34.48-24.26 58.74-24.26 24.26-58.74 24.26H368.37Zm0-83h378.26v-474.26H368.37v474.26Zm-155 238q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-515.76q0-17.45 11.96-29.48 11.97-12.02 29.33-12.02t29.54 12.02q12.17 12.03 12.17 29.48v515.76h419.76q17.45 0 29.48 11.96 12.02 11.97 12.02 29.33t-12.02 29.54q-12.03 12.17-29.48 12.17H213.37Zm155-238v-474.26 474.26Z"></path></svg><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="copy-btn-icon success-icon"><path d="m389-377.13 294.7-294.7q12.58-12.67 29.52-12.67 16.93 0 29.61 12.67 12.67 12.68 12.67 29.53 0 16.86-12.28 29.14L419.07-288.41q-12.59 12.67-29.52 12.67-16.94 0-29.62-12.67L217.41-430.93q-12.67-12.68-12.79-29.45-.12-16.77 12.55-29.45 12.68-12.67 29.62-12.67 16.93 0 29.28 12.67L389-377.13Z"></path></svg></div></button></pre></figure></div><p><strong>② 模型直连配置文件（agent/model.ts，需新建）</strong></p><p>绝对路径：
+<code>C:\Users\Administrator\Documents\codex\2026-08-05\marketing-team-eve-template\agent\model.ts</code></p><p>导入模型提供商依赖，并指向官方 API 接口地址：</p><div class="expressive-code"><figure class="frame"><figcaption class="header"></figcaption><pre data-language="typescript" class="wrap" style="--ecMaxLine:46ch"><code><div class="ec-line"><div class="code"><span style="--0:#F97583;--1:#F97583">import</span><span style="--0:#E1E4E8;--1:#E1E4E8"> { createOpenAI } </span><span style="--0:#F97583;--1:#F97583">from</span><span style="--0:#E1E4E8;--1:#E1E4E8"> </span><span style="--0:#9ECBFF;--1:#9ECBFF">"@ai-sdk/openai"</span><span style="--0:#E1E4E8;--1:#E1E4E8">;</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#F97583;--1:#F97583">export</span><span style="--0:#E1E4E8;--1:#E1E4E8"> </span><span style="--0:#F97583;--1:#F97583">const</span><span style="--0:#E1E4E8;--1:#E1E4E8"> </span><span style="--0:#79B8FF;--1:#79B8FF">deepseekModel</span><span style="--0:#E1E4E8;--1:#E1E4E8"> </span><span style="--0:#F97583;--1:#F97583">=</span><span style="--0:#E1E4E8;--1:#E1E4E8"> </span><span style="--0:#B392F0;--1:#B392F0">createOpenAI</span><span style="--0:#E1E4E8;--1:#E1E4E8">({</span></div></div><div class="ec-line" style="--ecIndent:2ch"><div class="code"><span class="indent"><span style="--0:#E1E4E8;--1:#E1E4E8">  </span></span><span style="--0:#E1E4E8;--1:#E1E4E8">apiKey: process.env.</span><span style="--0:#79B8FF;--1:#79B8FF">DEEPSEEK_API_KEY</span><span style="--0:#E1E4E8;--1:#E1E4E8">,</span></div></div><div class="ec-line" style="--ecIndent:2ch"><div class="code"><span class="indent"><span style="--0:#E1E4E8;--1:#E1E4E8">  </span></span><span style="--0:#E1E4E8;--1:#E1E4E8">baseURL: </span><span style="--0:#9ECBFF;--1:#9ECBFF">"https://api.deepseek.com"</span><span style="--0:#E1E4E8;--1:#E1E4E8">,</span></div></div><div class="ec-line"><div class="code"><span style="--0:#E1E4E8;--1:#E1E4E8">})(</span><span style="--0:#9ECBFF;--1:#9ECBFF">"deepseek-chat"</span><span style="--0:#E1E4E8;--1:#E1E4E8">);</span></div></div></code><button class="copy-btn" aria-label="Copy code"><div class="copy-btn-icon"><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="copy-btn-icon copy-icon"><path d="M368.37-237.37q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-474.26q0-34.48 24.26-58.74 24.26-24.26 58.74-24.26h378.26q34.48 0 58.74 24.26 24.26 24.26 24.26 58.74v474.26q0 34.48-24.26 58.74-24.26 24.26-58.74 24.26H368.37Zm0-83h378.26v-474.26H368.37v474.26Zm-155 238q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-515.76q0-17.45 11.96-29.48 11.97-12.02 29.33-12.02t29.54 12.02q12.17 12.03 12.17 29.48v515.76h419.76q17.45 0 29.48 11.96 12.02 11.97 12.02 29.33t-12.02 29.54q-12.03 12.17-29.48 12.17H213.37Zm155-238v-474.26 474.26Z"></path></svg><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="copy-btn-icon success-icon"><path d="m389-377.13 294.7-294.7q12.58-12.67 29.52-12.67 16.93 0 29.61 12.67 12.67 12.68 12.67 29.53 0 16.86-12.28 29.14L419.07-288.41q-12.59 12.67-29.52 12.67-16.94 0-29.62-12.67L217.41-430.93q-12.67-12.68-12.79-29.45-.12-16.77 12.55-29.45 12.68-12.67 29.62-12.67 16.93 0 29.28 12.67L389-377.13Z"></path></svg></div></button></pre></figure></div><p><strong>③ 智能体角色定义文件（agent.ts）</strong></p><p>主控智能体绝对路径：
+<code>C:\Users\Administrator\Documents\codex\2026-08-05\marketing-team-eve-template\agent\agent.ts</code></p><p>子智能体角色绝对路径（位于 <code>agent/subagents/</code> 子目录下的 5 个文件）：</p><ul>
+<li><code>C:\Users\Administrator\Documents\codex\2026-08-05\marketing-team-eve-template\agent\subagents\content-marketer\agent.ts</code>（文案写手）</li>
+<li><code>C:\Users\Administrator\Documents\codex\2026-08-05\marketing-team-eve-template\agent\subagents\email\agent.ts</code>（邮件群发）</li>
+<li><code>C:\Users\Administrator\Documents\codex\2026-08-05\marketing-team-eve-template\agent\subagents\product-marketer\agent.ts</code>（定位分析）</li>
+<li><code>C:\Users\Administrator\Documents\codex\2026-08-05\marketing-team-eve-template\agent\subagents\seo\agent.ts</code>（SEO 专家）</li>
+<li><code>C:\Users\Administrator\Documents\codex\2026-08-05\marketing-team-eve-template\agent\subagents\social-media-coordinator\agent.ts</code>（社媒协调）</li>
+</ul><p>修改这些文件，把 <code>model</code> 指向 <code>deepseekModel</code>。对于自定义或国内的第三方模型，还需要同时在配置里指明上下文窗口大小（例如：<code>modelContextWindowTokens: 128000</code>），以避免编译报错。</p><p><strong>云端运行</strong>：如果项目已经部署在云端，直接登录 Vercel 控制台，在项目的 <code>Settings -> Environment Variables</code> 页面添加对应环境变量（如 <code>OPENAI_API_KEY</code> 或 <code>DEEPSEEK_API_KEY</code>）即可，无需修改任何本地代码。</p></section><section><h3 id="q2这套系统支持哪些大模型可以用国内的-deepseek-吗">Q2：这套系统支持哪些大模型？可以用国内的 DeepSeek 吗？<a class="anchor" href="#q2这套系统支持哪些大模型可以用国内的-deepseek-吗"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p>支持。因为 Vercel 智能体框架底层使用了 <a href="https://vercel.com/docs/ai-gateway" rel="nofollow" target="_blank">Vercel AI Gateway</a>，支持极其广泛的模型。你可以使用 OpenAI、Anthropic Claude，或者使用任何兼容 OpenAI 格式接口的国产模型（如 DeepSeek，推荐通过 <a href="https://openrouter.ai" rel="nofollow" target="_blank">OpenRouter</a> 或 <a href="https://siliconflow.cn" rel="nofollow" target="_blank">SiliconFlow</a> 的 API Key 直接接入）。</p><ul>
+<li>在运行本地命令行控制台调试时，你随时可以在交互窗口输入 <code>/model</code> 命令，即可弹出模型列表进行无缝快速切换。</li>
+</ul></section><section><h3 id="q3vercel-免费额度超标了真的不会偷偷扣我信用卡的钱吗">Q3：Vercel 免费额度超标了真的不会偷偷扣我信用卡的钱吗？<a class="anchor" href="#q3vercel-免费额度超标了真的不会偷偷扣我信用卡的钱吗"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p><strong>绝对不会</strong>。Vercel 个人 Hobby 账户有强制的免费超量保护机制。不管是云端浏览器 Sandbox 使用的 CPU 时间超限，还是 Vercel Blob 的存储空间占满，一旦超出免费上限，系统会直接<strong>暂停服务</strong>，等待下个计费周期重置。不会在后台产生扣款订单，大可放心玩耍。</p></section></section>  </div> <script type="module">document.addEventListener("click",function(s){const t=s.target;if(t&&t.classList.contains("copy-btn")){const c=t.closest("pre")?.querySelector("code"),i=Array.from(c?.querySelectorAll(".code:not(summary *)")??[]).map(e=>e.textContent).map(e=>e===`
+`?"":e).join(`
+`);navigator.clipboard.writeText(i);const o=t.getAttribute("data-timeout-id");o&&clearTimeout(parseInt(o)),t.classList.add("success");const n=setTimeout(()=>{t.classList.remove("success")},1e3);t.setAttribute("data-timeout-id",n.toString())}});</script> <!-- 文章底部标签 --> <div class="flex flex-wrap items-center gap-2 mt-6 mb-6" data-astro-cid-egg7nqdx> <a href="/tags/ai/" class="inline-flex items-center px-3 py-1.5 text-xs rounded-full border border-neutral-200 dark:border-neutral-700 bg-gradient-to-r from-cyan-500 to-purple-500 bg-clip-text text-transparent hover:from-cyan-400 hover:to-purple-400 transition-all duration-300 italic" data-astro-cid-egg7nqdx> <span class="text-xs mr-0.5 font-bold" data-astro-cid-egg7nqdx>#</span>ai </a><a href="/tags/agent/" class="inline-flex items-center px-3 py-1.5 text-xs rounded-full border border-neutral-200 dark:border-neutral-700 bg-gradient-to-r from-cyan-500 to-purple-500 bg-clip-text text-transparent hover:from-cyan-400 hover:to-purple-400 transition-all duration-300 italic" data-astro-cid-egg7nqdx> <span class="text-xs mr-0.5 font-bold" data-astro-cid-egg7nqdx>#</span>agent </a><a href="/tags/vercel/" class="inline-flex items-center px-3 py-1.5 text-xs rounded-full border border-neutral-200 dark:border-neutral-700 bg-gradient-to-r from-cyan-500 to-purple-500 bg-clip-text text-transparent hover:from-cyan-400 hover:to-purple-400 transition-all duration-300 italic" data-astro-cid-egg7nqdx> <span class="text-xs mr-0.5 font-bold" data-astro-cid-egg7nqdx>#</span>vercel </a><a href="/tags/workflow/" class="inline-flex items-center px-3 py-1.5 text-xs rounded-full border border-neutral-200 dark:border-neutral-700 bg-gradient-to-r from-cyan-500 to-purple-500 bg-clip-text text-transparent hover:from-cyan-400 hover:to-purple-400 transition-all duration-300 italic" data-astro-cid-egg7nqdx> <span class="text-xs mr-0.5 font-bold" data-astro-cid-egg7nqdx>#</span>workflow </a><a href="/tags/browser/" class="inline-flex items-center px-3 py-1.5 text-xs rounded-full border border-neutral-200 dark:border-neutral-700 bg-gradient-to-r from-cyan-500 to-purple-500 bg-clip-text text-transparent hover:from-cyan-400 hover:to-purple-400 transition-all duration-300 italic" data-astro-cid-egg7nqdx> <span class="text-xs mr-0.5 font-bold" data-astro-cid-egg7nqdx>#</span>browser </a> </div> <!-- 文章反馈与编辑区域 --> <div class="mb-4 p-4 rounded-lg bg-[var(--license-block-bg)] border border-[var(--line-divider)] onload-animation" data-astro-cid-egg7nqdx> <!-- 反馈区域 --> <div class="flex items-center justify-between mb-4" data-astro-cid-egg7nqdx> <div class="flex items-center gap-3" data-astro-cid-egg7nqdx> <div class="h-5 w-5 rounded bg-[var(--primary)] flex items-center justify-center" data-astro-cid-egg7nqdx> <svg width="1em" height="1em" class="text-[0.75rem] text-white dark:text-black/70" data-astro-cid-egg7nqdx="true" data-icon="material-symbols:help-outline">   <symbol id="ai:material-symbols:help-outline" viewBox="0 0 24 24"><path fill="currentColor" d="M11.95 18q.525 0 .888-.363t.362-.887t-.362-.888t-.888-.362t-.887.363t-.363.887t.363.888t.887.362m-.9-3.85h1.85q0-.825.188-1.3t1.062-1.3q.65-.65 1.025-1.238T15.55 8.9q0-1.4-1.025-2.15T12.1 6q-1.425 0-2.312.75T8.55 8.55l1.65.65q.125-.45.563-.975T12.1 7.7q.8 0 1.2.438t.4.962q0 .5-.3.938t-.75.812q-1.1.975-1.35 1.475t-.25 1.825M12 22q-2.075 0-3.9-.787t-3.175-2.138T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22m0-2q3.35 0 5.675-2.325T20 12t-2.325-5.675T12 4T6.325 6.325T4 12t2.325 5.675T12 20m0-8"/></symbol><use href="#ai:material-symbols:help-outline"></use>  </svg> </div> <p class="text-black/80 dark:text-white/80 text-sm" data-astro-cid-egg7nqdx>这篇文章是否对你有帮助？</p> </div> <div class="flex gap-2" data-astro-cid-egg7nqdx> <a href="https://github.com/kyjl97/" target="_blank" class="group flex items-center gap-1 px-3 py-1.5 rounded bg-[#b7f605] hover:bg-[#a3e004] active:bg-[#8fc603] dark:bg-[#D4AF37] dark:hover:bg-[#C4A030] dark:active:bg-[#B8960C] text-[#1B365D] dark:text-[#0A0A0A] text-xs font-medium transition-all active:scale-95" data-astro-cid-egg7nqdx> <svg width="1em" height="1em" class="text-[0.875rem] group-hover:scale-110 transition-transform" data-astro-cid-egg7nqdx="true" data-icon="material-symbols:contact-mail-outline">   <symbol id="ai:material-symbols:contact-mail-outline" viewBox="0 0 24 24"><path fill="currentColor" d="M14 11h7V6h-7zm3.5-1.25L15 8V7l2.5 1.75L20 7v1zM2 21q-.825 0-1.412-.587T0 19V5q0-.825.588-1.412T2 3h20q.825 0 1.413.588T24 5v14q0 .825-.587 1.413T22 21zm13.9-2H22V5H2v14h.1q1.05-1.875 2.9-2.937T9 15t4 1.063T15.9 19M9 14q1.25 0 2.125-.875T12 11t-.875-2.125T9 8t-2.125.875T6 11t.875 2.125T9 14m-4.45 5h8.9q-.85-.95-2.013-1.475T9 17t-2.425.525T4.55 19M9 12q-.425 0-.712-.288T8 11t.288-.712T9 10t.713.288T10 11t-.288.713T9 12m3 0"/></symbol><use href="#ai:material-symbols:contact-mail-outline"></use>  </svg>
+远程
+</a> <a href="/sponsors" class="group flex items-center gap-1 px-3 py-1.5 rounded bg-[#b7f605] hover:bg-[#a3e004] active:bg-[#8fc603] dark:bg-[#D4AF37] dark:hover:bg-[#C4A030] dark:active:bg-[#B8960C] text-[#1B365D] dark:text-[#0A0A0A] text-xs font-medium transition-all active:scale-95" data-astro-cid-egg7nqdx> <svg width="1em" height="1em" class="text-[0.875rem] group-hover:scale-110 transition-transform" data-astro-cid-egg7nqdx="true" data-icon="material-symbols:favorite-outline">   <symbol id="ai:material-symbols:favorite-outline" viewBox="0 0 24 24"><path fill="currentColor" d="m12 21l-1.45-1.3q-2.525-2.275-4.175-3.925T3.75 12.812T2.388 10.4T2 8.15Q2 5.8 3.575 4.225T7.5 2.65q1.3 0 2.475.55T12 4.75q.85-1 2.025-1.55t2.475-.55q2.35 0 3.925 1.575T22 8.15q0 1.15-.387 2.25t-1.363 2.412t-2.625 2.963T13.45 19.7zm0-2.7q2.4-2.15 3.95-3.687t2.45-2.675t1.25-2.026T20 8.15q0-1.5-1-2.5t-2.5-1q-1.175 0-2.175.662T12.95 7h-1.9q-.375-1.025-1.375-1.687T7.5 4.65q-1.5 0-2.5 1t-1 2.5q0 .875.35 1.763t1.25 2.025t2.45 2.675T12 18.3m0-6.825"/></symbol><use href="#ai:material-symbols:favorite-outline"></use>  </svg>
+赞助
+</a> </div> </div>   <div class="border-t border-[var(--line-divider)] my-3" data-astro-cid-egg7nqdx></div>  <div class="flex items-start gap-3" data-astro-cid-egg7nqdx> <div class="h-5 w-5 rounded bg-[var(--primary)] flex items-center justify-center" data-astro-cid-egg7nqdx> <svg width="1em" height="1em" class="text-[0.875rem] text-white dark:text-black/70" data-astro-cid-egg7nqdx="true" data-icon="material-symbols:edit-outline">   <symbol id="ai:material-symbols:edit-outline" viewBox="0 0 24 24"><path fill="currentColor" d="M5 19h1.425L16.2 9.225L14.775 7.8L5 17.575zm-2 2v-4.25L16.2 3.575q.3-.275.663-.425t.762-.15t.775.15t.65.45L20.425 5q.3.275.438.65T21 6.4q0 .4-.137.763t-.438.662L7.25 21zM19 6.4L17.6 5zm-3.525 2.125l-.7-.725L16.2 9.225z"/></symbol><use href="#ai:material-symbols:edit-outline"></use>  </svg> </div> <div class="flex-1" data-astro-cid-egg7nqdx> <p class="text-black/80 dark:text-white/80 text-sm mb-1" data-astro-cid-egg7nqdx>发现错误或想要改进这篇文章？</p> <a href="https://github.com/kyjl97/Firefly/blob/main/src/content/posts/aihacks/vercel-agent-stack-eve-sandbox.md" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-[var(--primary)] hover:text-[oklch(0.65_0.16_var(--hue))] text-sm font-medium transition-colors" data-astro-cid-egg7nqdx> <svg width="0.97em" height="1em" class="text-[0.875rem]" data-astro-cid-egg7nqdx="true" data-icon="fa6-brands:github">   <symbol id="ai:fa6-brands:github" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6c-3.3.3-5.6-1.3-5.6-3.6c0-2 2.3-3.6 5.2-3.6c3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9c2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9c.3 2 2.9 3.3 5.9 2.6c2.9-.7 4.9-2.6 4.6-4.6c-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2c12.8 2.3 17.3-5.6 17.3-12.1c0-6.2-.3-40.4-.3-61.4c0 0-70 15-84.7-29.8c0 0-11.4-29.1-27.8-36.6c0 0-22.9-15.7 1.6-15.4c0 0 24.9 2 38.6 25.8c21.9 38.6 58.6 27.5 72.9 20.9c2.3-16 8.8-27.1 16-33.7c-55.9-6.2-112.3-14.3-112.3-110.5c0-27.5 7.6-41.3 23.6-58.9c-2.6-6.5-11.1-33.3 2.6-67.9c20.9-6.5 69 27 69 27c20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27c13.7 34.7 5.2 61.4 2.6 67.9c16 17.7 25.8 31.5 25.8 58.9c0 96.5-58.9 104.2-114.8 110.5c9.2 7.9 17 22.9 17 46.4c0 33.7-.3 75.4-.3 83.6c0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252C496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2c1.6 1.6 3.9 2.3 5.2 1c1.3-1 1-3.3-.7-5.2c-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9c1.6 1 3.6.7 4.3-.7c.7-1.3-.3-2.9-2.3-3.9c-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2c2.3 2.3 5.2 2.6 6.5 1c1.3-1.3.7-4.3-1.3-6.2c-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2c-1.4-2.3-4-3.3-5.6-2"/></symbol><use href="#ai:fa6-brands:github"></use>  </svg>
+在 GitHub 上编辑此页
+<svg width="1em" height="1em" class="text-[0.75rem]" data-astro-cid-egg7nqdx="true" data-icon="material-symbols:open-in-new">   <symbol id="ai:material-symbols:open-in-new" viewBox="0 0 24 24"><path fill="currentColor" d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h7v2H5v14h14v-7h2v7q0 .825-.587 1.413T19 21zm4.7-5.3l-1.4-1.4L17.6 5H14V3h7v7h-2V6.4z"/></symbol><use href="#ai:material-symbols:open-in-new"></use>  </svg> </a> </div> </div>  </div>  <div class="flex flex-col md:flex-row justify-between mb-4 gap-4 overflow-hidden w-full" data-astro-cid-egg7nqdx> <a href="/Firefly/posts/aihacks/vercel-cli/" class="w-full font-bold overflow-hidden active:scale-95" data-astro-cid-egg7nqdx> <div class="btn-card rounded-2xl w-full h-[3.75rem] max-w-full px-4 flex items-center !justify-start gap-4" data-astro-cid-egg7nqdx> <svg width="1em" height="1em" class="text-[2rem] text-[var(--primary)]" data-astro-cid-egg7nqdx="true" data-icon="material-symbols:chevron-left-rounded">   <symbol id="ai:material-symbols:chevron-left-rounded" viewBox="0 0 24 24"><path fill="currentColor" d="m10.8 12l3.9 3.9q.275.275.275.7t-.275.7t-.7.275t-.7-.275l-4.6-4.6q-.15-.15-.212-.325T8.425 12t.063-.375t.212-.325l4.6-4.6q.275-.275.7-.275t.7.275t.275.7t-.275.7z"/></symbol><use href="#ai:material-symbols:chevron-left-rounded"></use>  </svg> <div class="overflow-hidden transition overflow-ellipsis whitespace-nowrap max-w-[calc(100%_-_3rem)] text-black/75 dark:text-white/75" data-astro-cid-egg7nqdx> Vercel CLI </div> </div> </a> <a href="/Firefly/posts/aihacks/我招了-14-个ai员工/" class="w-full font-bold overflow-hidden active:scale-95" data-astro-cid-egg7nqdx> <div class="btn-card rounded-2xl w-full h-[3.75rem] max-w-full px-4 flex items-center !justify-end gap-4" data-astro-cid-egg7nqdx> <div class="overflow-hidden transition overflow-ellipsis whitespace-nowrap max-w-[calc(100%_-_3rem)] text-black/75 dark:text-white/75" data-astro-cid-egg7nqdx> 14人AI飞书团队 </div> <svg width="1em" height="1em" viewBox="0 0 24 24" class="text-[2rem] text-[var(--primary)]" data-astro-cid-egg7nqdx="true" data-icon="material-symbols:chevron-right-rounded">   <use href="#ai:material-symbols:chevron-right-rounded"></use>  </svg> </div> </a> </div> <!-- Giscus 评论区 --> <div id="giscus-container" class="giscus" data-repo="kyjl97/Firefly" data-repo-id="R_kgDORH-6kA" data-category="Announcements" data-category-id="DIC_kwDORH-6kM4C111B" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="preferred_color_scheme" data-lang="zh-CN" data-loading="lazy" data-astro-cid-egg7nqdx></div> </div>  <script type="module">function i(){const n=document.getElementById("giscus-container");if(!n)return;const r=document.createTreeWalker(n,NodeFilter.SHOW_TEXT),o=[];let e;for(;e=r.nextNode();)if(e.textContent.includes("条评论")||e.textContent.includes("表情")){let t=e.parentElement;t&&o.push(t)}o.forEach(t=>t.style.display="none")}const s=new MutationObserver(()=>{i()});s.observe(document.getElementById("giscus-container"),{childList:!0,subtree:!0});</script> </div> </div> </main> <div class="footer col-span-2 row-start-3 lg:col-span-1 lg:col-start-2 lg:row-start-2 onload-animation" data-astro-cid-haiuh7kc style=""> <div class="transition border-t border-black/10 dark:border-white/15 my-10 border-dashed mx-4 md:mx-32"></div> <div class="text-center text-neutral-400 dark:text-neutral-500 text-sm pb-8"> <p>得救之道 · <a href="https://jieliu.me">jieliu.me</a></p> </div> </div> </div> <!-- There can't be a filter on parent element, or it will break `fixed` --><div class="back-to-top-wrapper hidden lg:block" data-astro-cid-eymb5ayk> <div id="go-to-comments-btn" class="back-to-top-btn hide flex items-center justify-center transition" onclick="goToComments()" data-astro-cid-eymb5ayk> <button aria-label="Go to Comments" class="flex items-center justify-center" data-astro-cid-eymb5ayk> <svg width="1em" height="1em" class="go-to-comments-icon" data-astro-cid-eymb5ayk="true" data-icon="material-symbols:mode-comment-outline">   <symbol id="ai:material-symbols:mode-comment-outline" viewBox="0 0 24 24"><path fill="currentColor" d="m22 22l-4-4H4q-.825 0-1.412-.587T2 16V4q0-.825.588-1.412T4 2h16q.825 0 1.413.588T22 4zM4 16h14.85L20 17.125V4H4zm0 0V4z"/></symbol><use href="#ai:material-symbols:mode-comment-outline"></use>  </svg> </button> </div> <div id="back-to-top-btn" class="back-to-top-btn hide flex items-center justify-center transition" onclick="backToTop()" data-astro-cid-eymb5ayk> <button aria-label="Back to Top" class="flex items-center justify-center" data-astro-cid-eymb5ayk> <svg width="1em" height="1em" class="back-to-top-icon" data-astro-cid-eymb5ayk="true" data-icon="material-symbols:keyboard-arrow-up-rounded">   <symbol id="ai:material-symbols:keyboard-arrow-up-rounded" viewBox="0 0 24 24"><path fill="currentColor" d="m12 10.8l-3.9 3.9q-.275.275-.7.275t-.7-.275t-.275-.7t.275-.7l4.6-4.6q.3-.3.7-.3t.7.3l4.6 4.6q.275.275.275.7t-.275.7t-.7.275t-.7-.275z"/></symbol><use href="#ai:material-symbols:keyboard-arrow-up-rounded"></use>  </svg> </button> </div> </div>  <script>
+function backToTop() {
+    window.scroll({ top: 0, behavior: 'smooth' });
+}
+
+function goToComments() {
+    const comments = document.getElementById('giscus-container');
+    if (comments) {
+        comments.scrollIntoView({ behavior: 'smooth' });
+    }
+}
+</script> </div> </div>     <div id="qr-modal" class="hidden neon-modal-backdrop" onclick="closeQRModal()" style="position: fixed; inset: 0; z-index: 99999; display: none; align-items: center; justify-content: center; padding: 1rem;; " data-astro-cid-haiuh7kc> <div class="neon-modal-box" onclick="event.stopPropagation()" style="padding: 2rem; max-width: 28rem; width: 100%; display: flex; flex-direction: column; align-items: center;; " data-astro-cid-haiuh7kc> <h3 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1.5rem; color: #f472b6; text-shadow: 0 0 10px rgba(236, 72, 153, 0.5);; " data-astro-cid-haiuh7kc>扫码添加微信</h3> <div style="position: relative; margin-bottom: 1.5rem; border: 1px solid rgba(255,255,255,0.2); padding: 0.5rem; border-radius: 1rem; background: rgba(0,0,0,0.2); backdrop-filter: blur(4px);; " data-astro-cid-haiuh7kc> <img src="/qq-qrcode.png" alt="WeChat QR Code" style="width: 16rem; height: 16rem; object-fit: contain; border-radius: 0.75rem; display: block;; " data-astro-cid-haiuh7kc> </div> <p style="color: rgba(255,255,255,0.8); font-family: monospace; font-size: 0.875rem;; " data-astro-cid-haiuh7kc>GitHub: <span id="modal-wx-id" style="color: #f472b6; font-weight: bold;; " data-astro-cid-haiuh7kc>kyjl97</span></p> <div style="display: flex; gap: 1rem; width: 100%; margin-top: 1.5rem;; " data-astro-cid-haiuh7kc> <button onclick="copyModalWx(event)" class="wx-copy-btn" style="flex: 1; padding: 0.75rem; border-radius: 0.75rem; font-weight: 600; font-size: 0.875rem; background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); cursor: pointer; transition: all 0.2s;; " data-astro-cid-haiuh7kc>复制微信号</button> <button onclick="closeQRModal()" style="flex: 1; padding: 0.75rem; border-radius: 0.75rem; font-weight: 600; font-size: 0.875rem; background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); cursor: pointer; transition: all 0.2s;; " data-astro-cid-haiuh7kc>关闭</button> </div> </div> </div> <script>
+    // 打开二维码弹窗
+    function openQRModal() {
+        const modal = document.getElementById('qr-modal');
+        modal.classList.remove('hidden');
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+
+    // 关闭二维码弹窗
+    function closeQRModal() {
+        const modal = document.getElementById('qr-modal');
+        modal.classList.add('hidden');
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+    }
+
+    // 复制微信号
+    function copyModalWx(e) {
+        if (e) e.stopPropagation();
+        const wxId = document.getElementById('modal-wx-id').innerText;
+        const textArea = document.createElement("textarea");
+        textArea.value = wxId;
+        textArea.style.position = "fixed";
+        textArea.style.left = "-9999px";
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        try {
+            const successful = document.execCommand('copy');
+            if (successful) {
+                const btn = e.target;
+                const oldText = btn.innerText;
+                btn.innerText = '已复制！';
+                btn.style.color = "#4ade80";
+                setTimeout(() => {
+                    btn.innerText = oldText;
+                    btn.style.color = "";
+                }, 2000);
+            }
+        } catch (err) {
+            console.error('复制失败', err);
+        }
+        document.body.removeChild(textArea);
+    }
+
+    // ESC 键关闭弹窗
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeQRModal();
+        }
+    });
+</script>  <!-- increase the page height during page transition to prevent the scrolling animation from jumping --> <div id="page-height-extend" class="hidden h-[300vh]" data-astro-cid-sckkx6r4 style="--bannerOffset: 15vh;--banner-height-home: 65vh;--banner-height: 35vh;--configHue: 250;--page-width: 75rem;--bg-url: none;--bg-enable: 0;--bg-position: center;--bg-size: cover;--bg-repeat: no-repeat;--bg-attachment: fixed;--bg-opacity: 1;--configHue: 250;"></div>  <script type="module" src="/Firefly/_astro/Layout.astro_astro_type_script_index_0_lang.BVUjUFVQ.js"></script> <script type="module" src="/Firefly/_astro/Layout.astro_astro_type_script_index_1_lang.COliFRks.js"></script> <svg style="position: absolute; width: 0; height: 0; overflow: hidden;; --bannerOffset: 15vh;--banner-height-home: 65vh;--banner-height: 35vh;--configHue: 250;--page-width: 75rem;--bg-url: none;--bg-enable: 0;--bg-position: center;--bg-size: cover;--bg-repeat: no-repeat;--bg-attachment: fixed;--bg-opacity: 1;--configHue: 250;" aria-hidden="true" data-astro-cid-sckkx6r4> <defs data-astro-cid-sckkx6r4 style="--bannerOffset: 15vh;--banner-height-home: 65vh;--banner-height: 35vh;--configHue: 250;--page-width: 75rem;--bg-url: none;--bg-enable: 0;--bg-position: center;--bg-size: cover;--bg-repeat: no-repeat;--bg-attachment: fixed;--bg-opacity: 1;--configHue: 250;"> <!-- Grainient 噪点滤镜 --> <filter id="grain" data-astro-cid-sckkx6r4 style="--bannerOffset: 15vh;--banner-height-home: 65vh;--banner-height: 35vh;--configHue: 250;--page-width: 75rem;--bg-url: none;--bg-enable: 0;--bg-position: center;--bg-size: cover;--bg-repeat: no-repeat;--bg-attachment: fixed;--bg-opacity: 1;--configHue: 250;"> <feTurbulence type="turbulence" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch" result="noise" data-astro-cid-sckkx6r4 style="--bannerOffset: 15vh;--banner-height-home: 65vh;--banner-height: 35vh;--configHue: 250;--page-width: 75rem;--bg-url: none;--bg-enable: 0;--bg-position: center;--bg-size: cover;--bg-repeat: no-repeat;--bg-attachment: fixed;--bg-opacity: 1;--configHue: 250;"></feTurbulence> <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.4 0" in="noise" result="coloredNoise" data-astro-cid-sckkx6r4 style="--bannerOffset: 15vh;--banner-height-home: 65vh;--banner-height: 35vh;--configHue: 250;--page-width: 75rem;--bg-url: none;--bg-enable: 0;--bg-position: center;--bg-size: cover;--bg-repeat: no-repeat;--bg-attachment: fixed;--bg-opacity: 1;--configHue: 250;"></feColorMatrix> <feComposite operator="in" in="coloredNoise" in2="SourceGraphic" result="composite" data-astro-cid-sckkx6r4 style="--bannerOffset: 15vh;--banner-height-home: 65vh;--banner-height: 35vh;--configHue: 250;--page-width: 75rem;--bg-url: none;--bg-enable: 0;--bg-position: center;--bg-size: cover;--bg-repeat: no-repeat;--bg-attachment: fixed;--bg-opacity: 1;--configHue: 250;"></feComposite> <feBlend mode="overlay" in="composite" in2="SourceGraphic" data-astro-cid-sckkx6r4 style="--bannerOffset: 15vh;--banner-height-home: 65vh;--banner-height: 35vh;--configHue: 250;--page-width: 75rem;--bg-url: none;--bg-enable: 0;--bg-position: center;--bg-size: cover;--bg-repeat: no-repeat;--bg-attachment: fixed;--bg-opacity: 1;--configHue: 250;"></feBlend> </filter> <!-- 液体玻璃滤镜（保留原有效果） --> <filter id="liquid-glass" data-astro-cid-sckkx6r4 style="--bannerOffset: 15vh;--banner-height-home: 65vh;--banner-height: 35vh;--configHue: 250;--page-width: 75rem;--bg-url: none;--bg-enable: 0;--bg-position: center;--bg-size: cover;--bg-repeat: no-repeat;--bg-attachment: fixed;--bg-opacity: 1;--configHue: 250;"> <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" result="noise" data-astro-cid-sckkx6r4 style="--bannerOffset: 15vh;--banner-height-home: 65vh;--banner-height: 35vh;--configHue: 250;--page-width: 75rem;--bg-url: none;--bg-enable: 0;--bg-position: center;--bg-size: cover;--bg-repeat: no-repeat;--bg-attachment: fixed;--bg-opacity: 1;--configHue: 250;"></feTurbulence> <feDisplacementMap in="SourceGraphic" in2="noise" scale="20" xChannelSelector="R" yChannelSelector="G" data-astro-cid-sckkx6r4 style="--bannerOffset: 15vh;--banner-height-home: 65vh;--banner-height: 35vh;--configHue: 250;--page-width: 75rem;--bg-url: none;--bg-enable: 0;--bg-position: center;--bg-size: cover;--bg-repeat: no-repeat;--bg-attachment: fixed;--bg-opacity: 1;--configHue: 250;"></feDisplacementMap> </filter> </defs> </svg></body></html>
